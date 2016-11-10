@@ -9,3 +9,14 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SFML_StateMachine\SFML_State
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\bin\x86\Debug\sfmlnet-window-2.dll
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.exe
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.pdb
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\SFML_StateMachine.exe.config
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.exe
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.pdb
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\aherohasfallen.wav
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\arial.ttf
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\SFML_StateMachine.exe
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\SFML_StateMachine.pdb
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-audio-2.dll
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-graphics-2.dll
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-system-2.dll
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-window-2.dll
