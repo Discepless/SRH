@@ -1,0 +1,10 @@
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe.config
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\bin\Debug\SFML_StateMachine.pdb
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\obj\Debug\SFML_StateMachine.csprojResolveAssemblyReference.cache
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\obj\Debug\SFML_StateMachine.exe
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\obj\Debug\SFML_StateMachine.pdb
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\bin\Debug\sfmlnet-audio-2.dll
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\bin\Debug\sfmlnet-graphics-2.dll
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\bin\Debug\sfmlnet-system-2.dll
+c:\users\raziel\dropbox\visual studio 2015\Projects\SFML_StateMachine\SFML_StateMachine\bin\Debug\sfmlnet-window-2.dll
