@@ -22,3 +22,18 @@ C:\Users\pete\Downloads\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\charac
 C:\Users\pete\Downloads\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Button.png
 C:\Users\pete\Downloads\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\healthbar.png
 C:\Users\pete\Downloads\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Enemy.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe.config
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\obj\Debug\SFML_StateMachine.exe
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\obj\Debug\SFML_StateMachine.pdb
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Button.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Enemy.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Resources\aherohasfallen.wav
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Resources\arial.ttf
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\character_fight.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\healthbar.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\SFML_StateMachine.pdb
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\obj\Debug\SFML_Game.csprojResolveAssemblyReference.cache
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Resources\Map\NotVisible.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Resources\Map\TextureAtlas.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\Resources\Map\TileMap.tmx

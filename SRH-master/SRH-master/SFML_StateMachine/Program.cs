@@ -1,4 +1,6 @@
-﻿using GameEngine; //namespace with all engine related shit. Check that every class for player/item/etc runs in this namespace.
+﻿using GameEngine;
+using GameplayWorld_DM;
+//namespace with all engine related shit. Check that every class for player/item/etc runs in this namespace.
 using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
@@ -14,6 +16,10 @@ namespace StateMachine
             Sprite sprite;
             // build the startup menu scene
             
+            OpenWorldScene _openWorldScene = new OpenWorldScene(game);
+            _openWorldScene.Name = "OpenWorld";
+            game.SceneManager.AddScene(_openWorldScene);
+
             Fightscene _fightscene = new Fightscene(game);
             _fightscene.Name = "fight";
 
