@@ -49,6 +49,17 @@ namespace StateMachine
                 music.Play();
             }
 
+            if (e.Code == Keyboard.Key.F)
+            {
+                _gameObject.SceneManager.StartScene("fight");
+            }
+
+            if (e.Code == Keyboard.Key.X)
+            {
+                _gameObject.SceneManager.StartScene("OpenWorld");
+            }
+
+
             base.HandleKeyPress(e);
         }
 
@@ -59,7 +70,7 @@ namespace StateMachine
 
         public override void Update() //just test text like everywhere else
         {
-            string t = "PRESS [BACKSPACE] OR [M]";
+            string t = "PRESS [BACKSPACE] OR [M] or [F], [X] for Map";
             text.DisplayedString = t;
             text.Position = new Vector2f(200, 100);
             text.Draw(this._gameObject.Window, RenderStates.Default);

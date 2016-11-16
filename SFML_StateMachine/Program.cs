@@ -1,4 +1,10 @@
-﻿using GameEngine; //namespace with all engine related shit. Check that every class for player/item/etc runs in this namespace.
+﻿using GameEngine;
+using GameplayWorld_DM;
+//namespace with all engine related shit. Check that every class for player/item/etc runs in this namespace.
+using SFML.Audio;
+using SFML.Graphics;
+using SFML.System;
+using SFML.Window;
 
 namespace StateMachine
 {
@@ -7,8 +13,17 @@ namespace StateMachine
         private static void Main()
         {
             var game = new GameObject("State Machine");
-
+            Sprite sprite;
             // build the startup menu scene
+            
+            OpenWorldScene _openWorldScene = new OpenWorldScene(game);
+            _openWorldScene.Name = "OpenWorld";
+            game.SceneManager.AddScene(_openWorldScene);
+
+            Fightscene _fightscene = new Fightscene(game);
+            _fightscene.Name = "fight";
+
+            game.SceneManager.AddScene(_fightscene);
 
             MainScene _mainScene = new MainScene(game);
             _mainScene.Name = "main";
@@ -19,6 +34,7 @@ namespace StateMachine
             _startScene.Name = "start";
             game.SceneManager.AddScene(_startScene);
 
+            
             //create here as many screens as we need but dont forget to make a class for each
 
             // Start the game
