@@ -67,3 +67,19 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH - Copy\SRH-master\SRH-ma
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH - Copy\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH - Copy\SRH-master\SRH-master\SFML_StateMachine\bin\Debug\SFML_StateMachine.pdb
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH - Copy\SRH-master\SRH-master\SFML_StateMachine\obj\Debug\SFML_Game.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe.config
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\obj\Debug\SFML_StateMachine.exe
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\obj\Debug\SFML_StateMachine.pdb
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\Button.png
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\character_fight.png
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\Enemy.png
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\healthbar.png
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\Resources\aherohasfallen.wav
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\Resources\Map\NotVisible.png
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\Resources\Map\TextureAtlas.png
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\Resources\arial.ttf
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\Resources\Map\TileMap.tmx
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\Resources\Characters\SailorMoon.png
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\bin\Debug\SFML_StateMachine.pdb
+C:\Users\Daniel\Desktop\SRH-master1\SRH-master\SFML_StateMachine\obj\Debug\SFML_Game.csprojResolveAssemblyReference.cache
