@@ -1,3 +1,32 @@
+ToDo List
+
+- Statemachine
+- Tilemap
+  -Interaktionen
+  -Landschaft
+  -
+- Charakter einbinden
+- Gegner einbinden
+- Kampfszene mit Kampfsystem 
+  -Kampfsystem
+  -Stats
+- Inventar erstellen
+- Items
+  -Zeichnen
+  -in Tilemap einbinden
+  -in Inventar einbinden
+- Menü
+  -(Game)
+  -Setting
+  -Credits
+  
+  
+  
+
+
+
+
+
 # SRH
 SRH Project - ProgII
 
