@@ -102,3 +102,4 @@ C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\obj\Debug\SFML_Game.csprojReso
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\arrow.jpg
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Resources\Capture_it.ttf
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Resources\System.fon
+C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\sword.png

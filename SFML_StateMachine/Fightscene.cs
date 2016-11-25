@@ -26,7 +26,7 @@ namespace StateMachine
         private Sprite attack_button_sprite;
         private Sprite defend_button_sprite;
         //Text
-        private Text Nachkampf_Text;
+        private Text Nahkampf_Text;
         private Text Fernkampf_Text;
         private Text HP_Text;
         private Text EnemyHP_Text;
@@ -46,7 +46,11 @@ namespace StateMachine
         //Arrow
         private Texture arrow_img;
         private Sprite arrow_sprite;
-        bool arrow_visible = false;
+
+        //Sword
+        private Texture sword_img;
+        private Sprite sword_sprite;
+
         //Timer
         Clock clock;
 
@@ -71,6 +75,7 @@ namespace StateMachine
         bool Fernkampf = false;
 
         bool Arrow_Start = false;
+        bool Sword_Start = false;
 
         public Fightscene(GameObject gameObject) : base(gameObject)
         {
@@ -104,15 +109,22 @@ namespace StateMachine
             arrow_sprite.Position = new Vector2f(220, 200);
             arrow_sprite.Scale = new Vector2f(.07f, .07f);
 
+            //Sword
+            sword_img = new Texture("sword.png");
+            sword_sprite = new Sprite(sword_img);
+
+            sword_sprite.Position = new Vector2f(220, 200);
+            sword_sprite.Scale = new Vector2f(.07f, .07f);
+
             //Buttons
-            //Button1
+                 //Button1
             attack_button_img = new Texture("Button.png");
 
             attack_button_sprite = new Sprite(attack_button_img);
 
             attack_button_sprite.Position = new Vector2f(350, 400);
             attack_button_sprite.Scale = new Vector2f(0.5f, 0.5f);
-            //Button2
+                 //Button2
             defend_button_img = new Texture("Button.png");
 
             defend_button_sprite = new Sprite(defend_button_img);
@@ -121,24 +133,24 @@ namespace StateMachine
             defend_button_sprite.Scale = new Vector2f(0.5f, 0.5f);
 
             //Text
-            //Buttons
+                //Buttons
             Font arial = new Font(@"Resources\arial.ttf");
-            //Text Attack_Button
-            Nachkampf_Text = new Text("", arial);
+                  //Text Nahkampf_Button
+            Nahkampf_Text = new Text("", arial);
 
-            Nachkampf_Text.Position = new Vector2f(0, 0);
+            Nahkampf_Text.Position = new Vector2f(0, 0);
 
-            Nachkampf_Text.CharacterSize = 25;
+            Nahkampf_Text.CharacterSize = 25;
 
-            //Text Defend_Button
+                 //Text Fernkampf_Button
             Fernkampf_Text = new Text("", arial);
 
             Fernkampf_Text.Position = new Vector2f(0, 0);
 
             Fernkampf_Text.CharacterSize = 25;
 
-            //HP
-            //HP Character
+                //HP
+                  //HP Character
             Font system = new Font(@"Resources\Capture_it.ttf");
 
             HP_Text = new Text("", system);
@@ -148,7 +160,7 @@ namespace StateMachine
             HP_Text.CharacterSize = 20;
 
             HP_Text.Color = Color.Red;
-            //HP Enemy
+                 //HP Enemy
             EnemyHP_Text = new Text("", system);
 
             EnemyHP_Text.Position = new Vector2f(0, 0);
@@ -157,7 +169,7 @@ namespace StateMachine
 
             EnemyHP_Text.Color = Color.Black;
 
-            //Healthbar
+            //Healthbar_img
             healthbar_img = new Texture("healthbar.png");
             healthbar_sprite = new Sprite(healthbar_img);
 
@@ -192,6 +204,7 @@ namespace StateMachine
                 Charcters_Turn = false;
                 Enemies_Turn = true;
                 Nahkampf = true;
+                Sword_Start = true;
                 clock.Restart();
             }
             if (e.Code == Keyboard.Key.D && Charcters_Turn && healthLeft > 0)
@@ -209,7 +222,7 @@ namespace StateMachine
 
         public override void Update()
         {
-            Console.WriteLine(healthLeft);
+            Console.WriteLine(sword_sprite.Rotation);
             //Character Slide In
             if (SlideInMove_character())
                 character_sprite.Position -= new Vector2f(15, 0) * Speed;
@@ -229,17 +242,26 @@ namespace StateMachine
             //Arrow Move
             if (Arrow_move())
                 arrow_sprite.Position += new Vector2f(10, -10);
-            if (arrow_sprite.Position.X >= 300)
+            else
             {
                 arrow_sprite.Position = new Vector2f(220, 200);
-                arrow_visible = false;
                 Arrow_Start = false;
             }
+
+            //Sword Move
+            if (Sword_move())
+               sword_sprite.Rotation += 2;
+            else
+            {
+                sword_sprite.Rotation = 0;
+                Sword_Start = false;
+            }
+
             //Text
             string t1 = "Nahkampf [A] [" + Attack_Nahkampf + " SP]";
-            Nachkampf_Text.DisplayedString = t1;
-            Nachkampf_Text.Position = new Vector2f(/*button_sprite.Position.X, button_sprite.Position.Y*/378, 420);
-            Nachkampf_Text.Draw(_gameObject.Window, RenderStates.Default);
+            Nahkampf_Text.DisplayedString = t1;
+            Nahkampf_Text.Position = new Vector2f(/*button_sprite.Position.X, button_sprite.Position.Y*/378, 420);
+            Nahkampf_Text.Draw(_gameObject.Window, RenderStates.Default);
 
             string t2 = "Fernkampf [D] [" + Attack_Fernkampf + " SP]";
             Fernkampf_Text.DisplayedString = t2;
@@ -287,7 +309,7 @@ namespace StateMachine
             {
                 _gameObject.Window.Draw(attack_button_sprite);
                 _gameObject.Window.Draw(defend_button_sprite);
-                _gameObject.Window.Draw(Nachkampf_Text);
+                _gameObject.Window.Draw(Nahkampf_Text);
                 _gameObject.Window.Draw(Fernkampf_Text);
                 _gameObject.Window.Draw(healthbar_sprite);
                 _gameObject.Window.Draw(HP_Text);
@@ -301,6 +323,9 @@ namespace StateMachine
 
             if (Arrow_Start)
                 _gameObject.Window.Draw(arrow_sprite);
+
+            if (Sword_Start)
+                _gameObject.Window.Draw(sword_sprite);
 
         }
 
@@ -332,6 +357,15 @@ namespace StateMachine
 
             return false;
         }
+
+        public bool Sword_move()
+        {
+            if (sword_sprite.Rotation >= 0 && sword_sprite.Rotation < 31 && Sword_Start)
+                return true;
+
+            return false;
+        }
+
 
         public void Attack_SlideInMove()
         {
