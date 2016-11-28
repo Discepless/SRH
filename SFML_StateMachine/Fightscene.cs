@@ -99,28 +99,28 @@ namespace StateMachine
         {//Objekte werden initialisiert und zugewiesen
 
             //Character
-            character_img = new Texture("character_fight.png");
+            character_img = new Texture("Resources/Character_Fightscene/Character_fight.png");
             character_sprite = new Sprite(character_img);
 
             character_sprite.Position = new Vector2f(650, 400);
             character_sprite.Scale = new Vector2f(.3f, .3f);
 
             //Enemy
-            enemy_img = new Texture("Enemy.png");
+            enemy_img = new Texture("Resources/Character_Fightscene/Enemy_fight.png");
             enemy_sprite = new Sprite(enemy_img);
 
             enemy_sprite.Position = new Vector2f(0, 70);
             enemy_sprite.Scale = new Vector2f(.5f, .5f);
 
             //Arrow
-            arrow_img = new Texture("arrow.jpg");
+            arrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
             arrow_sprite = new Sprite(arrow_img);
 
             arrow_sprite.Position = new Vector2f(220, 200);
             arrow_sprite.Scale = new Vector2f(.07f, .07f);
 
             //Sword
-            sword_img = new Texture("sword.png");
+            sword_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/sword.png");
             sword_sprite = new Sprite(sword_img);
 
             sword_sprite.Position = new Vector2f(470, 100);
@@ -128,14 +128,14 @@ namespace StateMachine
 
             //Buttons
                  //Button1
-            attack_button_img = new Texture("Button.png");
+            attack_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
             attack_button_sprite = new Sprite(attack_button_img);
 
             attack_button_sprite.Position = new Vector2f(350, 400);
             attack_button_sprite.Scale = new Vector2f(0.5f, 0.5f);
                  //Button2
-            defend_button_img = new Texture("Button.png");
+            defend_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
             defend_button_sprite = new Sprite(defend_button_img);
 
@@ -168,7 +168,7 @@ namespace StateMachine
             EnemyHP_Text.Color = Color.Black;
 
             //Healthbar_img
-            healthbar_img = new Texture("healthbar.png");
+            healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
             healthbar_sprite = new Sprite(healthbar_img);
 
             healthbar_sprite.Position = new Vector2f(10, 350);
@@ -176,7 +176,7 @@ namespace StateMachine
             healthbar_rectangle = new RectangleShape();          
 
             //Healthbar Enemies
-            enemy_healthbar = new Texture("healthbar.png");
+            enemy_healthbar = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
             enemy_healthbar_sprite = new Sprite(enemy_healthbar);
 
             enemy_healthbar_sprite.Position = new Vector2f(565, 20);

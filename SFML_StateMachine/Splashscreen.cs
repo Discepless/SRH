@@ -27,7 +27,7 @@ namespace StateMachine
 
         public override void Initialize()
         {
-            Splashtexture = new Texture("Splashscreen.png");
+            Splashtexture = new Texture("Resources/Splashscreen/Splashscreen.png");
             Splashsprite = new Sprite(Splashtexture);
 
             Splashsprite.Position = new Vector2f();
