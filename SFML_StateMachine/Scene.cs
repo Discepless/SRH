@@ -47,7 +47,7 @@ namespace GameEngine
                 currentTime = System.DateTime.Now;
 
                 _gameObject.Window.Clear(this.BackgroundColor);
-
+                
                 if (!pause)
                 {
                     this.Update();

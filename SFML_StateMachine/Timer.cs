@@ -19,7 +19,6 @@ namespace StateMachine
         public float Current { get { return float_time; } }
         public void Update()
         {
-            Console.WriteLine(float_time);
 
             float_time = time.AsSeconds() + timer.ElapsedTime.AsSeconds();
         }

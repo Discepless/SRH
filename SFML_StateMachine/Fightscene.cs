@@ -102,28 +102,28 @@ namespace StateMachine
             character_img = new Texture("Resources/Character_Fightscene/Character_fight.png");
             character_sprite = new Sprite(character_img);
 
-            character_sprite.Position = new Vector2f(650, 400);
-            character_sprite.Scale = new Vector2f(.3f, .3f);
+            character_sprite.Position = new Vector2f(1600, 700);
+            character_sprite.Scale = new Vector2f(.6f, .6f);
 
             //Enemy
             enemy_img = new Texture("Resources/Character_Fightscene/Enemy_fight.png");
             enemy_sprite = new Sprite(enemy_img);
 
-            enemy_sprite.Position = new Vector2f(0, 70);
-            enemy_sprite.Scale = new Vector2f(.5f, .5f);
+            enemy_sprite.Position = new Vector2f(0, 90);
+            enemy_sprite.Scale = new Vector2f(1f, 1f);
 
             //Arrow
             arrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
             arrow_sprite = new Sprite(arrow_img);
 
-            arrow_sprite.Position = new Vector2f(220, 200);
+          //  arrow_sprite.Position = new Vector2f(700, 300);
             arrow_sprite.Scale = new Vector2f(.07f, .07f);
 
             //Sword
             sword_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/sword.png");
             sword_sprite = new Sprite(sword_img);
 
-            sword_sprite.Position = new Vector2f(470, 100);
+            sword_sprite.Position = new Vector2f(1450, 150);
             sword_sprite.Scale = new Vector2f(.07f, .07f);
 
             //Buttons
@@ -132,15 +132,15 @@ namespace StateMachine
 
             attack_button_sprite = new Sprite(attack_button_img);
 
-            attack_button_sprite.Position = new Vector2f(350, 400);
-            attack_button_sprite.Scale = new Vector2f(0.5f, 0.5f);
+            attack_button_sprite.Position = new Vector2f(700, 700);
+            attack_button_sprite.Scale = new Vector2f(.7f, .7f);
                  //Button2
             defend_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
             defend_button_sprite = new Sprite(defend_button_img);
 
-            defend_button_sprite.Position = new Vector2f(350, 490);
-            defend_button_sprite.Scale = new Vector2f(0.5f, 0.5f);
+            defend_button_sprite.Position = new Vector2f(700, 850);
+            defend_button_sprite.Scale = new Vector2f(.7f, .7f);
 
             //Text
                 //Buttons
@@ -148,39 +148,39 @@ namespace StateMachine
                   //Text Nahkampf_Button
             Nahkampf_Text = new Text("", arial);
             Nahkampf_Text.Position = new Vector2f(0, 0);
-            Nahkampf_Text.CharacterSize = 25;
+            Nahkampf_Text.CharacterSize = 35;
                  //Text Fernkampf_Button
             Fernkampf_Text = new Text("", arial);
             Fernkampf_Text.Position = new Vector2f(0, 0);
-            Fernkampf_Text.CharacterSize = 25;
+            Fernkampf_Text.CharacterSize = 35;
 
             //HP
                   //HP Character
             Font system = new Font(@"Resources\Capture_it.ttf");
             HP_Text = new Text("", system);
             HP_Text.Position = new Vector2f(0, 0);
-            HP_Text.CharacterSize = 20;
+            HP_Text.CharacterSize = 40;
             HP_Text.Color = Color.Red;
                  //HP Enemy
             EnemyHP_Text = new Text("", system);
             EnemyHP_Text.Position = new Vector2f(0, 0);
-            EnemyHP_Text.CharacterSize = 10;
+            EnemyHP_Text.CharacterSize = 20;
             EnemyHP_Text.Color = Color.Black;
 
-            //Healthbar_img
+            //Healthbar_img Character
             healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
             healthbar_sprite = new Sprite(healthbar_img);
 
-            healthbar_sprite.Position = new Vector2f(10, 350);
-            healthbar_sprite.Scale = new Vector2f(.5f, .5f);
+            healthbar_sprite.Position = new Vector2f(50, 600);
+            healthbar_sprite.Scale = new Vector2f(1f, 1f);
             healthbar_rectangle = new RectangleShape();          
 
-            //Healthbar Enemies
+            //Healthbar_img Enemies
             enemy_healthbar = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
             enemy_healthbar_sprite = new Sprite(enemy_healthbar);
 
-            enemy_healthbar_sprite.Position = new Vector2f(565, 20);
-            enemy_healthbar_sprite.Scale = new Vector2f(.5f, .5f);
+            enemy_healthbar_sprite.Position = new Vector2f(1485, 20);
+            enemy_healthbar_sprite.Scale = new Vector2f(1f, 1f);
             enemy_healthbar_rectangle = new RectangleShape();
 
             //Timer
@@ -221,9 +221,9 @@ namespace StateMachine
         public override void Update()
         {//Fightscene Logic
 
-            Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
-            Console.WriteLine(Sword_Start);
-            Console.WriteLine(Sword_Time);
+         //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
+         //   Console.WriteLine(Sword_Start);
+         //   Console.WriteLine(Sword_Time);
             //Character Slide In
             if (SlideInMove_character())
                 character_sprite.Position -= new Vector2f(15, 0) * Speed;
@@ -232,20 +232,20 @@ namespace StateMachine
             if (SlideInMove_enemy())
                 enemy_sprite.Position += new Vector2f(15, 0) * Speed;
 
-            //Character Slide Down 
+            //Character Slide Down (when dead)
             if (healthLeft <= 0)
                 character_sprite.Position += new Vector2f(0, 50);
 
-            //Enemy Slide Down
+            //Enemy Slide Down (when dead)
             if (enemyHealthLeft <= 0)
                 enemy_sprite.Position += new Vector2f(0, 50);
 
             //Arrow Move
             if (Arrow_move())
-                arrow_sprite.Position += new Vector2f(10, -10);
+                arrow_sprite.Position += new Vector2f(20, -10);
             else
             {
-                arrow_sprite.Position = new Vector2f(250, 300);
+                arrow_sprite.Position = new Vector2f(650, 550);
                 Arrow_Start = false;
             }
 
@@ -261,19 +261,19 @@ namespace StateMachine
             //Text
             string t1 = "Nahkampf [A] [" + Attack_Nahkampf + " SP]";
             Nahkampf_Text.DisplayedString = t1;
-            Nahkampf_Text.Position = new Vector2f(378, 420);
+            Nahkampf_Text.Position = new Vector2f(740, 745);
 
             string t2 = "Fernkampf [D] [" + Attack_Fernkampf + " SP]";
             Fernkampf_Text.DisplayedString = t2;
-            Fernkampf_Text.Position = new Vector2f(378, 510);
+            Fernkampf_Text.Position = new Vector2f(740, 895);
 
             string t3 = "HP " + healthLeft + " / " + HP;
             HP_Text.DisplayedString = t3;
-            HP_Text.Position = new Vector2f(38, 320);
+            HP_Text.Position = new Vector2f(110, 530);
 
             string t4 = "HP " + enemyHealthLeft + " / " + EnemyHP;
             EnemyHP_Text.DisplayedString = t4;
-            EnemyHP_Text.Position = new Vector2f(627, 24);
+            EnemyHP_Text.Position = new Vector2f(1600, 30);
 
             //Health
                  //Character
@@ -339,7 +339,7 @@ namespace StateMachine
         public bool SlideInMove_character()
         {
 
-            if (character_sprite.Position.X <= 650 && character_sprite.Position.X >= 30)
+            if (character_sprite.Position.X <= 1600 && character_sprite.Position.X >= 50)
 
                 return true;
 
@@ -350,7 +350,7 @@ namespace StateMachine
 
         public bool SlideInMove_enemy()
         {
-            if (enemy_sprite.Position.X >= 0 && enemy_sprite.Position.X <= 580)
+            if (enemy_sprite.Position.X >= 0 && enemy_sprite.Position.X <= 1500)
 
                 return true;
 
@@ -359,7 +359,7 @@ namespace StateMachine
 
         public bool Arrow_move()
         {
-            if (arrow_sprite.Position.X >= 250 && arrow_sprite.Position.X <= 450 && Arrow_Start)
+            if (arrow_sprite.Position.X >= 650 && arrow_sprite.Position.X <= 1350 && Arrow_Start)
                 return true;
 
             return false;

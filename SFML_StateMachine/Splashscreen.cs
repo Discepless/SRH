@@ -16,9 +16,8 @@ namespace StateMachine
     {
         private Texture Splashtexture;
         private Sprite Splashsprite;
+        
 
-      //  Clock clock;
-      //  Time time;
         Timer Timer;
         public Splashscreen(GameObject gameObject) : base(gameObject)
         {
@@ -31,9 +30,11 @@ namespace StateMachine
             Splashsprite = new Sprite(Splashtexture);
 
             Splashsprite.Position = new Vector2f();
-            Splashsprite.Scale = new Vector2f(1.1f, 1.4f);
+            Splashsprite.Scale = new Vector2f((float)_gameObject.XRes / Splashsprite.Texture.Size.X, (float)_gameObject.YRes / Splashsprite.Texture.Size.Y);
 
             Timer = new Timer();
+
+
 
             base.Initialize();
         }
@@ -42,7 +43,7 @@ namespace StateMachine
         {
             Timer.Update();
             
-            if (Timer.Current >= 3)
+            if (Timer.Current >= 1)
             {
                 _gameObject.SceneManager.StartScene("main");
             }

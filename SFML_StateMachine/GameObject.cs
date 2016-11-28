@@ -2,6 +2,7 @@
 using SFML.Window;
 using System;
 
+
 namespace GameEngine
 {
     public class GameObject : IDisposable
@@ -12,19 +13,21 @@ namespace GameEngine
 
         public SceneManager SceneManager = new SceneManager();
 
-        uint Xres = 800;
-
-        uint Yres = 600; //change whatever u want lads
+        uint Xres = 1920;
+        uint Yres = 1080; //change whatever u want lads
+        public uint XRes { get { return Xres; } }
+        public uint YRes { get { return Yres; } }
 
         public GameObject(string Title)
         {
             // initialize values
             _window = new RenderWindow(new VideoMode(Xres, Yres), Title, Styles.Default);
-
+            
             _window.SetVisible(true);
             _window.SetVerticalSyncEnabled(true);
             _window.SetFramerateLimit(60);
-
+            
+            
             //  event handlers
             _window.Closed += _window_Closed;
             _window.KeyPressed += _window_KeyPressed;
