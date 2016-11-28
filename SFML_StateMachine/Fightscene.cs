@@ -93,7 +93,6 @@ namespace StateMachine
         public Fightscene(GameObject gameObject) : base(gameObject)
         {
             BackgroundColor = Color.White;
-
         }
 
         public override void Initialize()

@@ -103,3 +103,4 @@ C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\arrow.jpg
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Resources\Capture_it.ttf
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Resources\System.fon
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\sword.png
+C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Splashscreen.png

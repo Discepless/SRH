@@ -13,7 +13,7 @@ namespace StateMachine
         private static void Main()
         {
             var game = new GameObject("State Machine");
-            Sprite sprite;
+            
             // build the startup menu scene
             
             OpenWorldScene _openWorldScene = new OpenWorldScene(game);
@@ -30,9 +30,12 @@ namespace StateMachine
 
             game.SceneManager.AddScene(_mainScene);
 
-            StartScene _startScene = new StartScene(game);
-            _startScene.Name = "start";
-            game.SceneManager.AddScene(_startScene);
+            //StartScene _startScene = new StartScene(game);
+            //_startScene.Name = "start";
+            //game.SceneManager.AddScene(_startScene);
+            Splashscreen _splashcreen = new Splashscreen(game);
+            _splashcreen.Name = "start";
+            game.SceneManager.AddScene(_splashcreen);
 
             
             //create here as many screens as we need but dont forget to make a class for each
