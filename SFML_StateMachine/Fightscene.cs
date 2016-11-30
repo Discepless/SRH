@@ -24,14 +24,17 @@ namespace StateMachine
         private Sprite enemy_sprite;
 
         //Buttons
-        private Texture attack_button_img;
-        private Texture defend_button_img;
-        private Sprite attack_button_sprite;
-        private Sprite defend_button_sprite;
+        private Texture nahkampf_button_img;
+        private Texture fernkampf_button_img;
+        private Texture inventar_button_img;
+        private Sprite nahkampf_button_sprite;
+        private Sprite fernkampf_button_sprite;
+        private Sprite inventar_button_sprite;
 
         //Text
         private Text Nahkampf_Text;
         private Text Fernkampf_Text;
+        private Text Inventar_Text;
         private Text HP_Text;
         private Text EnemyHP_Text;
 
@@ -116,7 +119,7 @@ namespace StateMachine
             arrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
             arrow_sprite = new Sprite(arrow_img);
 
-          //  arrow_sprite.Position = new Vector2f(700, 300);
+          //arrow_sprite.Position = new Vector2f(700, 300);
             arrow_sprite.Scale = new Vector2f(.07f, .07f);
 
             //Sword
@@ -128,20 +131,26 @@ namespace StateMachine
 
             //Buttons
                  //Button1
-            attack_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
+            nahkampf_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
-            attack_button_sprite = new Sprite(attack_button_img);
+            nahkampf_button_sprite = new Sprite(nahkampf_button_img);
 
-            attack_button_sprite.Position = new Vector2f(700, 700);
-            attack_button_sprite.Scale = new Vector2f(.7f, .7f);
+            nahkampf_button_sprite.Position = new Vector2f(700, 700);
+            nahkampf_button_sprite.Scale = new Vector2f(.7f, .7f);
                  //Button2
-            defend_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
+            fernkampf_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
-            defend_button_sprite = new Sprite(defend_button_img);
+            fernkampf_button_sprite = new Sprite(fernkampf_button_img);
 
-            defend_button_sprite.Position = new Vector2f(700, 850);
-            defend_button_sprite.Scale = new Vector2f(.7f, .7f);
+            fernkampf_button_sprite.Position = new Vector2f(700, 850);
+            fernkampf_button_sprite.Scale = new Vector2f(.7f, .7f);
+                 //Button3
+            inventar_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
+            inventar_button_sprite = new Sprite(inventar_button_img);
+
+            inventar_button_sprite.Position = new Vector2f(1200, 850);
+            inventar_button_sprite.Scale = new Vector2f(.7f, .7f);
             //Text
                 //Buttons
             Font arial = new Font(@"Resources\arial.ttf");
@@ -153,8 +162,12 @@ namespace StateMachine
             Fernkampf_Text = new Text("", arial);
             Fernkampf_Text.Position = new Vector2f(0, 0);
             Fernkampf_Text.CharacterSize = 35;
+            //Text Inventar_Button
+            Inventar_Text = new Text("", arial);
+            Inventar_Text.Position = new Vector2f(0, 0);
+            Inventar_Text.CharacterSize = 35;
 
-            //HP
+                 //HP
                   //HP Character
             Font system = new Font(@"Resources\Capture_it.ttf");
             HP_Text = new Text("", system);
@@ -216,6 +229,8 @@ namespace StateMachine
                 Arrow_Start = true;
                 clock_EnemiesTurn.Restart();
             }
+            if (e.Code == Keyboard.Key.Escape)
+                _gameObject.SceneManager.StartScene("OpenWorld");
         }
 
         public override void Update()
@@ -223,7 +238,7 @@ namespace StateMachine
 
          //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
          //   Console.WriteLine(Sword_Start);
-         //   Console.WriteLine(Sword_Time);
+            Console.WriteLine(enemy_sprite.Position.Y);
             //Character Slide In
             if (SlideInMove_character())
                 character_sprite.Position -= new Vector2f(15, 0) * Speed;
@@ -235,10 +250,15 @@ namespace StateMachine
             //Character Slide Down (when dead)
             if (healthLeft <= 0)
                 character_sprite.Position += new Vector2f(0, 50);
+            if (character_sprite.Position.Y >= 5000)
+                _gameObject.SceneManager.StartScene("main");
 
             //Enemy Slide Down (when dead)
             if (enemyHealthLeft <= 0)
                 enemy_sprite.Position += new Vector2f(0, 50);
+            if (enemy_sprite.Position.Y >= 5500)
+                _gameObject.SceneManager.StartScene("OpenWorld");
+        
 
             //Arrow Move
             if (Arrow_move())
@@ -275,6 +295,10 @@ namespace StateMachine
             EnemyHP_Text.DisplayedString = t4;
             EnemyHP_Text.Position = new Vector2f(1600, 30);
 
+            string t5 = "Inventar";
+            Inventar_Text.DisplayedString = t5;
+            Inventar_Text.Position = new Vector2f(1250,895);
+
             //Health
                  //Character
             if (HealthDown)
@@ -310,10 +334,12 @@ namespace StateMachine
 
             if (healthLeft > 0)
             {
-                _gameObject.Window.Draw(attack_button_sprite);
-                _gameObject.Window.Draw(defend_button_sprite);
+                _gameObject.Window.Draw(nahkampf_button_sprite);
+                _gameObject.Window.Draw(fernkampf_button_sprite);
+                _gameObject.Window.Draw(inventar_button_sprite);
                 _gameObject.Window.Draw(Nahkampf_Text);
                 _gameObject.Window.Draw(Fernkampf_Text);
+                _gameObject.Window.Draw(Inventar_Text);
                 _gameObject.Window.Draw(healthbar_sprite);
                 _gameObject.Window.Draw(HP_Text);
 

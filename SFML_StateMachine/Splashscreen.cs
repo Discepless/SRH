@@ -43,7 +43,7 @@ namespace StateMachine
         {
             Timer.Update();
             
-            if (Timer.Current >= 1)
+            if (Timer.Current >= 3)
             {
                 _gameObject.SceneManager.StartScene("main");
             }
