@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
+using System;
 
 namespace SFML_StateMachine
 {
     public enum MoveDirection
-    {   None,
+    {
+        None,
         MoveEast,
         MoveWest,
         MoveNorth,
         MoveSouth
     }
 
-   abstract class AnimatedCharacter
+    internal abstract class AnimatedCharacter
     {
         public float Xpos { get; set; }
         public float Ypos { get; set; }
@@ -45,11 +40,10 @@ namespace SFML_StateMachine
             this._frameSize = frameSize;
             Texture myTexture = new Texture(filename);
 
-            _spriteRect = new IntRect(0,0,frameSize,48);
+            _spriteRect = new IntRect(0, 0, frameSize, 48);
             _sprite = new Sprite(myTexture, _spriteRect);
 
             //Setting the Animation set
-
 
             animationClock = new Clock();
         }
@@ -62,18 +56,21 @@ namespace SFML_StateMachine
             {
                 case MoveDirection.MoveNorth:
                     currentAnimation = AnimUp;
-                    Ypos -= moveSpeed*deltaTime;
+                    Ypos -= moveSpeed * deltaTime;
                     break;
-                    case MoveDirection.MoveEast:
-                    Xpos += moveSpeed*deltaTime;
+
+                case MoveDirection.MoveEast:
+                    Xpos += moveSpeed * deltaTime;
                     currentAnimation = AnimRight;
                     break;
-                    case MoveDirection.MoveSouth:
-                    Ypos += moveSpeed*deltaTime;
+
+                case MoveDirection.MoveSouth:
+                    Ypos += moveSpeed * deltaTime;
                     currentAnimation = AnimDown;
                     break;
-                    case MoveDirection.MoveWest:
-                    Xpos -= moveSpeed*deltaTime;
+
+                case MoveDirection.MoveWest:
+                    Xpos -= moveSpeed * deltaTime;
                     currentAnimation = AnimLeft;
                     break;
             }
@@ -86,16 +83,16 @@ namespace SFML_StateMachine
                 {
                     _spriteRect.Top = currentAnimation.offsetTop;
 
-                    if (_spriteRect.Left == (currentAnimation.numFrames - 1)*_frameSize)
+                    if (_spriteRect.Left == (currentAnimation.numFrames - 1) * _frameSize)
                         _spriteRect.Left = 0;
                     else
                         _spriteRect.Left += _frameSize;
                 }
                 animationClock.Restart();
-
             }
             _sprite.TextureRect = _spriteRect;
         }
+
         public void Draw(RenderWindow window)
         {
             window.Draw(_sprite);

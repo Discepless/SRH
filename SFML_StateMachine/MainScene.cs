@@ -59,7 +59,6 @@ namespace StateMachine
                 _gameObject.SceneManager.StartScene("OpenWorld");
             }
 
-
             base.HandleKeyPress(e);
         }
 

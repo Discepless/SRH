@@ -47,7 +47,7 @@ namespace GameEngine
                 currentTime = System.DateTime.Now;
 
                 _gameObject.Window.Clear(this.BackgroundColor);
-                
+
                 if (!pause)
                 {
                     this.Update();
@@ -106,7 +106,6 @@ namespace GameEngine
 
         public virtual void Exit()
         {
-
         }
 
         public void Dispose()
@@ -119,10 +118,8 @@ namespace GameEngine
         {
             if (disposing)
             {
-               //do smth
+                //do smth
             }
         }
     }
 }
-
-

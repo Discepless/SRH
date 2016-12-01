@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML.Window;
+﻿using SFML.Window;
 
 namespace SFML_StateMachine
 {
-    class MainCharacter : AnimatedCharacter
+    internal class MainCharacter : AnimatedCharacter
     {
         public MainCharacter() : base("Resources/Characters/SailorMoon.png", 32)
         {

@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameEngine;
-using SFML.Audio;
+﻿using GameEngine;
 using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
-using SFML_StateMachine;
 
 namespace StateMachine
 {
-    class Splashscreen : Scene
+    internal class Splashscreen : Scene
     {
         private Texture Splashtexture;
         private Sprite Splashsprite;
-        
 
-        Timer Timer;
+        private Timer Timer;
+
         public Splashscreen(GameObject gameObject) : base(gameObject)
         {
             BackgroundColor = Color.Cyan;
@@ -34,24 +26,20 @@ namespace StateMachine
 
             Timer = new Timer();
 
-
-
             base.Initialize();
         }
 
         public override void Update()
         {
             Timer.Update();
-            
+
             if (Timer.Current >= 3)
             {
                 _gameObject.SceneManager.StartScene("main");
+                this.Dispose();
             }
 
-
             _gameObject.Window.Draw(Splashsprite);
-            
         }
-
     }
 }

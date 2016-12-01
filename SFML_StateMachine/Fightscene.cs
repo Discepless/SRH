@@ -1,30 +1,26 @@
-﻿using SFML.Audio;
+﻿using GameEngine;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using GameEngine;
 using System;
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StateMachine
 {
     public class Fightscene : Scene
     {//Objekte und Variablen werden erstellt:
-
         //Avatar(Character)
         private Texture character_img;
+
         private Sprite character_sprite;
 
         //Enemy
         private Texture enemy_img;
+
         private Sprite enemy_sprite;
 
         //Buttons
         private Texture nahkampf_button_img;
+
         private Texture fernkampf_button_img;
         private Texture inventar_button_img;
         private Sprite nahkampf_button_sprite;
@@ -33,6 +29,7 @@ namespace StateMachine
 
         //Text
         private Text Nahkampf_Text;
+
         private Text Fernkampf_Text;
         private Text Inventar_Text;
         private Text HP_Text;
@@ -40,58 +37,69 @@ namespace StateMachine
 
         //Healthbar
         private Texture healthbar_img;
+
         private Sprite healthbar_sprite;
 
         private RectangleShape healthbar_rectangle;
 
         //Enemy Healthbar
         private Texture enemy_healthbar;
+
         private Sprite enemy_healthbar_sprite;
 
         private RectangleShape enemy_healthbar_rectangle;
 
         //Arrow
         private Texture arrow_img;
+
         private Sprite arrow_sprite;
 
         //Sword
         private Texture sword_img;
+
         private Sprite sword_sprite;
 
         //Timer
-        Clock clock_EnemiesTurn;
-        Clock clock_SwordSlideIn;
+        private Clock clock_EnemiesTurn;
+
+        private Clock clock_SwordSlideIn;
 
         //Character & Enemy SlideIn Speed
-        float Speed = 1;
+        private float Speed = 1;
 
         //Character Stats
-        int HP = 100;
-        int healthLeft = 100;
-        int Attack_Nahkampf = 20;
-        int Attack_Fernkampf = 10;
+        private int HP = 100;
+
+        private int healthLeft = 100;
+        private int Attack_Nahkampf = 20;
+        private int Attack_Fernkampf = 10;
 
         //Enemy Stats
-        int EnemyHP = 70;
-        int enemyHealthLeft = 70;
-        int EnemyAttack = 25;
+        private int EnemyHP = 70;
+
+        private int enemyHealthLeft = 70;
+        private int EnemyAttack = 25;
 
         //Handles whos turn it is
-        bool Characters_Turn = true;
-        bool Enemies_Turn = false;
+        private bool Characters_Turn = true;
+
+        private bool Enemies_Turn = false;
 
         //Handles  if character got hit
-        bool HealthDown = false;
-        bool EnemiesHealthDown = false;
+        private bool HealthDown = false;
+
+        private bool EnemiesHealthDown = false;
 
         //Handles which Attack-Typ is used
-        bool Nahkampf = false;
-        bool Fernkampf = false;
+        private bool Nahkampf = false;
+
+        private bool Fernkampf = false;
 
         //Handles start of Attack-Animation
-        bool Arrow_Start = false;
-        bool Sword_Start = false;
-        bool Sword_Time = false;
+        private bool Arrow_Start = false;
+
+        private bool Sword_Start = false;
+        private bool Sword_Time = false;
 
         public Fightscene(GameObject gameObject) : base(gameObject)
         {
@@ -100,7 +108,6 @@ namespace StateMachine
 
         public override void Initialize()
         {//Objekte werden initialisiert und zugewiesen
-
             //Character
             character_img = new Texture("Resources/Character_Fightscene/Character_fight.png");
             character_sprite = new Sprite(character_img);
@@ -119,7 +126,7 @@ namespace StateMachine
             arrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
             arrow_sprite = new Sprite(arrow_img);
 
-          //arrow_sprite.Position = new Vector2f(700, 300);
+            //arrow_sprite.Position = new Vector2f(700, 300);
             arrow_sprite.Scale = new Vector2f(.07f, .07f);
 
             //Sword
@@ -130,21 +137,21 @@ namespace StateMachine
             sword_sprite.Scale = new Vector2f(.07f, .07f);
 
             //Buttons
-                 //Button1
+            //Button1
             nahkampf_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
             nahkampf_button_sprite = new Sprite(nahkampf_button_img);
 
             nahkampf_button_sprite.Position = new Vector2f(700, 700);
             nahkampf_button_sprite.Scale = new Vector2f(.7f, .7f);
-                 //Button2
+            //Button2
             fernkampf_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
             fernkampf_button_sprite = new Sprite(fernkampf_button_img);
 
             fernkampf_button_sprite.Position = new Vector2f(700, 850);
             fernkampf_button_sprite.Scale = new Vector2f(.7f, .7f);
-                 //Button3
+            //Button3
             inventar_button_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Button.png");
 
             inventar_button_sprite = new Sprite(inventar_button_img);
@@ -152,13 +159,13 @@ namespace StateMachine
             inventar_button_sprite.Position = new Vector2f(1200, 850);
             inventar_button_sprite.Scale = new Vector2f(.7f, .7f);
             //Text
-                //Buttons
+            //Buttons
             Font arial = new Font(@"Resources\arial.ttf");
-                  //Text Nahkampf_Button
+            //Text Nahkampf_Button
             Nahkampf_Text = new Text("", arial);
             Nahkampf_Text.Position = new Vector2f(0, 0);
             Nahkampf_Text.CharacterSize = 35;
-                 //Text Fernkampf_Button
+            //Text Fernkampf_Button
             Fernkampf_Text = new Text("", arial);
             Fernkampf_Text.Position = new Vector2f(0, 0);
             Fernkampf_Text.CharacterSize = 35;
@@ -167,14 +174,14 @@ namespace StateMachine
             Inventar_Text.Position = new Vector2f(0, 0);
             Inventar_Text.CharacterSize = 35;
 
-                 //HP
-                  //HP Character
+            //HP
+            //HP Character
             Font system = new Font(@"Resources\Capture_it.ttf");
             HP_Text = new Text("", system);
             HP_Text.Position = new Vector2f(0, 0);
             HP_Text.CharacterSize = 40;
             HP_Text.Color = Color.Red;
-                 //HP Enemy
+            //HP Enemy
             EnemyHP_Text = new Text("", system);
             EnemyHP_Text.Position = new Vector2f(0, 0);
             EnemyHP_Text.CharacterSize = 20;
@@ -186,7 +193,7 @@ namespace StateMachine
 
             healthbar_sprite.Position = new Vector2f(50, 600);
             healthbar_sprite.Scale = new Vector2f(1f, 1f);
-            healthbar_rectangle = new RectangleShape();          
+            healthbar_rectangle = new RectangleShape();
 
             //Healthbar_img Enemies
             enemy_healthbar = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
@@ -235,9 +242,8 @@ namespace StateMachine
 
         public override void Update()
         {//Fightscene Logic
-
-         //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
-         //   Console.WriteLine(Sword_Start);
+            //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
+            //   Console.WriteLine(Sword_Start);
             Console.WriteLine(enemy_sprite.Position.Y);
             //Character Slide In
             if (SlideInMove_character())
@@ -258,7 +264,6 @@ namespace StateMachine
                 enemy_sprite.Position += new Vector2f(0, 50);
             if (enemy_sprite.Position.Y >= 5500)
                 _gameObject.SceneManager.StartScene("OpenWorld");
-        
 
             //Arrow Move
             if (Arrow_move())
@@ -271,7 +276,7 @@ namespace StateMachine
 
             //Sword Move
             if (Sword_move())
-               sword_sprite.Rotation += 2;
+                sword_sprite.Rotation += 2;
             else
             {
                 sword_sprite.Rotation = 0;
@@ -297,16 +302,16 @@ namespace StateMachine
 
             string t5 = "Inventar";
             Inventar_Text.DisplayedString = t5;
-            Inventar_Text.Position = new Vector2f(1250,895);
+            Inventar_Text.Position = new Vector2f(1250, 895);
 
             //Health
-                 //Character
+            //Character
             if (HealthDown)
             {
                 CharacterHealthHandler();
                 HealthDown = false;
             }
-                 //Enemies
+            //Enemies
             if (EnemiesHealthDown)
             {
                 EnemyHealthHandler();
@@ -342,7 +347,6 @@ namespace StateMachine
                 _gameObject.Window.Draw(Inventar_Text);
                 _gameObject.Window.Draw(healthbar_sprite);
                 _gameObject.Window.Draw(HP_Text);
-
             }
             if (enemyHealthLeft > 0)
             {
@@ -355,23 +359,19 @@ namespace StateMachine
 
             if (/*Sword_Start*/Sword_Time)
                 _gameObject.Window.Draw(sword_sprite);
-
         }
 
         //Erstellte Methoden
 
-            //Handles objects when to move
+        //Handles objects when to move
 
         public bool SlideInMove_character()
         {
-
             if (character_sprite.Position.X <= 1600 && character_sprite.Position.X >= 50)
 
                 return true;
 
-
             return false;
-
         }
 
         public bool SlideInMove_enemy()
@@ -399,19 +399,17 @@ namespace StateMachine
             return false;
         }
 
-
         public void Attack_SlideInMove()
         {
             character_sprite.Position += new Vector2f(150, 0);
         }
-
 
         public void Enemy_Attack_SlideInMove()
         {
             enemy_sprite.Position -= new Vector2f(150, 0);
         }
 
-            //Handles Health
+        //Handles Health
 
         public void DecreaseHealth()
         {
@@ -440,7 +438,6 @@ namespace StateMachine
             healthbar_sprite.TextureRect = healthbar_rectangle.TextureRect;
         }
 
-
         public void EnemyHealthHandler()
         {
             DecreaseEnemyHealth();
@@ -448,8 +445,5 @@ namespace StateMachine
             enemy_healthbar_rectangle.TextureRect = new IntRect(0, 0, enemy_healthbar_sprite.TextureRect.Width * enemyHealthLeft / EnemyHP, enemy_healthbar_sprite.TextureRect.Height);
             enemy_healthbar_sprite.TextureRect = enemy_healthbar_rectangle.TextureRect;
         }
-
-
-
     }
 }
