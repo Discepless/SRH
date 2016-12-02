@@ -1,10 +1,7 @@
 ﻿using GameEngine;
 using GameplayWorld_DM;
+
 //namespace with all engine related shit. Check that every class for player/item/etc runs in this namespace.
-using SFML.Audio;
-using SFML.Graphics;
-using SFML.System;
-using SFML.Window;
 
 namespace StateMachine
 {
@@ -13,9 +10,9 @@ namespace StateMachine
         private static void Main()
         {
             var game = new GameObject("State Machine");
-            
+
             // build the startup menu scene
-            
+
             OpenWorldScene _openWorldScene = new OpenWorldScene(game);
             _openWorldScene.Name = "OpenWorld";
             game.SceneManager.AddScene(_openWorldScene);
@@ -37,7 +34,6 @@ namespace StateMachine
             _splashcreen.Name = "start";
             game.SceneManager.AddScene(_splashcreen);
 
-            
             //create here as many screens as we need but dont forget to make a class for each
 
             // Start the game
