@@ -104,3 +104,6 @@ C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Resources\Weapons_Bu
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\sword.png
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Character_fight.png
 C:\Users\pete\Source\Repos\SRH5\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Enemy_fight.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe.config
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\Debug\SFML_StateMachine.exe
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\Debug\SFML_StateMachine.pdb

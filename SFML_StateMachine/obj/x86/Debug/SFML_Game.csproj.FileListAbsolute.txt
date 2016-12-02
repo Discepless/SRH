@@ -20,3 +20,24 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x8
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-graphics-2.dll
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-system-2.dll
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-window-2.dll
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\SFML_StateMachine.exe.config
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.exe
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.pdb
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\aherohasfallen.wav
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\arial.ttf
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Characters\SailorMoon.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Character_Fightscene\Character_fight.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Character_Fightscene\Enemy_fight.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Map\NotVisible.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Map\TextureAtlas.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Splashscreen\Splashscreen.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.jpg
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Button.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\healthbar.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\sword.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Capture_it.ttf
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Map\TileMap.tmx
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\System.fon
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\SFML_StateMachine.exe
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\SFML_StateMachine.pdb
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\x86\Debug\SFML_Game.csprojResolveAssemblyReference.cache
