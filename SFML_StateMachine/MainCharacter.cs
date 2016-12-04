@@ -1,6 +1,7 @@
 ﻿using System;
 using GameplayWorld_DM;
 using SFML.Graphics;
+using SFML.System;
 using SFML.Window;
 
 namespace SFML_StateMachine
@@ -24,26 +25,30 @@ namespace SFML_StateMachine
 
             PlayerRectangle = new RectangleShape();
             PlayerRectangle.TextureRect = new IntRect(0, 0, 32, 48);
-            PlayerRectangle.Position = new SFML.System.Vector2f(Xpos, Ypos);
+           
 
         }
 
         public override void Update(float deltaTime)
         {
+            PlayerRectangle.Position = new Vector2f(Xpos, Ypos);
+
             this.CurrentState = MoveDirection.None;
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
                 this.CurrentState = MoveDirection.MoveNorth;
 
-                foreach (var collisionsprite in collisionObject.collisionsprites)
-                {
-                    if (PlayerRectangle.TextureRect.Intersects(collisionsprite.TextureRect))
-                    {
-                        Console.WriteLine("Yay");
-                    }
-                }
-                             
+             //   if (PlayerRectangle.TextureRect.Intersects(collisionObject.CollisionRectangleShapes.)
+
+              //  foreach (var collisionsprite in collisionObject.CollisionRectangleShapes)
+              //  {
+              //      if (collisionsprite.TextureRect.Intersects(collisionsprite.TextureRect))
+              //      {
+              //          Console.WriteLine("Yay");
+              //      }
+              //  }
+              //               
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.S))
             {
