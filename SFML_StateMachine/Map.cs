@@ -1,15 +1,24 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace GameplayWorld_DM
 {
     internal class Map
     {
         private Sprite[,,] _tiles;
+
+        private Texture invisTexture;
+        public List<Sprite> collisionsprites;
+
 
         private int _mapWidth, _mapHeight,
             _tileMapHeight, _tileMapWidth,
@@ -18,15 +27,18 @@ namespace GameplayWorld_DM
         private const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
         private const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
         private const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
+        XDocument xmlDoc = XDocument.Parse(File.ReadAllText("Resources/Map/TileMap.tmx"));
 
         public Map()
         {
-            XDocument xmlDoc = XDocument.Parse(File.ReadAllText("Resources/Map/TileMap.tmx"));
+
             Texture textureAtlas = new Texture("Resources/Map/TextureAtlas.png");
             Sprite[] spritePool;
 
             foreach (var root in xmlDoc.Elements())
             {
+                ObjectCollision();
+
                 _tileWidth = int.Parse(root.Attribute(XName.Get("tilewidth")).Value);
                 _tileHeight = int.Parse(root.Attribute(XName.Get("tileheight")).Value);
 
@@ -118,9 +130,63 @@ namespace GameplayWorld_DM
                         }
                     }
                     currentlayer++;
+
                 }
             }
         }
+        
+        public void ObjectCollision()
+        {
+            var collisionObjects = from q in xmlDoc.Descendants("object")
+                                   select new
+                                   {
+                                       id = (int)q.Attribute("id"),
+                                       xCoordinates = (int)q.Attribute("x"),
+                                       yCoordinates = (int)q.Attribute("y"),
+                                       width = (int)q.Attribute("width"),
+                                       height = (int)q.Attribute("height")
+
+                                   };
+            collisionsprites = new List<Sprite>();
+
+            foreach (var cobj in collisionObjects)
+            {
+                
+                collisionsprites.Add(new Sprite(new Texture("Resources/Map/Test.png")) { Position = new Vector2f(cobj.xCoordinates, cobj.yCoordinates) });                
+            }
+
+
+            // collisionSprite.Position = new Vector2f(cobj.xCoordinates,cobj.yCoordinates);      
+
+
+
+
+            //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height); 
+            //collisionSprite.TextureRect = CollisionRect.TextureRect;
+
+
+            //CollisionRect = new RectangleShape();
+            //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates,cobj.yCoordinates,cobj.width,cobj.height);
+
+            //Console.WriteLine("id " + cobj.id, "XCoord" + cobj.xCoordinates, "YCoord" + cobj.yCoordinates, "width" + cobj.width, "height" + cobj.height);
+        }
+
+
+        /*
+        xmlDoc.Descendants("object").Select(x => new
+        {
+            id = x.Attribute("id").Value,
+            xCoordinates = x.Attribute("x").Value,
+            yCoordinates = x.Attribute("y").Value,
+            width = x.Attribute("width").Value,
+            height = x.Attribute("height").Value,
+
+        }).ToList().ForEach(x =>
+        {
+            IntRect CollisionRect = new IntRect();
+        });
+        */
+
 
         public void Draw(RenderWindow window)
         {
@@ -134,9 +200,15 @@ namespace GameplayWorld_DM
                     }
                 }
             }
-        }      
+            foreach (Sprite sprite in collisionsprites)
+            {
+                window.Draw(sprite);
+            }                           
+        }
+
+    }
 }
 
-        }
-    
+
+
 
