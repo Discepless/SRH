@@ -152,7 +152,7 @@ namespace GameplayWorld_DM
             foreach (var cobj in collisionObjects)
             {
                 
-                collisionsprites.Add(new Sprite(new Texture("Resources/Map/Test.png")) { Position = new Vector2f(cobj.xCoordinates, cobj.yCoordinates) });                
+                collisionsprites.Add(new Sprite(new Texture("Resources/Map/Test1.png")) { Position = new Vector2f(cobj.xCoordinates, cobj.yCoordinates), Scale = new Vector2f(cobj.width, cobj.height)});                
             }
 
 

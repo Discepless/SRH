@@ -20,3 +20,4 @@ C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\x86\Debug\SFML_S
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.pdb
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\x86\Debug\SFML_Game.csprojResolveAssemblyReference.cache
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Map\Test.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Map\Test1.png
