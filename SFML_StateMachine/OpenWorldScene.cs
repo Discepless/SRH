@@ -10,12 +10,13 @@ namespace GameplayWorld_DM
         private Map _map;
 
         private Clock clock = new Clock();
-        private MainCharacter myCharacter = new MainCharacter();
-        private View view = new View(new Vector2f(0, 0), new Vector2f(400, 300));
+        private MainCharacter myCharacter;
+        private View view = new View(new Vector2f(0, 0), new Vector2f(1000, 1000));
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
             _map = new Map();
+            myCharacter = new MainCharacter(_map);
         }
 
         public override void Draw()

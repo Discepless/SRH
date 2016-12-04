@@ -1,10 +1,16 @@
-﻿using SFML.Window;
+﻿using System;
+using GameplayWorld_DM;
+using SFML.Graphics;
+using SFML.Window;
 
 namespace SFML_StateMachine
 {
     internal class MainCharacter : AnimatedCharacter
     {
-        public MainCharacter() : base("Resources/Characters/SailorMoon.png", 32)
+        private Map collisionObject;
+        private RectangleShape PlayerRectangle;
+
+        public MainCharacter(Map map) : base("Resources/Characters/SailorMoon.png", 32)
         {
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);
@@ -13,6 +19,11 @@ namespace SFML_StateMachine
 
             moveSpeed = 150;
             animationSpeed = 0.1f;
+
+            collisionObject = map;
+            
+
+
         }
 
         public override void Update(float deltaTime)
@@ -22,6 +33,15 @@ namespace SFML_StateMachine
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
                 this.CurrentState = MoveDirection.MoveNorth;
+
+                foreach (var collisionsprite in collisionObject.collisionsprites)
+                {
+                    if (collisionsprite.Position.X == Xpos && collisionsprite.Position.Y == Ypos)
+                    {
+                        Console.WriteLine("Yay");
+                    }
+                }
+                             
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.S))
             {
