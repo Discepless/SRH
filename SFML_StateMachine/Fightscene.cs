@@ -429,13 +429,14 @@ namespace StateMachine
                 Fernkampf = false;
             }
         }
-
+        
         public void CharacterHealthHandler()
         {
             DecreaseHealth();
 
             healthbar_rectangle.TextureRect = new IntRect(0, 0, healthbar_sprite.TextureRect.Width * healthLeft / HP, healthbar_sprite.TextureRect.Height);
             healthbar_sprite.TextureRect = healthbar_rectangle.TextureRect;
+           
         }
 
         public void EnemyHealthHandler()
