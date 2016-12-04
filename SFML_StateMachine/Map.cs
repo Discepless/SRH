@@ -18,7 +18,7 @@ namespace GameplayWorld_DM
 
         private Texture invisTexture;
         public List<Sprite> collisionsprites;
-
+        public RectangleShape collisionRect;
 
         private int _mapWidth, _mapHeight,
             _tileMapHeight, _tileMapWidth,
@@ -152,7 +152,7 @@ namespace GameplayWorld_DM
             foreach (var cobj in collisionObjects)
             {
                 
-                collisionsprites.Add(new Sprite(new Texture("Resources/Map/Test1.png")) { Position = new Vector2f(cobj.xCoordinates, cobj.yCoordinates), Scale = new Vector2f(cobj.width, cobj.height)});                
+                collisionsprites.Add(new Sprite(new Texture("Resources/Map/Test1.png")) { Position = new Vector2f(cobj.xCoordinates, cobj.yCoordinates), Scale = new Vector2f(cobj.width, cobj.height), TextureRect = new IntRect(0,0,cobj.width, cobj.height) });                
             }
 
 

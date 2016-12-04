@@ -16,13 +16,15 @@ namespace SFML_StateMachine
             AnimRight = new Animation(96, 0, 4);
             AnimLeft = new Animation(48, 0, 4);
             AnimUp = new Animation(144, 0, 4);
-
+             
             moveSpeed = 150;
             animationSpeed = 0.1f;
 
             collisionObject = map;
-            
 
+            PlayerRectangle = new RectangleShape();
+            PlayerRectangle.TextureRect = new IntRect(0, 0, 32, 48);
+            PlayerRectangle.Position = new SFML.System.Vector2f(Xpos, Ypos);
 
         }
 
@@ -36,7 +38,7 @@ namespace SFML_StateMachine
 
                 foreach (var collisionsprite in collisionObject.collisionsprites)
                 {
-                    if (collisionsprite.Position.X == Xpos && collisionsprite.Position.Y == Ypos)
+                    if (PlayerRectangle.TextureRect.Intersects(collisionsprite.TextureRect))
                     {
                         Console.WriteLine("Yay");
                     }
