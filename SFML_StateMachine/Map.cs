@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using StateMachine;
 
 namespace GameplayWorld_DM
 {
@@ -28,17 +29,24 @@ namespace GameplayWorld_DM
         private const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
         private const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
         private const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
+
+        Timer time;
+       Clock clock;
+        int AnimatedTile = 3252;
+
         XDocument xmlDoc = XDocument.Parse(File.ReadAllText("Resources/Map/TileMap.tmx"));
 
         public Map()
         {
-            
+            time.Update();
             Texture textureAtlas = new Texture("Resources/Map/TextureAtlas.png");
             Sprite[] spritePool;
 
             foreach (var root in xmlDoc.Elements())
             {
                
+               
+
                 ObjectCollision();
 
                 _tileWidth = int.Parse(root.Attribute(XName.Get("tilewidth")).Value);
@@ -82,10 +90,26 @@ namespace GameplayWorld_DM
                                                 ~(FLIPPED_HORIZONTALLY_FLAG |
                                                   FLIPPED_VERTICALLY_FLAG |
                                                   FLIPPED_DIAGONALLY_FLAG);
-                            _tiles[x, y, currentlayer] = new Sprite(spritePool[id]);
+
+                            
+                            if (globalId== AnimatedTile+1) //+1 to id of original tile you see in tmx editor
+
+                            {
+                                
+                                Console.WriteLine("SUCESS");
+                                
+                                _tiles[x, y, currentlayer] = new Sprite(spritePool[id + 1]); }
+
+                            else
+                            {
+                                _tiles[x, y, currentlayer] = new Sprite(spritePool[id]);
+                            }
                             bool fh = (globalId & FLIPPED_HORIZONTALLY_FLAG) != 0;
-                            bool fv = (globalId & FLIPPED_VERTICALLY_FLAG) != 0;
-                            bool fd = (globalId & FLIPPED_DIAGONALLY_FLAG) != 0;
+                                bool fv = (globalId & FLIPPED_VERTICALLY_FLAG) != 0;
+                                bool fd = (globalId & FLIPPED_DIAGONALLY_FLAG) != 0;
+                            
+                           
+
 
                             _tiles[x, y, currentlayer].Position = new Vector2f((x) * _tileWidth, (y) * _tileHeight);
 
