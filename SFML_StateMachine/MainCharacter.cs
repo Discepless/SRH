@@ -8,7 +8,7 @@ namespace SFML_StateMachine
     internal class MainCharacter : AnimatedCharacter
     {
         private Map collisionObject;
-        private RectangleShape PlayerRectangle;
+        private IntRect PlayerRectangle;
 
         public MainCharacter(Map map) : base("Resources/Characters/SailorMoon.png", 32)
         {
@@ -22,23 +22,26 @@ namespace SFML_StateMachine
 
             collisionObject = map;
 
-            PlayerRectangle = new RectangleShape();
-            PlayerRectangle.TextureRect = new IntRect(0, 0, 32, 48);
-            PlayerRectangle.Position = new SFML.System.Vector2f(Xpos, Ypos);
+
+            
+           
 
         }
 
         public override void Update(float deltaTime)
         {
+           
+            //PlayerRectangle = new SFML.System.Vector2f(Xpos, Ypos);
+            PlayerRectangle = new IntRect((int)Xpos, (int)Ypos, 32, 48);
             this.CurrentState = MoveDirection.None;
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
                 this.CurrentState = MoveDirection.MoveNorth;
 
-                foreach (var collisionsprite in collisionObject.collisionsprites)
+                foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
                 {
-                    if (PlayerRectangle.TextureRect.Intersects(collisionsprite.TextureRect))
+                    if (PlayerRectangle.Intersects(collisionrect))
                     {
                         Console.WriteLine("Yay");
                     }

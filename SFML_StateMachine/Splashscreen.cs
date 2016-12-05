@@ -33,7 +33,7 @@ namespace StateMachine
         {
             Timer.Update();
 
-            if (Timer.Current >= 3)
+            if (Timer.Current >= 1)
             {
                 _gameObject.SceneManager.StartScene("main");
                 this.Dispose();

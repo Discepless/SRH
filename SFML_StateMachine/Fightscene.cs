@@ -23,10 +23,13 @@ namespace StateMachine
 
         private Texture fernkampf_button_img;
         private Texture inventar_button_img;
+        private Texture paper_img;
+        private Texture arrow_pointer_img;
         private Sprite nahkampf_button_sprite;
         private Sprite fernkampf_button_sprite;
         private Sprite inventar_button_sprite;
-
+        private Sprite paper_sprite;
+        private Sprite arrow_pointer_sprite;
         //Text
         private Text Nahkampf_Text;
 
@@ -101,12 +104,12 @@ namespace StateMachine
         private bool Sword_Start = false;
         private bool Sword_Time = false;
 
-        public Fightscene(GameObject gameObject) : base(gameObject)
+    public Fightscene(GameObject gameObject) : base(gameObject)
         {
             BackgroundColor = Color.White;
         }
 
-        public override void Initialize()
+    public override void Initialize()
         {//Objekte werden initialisiert und zugewiesen
             //Character
             character_img = new Texture("Resources/Character_Fightscene/Character_fight.png");
@@ -158,6 +161,19 @@ namespace StateMachine
 
             inventar_button_sprite.Position = new Vector2f(1200, 850);
             inventar_button_sprite.Scale = new Vector2f(.7f, .7f);
+
+            //Paper
+            paper_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/paper.jpg");
+
+            paper_sprite = new Sprite(paper_img);
+            paper_sprite.Position = new Vector2f(1350, 650);
+
+            //Arrow_Pointer
+            arrow_pointer_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Anzeigepfeil.png");
+            arrow_pointer_sprite = new Sprite(arrow_pointer_img);
+
+            arrow_pointer_sprite.Position = new Vector2f(1300, 755);
+            arrow_pointer_sprite.Scale = new Vector2f(.3f, .3f);
             //Text
             //Buttons
             Font arial = new Font(@"Resources\arial.ttf");
@@ -215,6 +231,7 @@ namespace StateMachine
             //Nahkampf
             if (e.Code == Keyboard.Key.A && Characters_Turn && healthLeft > 0)
             {
+             //   arrow_pointer_sprite.Position.Y += 50; 
                 EnemiesHealthDown = true;
                 Attack_SlideInMove();
                 Characters_Turn = false;
@@ -286,11 +303,11 @@ namespace StateMachine
             //Text
             string t1 = "Nahkampf [A] [" + Attack_Nahkampf + " SP]";
             Nahkampf_Text.DisplayedString = t1;
-            Nahkampf_Text.Position = new Vector2f(740, 745);
+            Nahkampf_Text.Position = new Vector2f(1500, 745);
 
             string t2 = "Fernkampf [D] [" + Attack_Fernkampf + " SP]";
             Fernkampf_Text.DisplayedString = t2;
-            Fernkampf_Text.Position = new Vector2f(740, 895);
+            Fernkampf_Text.Position = new Vector2f(1500, 800);
 
             string t3 = "HP " + healthLeft + " / " + HP;
             HP_Text.DisplayedString = t3;
@@ -302,7 +319,26 @@ namespace StateMachine
 
             string t5 = "Inventar";
             Inventar_Text.DisplayedString = t5;
-            Inventar_Text.Position = new Vector2f(1250, 895);
+            Inventar_Text.Position = new Vector2f(1500, 855);
+            //string t1 = "Nahkampf [A] [" + Attack_Nahkampf + " SP]";
+            //Nahkampf_Text.DisplayedString = t1;
+            //Nahkampf_Text.Position = new Vector2f(740, 745);
+
+            //string t2 = "Fernkampf [D] [" + Attack_Fernkampf + " SP]";
+            //Fernkampf_Text.DisplayedString = t2;
+            //Fernkampf_Text.Position = new Vector2f(740, 895);
+
+            //string t3 = "HP " + healthLeft + " / " + HP;
+            //HP_Text.DisplayedString = t3;
+            //HP_Text.Position = new Vector2f(110, 530);
+
+            //string t4 = "HP " + enemyHealthLeft + " / " + EnemyHP;
+            //EnemyHP_Text.DisplayedString = t4;
+            //EnemyHP_Text.Position = new Vector2f(1600, 30);
+
+            //string t5 = "Inventar";
+            //Inventar_Text.DisplayedString = t5;
+            //Inventar_Text.Position = new Vector2f(1250, 895);
 
             //Health
             //Character
@@ -339,9 +375,11 @@ namespace StateMachine
 
             if (healthLeft > 0)
             {
-                _gameObject.Window.Draw(nahkampf_button_sprite);
-                _gameObject.Window.Draw(fernkampf_button_sprite);
-                _gameObject.Window.Draw(inventar_button_sprite);
+                //_gameObject.Window.Draw(nahkampf_button_sprite);
+                //_gameObject.Window.Draw(fernkampf_button_sprite);
+                //_gameObject.Window.Draw(inventar_button_sprite);
+                _gameObject.Window.Draw(paper_sprite);
+                _gameObject.Window.Draw(arrow_pointer_sprite);
                 _gameObject.Window.Draw(Nahkampf_Text);
                 _gameObject.Window.Draw(Fernkampf_Text);
                 _gameObject.Window.Draw(Inventar_Text);

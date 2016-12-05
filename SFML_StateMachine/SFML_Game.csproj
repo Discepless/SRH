@@ -139,6 +139,9 @@
     <Content Include="Resources\Splashscreen\Splashscreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\Anzeigepfeil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -146,6 +149,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\healthbar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\paper.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\sword.png">

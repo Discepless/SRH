@@ -14,11 +14,12 @@ namespace GameplayWorld_DM
 {
     internal class Map
     {
+        public List<IntRect> CollisionRectangleShapes;
         private Sprite[,,] _tiles;
 
         private Texture invisTexture;
         public List<Sprite> collisionsprites;
-        public RectangleShape collisionRect;
+        public IntRect collisionRect;
 
         private int _mapWidth, _mapHeight,
             _tileMapHeight, _tileMapWidth,
@@ -31,12 +32,13 @@ namespace GameplayWorld_DM
 
         public Map()
         {
-
+            
             Texture textureAtlas = new Texture("Resources/Map/TextureAtlas.png");
             Sprite[] spritePool;
 
             foreach (var root in xmlDoc.Elements())
             {
+               
                 ObjectCollision();
 
                 _tileWidth = int.Parse(root.Attribute(XName.Get("tilewidth")).Value);
@@ -137,6 +139,7 @@ namespace GameplayWorld_DM
         
         public void ObjectCollision()
         {
+            CollisionRectangleShapes = new List<IntRect>();
             var collisionObjects = from q in xmlDoc.Descendants("object")
                                    select new
                                    {
@@ -152,7 +155,12 @@ namespace GameplayWorld_DM
             foreach (var cobj in collisionObjects)
             {
                 
-                collisionsprites.Add(new Sprite(new Texture("Resources/Map/Test1.png")) { Position = new Vector2f(cobj.xCoordinates, cobj.yCoordinates), Scale = new Vector2f(cobj.width, cobj.height), TextureRect = new IntRect(0,0,cobj.width, cobj.height) });                
+                collisionsprites.Add(new Sprite(new Texture("Resources/Map/Test1.png")) { Position = new Vector2f(cobj.xCoordinates, cobj.yCoordinates), Scale = new Vector2f(cobj.width, cobj.height) });
+
+
+                CollisionRectangleShapes.Add(new IntRect (cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height));
+
+
             }
 
 
