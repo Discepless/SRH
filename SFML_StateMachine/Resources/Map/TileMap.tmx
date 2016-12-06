@@ -275,10 +275,7 @@
 </data>
  </layer>
  <objectgroup color="#ff0000" name="ObjectLayerCollision">
-  <object id="17" name="Collision" x="513" y="95" width="510" height="62"/>
   <object id="18" name="Collision" x="610" y="273" width="476" height="142"/>
   <object id="19" name="Collision" x="609" y="432" width="320" height="175"/>
-  <object id="20" name="Collision" x="30" y="32" width="129" height="32"/>
-  <object id="24" name="Collision" x="161" y="33" width="61" height="232"/>
  </objectgroup>
 </map>

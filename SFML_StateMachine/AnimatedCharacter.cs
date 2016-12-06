@@ -20,7 +20,7 @@ namespace SFML_StateMachine
 
         private Sprite _sprite;
         private IntRect _spriteRect;
-        private int _frameSize;
+        private int frameSizeWidth,frameSizeHeight;
 
         protected Animation AnimUp;
         protected Animation AnimDown;
@@ -35,12 +35,14 @@ namespace SFML_StateMachine
         protected float moveSpeed = 40;
         protected float animationSpeed = 0.1f;
 
-        public AnimatedCharacter(String filename, int frameSize)
+        public AnimatedCharacter(String filename, int frameSizeWidth, int frameSizeHeight)
         {
-            this._frameSize = frameSize;
+            this.frameSizeWidth = frameSizeWidth;
+            this.frameSizeHeight = frameSizeHeight;
+
             Texture myTexture = new Texture(filename);
 
-            _spriteRect = new IntRect(0, 0, frameSize, 48);
+            _spriteRect = new IntRect(0, 0, frameSizeWidth, frameSizeHeight);
             _sprite = new Sprite(myTexture, _spriteRect);
 
             //Setting the Animation set
@@ -83,10 +85,10 @@ namespace SFML_StateMachine
                 {
                     _spriteRect.Top = currentAnimation.offsetTop;
 
-                    if (_spriteRect.Left == (currentAnimation.numFrames - 1) * _frameSize)
+                    if (_spriteRect.Left == (currentAnimation.numFrames - 1) * frameSizeWidth)
                         _spriteRect.Left = 0;
                     else
-                        _spriteRect.Left += _frameSize;
+                        _spriteRect.Left += frameSizeWidth;
                 }
                 animationClock.Restart();
             }

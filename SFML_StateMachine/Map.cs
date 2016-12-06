@@ -20,6 +20,7 @@ namespace GameplayWorld_DM
 
         private Texture invisTexture;
         public List<Sprite> collisionsprites;
+        public List<Sprite> enemySprites;
         public IntRect collisionRect;
 
         private int _mapWidth, _mapHeight,
@@ -34,10 +35,13 @@ namespace GameplayWorld_DM
        Clock clock;
         int AnimatedTile = 3252;
 
+        public OpenWorldScene MyScene;
+
         XDocument xmlDoc = XDocument.Parse(File.ReadAllText("Resources/Map/TileMap.tmx"));
 
-        public Map()
+        public Map(OpenWorldScene world)
         {
+            this.MyScene = world;
            // time.Update();
             Texture textureAtlas = new Texture("Resources/Map/TextureAtlas.png");
             Sprite[] spritePool;
@@ -188,20 +192,20 @@ namespace GameplayWorld_DM
             }
 
 
-            // collisionSprite.Position = new Vector2f(cobj.xCoordinates,cobj.yCoordinates);      
+                // collisionSprite.Position = new Vector2f(cobj.xCoordinates,cobj.yCoordinates);      
 
 
 
 
-            //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height); 
-            //collisionSprite.TextureRect = CollisionRect.TextureRect;
+                //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height); 
+                //collisionSprite.TextureRect = CollisionRect.TextureRect;
 
 
-            //CollisionRect = new RectangleShape();
-            //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates,cobj.yCoordinates,cobj.width,cobj.height);
+                //CollisionRect = new RectangleShape();
+                //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates,cobj.yCoordinates,cobj.width,cobj.height);
 
-            //Console.WriteLine("id " + cobj.id, "XCoord" + cobj.xCoordinates, "YCoord" + cobj.yCoordinates, "width" + cobj.width, "height" + cobj.height);
-        }
+                //Console.WriteLine("id " + cobj.id, "XCoord" + cobj.xCoordinates, "YCoord" + cobj.yCoordinates, "width" + cobj.width, "height" + cobj.height);
+            }
 
 
         /*
