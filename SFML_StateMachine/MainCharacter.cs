@@ -10,6 +10,9 @@ namespace SFML_StateMachine
         private Map collisionObject;
         private IntRect PlayerRectangle;
 
+        // Caching our Previos direction (Needed for Collisions)
+        private float cachedDirection;
+
         public MainCharacter(Map map) : base("Resources/Characters/SailorMoon.png", 32)
         {
             AnimDown = new Animation(0, 0, 4);
@@ -35,30 +38,60 @@ namespace SFML_StateMachine
             PlayerRectangle = new IntRect((int)Xpos, (int)Ypos, 32, 48);
             this.CurrentState = MoveDirection.None;
 
+           
+            // 1 North, 2 East , 3 South, 4 West
+
+            foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
+            {               
+                if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
+                    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
+                    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
+                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height))
+                {
+                    if (cachedDirection == 1)
+                    {
+                        Ypos = Ypos + 2.5f;
+                    }
+
+                    if (cachedDirection == 2)
+                    {
+                        Ypos = Ypos - 2.5f;
+                    }
+
+                    if (cachedDirection == 3)
+                    {
+                        Xpos = Xpos + 2.5f;
+                    }
+
+                    if (cachedDirection == 4)
+                    {
+                        Xpos = Xpos - 2.5f;
+                    }
+
+                }
+            }
+
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
                 this.CurrentState = MoveDirection.MoveNorth;
+                cachedDirection = 1;
 
-                foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
-                {
-                    if (PlayerRectangle.Intersects(collisionrect))
-                    {
-                        Console.WriteLine("Yay");
-                    }
-                }
-                             
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.S))
             {
                 this.CurrentState = MoveDirection.MoveSouth;
+                cachedDirection = 2;         
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.A))
             {
                 this.CurrentState = MoveDirection.MoveWest;
+                cachedDirection = 3;              
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.D))
             {
                 this.CurrentState = MoveDirection.MoveEast;
+                cachedDirection = 4;
+
             }
             base.Update(deltaTime);
         }

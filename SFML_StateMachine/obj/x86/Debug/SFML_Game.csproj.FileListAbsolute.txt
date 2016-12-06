@@ -50,3 +50,5 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x8
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-system-2.dll
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\sfmlnet-window-2.dll
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\obj\x86\Debug\SFML_Game.csprojResolveAssemblyReference.cache
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Anzeigepfeil.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\paper.jpg

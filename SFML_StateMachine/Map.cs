@@ -38,7 +38,7 @@ namespace GameplayWorld_DM
 
         public Map()
         {
-            time.Update();
+           // time.Update();
             Texture textureAtlas = new Texture("Resources/Map/TextureAtlas.png");
             Sprite[] spritePool;
 
