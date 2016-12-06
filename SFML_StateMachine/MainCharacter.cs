@@ -43,7 +43,7 @@ namespace SFML_StateMachine
             if (PlayerRectangle.Intersects(this.map.MyScene.myEnemy.EnemyRectangle))
             {
                 Console.WriteLine("Intersected with Enemy");
-                //map.MyScene.gameObject.SceneManager.StartScene("OpenWorld");
+                map.MyScene.gameObject.SceneManager.GotoScene("fight");
             }
          
             // 1 North, 2 East , 3 South, 4 West  Collision with the Walls
