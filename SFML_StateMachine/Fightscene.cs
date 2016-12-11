@@ -43,6 +43,8 @@ namespace StateMachine
 
         private Text Fernkampf_Text;
         private Text Inventar_Text;
+        private Text Nachkampf_title_Text;
+        private Text Fernkampf_title_Text;
         private Text HP_Text;
         private Text EnemyHP_Text;
 
@@ -60,16 +62,19 @@ namespace StateMachine
 
         private RectangleShape enemy_healthbar_rectangle;
 
-        //Arrow
-        private Texture arrow_img;
+        //SimpleArrow
+        private Texture simpleArrow_img;
 
-        private Sprite arrow_sprite;
+        private Sprite simpleArrow_sprite;
 
-        //Sword
-        private Texture sword_img;
+        //SimpleSword
+        private Texture simpleSword_img;
 
-        private Sprite sword_sprite;
+        private Sprite SimpleSword_sprite;
+        //GoldenSword
+        private Texture goldenSword_img;
 
+        private Sprite goldenSword_sprite;
         //Timer
         private Clock clock_EnemiesTurn;
 
@@ -82,8 +87,9 @@ namespace StateMachine
         private int HP = 100;
 
         private int healthLeft = 100;
-        private int Attack_Nahkampf = 20;
-        private int Attack_Fernkampf = 10;
+        private int Attack_SimpleSword = 20;
+        private int Attack_GoldenSword = 40;
+        private int Attack_SimpleArrow = 10;
 
         //Enemy Stats
         private int EnemyHP = 70;
@@ -106,16 +112,28 @@ namespace StateMachine
 
         private bool Fernkampf = false;
 
+        //Handles which Weapon equipped
+        public bool SimpleSword_equipped = true;
+
+        public bool GoldenSword_equipped = false;
+
+        public bool SimpleArrow_equipped = true;
         //Handles start of Attack-Animation
         private bool Arrow_Start = false;
 
         private bool Sword_Start = false;
+        private bool GoldenSword_Start = false;
         private bool Sword_Time = false;
+        private bool GoldenSword_Time = false;
 
-        //Handles what Attack-Type got chosen ( + Inventar)
+        //Handles what Attack-Type and weapon got chosen ( + Inventar)
         private bool Nahkampf_Pressed = false;
         private bool Fernkampf_Pressed = false;
         private bool Inventar_Pressed = false;
+
+        private bool SimpleSword_Pressed = false;
+        private bool GoldenSword_Pressed = false;
+        private bool SimpleArrow_Pressed = false;
 
         private bool Draw_Inventar = false;
 
@@ -142,19 +160,25 @@ namespace StateMachine
             enemy_sprite.Position = new Vector2f(0, 90);
             enemy_sprite.Scale = new Vector2f(1f, 1f);
 
-            //Arrow
-            arrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
-            arrow_sprite = new Sprite(arrow_img);
+            //SimpleArrow
+            simpleArrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
+            simpleArrow_sprite = new Sprite(simpleArrow_img);
 
             //arrow_sprite.Position = new Vector2f(700, 300);
-            arrow_sprite.Scale = new Vector2f(.07f, .07f);
+            simpleArrow_sprite.Scale = new Vector2f(.07f, .07f);
 
-            //Sword
-            sword_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/sword.png");
-            sword_sprite = new Sprite(sword_img);
+            //SimpleSword
+            simpleSword_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/sword.png");
+            SimpleSword_sprite = new Sprite(simpleSword_img);
 
-            sword_sprite.Position = new Vector2f(1450, 150);
-            sword_sprite.Scale = new Vector2f(.07f, .07f);
+            SimpleSword_sprite.Position = new Vector2f(1450, 150);
+            SimpleSword_sprite.Scale = new Vector2f(.07f, .07f);
+            //GoldenSword
+            goldenSword_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/goldenSword.png");
+            goldenSword_sprite = new Sprite(goldenSword_img);
+
+            goldenSword_sprite.Position = new Vector2f(1450, 150);
+            goldenSword_sprite.Scale = new Vector2f(.3f, .3f);
 
             //Buttons
             //Button1
@@ -205,17 +229,26 @@ namespace StateMachine
             Font arial = new Font(@"Resources\arial.ttf");
             //Text Nahkampf_Button
             Nahkampf_Text = new Text("", arial);
-            Nahkampf_Text.Position = new Vector2f(0, 0);
+            Nahkampf_Text.Position = new Vector2f();
             Nahkampf_Text.CharacterSize = 35;
             //Text Fernkampf_Button
             Fernkampf_Text = new Text("", arial);
-            Fernkampf_Text.Position = new Vector2f(0, 0);
+            Fernkampf_Text.Position = new Vector2f();
             Fernkampf_Text.CharacterSize = 35;
             //Text Inventar_Button
             Inventar_Text = new Text("", arial);
-            Inventar_Text.Position = new Vector2f(0, 0);
+            Inventar_Text.Position = new Vector2f();
             Inventar_Text.CharacterSize = 35;
+            //Inventar-Buttons
+            //Nahkampf-Title
+            Nachkampf_title_Text = new Text("", arial);
+            Nachkampf_title_Text.Position = new Vector2f();
+            Nachkampf_title_Text.CharacterSize = 35;
 
+            //Fernkampf-Title
+            Fernkampf_title_Text = new Text("", arial);
+            Fernkampf_title_Text.Position = new Vector2f();
+            Fernkampf_title_Text.CharacterSize = 35;
             //HP
             //HP Character
             Font system = new Font(@"Resources\Capture_it.ttf");
@@ -265,6 +298,7 @@ namespace StateMachine
                 Enemies_Turn = true;
                 Nahkampf = true;
                 Sword_Start = true;
+                GoldenSword_Start = true;
                 clock_EnemiesTurn.Restart();
                 clock_SwordSlideIn.Restart();
                // Nahkampf_Pressed = false;
@@ -287,7 +321,23 @@ namespace StateMachine
             {
                 Draw_Inventar = true;
             }
-
+            //Equipp Items
+            if (e.Code == Keyboard.Key.Return && Draw_Inventar && SimpleSword_Pressed)
+            {
+                Inventar_Fightscene.Equipp_SimpleSword();
+                SimpleSword_equipped = true;
+                GoldenSword_equipped = false;
+            }
+            if (e.Code == Keyboard.Key.Return && Draw_Inventar && GoldenSword_Pressed)
+            {
+                Inventar_Fightscene.Equipp_GoldenSword();
+                GoldenSword_equipped = true;
+                SimpleSword_equipped = false;
+            }
+            if (e.Code == Keyboard.Key.Return && Draw_Inventar && SimpleSword_Pressed)
+            
+                Inventar_Fightscene.Equipp_SimpleArrow();
+            
             //Move Pointer
             if (e.Code == Keyboard.Key.Down && arrow_pointer_sprite.Position.Y <= 840)
                 MovePointerDown();
@@ -333,22 +383,33 @@ namespace StateMachine
 
             //Arrow Move
             if (Arrow_move())
-                arrow_sprite.Position += new Vector2f(20, -10);
+                simpleArrow_sprite.Position += new Vector2f(20, -10);
             else
             {
-                arrow_sprite.Position = new Vector2f(650, 550);
+                simpleArrow_sprite.Position = new Vector2f(650, 550);
                 Arrow_Start = false;
             }
 
             //Sword Move
-            if (Sword_move())
-                sword_sprite.Rotation += 2;
+                //SimpleSword
+            if (Sword_move() && SimpleSword_equipped)
+                SimpleSword_sprite.Rotation += 2;
             else
             {
-                sword_sprite.Rotation = 0;
+                SimpleSword_sprite.Rotation = 0;
                 Sword_Start = false;
             }
 
+            //GoldenSword
+            if (GoldenSword_move() && GoldenSword_equipped)
+                goldenSword_sprite.Rotation += 2;
+            else
+            {
+                goldenSword_sprite.Rotation = 0;
+                GoldenSword_Start = false;
+            }
+
+            //Handle which Attack-Type is active
             if (arrow_pointer_sprite.Position.Y == 755)
             {
                 Nahkampf_Pressed = true;
@@ -366,21 +427,39 @@ namespace StateMachine
                 Inventar_Pressed = true;
                 Fernkampf_Pressed = false;
             }
-            
+            if (arrow_pointer_sprite.Position.Y == 719 && Draw_Inventar)
+            {
+                SimpleSword_Pressed = true;
+                GoldenSword_Pressed = false;
+            }
+            if (arrow_pointer_sprite.Position.Y == 819 && Draw_Inventar)
+            {
+                GoldenSword_Pressed = true;
+                SimpleSword_Pressed = false;
+                SimpleArrow_Pressed = false;
+            }
+            if (arrow_pointer_sprite.Position.Y == 986 && Draw_Inventar)
+            {
+                SimpleArrow_Pressed = true;
+                GoldenSword_Pressed = false;
+            }
 
 
             //Text
-            string t1 = "Nahkampf [A] [" + Attack_Nahkampf + " SP]";
+            string t1 = "Nahkampf [" + Attack_SimpleSword + "-" + Attack_GoldenSword + " SP]";
             Nahkampf_Text.DisplayedString = t1;
             Nahkampf_Text.Position = new Vector2f(1500, 745);
+            Nahkampf_Text.Color = Color.Black;
 
-            string t2 = "Fernkampf [D] [" + Attack_Fernkampf + " SP]";
+            string t2 = "Fernkampf [" + Attack_SimpleArrow + " SP]";
             Fernkampf_Text.DisplayedString = t2;
             Fernkampf_Text.Position = new Vector2f(1500, 800);
+            Fernkampf_Text.Color = Color.Black;
 
             string t3 = "HP " + healthLeft + " / " + HP;
             HP_Text.DisplayedString = t3;
             HP_Text.Position = new Vector2f(110, 530);
+
 
             string t4 = "HP " + enemyHealthLeft + " / " + EnemyHP;
             EnemyHP_Text.DisplayedString = t4;
@@ -389,6 +468,17 @@ namespace StateMachine
             string t5 = "Inventar";
             Inventar_Text.DisplayedString = t5;
             Inventar_Text.Position = new Vector2f(1500, 855);
+            Inventar_Text.Color = Color.Black;
+
+            string t6 = "Nahkampf";
+            Nachkampf_title_Text.DisplayedString = t6;
+            Nachkampf_title_Text.Position = new Vector2f(770, 650);
+
+            string t7 = "Fernkampf";
+            Fernkampf_title_Text.DisplayedString = t7;
+            Fernkampf_title_Text.Position = new Vector2f(770, 880);
+            
+
             //string t1 = "Nahkampf [A] [" + Attack_Nahkampf + " SP]";
             //Nahkampf_Text.DisplayedString = t1;
             //Nahkampf_Text.Position = new Vector2f(740, 745);
@@ -438,6 +528,8 @@ namespace StateMachine
             }
             else
                 Sword_Time = false;
+
+
             //Draws
             _gameObject.Window.Draw(character_sprite);
             _gameObject.Window.Draw(enemy_sprite);
@@ -447,6 +539,8 @@ namespace StateMachine
             {
                 _gameObject.Window.Draw(inventar_paper_sprite);
                 Inventar_Fightscene.Draw(_gameObject.Window);
+                _gameObject.Window.Draw(Nachkampf_title_Text);
+                _gameObject.Window.Draw(Fernkampf_title_Text);
             }
 
 
@@ -460,6 +554,7 @@ namespace StateMachine
                 _gameObject.Window.Draw(Nahkampf_Text);
                 _gameObject.Window.Draw(Fernkampf_Text);
                 _gameObject.Window.Draw(Inventar_Text);
+                
                 _gameObject.Window.Draw(healthbar_sprite);
                 _gameObject.Window.Draw(HP_Text);
             }
@@ -470,11 +565,12 @@ namespace StateMachine
             }
 
             if (Arrow_Start)
-                _gameObject.Window.Draw(arrow_sprite);
+                _gameObject.Window.Draw(simpleArrow_sprite);
 
-            if (/*Sword_Start*/Sword_Time)
-                _gameObject.Window.Draw(sword_sprite);
-
+            if (/*Sword_Start*/Sword_Time && SimpleSword_equipped)
+                _gameObject.Window.Draw(SimpleSword_sprite);
+            if (Sword_Time && GoldenSword_equipped)
+                _gameObject.Window.Draw(goldenSword_sprite);
             
         }
 
@@ -502,7 +598,7 @@ namespace StateMachine
 
         public bool Arrow_move()
         {
-            if (arrow_sprite.Position.X >= 650 && arrow_sprite.Position.X <= 1350 && Arrow_Start)
+            if (simpleArrow_sprite.Position.X >= 650 && simpleArrow_sprite.Position.X <= 1350 && Arrow_Start)
                 return true;
 
             return false;
@@ -510,12 +606,16 @@ namespace StateMachine
 
         public bool Sword_move()
         {
-            if (sword_sprite.Rotation >= 0 && sword_sprite.Rotation < 31 && Sword_Start)
-                return true;
-
+            if (SimpleSword_sprite.Rotation >= 0 && SimpleSword_sprite.Rotation < 31 && Sword_Start)
+                return true;          
             return false;
         }
-
+        public bool GoldenSword_move()
+        {
+            if (goldenSword_sprite.Rotation >= 0 && goldenSword_sprite.Rotation < 31 && GoldenSword_Start)
+                return true;
+            return false;
+        }
         public void Attack_SlideInMove()
         {
             character_sprite.Position += new Vector2f(150, 0);
@@ -556,7 +656,6 @@ namespace StateMachine
             if (Draw_Inventar)
             arrow_pointer_sprite.Position -= new Vector2f(590, 150);
         }
-        //Handles Health
 
         public void MovePointerRight()
         {
@@ -567,6 +666,9 @@ namespace StateMachine
             }
         }
 
+
+        //Handles Health
+
         public void DecreaseHealth()
         {
             healthLeft -= EnemyAttack;
@@ -576,12 +678,20 @@ namespace StateMachine
         {
             if (Nahkampf)
             {
-                enemyHealthLeft -= Attack_Nahkampf;
-                Nahkampf = false;
+                if (SimpleSword_equipped)
+                {
+                    enemyHealthLeft -= Attack_SimpleSword;
+                    Nahkampf = false;
+                }
+                if (GoldenSword_equipped)
+                {
+                    enemyHealthLeft -= Attack_GoldenSword;
+                    Nahkampf = false;
+                }
             }
             if (Fernkampf)
             {
-                enemyHealthLeft -= Attack_Fernkampf;
+                enemyHealthLeft -= Attack_SimpleArrow;
                 Fernkampf = false;
             }
         }

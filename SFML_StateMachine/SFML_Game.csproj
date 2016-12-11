@@ -153,6 +153,9 @@
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox-unchecked.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox_checked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\goldenSword.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
