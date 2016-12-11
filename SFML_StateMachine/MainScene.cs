@@ -17,7 +17,7 @@ namespace StateMachine
             this.BackgroundColor = Color.Red; //scene background color
         }
 
-        public override void Initialize()
+        public override void InitializeItems()
         {
             //  called when the scene is added to the scene manager
 
@@ -33,7 +33,7 @@ namespace StateMachine
 
             music = new Music(@"Resources\aherohasfallen.wav");
 
-            base.Initialize();
+            base.InitializeItems();
         }
 
         public override void HandleKeyPress(KeyEventArgs e)

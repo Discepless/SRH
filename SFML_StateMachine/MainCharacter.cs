@@ -30,7 +30,7 @@ namespace SFML_StateMachine
 
         public override void Update(float deltaTime)
         {
-           
+            Console.WriteLine(PlayerRectangle.Top);
             //PlayerRectangle = new SFML.System.Vector2f(Xpos, Ypos);
             PlayerRectangle = new IntRect((int)Xpos, (int)Ypos, 32, 48);
             this.CurrentState = MoveDirection.None;

@@ -16,7 +16,7 @@ namespace StateMachine
             BackgroundColor = Color.Cyan;
         }
 
-        public override void Initialize()
+        public override void InitializeItems()
         {
             Splashtexture = new Texture("Resources/Splashscreen/Splashscreen.png");
             Splashsprite = new Sprite(Splashtexture);
@@ -26,7 +26,7 @@ namespace StateMachine
 
             Timer = new Timer();
 
-            base.Initialize();
+            base.InitializeItems();
         }
 
         public override void Update()

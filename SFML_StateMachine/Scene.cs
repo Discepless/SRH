@@ -28,7 +28,7 @@ namespace GameEngine
             _gameObject = gameObject;
         }
 
-        public virtual void Initialize()
+        public virtual void InitializeItems()
         {
             // initialize the game
         }

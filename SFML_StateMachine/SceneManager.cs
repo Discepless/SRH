@@ -12,7 +12,7 @@ namespace GameEngine
         {
             _scenes.Add(s.Name, s);
 
-            s.Initialize();
+            s.InitializeItems();
         }
 
         public void StartScene(string name)

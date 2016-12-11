@@ -7,7 +7,11 @@ using System;
 namespace StateMachine
 {
     public class Fightscene : Scene
-    {//Objekte und Variablen werden erstellt:
+    {
+        Inventar_Fightscene Inventar_Fightscene;
+        
+        //Objekte und Variablen werden erstellt:
+
         //Avatar(Character)
         private Texture character_img;
 
@@ -29,7 +33,11 @@ namespace StateMachine
         private Sprite fernkampf_button_sprite;
         private Sprite inventar_button_sprite;
         private Sprite paper_sprite;
+        private Sprite inventar_paper_sprite;
         private Sprite arrow_pointer_sprite;
+
+
+        
         //Text
         private Text Nahkampf_Text;
 
@@ -104,13 +112,22 @@ namespace StateMachine
         private bool Sword_Start = false;
         private bool Sword_Time = false;
 
+        //Handles what Attack-Type got chosen ( + Inventar)
+        private bool Nahkampf_Pressed = false;
+        private bool Fernkampf_Pressed = false;
+        private bool Inventar_Pressed = false;
+
+        private bool Draw_Inventar = false;
+
     public Fightscene(GameObject gameObject) : base(gameObject)
         {
             BackgroundColor = Color.White;
+
         }
 
-    public override void Initialize()
+    public override void InitializeItems()
         {//Objekte werden initialisiert und zugewiesen
+            Inventar_Fightscene = new Inventar_Fightscene();
             //Character
             character_img = new Texture("Resources/Character_Fightscene/Character_fight.png");
             character_sprite = new Sprite(character_img);
@@ -168,12 +185,21 @@ namespace StateMachine
             paper_sprite = new Sprite(paper_img);
             paper_sprite.Position = new Vector2f(1350, 650);
 
+
+            inventar_paper_sprite = new Sprite(paper_img);
+            inventar_paper_sprite.Position = new Vector2f(1350-inventar_paper_sprite.Texture.Size.X, 650);
+            
             //Arrow_Pointer
             arrow_pointer_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Anzeigepfeil.png");
+
             arrow_pointer_sprite = new Sprite(arrow_pointer_img);
 
             arrow_pointer_sprite.Position = new Vector2f(1300, 755);
             arrow_pointer_sprite.Scale = new Vector2f(.3f, .3f);
+
+            //inventar_arrow_pointer_sprite = new Sprite(arrow_pointer_img);
+            //inventar_arrow_pointer_sprite.Position = new Vector2f()
+
             //Text
             //Buttons
             Font arial = new Font(@"Resources\arial.ttf");
@@ -223,15 +249,16 @@ namespace StateMachine
             clock_EnemiesTurn = new Clock();
             clock_SwordSlideIn = new Clock();
 
-            base.Initialize();
+
+
+            base.InitializeItems();
         }
 
         public override void HandleKeyPress(KeyEventArgs e)
         {
             //Nahkampf
-            if (e.Code == Keyboard.Key.A && Characters_Turn && healthLeft > 0)
+            if (e.Code == Keyboard.Key.Return && Characters_Turn && healthLeft > 0 && Nahkampf_Pressed)
             {
-             //   arrow_pointer_sprite.Position.Y += 50; 
                 EnemiesHealthDown = true;
                 Attack_SlideInMove();
                 Characters_Turn = false;
@@ -240,10 +267,11 @@ namespace StateMachine
                 Sword_Start = true;
                 clock_EnemiesTurn.Restart();
                 clock_SwordSlideIn.Restart();
+               // Nahkampf_Pressed = false;
             }
 
             //Fernkampf
-            if (e.Code == Keyboard.Key.D && Characters_Turn && healthLeft > 0)
+            if (e.Code == Keyboard.Key.Return && Characters_Turn && healthLeft > 0 && Fernkampf_Pressed)
             {
                 EnemiesHealthDown = true;
                 Attack_SlideInMove();
@@ -252,7 +280,28 @@ namespace StateMachine
                 Fernkampf = true;
                 Arrow_Start = true;
                 clock_EnemiesTurn.Restart();
+              //  Fernkampf_Pressed = false;
             }
+
+            if (e.Code == Keyboard.Key.Return && Characters_Turn && Inventar_Pressed)
+            {
+                Draw_Inventar = true;
+            }
+
+            //Move Pointer
+            if (e.Code == Keyboard.Key.Down && arrow_pointer_sprite.Position.Y <= 840)
+                MovePointerDown();
+            if (e.Code == Keyboard.Key.Up && arrow_pointer_sprite.Position.Y >= 780)
+                MovePointerUp();
+            if (e.Code == Keyboard.Key.Left && Draw_Inventar && arrow_pointer_sprite.Position.X > 710)
+                MovePointerLeft();
+            if (e.Code == Keyboard.Key.Down && Draw_Inventar && arrow_pointer_sprite.Position.Y < 959)
+                Inventar_MovePointerDown();
+            if (e.Code == Keyboard.Key.Up && Draw_Inventar && arrow_pointer_sprite.Position.Y > 719)
+                Inventar_MovePointerUp();
+            if (e.Code == Keyboard.Key.Right && Draw_Inventar)
+                MovePointerRight();
+
             if (e.Code == Keyboard.Key.Escape)
                 _gameObject.SceneManager.StartScene("OpenWorld");
         }
@@ -260,8 +309,8 @@ namespace StateMachine
         public override void Update()
         {//Fightscene Logic
             //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
-            //   Console.WriteLine(Sword_Start);
-            Console.WriteLine(enemy_sprite.Position.Y);
+               Console.WriteLine(arrow_pointer_sprite.Position.X);
+            Console.WriteLine(arrow_pointer_sprite.Position.Y);
             //Character Slide In
             if (SlideInMove_character())
                 character_sprite.Position -= new Vector2f(15, 0) * Speed;
@@ -299,6 +348,26 @@ namespace StateMachine
                 sword_sprite.Rotation = 0;
                 Sword_Start = false;
             }
+
+            if (arrow_pointer_sprite.Position.Y == 755)
+            {
+                Nahkampf_Pressed = true;
+                Fernkampf_Pressed = false;
+            }
+
+            if (arrow_pointer_sprite.Position.Y == 812)
+            {
+                Fernkampf_Pressed = true;
+                Nahkampf_Pressed = false;
+                Inventar_Pressed = false;
+            }
+            if (arrow_pointer_sprite.Position.Y == 869)
+            {
+                Inventar_Pressed = true;
+                Fernkampf_Pressed = false;
+            }
+            
+
 
             //Text
             string t1 = "Nahkampf [A] [" + Attack_Nahkampf + " SP]";
@@ -373,6 +442,14 @@ namespace StateMachine
             _gameObject.Window.Draw(character_sprite);
             _gameObject.Window.Draw(enemy_sprite);
 
+
+            if (Draw_Inventar)
+            {
+                _gameObject.Window.Draw(inventar_paper_sprite);
+                Inventar_Fightscene.Draw(_gameObject.Window);
+            }
+
+
             if (healthLeft > 0)
             {
                 //_gameObject.Window.Draw(nahkampf_button_sprite);
@@ -397,6 +474,8 @@ namespace StateMachine
 
             if (/*Sword_Start*/Sword_Time)
                 _gameObject.Window.Draw(sword_sprite);
+
+            
         }
 
         //Erstellte Methoden
@@ -446,8 +525,47 @@ namespace StateMachine
         {
             enemy_sprite.Position -= new Vector2f(150, 0);
         }
+        public void MovePointerDown()
+        {
+            if (!Draw_Inventar)
+            arrow_pointer_sprite.Position += new Vector2f(0, 57);
+        }
+        
+        public void MovePointerUp()
+        {
+            if (!Draw_Inventar)
+            arrow_pointer_sprite.Position -= new Vector2f(0, 57);
+        }
+        public void Inventar_MovePointerDown()
+        {
+            if (Draw_Inventar)
+            arrow_pointer_sprite.Position += new Vector2f(0, 100);
+            if (Draw_Inventar && arrow_pointer_sprite.Position.Y > 819)
+                arrow_pointer_sprite.Position += new Vector2f(0, 40);
+        }
+        public void Inventar_MovePointerUp()
+        {
+            if (Draw_Inventar)
+            arrow_pointer_sprite.Position -= new Vector2f(0, 100);
+            if (Draw_Inventar && arrow_pointer_sprite.Position.Y > 819)
+                arrow_pointer_sprite.Position -= new Vector2f(0,40);
+        }
 
+        public void MovePointerLeft()
+        {
+            if (Draw_Inventar)
+            arrow_pointer_sprite.Position -= new Vector2f(590, 150);
+        }
         //Handles Health
+
+        public void MovePointerRight()
+        {
+            if (Draw_Inventar)
+            {
+                arrow_pointer_sprite.Position = new Vector2f(1300, 869);
+                Draw_Inventar = false;
+            }
+        }
 
         public void DecreaseHealth()
         {

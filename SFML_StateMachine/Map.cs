@@ -19,7 +19,7 @@ namespace GameplayWorld_DM
 
         private Texture invisTexture;
         public List<Sprite> collisionsprites;
-        public IntRect collisionRect;
+        
 
         private int _mapWidth, _mapHeight,
             _tileMapHeight, _tileMapWidth,

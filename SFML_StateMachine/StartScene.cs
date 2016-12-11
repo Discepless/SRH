@@ -14,7 +14,7 @@ namespace StateMachine
             this.BackgroundColor = Color.Cyan; //scene background color
         }
 
-        public override void Initialize()
+        public override void InitializeItems()
         {
             //load resources etc
 

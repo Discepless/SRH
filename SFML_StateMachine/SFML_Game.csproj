@@ -82,6 +82,7 @@
     <Compile Include="Animation.cs" />
     <Compile Include="Fightscene.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="Inventar_Fightscene.cs" />
     <Compile Include="MainCharacter.cs" />
     <Compile Include="MainScene.cs" />
     <Compile Include="Map.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="SceneManager.cs" />
     <Compile Include="Splashscreen.cs" />
     <Compile Include="StartScene.cs" />
+    <Compile Include="TileCollider.cs" />
     <Compile Include="Timer.cs" />
     <Compile Include="WayPoint.cs" />
   </ItemGroup>
@@ -146,6 +148,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\Button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox-unchecked.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\goldenSword.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\healthbar.png">
