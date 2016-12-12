@@ -171,6 +171,9 @@
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\sword.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\Textbox.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

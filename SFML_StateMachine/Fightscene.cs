@@ -47,7 +47,11 @@ namespace StateMachine
         private Text Fernkampf_title_Text;
         private Text HP_Text;
         private Text EnemyHP_Text;
+        //Textbox
+        private Texture textbox_img;
+        private Sprite textbox_sprite;
 
+        private Text missed_text;
         //Healthbar
         private Texture healthbar_img;
 
@@ -85,8 +89,8 @@ namespace StateMachine
 
         //Character Stats
         private int HP = 100;
-
         private int healthLeft = 100;
+        //Weapon Stats
         private int Attack_SimpleSword = 20;
         private int Attack_GoldenSword = 40;
         private int Attack_SimpleArrow = 10;
@@ -124,7 +128,7 @@ namespace StateMachine
         private bool Sword_Start = false;
         private bool GoldenSword_Start = false;
         private bool Sword_Time = false;
-        private bool GoldenSword_Time = false;
+
 
         //Handles what Attack-Type and weapon got chosen ( + Inventar)
         private bool Nahkampf_Pressed = false;
@@ -136,6 +140,9 @@ namespace StateMachine
         private bool SimpleArrow_Pressed = false;
 
         private bool Draw_Inventar = false;
+        //Handles when character misses
+        private bool Missed = true;
+        private bool ShowTextBox = false;
 
     public Fightscene(GameObject gameObject) : base(gameObject)
         {
@@ -254,15 +261,28 @@ namespace StateMachine
             //HP Character
             Font system = new Font(@"Resources\Capture_it.ttf");
             HP_Text = new Text("", system);
-            HP_Text.Position = new Vector2f(0, 0);
+            HP_Text.Position = new Vector2f();
             HP_Text.CharacterSize = 40;
             HP_Text.Color = Color.Red;
             //HP Enemy
             EnemyHP_Text = new Text("", system);
-            EnemyHP_Text.Position = new Vector2f(0, 0);
+            EnemyHP_Text.Position = new Vector2f();
             EnemyHP_Text.CharacterSize = 20;
             EnemyHP_Text.Color = Color.Black;
 
+            //Textbox
+            textbox_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Textbox.jpeg");
+            textbox_sprite = new Sprite(textbox_img);
+
+            textbox_sprite.Position = new Vector2f(350, 650);
+            textbox_sprite.Scale = new Vector2f(3, 3);
+
+
+            missed_text = new Text("", system);
+            missed_text.Position = new Vector2f();
+            missed_text.CharacterSize = 35;
+            missed_text.Color = Color.Black;
+                             
             //Healthbar_img Character
             healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
             healthbar_sprite = new Sprite(healthbar_img);
@@ -296,11 +316,16 @@ namespace StateMachine
                 EnemiesHealthDown = true;
                 Attack_SlideInMove();
                 Characters_Turn = false;
-                Enemies_Turn = true;
                 Nahkampf = true;
                 Sword_Start = true;
                 GoldenSword_Start = true;
-                clock_EnemiesTurn.Restart();
+                if(Missed)
+                ShowTextBox = true;
+                if (!Missed)
+                {
+                    Enemies_Turn = true;
+                    clock_EnemiesTurn.Restart();
+                }
                 clock_SwordSlideIn.Restart();
                // Nahkampf_Pressed = false;
             }
@@ -341,6 +366,7 @@ namespace StateMachine
             
                 Inventar_Fightscene.Equipp_SimpleArrow();
             
+            
             //Move Pointer
             if (e.Code == Keyboard.Key.Down && arrow_pointer_sprite.Position.Y <= 840)
                 MovePointerDown();
@@ -354,6 +380,14 @@ namespace StateMachine
                 Inventar_MovePointerUp();
             if (e.Code == Keyboard.Key.Right && Draw_Inventar)
                 MovePointerRight();
+
+            //Textbox
+            if (e.Code == Keyboard.Key.Return && ShowTextBox && clock_SwordSlideIn.ElapsedTime.AsSeconds () >= 1)
+            {
+                ShowTextBox = false;
+                Enemies_Turn = true;
+                clock_EnemiesTurn.Restart();
+            }
 
             if (e.Code == Keyboard.Key.Escape)
                 _gameObject.SceneManager.StartScene("OpenWorld");
@@ -480,7 +514,10 @@ namespace StateMachine
             string t7 = "Fernkampf";
             Fernkampf_title_Text.DisplayedString = t7;
             Fernkampf_title_Text.Position = new Vector2f(770, 880);
-            
+
+            string t8 = "OH Damnit! You missed.";
+            missed_text.DisplayedString = t8;
+            missed_text.Position = new Vector2f(600, 850);
 
             //string t1 = "Nahkampf [A] [" + Attack_Nahkampf + " SP]";
             //Nahkampf_Text.DisplayedString = t1;
@@ -574,7 +611,16 @@ namespace StateMachine
                 _gameObject.Window.Draw(SimpleSword_sprite);
             if (Sword_Time && GoldenSword_equipped)
                 _gameObject.Window.Draw(goldenSword_sprite);
+            if (ShowTextBox && Missed)
+            {
+                _gameObject.Window.Draw(textbox_sprite);
+                _gameObject.Window.Draw(missed_text);
+
+            }
             
+            
+
+
         }
 
         //Erstellte Methoden
@@ -681,18 +727,18 @@ namespace StateMachine
         {
             if (Nahkampf)
             {
-                if (SimpleSword_equipped)
+                if (SimpleSword_equipped && !Missed)
                 {
                     enemyHealthLeft -= Attack_SimpleSword;
                     Nahkampf = false;
                 }
-                if (GoldenSword_equipped)
+                if (GoldenSword_equipped && !Missed)
                 {
                     enemyHealthLeft -= Attack_GoldenSword;
                     Nahkampf = false;
                 }
             }
-            if (Fernkampf)
+            if (SimpleArrow_equipped && !Missed)
             {
                 enemyHealthLeft -= Attack_SimpleArrow;
                 Fernkampf = false;
