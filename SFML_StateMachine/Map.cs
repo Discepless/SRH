@@ -236,10 +236,10 @@ namespace GameplayWorld_DM
                     }
                 }
             }
-            foreach (Sprite sprite in collisionsprites)
-            {
-                window.Draw(sprite);
-            }                           
+           // foreach (Sprite sprite in collisionsprites)
+           // {
+           //     window.Draw(sprite);
+           // }                           
         }
 
     }

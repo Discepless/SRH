@@ -22,8 +22,8 @@ namespace SFML_StateMachine
             AnimLeft = new Animation(48, 0, 4);
             AnimUp = new Animation(144, 0, 4);
 
-            Xpos = 100;
-            Ypos = 100;
+            Xpos = 449;
+            Ypos = 1546;
              
             moveSpeed = 150;
             animationSpeed = 0.1f;
@@ -57,22 +57,22 @@ namespace SFML_StateMachine
                 {
                     if (cachedDirection == 1)
                     {
-                        Ypos = Ypos + 2.5f;
+                        Ypos = Ypos + 3f;
                     }
 
                     if (cachedDirection == 2)
                     {
-                        Ypos = Ypos - 2.5f;
+                        Ypos = Ypos - 3f;
                     }
 
                     if (cachedDirection == 3)
                     {
-                        Xpos = Xpos + 2.5f;
+                        Xpos = Xpos + 3f;
                     }
 
                     if (cachedDirection == 4)
                     {
-                        Xpos = Xpos - 2.5f;
+                        Xpos = Xpos - 3f;
                     }
 
                 }

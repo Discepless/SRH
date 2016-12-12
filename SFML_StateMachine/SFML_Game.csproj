@@ -96,7 +96,6 @@
     <Compile Include="StartScene.cs" />
     <Compile Include="TileCollider.cs" />
     <Compile Include="Timer.cs" />
-    <Compile Include="WayPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -108,7 +107,6 @@
     </None>
     <None Include="Resources\Map\TileMap.tmx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Resources\System.fon">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

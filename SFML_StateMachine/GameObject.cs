@@ -12,8 +12,8 @@ namespace GameEngine
 
         public SceneManager SceneManager = new SceneManager();
 
-        private uint Xres = 1280;
-        private uint Yres = 720; //change whatever u want lads
+        private uint Xres = 1980;
+        private uint Yres = 1200; //change whatever u want lads
         public uint XRes { get { return Xres; } }
         public uint YRes { get { return Yres; } }
 

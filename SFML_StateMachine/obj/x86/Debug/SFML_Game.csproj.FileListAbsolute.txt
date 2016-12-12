@@ -53,3 +53,8 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\obj\x8
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Anzeigepfeil.png
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\paper.jpg
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Characters\Enemy.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Character_Fightscene\SailorMoon_Fightscene.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox-unchecked.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox_checked.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\goldenSword.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Textbox.jpeg
