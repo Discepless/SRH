@@ -144,7 +144,9 @@ namespace StateMachine
         private bool Missed = true;
         private bool ShowTextBox = false;
 
-    public Fightscene(GameObject gameObject) : base(gameObject)
+        private Timer Timer;
+
+        public Fightscene(GameObject gameObject) : base(gameObject)
         {
             BackgroundColor = Color.White;
 
@@ -282,7 +284,8 @@ namespace StateMachine
             missed_text.Position = new Vector2f();
             missed_text.CharacterSize = 35;
             missed_text.Color = Color.Black;
-                             
+
+            Timer = new Timer();
             //Healthbar_img Character
             healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
             healthbar_sprite = new Sprite(healthbar_img);
@@ -327,7 +330,8 @@ namespace StateMachine
                     clock_EnemiesTurn.Restart();
                 }
                 clock_SwordSlideIn.Restart();
-               // Nahkampf_Pressed = false;
+                Timer.RestartTextboxTimer();
+
             }
 
             //Fernkampf
@@ -335,12 +339,18 @@ namespace StateMachine
             {
                 EnemiesHealthDown = true;
                 Attack_SlideInMove();
-                Enemies_Turn = true;
                 Characters_Turn = false;
-                Fernkampf = true;
+                Fernkampf = true;                
                 Arrow_Start = true;
-                clock_EnemiesTurn.Restart();
-              //  Fernkampf_Pressed = false;
+                if (Missed)
+                    ShowTextBox = true;
+                if (!Missed)
+                {
+                    Enemies_Turn = true;
+                    clock_EnemiesTurn.Restart();
+                }
+                Timer.RestartTextboxTimer();
+
             }
 
             if (e.Code == Keyboard.Key.Return && Characters_Turn && Inventar_Pressed)
@@ -382,22 +392,26 @@ namespace StateMachine
                 MovePointerRight();
 
             //Textbox
-            if (e.Code == Keyboard.Key.Return && ShowTextBox && clock_SwordSlideIn.ElapsedTime.AsSeconds () >= 1)
+            if (e.Code == Keyboard.Key.Return && ShowTextBox /*&& clock_SwordSlideIn.ElapsedTime.AsSeconds() >= 1*/ &&Timer.GetTextboxClock >= 1)
             {
                 ShowTextBox = false;
                 Enemies_Turn = true;
                 clock_EnemiesTurn.Restart();
             }
 
+
+
             if (e.Code == Keyboard.Key.Escape)
                 _gameObject.SceneManager.StartScene("OpenWorld");
         }
 
         public override void Update()
-        {//Fightscene Logic
+        {
+            Timer.Update();
+            //Fightscene Logic
+            Console.WriteLine(ShowTextBox);
             //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
-               Console.WriteLine(arrow_pointer_sprite.Position.X);
-            Console.WriteLine(arrow_pointer_sprite.Position.Y);
+            Console.WriteLine();
             //Character Slide In
             if (SlideInMove_character())
                 character_sprite.Position -= new Vector2f(15, 0) * Speed;
@@ -569,6 +583,8 @@ namespace StateMachine
             else
                 Sword_Time = false;
 
+            //Timer(TextboxTimer)
+            //Timer.Update();
 
             //Draws
             _gameObject.Window.Draw(character_sprite);
