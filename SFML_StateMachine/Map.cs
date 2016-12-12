@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using StateMachine;
 
 namespace GameplayWorld_DM
 {
@@ -19,7 +20,8 @@ namespace GameplayWorld_DM
 
         private Texture invisTexture;
         public List<Sprite> collisionsprites;
-        
+        public List<Sprite> enemySprites;
+        public IntRect collisionRect;
 
         private int _mapWidth, _mapHeight,
             _tileMapHeight, _tileMapWidth,
@@ -28,17 +30,27 @@ namespace GameplayWorld_DM
         private const uint FLIPPED_HORIZONTALLY_FLAG = 0x80000000;
         private const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
         private const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
+
+        Timer time;
+       Clock clock;
+        int AnimatedTile = 3252;
+
+        public OpenWorldScene MyScene;
+
         XDocument xmlDoc = XDocument.Parse(File.ReadAllText("Resources/Map/TileMap.tmx"));
 
-        public Map()
+        public Map(OpenWorldScene world)
         {
-            
+            this.MyScene = world;
+           // time.Update();
             Texture textureAtlas = new Texture("Resources/Map/TextureAtlas.png");
             Sprite[] spritePool;
 
             foreach (var root in xmlDoc.Elements())
             {
                
+               
+
                 ObjectCollision();
 
                 _tileWidth = int.Parse(root.Attribute(XName.Get("tilewidth")).Value);
@@ -82,10 +94,26 @@ namespace GameplayWorld_DM
                                                 ~(FLIPPED_HORIZONTALLY_FLAG |
                                                   FLIPPED_VERTICALLY_FLAG |
                                                   FLIPPED_DIAGONALLY_FLAG);
-                            _tiles[x, y, currentlayer] = new Sprite(spritePool[id]);
+
+                            
+                            if (globalId== AnimatedTile+1) //+1 to id of original tile you see in tmx editor
+
+                            {
+                                
+                                Console.WriteLine("SUCESS");
+                                
+                                _tiles[x, y, currentlayer] = new Sprite(spritePool[id + 1]); }
+
+                            else
+                            {
+                                _tiles[x, y, currentlayer] = new Sprite(spritePool[id]);
+                            }
                             bool fh = (globalId & FLIPPED_HORIZONTALLY_FLAG) != 0;
-                            bool fv = (globalId & FLIPPED_VERTICALLY_FLAG) != 0;
-                            bool fd = (globalId & FLIPPED_DIAGONALLY_FLAG) != 0;
+                                bool fv = (globalId & FLIPPED_VERTICALLY_FLAG) != 0;
+                                bool fd = (globalId & FLIPPED_DIAGONALLY_FLAG) != 0;
+                            
+                           
+
 
                             _tiles[x, y, currentlayer].Position = new Vector2f((x) * _tileWidth, (y) * _tileHeight);
 
@@ -164,20 +192,20 @@ namespace GameplayWorld_DM
             }
 
 
-            // collisionSprite.Position = new Vector2f(cobj.xCoordinates,cobj.yCoordinates);      
+                // collisionSprite.Position = new Vector2f(cobj.xCoordinates,cobj.yCoordinates);      
 
 
 
 
-            //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height); 
-            //collisionSprite.TextureRect = CollisionRect.TextureRect;
+                //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height); 
+                //collisionSprite.TextureRect = CollisionRect.TextureRect;
 
 
-            //CollisionRect = new RectangleShape();
-            //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates,cobj.yCoordinates,cobj.width,cobj.height);
+                //CollisionRect = new RectangleShape();
+                //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates,cobj.yCoordinates,cobj.width,cobj.height);
 
-            //Console.WriteLine("id " + cobj.id, "XCoord" + cobj.xCoordinates, "YCoord" + cobj.yCoordinates, "width" + cobj.width, "height" + cobj.height);
-        }
+                //Console.WriteLine("id " + cobj.id, "XCoord" + cobj.xCoordinates, "YCoord" + cobj.yCoordinates, "width" + cobj.width, "height" + cobj.height);
+            }
 
 
         /*
