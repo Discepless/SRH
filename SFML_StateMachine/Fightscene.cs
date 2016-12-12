@@ -147,11 +147,12 @@ namespace StateMachine
         {//Objekte werden initialisiert und zugewiesen
             Inventar_Fightscene = new Inventar_Fightscene();
             //Character
-            character_img = new Texture("Resources/Character_Fightscene/Character_fight.png");
+            character_img = new Texture(/*"Resources/Character_Fightscene/Character_fight.png"*/"Resources/Character_Fightscene/SailorMoon_Fightscene.png");
             character_sprite = new Sprite(character_img);
 
             character_sprite.Position = new Vector2f(1600, 700);
-            character_sprite.Scale = new Vector2f(.6f, .6f);
+            character_sprite.Scale = new Vector2f(6f, 6f);
+            //character_sprite.Scale = new Vector2f(.6f, .6f);
 
             //Enemy
             enemy_img = new Texture("Resources/Character_Fightscene/Enemy_fight.png");
@@ -320,6 +321,8 @@ namespace StateMachine
             if (e.Code == Keyboard.Key.Return && Characters_Turn && Inventar_Pressed)
             {
                 Draw_Inventar = true;
+                Inventar_Pressed = false;
+                MovePointerLeft();
             }
             //Equipp Items
             if (e.Code == Keyboard.Key.Return && Draw_Inventar && SimpleSword_Pressed)
@@ -343,8 +346,8 @@ namespace StateMachine
                 MovePointerDown();
             if (e.Code == Keyboard.Key.Up && arrow_pointer_sprite.Position.Y >= 780)
                 MovePointerUp();
-            if (e.Code == Keyboard.Key.Left && Draw_Inventar && arrow_pointer_sprite.Position.X > 710)
-                MovePointerLeft();
+            //if (e.Code == Keyboard.Key.Left && Draw_Inventar && arrow_pointer_sprite.Position.X > 710)
+            //    MovePointerLeft();
             if (e.Code == Keyboard.Key.Down && Draw_Inventar && arrow_pointer_sprite.Position.Y < 959)
                 Inventar_MovePointerDown();
             if (e.Code == Keyboard.Key.Up && Draw_Inventar && arrow_pointer_sprite.Position.Y > 719)
@@ -580,7 +583,7 @@ namespace StateMachine
 
         public bool SlideInMove_character()
         {
-            if (character_sprite.Position.X <= 1600 && character_sprite.Position.X >= 50)
+            if (character_sprite.Position.X <= 1600 && character_sprite.Position.X >= 120)
 
                 return true;
 
