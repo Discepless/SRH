@@ -402,7 +402,7 @@ namespace StateMachine
 
 
             if (e.Code == Keyboard.Key.Escape)
-                _gameObject.SceneManager.StartScene("OpenWorld");
+                _gameObject.SceneManager.GotoScene("OpenWorld");
         }
 
         public override void Update()
@@ -424,13 +424,13 @@ namespace StateMachine
             if (healthLeft <= 0)
                 character_sprite.Position += new Vector2f(0, 50);
             if (character_sprite.Position.Y >= 5000)
-                _gameObject.SceneManager.StartScene("main");
+                _gameObject.SceneManager.GotoScene("main");
 
             //Enemy Slide Down (when dead)
             if (enemyHealthLeft <= 0)
                 enemy_sprite.Position += new Vector2f(0, 50);
             if (enemy_sprite.Position.Y >= 5500)
-                _gameObject.SceneManager.StartScene("OpenWorld");
+                _gameObject.SceneManager.GotoScene("OpenWorld");
 
             //Arrow Move
             if (Arrow_move())

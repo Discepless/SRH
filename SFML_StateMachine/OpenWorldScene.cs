@@ -13,7 +13,7 @@ namespace GameplayWorld_DM
         public MainCharacter myCharacter;
         public Enemy myEnemy;
         public GameObject gameObject;
-        private View view = new View(new Vector2f(0, 0), new Vector2f(600, 400));
+       // private View view = new View(new Vector2f(0, 0), new Vector2f(1000, 1000));
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
@@ -29,17 +29,17 @@ namespace GameplayWorld_DM
 
             _map.Draw(_gameObject.Window);
             myCharacter.Draw(_gameObject.Window);
-            //myEnemy.Draw(_gameObject.Window);
+            myEnemy.Draw(_gameObject.Window);
 
-            _gameObject.Window.SetView(view);
+            //_gameObject.Window.SetView(view);
         }
 
         public override void Update()
         {
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
-            //myEnemy.Update(deltatime);
-            view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
+            myEnemy.Update(deltatime);
+            //view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
 
             //ReWork Animation classes into small pieces
             base.Update();

@@ -62,7 +62,7 @@ namespace SFML_StateMachine
                     break;
 
                 case MoveDirection.MoveEast:
-                    Xpos += moveSpeed * deltaTime;
+                    Xpos += moveSpeed*deltaTime;
                     currentAnimation = AnimRight;
                     break;
 
@@ -72,7 +72,7 @@ namespace SFML_StateMachine
                     break;
 
                 case MoveDirection.MoveWest:
-                    Xpos -= moveSpeed * deltaTime;
+                    Xpos -= moveSpeed *deltaTime;
                     currentAnimation = AnimLeft;
                     break;
             }

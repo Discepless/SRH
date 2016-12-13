@@ -11,6 +11,7 @@ namespace SFML_StateMachine
         private Map map;
         private IntRect PlayerRectangle;
         
+        
 
         // Caching our Previos direction (Needed for Collisions)
         private float cachedDirection;
@@ -25,7 +26,7 @@ namespace SFML_StateMachine
             Xpos = 449;
             Ypos = 1546;
              
-            moveSpeed = 150;
+            moveSpeed = 150f;
             animationSpeed = 0.1f;
             
             this.map = map;
@@ -33,6 +34,7 @@ namespace SFML_StateMachine
 
         public override void Update(float deltaTime)
         {
+            moveSpeed = 150;
             Console.WriteLine(PlayerRectangle.Top);
             //PlayerRectangle = new SFML.System.Vector2f(Xpos, Ypos);
             PlayerRectangle = new IntRect((int)Xpos, (int)Ypos, 32, 48);
@@ -49,32 +51,53 @@ namespace SFML_StateMachine
             // 1 North, 2 East , 3 South, 4 West  Collision with the Walls
 
             foreach (var collisionrect in map.CollisionRectangleShapes)
-            {               
+            {
+
                 if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
                     (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
                     (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height))
+                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Left + PlayerRectangle.Width < collisionrect.Left + collisionrect.Width)
+                {
+                    if (cachedDirection == 4)
+                    {
+                        moveSpeed = 0;
+                    }
+                }
+
+                if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
+                    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
+                    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
+                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Top + PlayerRectangle.Height > collisionrect.Top + collisionrect.Height)
                 {
                     if (cachedDirection == 1)
                     {
-                        Ypos = Ypos + 3f;
+                        moveSpeed = 0;
                     }
-
+                }
+                    if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
+                    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
+                    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
+                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Top < collisionrect.Top)
+                {
                     if (cachedDirection == 2)
                     {
-                        Ypos = Ypos - 3f;
-                    }
+                        moveSpeed = 0;
+                        
 
+
+                    }
+                }
+
+                if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
+                    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
+                    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
+                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Left > collisionrect.Left)
+                {
                     if (cachedDirection == 3)
                     {
-                        Xpos = Xpos + 3f;
-                    }
+                        moveSpeed = 0;
 
-                    if (cachedDirection == 4)
-                    {
-                        Xpos = Xpos - 3f;
                     }
-
                 }
             }
 
