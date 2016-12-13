@@ -2,6 +2,7 @@
 using GameEngine;
 using GameplayWorld_DM;
 using SFML.Graphics;
+using SFML.System;
 using SFML.Window;
 
 namespace SFML_StateMachine
@@ -10,6 +11,10 @@ namespace SFML_StateMachine
     {
         private Map map;
         private IntRect PlayerRectangle;
+        private Teleport teleport;
+        private Items items;
+        private Clock teleportClock;
+        private float teleportCooldown;
         
         
 
@@ -18,6 +23,9 @@ namespace SFML_StateMachine
 
         public MainCharacter(Map map) : base("Resources/Characters/SailorMoon.png", 32,48)
         {
+
+            teleportClock = new Clock(); ;
+
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);
             AnimLeft = new Animation(48, 0, 4);
@@ -30,24 +38,54 @@ namespace SFML_StateMachine
             animationSpeed = 0.1f;
             
             this.map = map;
+
+            teleport = new Teleport();
+            items = new Items(); ;
         }
 
         public override void Update(float deltaTime)
         {
-            moveSpeed = 150;
-            Console.WriteLine(PlayerRectangle.Top);
+
+
+
+
             //PlayerRectangle = new SFML.System.Vector2f(Xpos, Ypos);
             PlayerRectangle = new IntRect((int)Xpos, (int)Ypos, 32, 48);
             this.CurrentState = MoveDirection.None;
 
-            
-            // KAPUTT! :<
-            if (PlayerRectangle.Intersects(this.map.MyScene.myEnemy.EnemyRectangle))
+            moveSpeed = 150;
+
+            teleportCooldown = teleportClock.ElapsedTime.AsSeconds();
+
+
+            // Intersection with a Enemy
+            if (PlayerRectangle.Intersects(map.MyScene.myEnemy.EnemyRectangle))
             {
-                Console.WriteLine("Intersected with Enemy");
                 map.MyScene.gameObject.SceneManager.GotoScene("fight");
             }
+
+            //Intersection with Item
+            if (PlayerRectangle.Intersects(items.BowRect))
+            {
+                Items.BowPicked = true;
+                Console.WriteLine("Item");           
+            }
          
+            //Intersection with a Teleport
+
+            if (PlayerRectangle.Intersects(teleport.TeleportA) && teleportCooldown > 2)
+            {
+               Xpos = teleport.BxPos + 20;
+               Ypos = teleport.ByPos + 58;
+                teleportClock.Restart();
+            }
+
+            if (PlayerRectangle.Intersects(teleport.TeleportB) && teleportCooldown > 2)
+            {
+                Xpos = teleport.AxPos + 20;
+                Ypos = teleport.AyPos + 58;
+                teleportClock.Restart();
+            }
             // 1 North, 2 East , 3 South, 4 West  Collision with the Walls
 
             foreach (var collisionrect in map.CollisionRectangleShapes)
@@ -81,10 +119,7 @@ namespace SFML_StateMachine
                 {
                     if (cachedDirection == 2)
                     {
-                        moveSpeed = 0;
-                        
-
-
+                        moveSpeed = 0;                       
                     }
                 }
 
@@ -100,6 +135,8 @@ namespace SFML_StateMachine
                     }
                 }
             }
+
+            // Movement
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {

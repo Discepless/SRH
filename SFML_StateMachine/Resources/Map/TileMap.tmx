@@ -376,7 +376,6 @@
  </TeleportGroup>
  <CharacterGroup color="#ff0000" name="CharacterItems">
   <character id="43" name="Player" x="449" y="1546" width="61" height="58"/>
-   <character id="200" name="Test" x="449" y="1520" width="61" height="58"/>
   <character id="46" name="EnemyForMeleeWeak" x="410" y="866" width="90" height="46"/>
   <character id="53" name="NPCGiveSword + Full HP" x="392" y="628" width="41" height="35"/>
   <character id="72" name="EnemyWithMelee(Will lose w/o Sword)" x="734" y="542" width="53" height="49"/>

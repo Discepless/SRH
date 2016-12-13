@@ -30,7 +30,7 @@ namespace SFML_StateMachine
             animationSpeed = 0.1f;
 
             Xpos = 449;
-            Ypos = 1550;
+            Ypos = 1570;
 
             collisionObject = map;
 
