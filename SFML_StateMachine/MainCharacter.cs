@@ -10,9 +10,10 @@ namespace SFML_StateMachine
     internal class MainCharacter : AnimatedCharacter
     {
         private Map map;
+        private OpenWorldScene OpenworldScene;
         private IntRect PlayerRectangle;
         private Teleport teleport;
-        private Items items;
+        private ItemsAndNpcs ItemsAndNpcs;
         private Clock teleportClock;
         private float teleportCooldown;
         
@@ -21,7 +22,7 @@ namespace SFML_StateMachine
         // Caching our Previos direction (Needed for Collisions)
         private float cachedDirection;
 
-        public MainCharacter(Map map) : base("Resources/Characters/SailorMoon.png", 32,48)
+        public MainCharacter(Map map) : base("Resources/Characters/MainCharacter.png", 32,48)
         {
 
             teleportClock = new Clock(); ;
@@ -40,7 +41,7 @@ namespace SFML_StateMachine
             this.map = map;
 
             teleport = new Teleport();
-            items = new Items(); ;
+            ItemsAndNpcs = new ItemsAndNpcs(); ;
         }
 
         public override void Update(float deltaTime)
@@ -60,18 +61,30 @@ namespace SFML_StateMachine
 
             // Intersection with a Enemy
             if (PlayerRectangle.Intersects(map.MyScene.myEnemy.EnemyRectangle))
-            {
+            {              
                 map.MyScene.gameObject.SceneManager.GotoScene("fight");
             }
 
-            //Intersection with Item
-            if (PlayerRectangle.Intersects(items.BowRect))
+            //Intersection with Bow
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.BowRect))
             {
-                Items.BowPicked = true;
-                Console.WriteLine("Item");           
+                ItemsAndNpcs.BowPicked = true;        
             }
-         
-            //Intersection with a Teleport
+
+            //Intersection with Key
+
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.KeyRect))
+            {
+                ItemsAndNpcs.KeyPicked = true;
+ 
+            }
+
+            // Intersection with Healing
+
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect))
+            {
+                //TODO HEAL UP LOGIC
+            }
 
             if (PlayerRectangle.Intersects(teleport.TeleportA) && teleportCooldown > 2)
             {
@@ -131,7 +144,6 @@ namespace SFML_StateMachine
                     if (cachedDirection == 3)
                     {
                         moveSpeed = 0;
-
                     }
                 }
             }

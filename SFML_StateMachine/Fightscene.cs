@@ -3,14 +3,16 @@ using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 using System;
+using GameplayWorld_DM;
 
 namespace StateMachine
 {
     public class Fightscene : Scene
     {
         Inventar_Fightscene Inventar_Fightscene;
-        
+
         //Objekte und Variablen werden erstellt:
+
 
         //Avatar(Character)
         private Texture character_img;
@@ -141,7 +143,7 @@ namespace StateMachine
 
         private bool Draw_Inventar = false;
         //Handles when character misses
-        private bool Missed = true;
+        private bool Missed = false;
         private bool ShowTextBox = false;
 
         private Timer Timer;
@@ -156,7 +158,7 @@ namespace StateMachine
         {//Objekte werden initialisiert und zugewiesen
             Inventar_Fightscene = new Inventar_Fightscene();
             //Character
-            character_img = new Texture(/*"Resources/Character_Fightscene/Character_fight.png"*/"Resources/Character_Fightscene/SailorMoon_Fightscene.png");
+            character_img = new Texture(/*"Resources/Character_Fightscene/Character_fight.png"*/"Resources/Characters/MainCharacter.png");
             character_sprite = new Sprite(character_img);
 
             character_sprite.Position = new Vector2f(1600, 700);
@@ -359,7 +361,7 @@ namespace StateMachine
                 Inventar_Pressed = false;
                 MovePointerLeft();
             }
-            //Equipp Items
+            //Equipp ItemsAndNpcs
             if (e.Code == Keyboard.Key.Return && Draw_Inventar && SimpleSword_Pressed)
             {
                 Inventar_Fightscene.Equipp_SimpleSword();
@@ -407,6 +409,7 @@ namespace StateMachine
 
         public override void Update()
         {
+            
             Timer.Update();
             //Fightscene Logic
             Console.WriteLine(ShowTextBox);
