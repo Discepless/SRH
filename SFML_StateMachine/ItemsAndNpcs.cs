@@ -11,15 +11,10 @@ namespace SFML_StateMachine
 {
     class ItemsAndNpcs
     {
-<<<<<<< HEAD
-        public IntRect BowRect,KeyRect, HealingRect,NPCRect;
-        public Texture BowTexture, KeyTexture, NPCTexture;
-        public Sprite BowSprite,KeySprite,NPCSprite;
-=======
-        public IntRect BowRect,KeyRect, HealingRect, DoorsRect ;
-        public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture;
-        public Sprite BowSprite,KeySprite,DoorsOpenedSprite, DoorsClosedSprite ;
->>>>>>> origin/master
+
+        public IntRect BowRect,KeyRect, HealingRect, NPCRect, DoorsRect;
+        public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture, NPCTexture;
+        public Sprite BowSprite,KeySprite,DoorsOpenedSprite, DoorsClosedSprite, NPCSprite;
 
         public static bool BowPicked,KeyPicked,SwordPicked,DoorsOpened;
 
@@ -41,17 +36,16 @@ namespace SFML_StateMachine
             KeyWidth,
             KeyHeight,
             //////////
-<<<<<<< HEAD
             NPCXpos,
             NPCYpos,
             NPCWidth,
-            NPCHeight;
-=======
+            NPCHeight,
+
             DoorsXpos,
             DoorsYpos,
             DoorsWidth,
             DoorsHeight;
->>>>>>> origin/master
+
 
 
 
@@ -63,7 +57,6 @@ namespace SFML_StateMachine
             BowWidth = 16;
             BowHeight = 16;
 
-<<<<<<< HEAD
             KeyXpos = 2306;
             KeyYpos = 529;
             KeyWidth = 16;
@@ -73,7 +66,7 @@ namespace SFML_StateMachine
             NPCYpos = 628;
             NPCWidth = 48;
             NPCHeight = 32;
-=======
+
             KeyXpos = 928;
             KeyYpos = 544;
             KeyWidth = 68;
@@ -84,7 +77,6 @@ namespace SFML_StateMachine
             DoorsWidth = 96;
             DoorsHeight = 32; 
 
->>>>>>> origin/master
 
             KeyRect = new IntRect(KeyXpos,KeyYpos,KeyWidth,KeyHeight);
             KeyTexture = new Texture("Resources/Items/Key.png");
@@ -94,17 +86,16 @@ namespace SFML_StateMachine
             BowTexture = new Texture("Resources/Items/Bow.png");
             BowSprite = new Sprite(BowTexture) {Position = new Vector2f(BowXpos, BowYPos), Scale = new Vector2f(0.5f,0.5f)};
 
-<<<<<<< HEAD
             NPCRect = new IntRect(NPCXpos,NPCYpos,NPCWidth,NPCHeight);
             NPCTexture = new Texture("Resources/Characters/NPCSword.png");
             NPCSprite = new Sprite(NPCTexture) {Position = new Vector2f(NPCXpos, NPCYpos)}; ;
-=======
+
             DoorsRect = new IntRect(DoorsXpos, DoorsYpos, DoorsWidth, DoorsHeight);
             DoorsOpenedTexture = new Texture("Resources/Items/DoorOpened.png"); 
             DoorsClosedTexture = new Texture("Resources/Items/DoorClosed.png");
             DoorsOpenedSprite = new Sprite(DoorsOpenedTexture) { Position = new Vector2f(DoorsXpos, DoorsYpos), Scale = new Vector2f(1f, 1f) };
             DoorsClosedSprite = new Sprite(DoorsClosedTexture) { Position = new Vector2f(DoorsXpos, DoorsYpos), Scale = new Vector2f(1f, 1f) };
->>>>>>> origin/master
+
 
             HealingRect = new IntRect(HealingXpos,HealingYpos,HealingWidth,HealingHeight);
         }
@@ -120,17 +111,17 @@ namespace SFML_StateMachine
             {
                 window.Draw(KeySprite);
             }
-<<<<<<< HEAD
+
             window.Draw(NPCSprite);
-=======
+
 
             if (DoorsOpened == true)
             {
                 window.Draw(DoorsOpenedSprite);
 
-            }else{ window.Draw(DoorsClosedSprite); }
+            }
+            else { window.Draw(DoorsClosedSprite); }
 
->>>>>>> origin/master
         }
     }
 }

@@ -480,12 +480,12 @@ namespace StateMachine
             if (enemy_sprite.Position.Y >= 5500)
             {
                 _gameObject.SceneManager.GotoScene("OpenWorld");
-<<<<<<< HEAD
+
                 
-=======
+
                 enemy_sprite.Position = new Vector2f(0, 90);
             }
->>>>>>> origin/master
+
 
             //Arrow Move
             if (Arrow_move())

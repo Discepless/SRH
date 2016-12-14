@@ -370,7 +370,6 @@
   <object id="122" x="2365" y="504" width="202" height="81"/>
   <object id="123" x="2240" y="576" width="344" height="101"/>
  </objectgroup>
-<<<<<<< HEAD
  <TeleportGroup color="#ffff00" name="Teleport">
   <teleport id="40" name="TeleportAEnter" x="458" y="1205" width="100" height="30"/>
   <teleport id="42" name="TeleportAExit" x="597" y="856" width="66" height="30"/>
@@ -392,6 +391,4 @@
  <DoorsGroup color="#00ff00" name="Doors">
   <dooors id="76" name="DoorsNeedKey to dissapear" x="893" y="702" width="97" height="33"/>
  </DoorsGroup>
-=======
->>>>>>> origin/master
 </map>
