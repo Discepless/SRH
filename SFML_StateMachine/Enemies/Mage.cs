@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using GameplayWorld_DM;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 
-namespace SFML_StateMachine.Enemies
+namespace StateMachine
 {
     internal class Mage : AnimatedCharacter
     {
-
         public IntRect MageRect;
         private Map collisionObject;
 
@@ -39,13 +31,10 @@ namespace SFML_StateMachine.Enemies
         {
             MageRect = new IntRect((int)Xpos, (int)Ypos, 32, 32);
 
-
-
             // 1 North, 2 South , 3 East, 4 West  Collision with the Walls
 
             foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
             {
-
                 if ((MageRect.Left + MageRect.Width >= collisionrect.Left) &&
                     (MageRect.Left <= collisionrect.Left + collisionrect.Width) &&
                     (MageRect.Top + MageRect.Height >= collisionrect.Top) &&
@@ -61,7 +50,6 @@ namespace SFML_StateMachine.Enemies
                 {
                     this.CurrentState = MoveDirection.MoveEast;
                 }
-
             }
             base.Update(deltaTime);
         }

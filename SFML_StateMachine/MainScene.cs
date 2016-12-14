@@ -1,6 +1,4 @@
-﻿using GameEngine;
-using GameplayWorld_DM;
-using SFML.Audio;
+﻿using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -20,6 +18,7 @@ namespace StateMachine
 
         public override void InitializeItems()
         {
+            _gameObject.SceneManager.GetScene("OpenWorld").Pause();
             //  called when the scene is added to the scene manager
 
             Font arial = new Font(@"Resources\arial.ttf");
@@ -52,11 +51,12 @@ namespace StateMachine
 
             if (e.Code == Keyboard.Key.F)
             {
-                _gameObject.SceneManager.StartScene("fight");
+                _gameObject.SceneManager.GotoScene("fight");
             }
 
             if (e.Code == Keyboard.Key.X)
             {
+                _gameObject.SceneManager.GetScene("OpenWorld").Resume();
                 _gameObject.SceneManager.StartScene("OpenWorld");
             }
 
@@ -70,7 +70,6 @@ namespace StateMachine
 
         public override void Update() //just test text like everywhere else
         {
-            
             string t = "PRESS [BACKSPACE] OR [M] or [F], [X] for Map";
             text.DisplayedString = t;
             text.Position = new Vector2f(200, 100);

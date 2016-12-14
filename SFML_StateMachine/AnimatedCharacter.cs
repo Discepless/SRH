@@ -2,7 +2,7 @@
 using SFML.System;
 using System;
 
-namespace SFML_StateMachine
+namespace StateMachine
 {
     public enum MoveDirection
     {
@@ -20,7 +20,7 @@ namespace SFML_StateMachine
 
         private Sprite _sprite;
         private IntRect _spriteRect;
-        private int frameSizeWidth,frameSizeHeight;
+        private int frameSizeWidth, frameSizeHeight;
 
         protected Animation AnimUp;
         protected Animation AnimDown;
@@ -62,7 +62,7 @@ namespace SFML_StateMachine
                     break;
 
                 case MoveDirection.MoveEast:
-                    Xpos += moveSpeed*deltaTime;
+                    Xpos += moveSpeed * deltaTime;
                     currentAnimation = AnimRight;
                     break;
 
@@ -72,7 +72,7 @@ namespace SFML_StateMachine
                     break;
 
                 case MoveDirection.MoveWest:
-                    Xpos -= moveSpeed *deltaTime;
+                    Xpos -= moveSpeed * deltaTime;
                     currentAnimation = AnimLeft;
                     break;
             }

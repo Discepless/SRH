@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameplayWorld_DM;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 
-namespace SFML_StateMachine.Enemies
+namespace StateMachine
 {
     internal class Bat : AnimatedCharacter
     {
-
         public IntRect BatRect;
 
         // Caching our Previos direction (Needed for Collisions)
@@ -29,8 +22,7 @@ namespace SFML_StateMachine.Enemies
             Ypos = 500;
 
             this.CurrentState = MoveDirection.MoveWest;
-            BatRect = new IntRect((int)Xpos,(int)Ypos,32,48);
+            BatRect = new IntRect((int)Xpos, (int)Ypos, 32, 48);
         }
     }
-
 }

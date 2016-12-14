@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GameEngine
+namespace StateMachine
 {
     public class SceneManager
     {

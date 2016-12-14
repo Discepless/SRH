@@ -2,7 +2,7 @@
 using SFML.Window;
 using System;
 
-namespace GameEngine
+namespace StateMachine
 {
     public class GameObject : IDisposable
     {
@@ -20,7 +20,7 @@ namespace GameEngine
         public GameObject(string Title)
         {
             // initialize values
-            _window = new RenderWindow(new VideoMode(Xres, Yres), Title, Styles.Default );
+            _window = new RenderWindow(new VideoMode(Xres, Yres), Title, Styles.Default);
 
             _window.SetVisible(true);
             _window.SetVerticalSyncEnabled(true);

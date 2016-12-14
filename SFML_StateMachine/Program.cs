@@ -1,7 +1,4 @@
-﻿using GameEngine;
-using GameplayWorld_DM;
-
-//namespace with all engine related shit. Check that every class for player/item/etc runs in this namespace.
+﻿//namespace with all engine related shit. Check that every class for player/item/etc runs in this namespace.
 
 namespace StateMachine
 {

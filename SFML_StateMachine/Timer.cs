@@ -15,8 +15,7 @@ namespace StateMachine
 
         public void Update()
         {
-            splashscreen_float_time =  splashscreen_timer.ElapsedTime.AsSeconds();
-
+            splashscreen_float_time = splashscreen_timer.ElapsedTime.AsSeconds();
         }
 
         public Timer()

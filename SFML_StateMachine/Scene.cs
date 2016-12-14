@@ -2,7 +2,7 @@
 using SFML.Window;
 using System;
 
-namespace GameEngine
+namespace StateMachine
 {
     public class Scene : IDisposable
     {
@@ -94,6 +94,12 @@ namespace GameEngine
             pause = true;
         }
 
+        public void Pause()
+        {
+            targetTime = currentTime.AddYears(10); //dirty trick
+            pause = true;
+        }
+
         public void Resume()
         {
             pause = false;
@@ -122,7 +128,6 @@ namespace GameEngine
                 // IDisposable only
                 // see https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx
             }
-
         }
     }
 }

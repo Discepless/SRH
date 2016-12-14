@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameplayWorld_DM;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 
-namespace SFML_StateMachine
+namespace StateMachine
 {
-    class Teleport
+    internal class Teleport
     {
         public IntRect TeleportA, TeleportB;
+
         public int AxPos, AyPos, Awidth, Aheight,
                    BxPos, ByPos, Bwidth, Bheight;
 
@@ -25,8 +20,8 @@ namespace SFML_StateMachine
             Bwidth = 66;
             Bheight = 30;
 
-         TeleportA = new IntRect(AxPos,AyPos,Awidth,Aheight);
-         TeleportB = new IntRect(BxPos, ByPos, Bwidth, Bheight);
+            TeleportA = new IntRect(AxPos, AyPos, Awidth, Aheight);
+            TeleportB = new IntRect(BxPos, ByPos, Bwidth, Bheight);
         }
     }
 }

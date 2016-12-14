@@ -2,16 +2,11 @@
 using SFML.System;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters;
-using System.Xml;
 using System.Xml.Linq;
-using System.Xml.XPath;
-using StateMachine;
 
-namespace GameplayWorld_DM
+namespace StateMachine
 {
     internal class Map
     {
@@ -31,23 +26,19 @@ namespace GameplayWorld_DM
         private const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
         private const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
 
-
         public OpenWorldScene MyScene;
 
-        XDocument xmlDoc = XDocument.Parse(File.ReadAllText("Resources/Map/TileMap.tmx"));
+        private XDocument xmlDoc = XDocument.Parse(File.ReadAllText("Resources/Map/TileMap.tmx"));
 
         public Map(OpenWorldScene world)
         {
             this.MyScene = world;
-           // time.Update();
+            // time.Update();
             Texture textureAtlas = new Texture("Resources/Map/TextureAtlas.png");
             Sprite[] spritePool;
 
             foreach (var root in xmlDoc.Elements())
             {
-               
-               
-
                 ObjectCollision();
 
                 _tileWidth = int.Parse(root.Attribute(XName.Get("tilewidth")).Value);
@@ -62,7 +53,7 @@ namespace GameplayWorld_DM
 
                 spritePool = new Sprite[_tileMapHeight * _tileMapWidth + 1];
                 spritePool[0] = new Sprite(new Texture("Resources/Map/NotVisible.png"));
-               
+
                 // Cutting Atlas into Tiles
 
                 for (int y = 0; y < _tileMapHeight; y++)
@@ -93,16 +84,11 @@ namespace GameplayWorld_DM
                                                   FLIPPED_VERTICALLY_FLAG |
                                                   FLIPPED_DIAGONALLY_FLAG);
 
-                            
-                            
-                                _tiles[x, y, currentlayer] = new Sprite(spritePool[id]);
+                            _tiles[x, y, currentlayer] = new Sprite(spritePool[id]);
 
                             bool fh = (globalId & FLIPPED_HORIZONTALLY_FLAG) != 0;
                             bool fv = (globalId & FLIPPED_VERTICALLY_FLAG) != 0;
                             bool fd = (globalId & FLIPPED_DIAGONALLY_FLAG) != 0;
-                            
-                           
-
 
                             _tiles[x, y, currentlayer].Position = new Vector2f((x) * _tileWidth, (y) * _tileHeight);
 
@@ -149,11 +135,10 @@ namespace GameplayWorld_DM
                         }
                     }
                     currentlayer++;
-
                 }
             }
         }
-        
+
         public void ObjectCollision()
         {
             CollisionRectangleShapes = new List<IntRect>();
@@ -165,22 +150,16 @@ namespace GameplayWorld_DM
                                        yCoordinates = (int)q.Attribute("y"),
                                        width = (int)q.Attribute("width"),
                                        height = (int)q.Attribute("height")
-
                                    };
             collisionsprites = new List<Sprite>();
 
             foreach (var cobj in collisionObjects)
             {
-                
                 collisionsprites.Add(new Sprite(new Texture("Resources/Map/Test1.png")) { Position = new Vector2f(cobj.xCoordinates, cobj.yCoordinates), Scale = new Vector2f(cobj.width, cobj.height) });
 
-
-                CollisionRectangleShapes.Add(new IntRect (cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height));
-
-
+                CollisionRectangleShapes.Add(new IntRect(cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height));
             }
         }
-
 
         public void Draw(RenderWindow window)
         {
@@ -194,16 +173,11 @@ namespace GameplayWorld_DM
                     }
                 }
             }
-          
+
             //  foreach (Sprite sprite in collisionsprites)
             //{
-             //   window.Draw(sprite);
-            //}                           
+            //   window.Draw(sprite);
+            //}
         }
-
     }
 }
-
-
-
-

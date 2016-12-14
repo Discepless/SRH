@@ -1,17 +1,12 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using GameplayWorld_DM;
-using SFML.Graphics;
-using SFML.System;
-using SFML.Window;
+﻿using SFML.Graphics;
 
-namespace SFML_StateMachine
+namespace StateMachine
 {
-
     internal class Cat : AnimatedCharacter
     {
         private Map collisionObject;
         public IntRect CatRect;
+        public static bool CatIsDead = false;
 
         // Caching our Previos direction (Needed for Collisions)
         private float cachedDirection;
@@ -23,7 +18,7 @@ namespace SFML_StateMachine
             AnimLeft = new Animation(32, 0, 4);
             AnimUp = new Animation(96, 0, 4);
 
-            moveSpeed = 50;
+            moveSpeed = 0;
             animationSpeed = 0.1f;
 
             Xpos = 448;
@@ -31,26 +26,22 @@ namespace SFML_StateMachine
 
             collisionObject = map;
             this.CurrentState = MoveDirection.MoveWest;
-
         }
 
         public override void Update(float deltaTime)
-        {           
-            
+        {
             CatRect = new IntRect((int)Xpos, (int)Ypos, 32, 32);
-
 
             // 1 North, 2 South , 3 East, 4 West  Collision with the Walls
 
             foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
             {
-
                 if ((CatRect.Left + CatRect.Width >= collisionrect.Left) &&
                     (CatRect.Left <= collisionrect.Left + collisionrect.Width) &&
                     (CatRect.Top + CatRect.Height >= collisionrect.Top) &&
                     (CatRect.Top <= collisionrect.Top + collisionrect.Height) && CatRect.Left + CatRect.Width < collisionrect.Left + collisionrect.Width)
                 {
-                     this.CurrentState = MoveDirection.MoveWest;
+                    this.CurrentState = MoveDirection.MoveWest;
                 }
 
                 if ((CatRect.Left + CatRect.Width >= collisionrect.Left) &&
@@ -60,8 +51,7 @@ namespace SFML_StateMachine
                 {
                     this.CurrentState = MoveDirection.MoveEast;
                 }
-                
-            }        
+            }
             base.Update(deltaTime);
         }
     }

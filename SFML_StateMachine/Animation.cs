@@ -1,4 +1,4 @@
-﻿namespace SFML_StateMachine
+﻿namespace StateMachine
 {
     internal class Animation
     {

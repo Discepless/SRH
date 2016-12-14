@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
-using SFML.Window;
-using GameEngine;
-
+using System.Collections.Generic;
 
 namespace StateMachine
 {
-    class Inventar_Fightscene 
+    internal class Inventar_Fightscene
     {
         public List<Sprite> itemList;
         public List<Sprite> unchecked_checkbox_list;
@@ -19,17 +12,16 @@ namespace StateMachine
 
         public View view;
 
-        bool SimpleSword = true;
-        bool GoldenSword = false;
-        bool SimpleArrow = true;
+        private bool SimpleSword = true;
+        private bool GoldenSword = false;
+        private bool SimpleArrow = true;
 
-        Sprite simpleSword;
-        Sprite goldenSword;
-        Sprite simpleArrow;
+        private Sprite simpleSword;
+        private Sprite goldenSword;
+        private Sprite simpleArrow;
 
         public Inventar_Fightscene()
         {
-            
             //public void InitializeItem()
             {
                 itemList = new List<Sprite>();
@@ -40,7 +32,6 @@ namespace StateMachine
 
                 itemList.Add(new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg")) { Position = new Vector2f(1000, 950), Scale = new Vector2f(.04f, .04f) });
 
-
                 unchecked_checkbox_list = new List<Sprite>();
 
                 unchecked_checkbox_list.Add(new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { Position = new Vector2f(900, 705), Scale = new Vector2f(.1f, .1f) });
@@ -49,19 +40,16 @@ namespace StateMachine
 
                 unchecked_checkbox_list.Add(new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { Position = new Vector2f(900, 945), Scale = new Vector2f(.1f, .1f) });
 
-
                 checked_checkbox_list = new List<Sprite>();
 
-                checked_checkbox_list.Add(simpleSword = new Sprite (new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = new Vector2f(900, 705), Scale = new Vector2f(.065f, .065f) });
- 
+                checked_checkbox_list.Add(simpleSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = new Vector2f(900, 705), Scale = new Vector2f(.065f, .065f) });
+
                 checked_checkbox_list.Add(goldenSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = new Vector2f(900, 805), Scale = new Vector2f(.065f, .065f) });
 
                 checked_checkbox_list.Add(simpleArrow = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = new Vector2f(900, 945), Scale = new Vector2f(.065f, .065f) });
-
-
-                
             }
         }
+
         public void Draw(RenderWindow window)
         {
             foreach (Sprite itemsprite in itemList)
@@ -79,22 +67,24 @@ namespace StateMachine
             }
         }
 
-
         // Equippes Item
         public void Equipp_SimpleSword()
         {
             SimpleSword = true;
             GoldenSword = false;
         }
+
         public void Equipp_GoldenSword()
         {
             GoldenSword = true;
             SimpleSword = false;
         }
+
         public void Equipp_SimpleArrow()
         {
             SimpleArrow = true;
         }
+
         //public void DrawItems()
         //{
         //    _gameObject.Window.Draw(simple_sword_item);

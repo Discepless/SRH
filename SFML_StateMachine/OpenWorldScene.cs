@@ -1,10 +1,7 @@
-﻿using GameEngine;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
-using SFML_StateMachine;
-using SFML_StateMachine.Enemies;
 
-namespace GameplayWorld_DM
+namespace StateMachine
 {
     internal class OpenWorldScene : Scene
     {
@@ -20,7 +17,6 @@ namespace GameplayWorld_DM
         public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
         public View view;
-
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
@@ -38,36 +34,31 @@ namespace GameplayWorld_DM
 
         public override void Draw()
         {
-           
+            _map.Draw(_gameObject.Window);
+            myCharacter.Draw(_gameObject.Window);
+            if (!Cat.CatIsDead) cat.Draw(_gameObject.Window);
+            bat.Draw(_gameObject.Window);
+            mage.Draw(_gameObject.Window);
+            finalBoss.Draw(_gameObject.Window);
+            enemyKilledWithSword.Draw(_gameObject.Window);
 
-           _map.Draw(_gameObject.Window);
-           myCharacter.Draw(_gameObject.Window);
-           cat.Draw(_gameObject.Window);
-           bat.Draw(_gameObject.Window);
-           mage.Draw(_gameObject.Window);
-           finalBoss.Draw(_gameObject.Window);
-           enemyKilledWithSword.Draw(_gameObject.Window);
-           
-            
-           ItemsAndNpcs.Draw(_gameObject.Window);
-           
-           
-           _gameObject.Window.SetView(view);
+            ItemsAndNpcs.Draw(_gameObject.Window);
+
+            _gameObject.Window.SetView(view);
 
             base.Draw();
         }
 
         public override void Update()
         {
-            
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
             enemyKilledWithSword.Update(deltatime);
-            cat.Update(deltatime);
+            if (!Cat.CatIsDead) cat.Update(deltatime);
             bat.Update(deltatime);
             finalBoss.Update(deltatime);
             mage.Update(deltatime);
-            
+
             view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
 
             //ReWork Animation classes into small pieces

@@ -1,5 +1,4 @@
-﻿using GameEngine;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
 
 namespace StateMachine
@@ -31,12 +30,11 @@ namespace StateMachine
 
         public override void Update()
         {
-            
             if (clock.ElapsedTime.AsSeconds() > 2)
 
             {
                 _gameObject.SceneManager.GotoScene("main");
-               // this.Dispose();
+                // this.Dispose();
             }
 
             _gameObject.Window.Draw(Splashsprite);
