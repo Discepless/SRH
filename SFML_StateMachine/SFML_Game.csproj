@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="AnimatedCharacter.cs" />
     <Compile Include="Animation.cs" />
+    <Compile Include="Collision.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Fightscene.cs" />
     <Compile Include="GameObject.cs" />

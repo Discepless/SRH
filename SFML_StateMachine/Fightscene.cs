@@ -447,11 +447,17 @@ namespace StateMachine
 
 
             if (e.Code == Keyboard.Key.Escape)
+            {
                 _gameObject.SceneManager.GotoScene("OpenWorld");
+              //  _gameObject.SceneManager.CurrentScene.Dispose();
+            }
         }
 
         public override void Update()
         {
+            //if (healthLeft <= 0)
+            //    Reset();
+
             Timer.Update();
             //Fightscene Logic
            // Console.WriteLine(ShowTextBox);
@@ -475,12 +481,13 @@ namespace StateMachine
                 _gameObject.SceneManager.StartScene("main");
 
             //Enemy Slide Down (when dead)
-            if (enemyHealthLeft <= 0)
+            if (enemyHealthLeft <= 0 && enemy_sprite.Position.Y <= 5500)
                 enemy_sprite.Position += new Vector2f(0, 50);
             if (enemy_sprite.Position.Y >= 5500)
             {
                 _gameObject.SceneManager.GotoScene("OpenWorld");
                 enemy_sprite.Position = new Vector2f(0, 90);
+            //    _gameObject.SceneManager.CurrentScene.Dispose();
             }
 
             //Arrow Move
@@ -718,7 +725,11 @@ namespace StateMachine
         }
 
         //Erstellte Methoden
-
+        public override void Reset()
+        {
+            InitializeItems();
+            base.Reset();
+        }
         //Handles objects when to move
 
         public bool SlideInMove_character()

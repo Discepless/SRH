@@ -10,6 +10,7 @@ namespace SFML_StateMachine
     internal class MainCharacter : AnimatedCharacter
     {
         private Map map;
+        
         private OpenWorldScene OpenworldScene;
         private IntRect PlayerRectangle;
         private Teleport teleport;
@@ -62,7 +63,7 @@ namespace SFML_StateMachine
             // Intersection with a Enemy
             if (PlayerRectangle.Intersects(map.MyScene.myEnemy.EnemyRectangle))
             {              
-                map.MyScene.gameObject.SceneManager.GotoScene("fight");
+                map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
 
             //Intersection with Bow
@@ -114,75 +115,112 @@ namespace SFML_StateMachine
             foreach (var collisionrect in map.CollisionRectangleShapes)
             {
 
-                if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
-                    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Left + PlayerRectangle.Width < collisionrect.Left + collisionrect.Width)
-                {
-                    if (cachedDirection == 4)
-                    {
-                        moveSpeed = 0;
-                    }
-                }
+                //if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
+                //    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
+                //    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
+                //    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Left + PlayerRectangle.Width < collisionrect.Left + collisionrect.Width)
+                //{
+                //    //if (cachedDirection == 4)
+                //    //{
+                //    //    moveSpeed = 0;
+                //    //}
+                //}
 
-                if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
-                    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Top + PlayerRectangle.Height > collisionrect.Top + collisionrect.Height)
-                {
-                    if (cachedDirection == 1)
-                    {
-                        moveSpeed = 0;
-                    }
-                }
-                    if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
-                    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Top < collisionrect.Top)
-                {
-                    if (cachedDirection == 2)
-                    {
-                        moveSpeed = 0;                       
-                    }
-                }
+                //if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
+                //    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
+                //    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
+                //    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Top + PlayerRectangle.Height > collisionrect.Top + collisionrect.Height)
+                //{
+                //    //if (cachedDirection ==  1)
+                //    //{
+                //    //    moveSpeed = 0;
+                //    //}
+                //}
+                Collision();
+                //if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
+                //(PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
+                //(PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
+                //(PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Top < collisionrect.Top)
+                //{
+                //    if (cachedDirection == 2)
+                //    {
+                //        moveSpeed = 0;
+                //    }
+                //}
 
-                if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
-                    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Left > collisionrect.Left)
-                {
-                    if (cachedDirection == 3)
-                    {
-                        moveSpeed = 0;
-                    }
-                }
+                //if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
+                //    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
+                //    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
+                //    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Left > collisionrect.Left)
+                //{
+                //    //if (cachedDirection == 3)
+                //    //{
+                //    //    moveSpeed = 0;
+                //    //}
+                //}
             }
-
+            // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
             // Movement
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
                 this.CurrentState = MoveDirection.MoveNorth;
                 cachedDirection = 1;
+                Collision();
 
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.S))
             {
                 this.CurrentState = MoveDirection.MoveSouth;
-                cachedDirection = 2;         
+                cachedDirection = 2;
+                Collision();
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.A))
             {
                 this.CurrentState = MoveDirection.MoveWest;
-                cachedDirection = 3;              
+                cachedDirection = 3;
+                Collision();
             }
             else if (Keyboard.IsKeyPressed(Keyboard.Key.D))
             {
                 this.CurrentState = MoveDirection.MoveEast;
                 cachedDirection = 4;
-
+                Collision();
             }
             base.Update(deltaTime);
+        }
+
+        public void Collision()
+        {
+
+            foreach (var collisionrect in map.CollisionRectangleShapes)
+
+                if (PlayerRectangle.TouchTop(collisionrect))
+                if (cachedDirection == 2)
+                {
+                    moveSpeed = 0;
+                }
+
+            foreach (var collisionrect in map.CollisionRectangleShapes)
+                if (PlayerRectangle.TouchRight(collisionrect))
+                    if (cachedDirection == 3)
+                    {
+                        moveSpeed = 0;
+                    }
+
+            foreach (var collisionrect in map.CollisionRectangleShapes)
+                if(PlayerRectangle.TouchLeft(collisionrect))
+                    if (cachedDirection == 4)
+                    {
+                        moveSpeed = 0;
+                    }
+
+            foreach (var collisionrect in map.CollisionRectangleShapes)
+                if(PlayerRectangle.TouchBottom(collisionrect))
+                    if (cachedDirection == 1)
+                    {
+                        moveSpeed = 0;
+                    }
         }
     }
 }
