@@ -25,7 +25,6 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x8
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.exe
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\obj\x86\Debug\SFML_StateMachine.pdb
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\aherohasfallen.wav
-C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Characters\SailorMoon.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Character_Fightscene\Character_fight.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Character_Fightscene\Enemy_fight.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Map\NotVisible.png
@@ -58,3 +57,15 @@ C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resour
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox_checked.png
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\goldenSword.png
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Textbox.jpeg
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Characters\Enemy.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Characters\MainCharacter.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Characters\NPCSword.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Character_Fightscene\SailorMoon_Fightscene.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Items\Bow.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Items\Key.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox-unchecked.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox_checked.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\goldenSword.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Textbox.jpeg
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Items\DoorClosed.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Items\DoorOpened.png

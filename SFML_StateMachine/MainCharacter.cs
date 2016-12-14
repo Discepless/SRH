@@ -80,6 +80,16 @@ namespace SFML_StateMachine
  
             }
 
+            //Intersection with Door
+
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.DoorsRect ) && cachedDirection ==2)
+            {
+                if (ItemsAndNpcs.KeyPicked == true) ItemsAndNpcs.DoorsOpened  = true;
+
+                if (ItemsAndNpcs.KeyPicked == false) moveSpeed = 0; //Ypos = ItemsAndNpcs .DoorsYpos  -50;
+            }
+
+
             // Intersection with Healing
 
             if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect))
@@ -102,7 +112,11 @@ namespace SFML_StateMachine
                 Ypos = teleport.AyPos + 58;
                 teleportClock.Restart();
             }
+<<<<<<< HEAD
             // 1 North, 2 South , 3 East, 4 West  Collision with the Walls
+=======
+            // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
+>>>>>>> origin/master
 
             foreach (var collisionrect in map.CollisionRectangleShapes)
             {
