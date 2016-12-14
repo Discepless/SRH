@@ -59,10 +59,10 @@ namespace SFML_StateMachine
             teleportCooldown = teleportClock.ElapsedTime.AsSeconds();
 
 
-            // Intersection with a Enemy
-            if (PlayerRectangle.Intersects(map.MyScene.myEnemy.EnemyRectangle))
+            // Intersection with a Cat
+            if (PlayerRectangle.Intersects(map.MyScene.cat.CatRect))
             {              
-                map.MyScene.gameObject.SceneManager.GotoScene("fight");
+                map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
 
             //Intersection with Bow
@@ -76,6 +76,7 @@ namespace SFML_StateMachine
             if (PlayerRectangle.Intersects(ItemsAndNpcs.KeyRect))
             {
                 ItemsAndNpcs.KeyPicked = true;
+                //TODO LOGIC
  
             }
 
@@ -85,6 +86,8 @@ namespace SFML_StateMachine
             {
                 //TODO HEAL UP LOGIC
             }
+
+
 
             if (PlayerRectangle.Intersects(teleport.TeleportA) && teleportCooldown > 2)
             {
@@ -99,7 +102,7 @@ namespace SFML_StateMachine
                 Ypos = teleport.AyPos + 58;
                 teleportClock.Restart();
             }
-            // 1 North, 2 East , 3 South, 4 West  Collision with the Walls
+            // 1 North, 2 South , 3 East, 4 West  Collision with the Walls
 
             foreach (var collisionrect in map.CollisionRectangleShapes)
             {
@@ -149,6 +152,9 @@ namespace SFML_StateMachine
             }
 
             // Movement
+
+            Console.WriteLine("X" + Xpos);
+            Console.Write("Y" + Ypos);
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {

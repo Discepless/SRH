@@ -404,7 +404,7 @@ namespace StateMachine
 
 
             if (e.Code == Keyboard.Key.Escape)
-                _gameObject.SceneManager.GotoScene("OpenWorld");
+                _gameObject.SceneManager.StartScene("OpenWorld");
         }
 
         public override void Update()
@@ -434,6 +434,7 @@ namespace StateMachine
                 enemy_sprite.Position += new Vector2f(0, 50);
             if (enemy_sprite.Position.Y >= 5500)
                 _gameObject.SceneManager.GotoScene("OpenWorld");
+                
 
             //Arrow Move
             if (Arrow_move())

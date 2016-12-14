@@ -389,6 +389,6 @@
   <character id="115" name="FullHP" x="1667" y="1453" width="54" height="18"/>
  </CharacterGroup>
  <DoorsGroup color="#00ff00" name="Doors">
-  <dooors id="76" name="DoorsNeedKey to dissapear" x="893.333" y="702.667" width="97.3333" height="33.3333"/>
+  <dooors id="76" name="DoorsNeedKey to dissapear" x="893" y="702" width="97" height="33"/>
  </DoorsGroup>
 </map>

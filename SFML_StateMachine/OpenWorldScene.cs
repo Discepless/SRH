@@ -11,7 +11,7 @@ namespace GameplayWorld_DM
 
         private Clock clock = new Clock();
         public MainCharacter myCharacter;
-        public Enemy myEnemy;
+        public Cat cat;
         public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
         public View view;
@@ -19,10 +19,10 @@ namespace GameplayWorld_DM
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
-            view = new View(new Vector2f(0, 0), new Vector2f(640, 480));
+            view = new View(new Vector2f(0, 0), new Vector2f(1920, 1080));
             _map = new Map(this);
             myCharacter = new MainCharacter(_map);
-            myEnemy = new Enemy(_map);
+            cat = new Cat(_map);
             ItemsAndNpcs = new ItemsAndNpcs();
             this.gameObject = gameObject;
         }
@@ -33,7 +33,7 @@ namespace GameplayWorld_DM
 
            _map.Draw(_gameObject.Window);
            myCharacter.Draw(_gameObject.Window);
-           myEnemy.Draw(_gameObject.Window);
+           cat.Draw(_gameObject.Window);
            ItemsAndNpcs.Draw(_gameObject.Window);
            
            
@@ -42,9 +42,10 @@ namespace GameplayWorld_DM
 
         public override void Update()
         {
+            
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
-            myEnemy.Update(deltatime);
+            cat.Update(deltatime);
             view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
 
             //ReWork Animation classes into small pieces

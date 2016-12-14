@@ -11,9 +11,9 @@ namespace SFML_StateMachine
 {
     class ItemsAndNpcs
     {
-        public IntRect BowRect,KeyRect, HealingRect;
-        public Texture BowTexture, KeyTexture;
-        public Sprite BowSprite,KeySprite;
+        public IntRect BowRect,KeyRect, HealingRect,NPCRect;
+        public Texture BowTexture, KeyTexture, NPCTexture;
+        public Sprite BowSprite,KeySprite,NPCSprite;
 
         public static bool BowPicked,KeyPicked,SwordPicked;
 
@@ -33,7 +33,13 @@ namespace SFML_StateMachine
             KeyXpos,
             KeyYpos,
             KeyWidth,
-            KeyHeight;
+            KeyHeight,
+            //////////
+            NPCXpos,
+            NPCYpos,
+            NPCWidth,
+            NPCHeight;
+
 
 
 
@@ -44,10 +50,15 @@ namespace SFML_StateMachine
             BowWidth = 16;
             BowHeight = 16;
 
-            KeyXpos = 0;
-            KeyYpos = 0;
-            KeyWidth = 0;
-            KeyHeight = 0;
+            KeyXpos = 2306;
+            KeyYpos = 529;
+            KeyWidth = 16;
+            KeyHeight = 16;
+
+            NPCXpos = 392;
+            NPCYpos = 628;
+            NPCWidth = 48;
+            NPCHeight = 32;
 
             KeyRect = new IntRect(KeyXpos,KeyYpos,KeyWidth,KeyHeight);
             KeyTexture = new Texture("Resources/Items/Key.png");
@@ -56,6 +67,10 @@ namespace SFML_StateMachine
             BowRect = new IntRect(BowXpos,BowYPos, BowWidth, BowHeight);
             BowTexture = new Texture("Resources/Items/Bow.png");
             BowSprite = new Sprite(BowTexture) {Position = new Vector2f(BowXpos, BowYPos), Scale = new Vector2f(0.5f,0.5f)};
+
+            NPCRect = new IntRect(NPCXpos,NPCYpos,NPCWidth,NPCHeight);
+            NPCTexture = new Texture("Resources/Characters/NPCSword.png");
+            NPCSprite = new Sprite(NPCTexture) {Position = new Vector2f(NPCXpos, NPCYpos)}; ;
 
             HealingRect = new IntRect(HealingXpos,HealingYpos,HealingWidth,HealingHeight);
         }
@@ -71,6 +86,7 @@ namespace SFML_StateMachine
             {
                 window.Draw(KeySprite);
             }
+            window.Draw(NPCSprite);
         }
     }
 }
