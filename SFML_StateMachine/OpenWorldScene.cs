@@ -13,6 +13,7 @@ namespace GameplayWorld_DM
         private Clock clock = new Clock();
         public MainCharacter myCharacter;
         public Cat cat;
+        public Bat bat;
         public EnemyKilledWithSword enemyKilledWithSword;
         public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
@@ -25,6 +26,7 @@ namespace GameplayWorld_DM
             _map = new Map(this);
             myCharacter = new MainCharacter(_map);
             cat = new Cat(_map);
+            bat = new Bat(_map);
             enemyKilledWithSword = new EnemyKilledWithSword(_map);
             ItemsAndNpcs = new ItemsAndNpcs();
             this.gameObject = gameObject;
@@ -32,17 +34,21 @@ namespace GameplayWorld_DM
 
         public override void Draw()
         {
-            base.Draw();
+           
 
            _map.Draw(_gameObject.Window);
            myCharacter.Draw(_gameObject.Window);
            cat.Draw(_gameObject.Window);
+           bat.Draw(_gameObject.Window);
            enemyKilledWithSword.Draw(_gameObject.Window);
+           
             
            ItemsAndNpcs.Draw(_gameObject.Window);
            
            
-            _gameObject.Window.SetView(view);
+           _gameObject.Window.SetView(view);
+
+            base.Draw();
         }
 
         public override void Update()
@@ -52,6 +58,7 @@ namespace GameplayWorld_DM
             myCharacter.Update(deltatime);
             enemyKilledWithSword.Update(deltatime);
             cat.Update(deltatime);
+            bat.Update(deltatime);
             
             view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
 

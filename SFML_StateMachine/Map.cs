@@ -31,9 +31,6 @@ namespace GameplayWorld_DM
         private const uint FLIPPED_VERTICALLY_FLAG = 0x40000000;
         private const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
 
-        Timer time;
-        Clock clock;
-        int AnimatedTile = 3252;
 
         public OpenWorldScene MyScene;
 
@@ -65,7 +62,8 @@ namespace GameplayWorld_DM
 
                 spritePool = new Sprite[_tileMapHeight * _tileMapWidth + 1];
                 spritePool[0] = new Sprite(new Texture("Resources/Map/NotVisible.png"));
-                // Нарезка атласа в спрайты
+               
+                // Cutting Atlas into Tiles
 
                 for (int y = 0; y < _tileMapHeight; y++)
                 {
@@ -96,28 +94,19 @@ namespace GameplayWorld_DM
                                                   FLIPPED_DIAGONALLY_FLAG);
 
                             
-                            if (globalId== AnimatedTile+1) //+1 to id of original tile you see in tmx editor
-
-                            {
-                                
-                                Console.WriteLine("SUCESS");
-                                
-                                _tiles[x, y, currentlayer] = new Sprite(spritePool[id + 1]); }
-
-                            else
-                            {
+                            
                                 _tiles[x, y, currentlayer] = new Sprite(spritePool[id]);
-                            }
+
                             bool fh = (globalId & FLIPPED_HORIZONTALLY_FLAG) != 0;
-                                bool fv = (globalId & FLIPPED_VERTICALLY_FLAG) != 0;
-                                bool fd = (globalId & FLIPPED_DIAGONALLY_FLAG) != 0;
+                            bool fv = (globalId & FLIPPED_VERTICALLY_FLAG) != 0;
+                            bool fd = (globalId & FLIPPED_DIAGONALLY_FLAG) != 0;
                             
                            
 
 
                             _tiles[x, y, currentlayer].Position = new Vector2f((x) * _tileWidth, (y) * _tileHeight);
 
-                            // §$%&/(
+                            // Check the Rotation of Tiles
                             if (fh && !fv && !fd)
                             {
                                 _tiles[x, y, currentlayer].Scale = new Vector2f(-1, 1);
@@ -190,38 +179,7 @@ namespace GameplayWorld_DM
 
 
             }
-
-
-                // collisionSprite.Position = new Vector2f(cobj.xCoordinates,cobj.yCoordinates);      
-
-
-
-
-                //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates, cobj.yCoordinates, cobj.width, cobj.height); 
-                //collisionSprite.TextureRect = CollisionRect.TextureRect;
-
-
-                //CollisionRect = new RectangleShape();
-                //CollisionRect.TextureRect = new IntRect(cobj.xCoordinates,cobj.yCoordinates,cobj.width,cobj.height);
-
-                //Console.WriteLine("id " + cobj.id, "XCoord" + cobj.xCoordinates, "YCoord" + cobj.yCoordinates, "width" + cobj.width, "height" + cobj.height);
-            }
-
-
-        /*
-        xmlDoc.Descendants("object").Select(x => new
-        {
-            id = x.Attribute("id").Value,
-            xCoordinates = x.Attribute("x").Value,
-            yCoordinates = x.Attribute("y").Value,
-            width = x.Attribute("width").Value,
-            height = x.Attribute("height").Value,
-
-        }).ToList().ForEach(x =>
-        {
-            IntRect CollisionRect = new IntRect();
-        });
-        */
+        }
 
 
         public void Draw(RenderWindow window)
@@ -236,7 +194,8 @@ namespace GameplayWorld_DM
                     }
                 }
             }
-          //  foreach (Sprite sprite in collisionsprites)
+          
+            //  foreach (Sprite sprite in collisionsprites)
             //{
              //   window.Draw(sprite);
             //}                           
