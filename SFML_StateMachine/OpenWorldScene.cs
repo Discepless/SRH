@@ -14,6 +14,7 @@ namespace GameplayWorld_DM
         public MainCharacter myCharacter;
         public Cat cat;
         public Bat bat;
+        public Mage mage;
         public EnemyKilledWithSword enemyKilledWithSword;
         public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
@@ -27,6 +28,7 @@ namespace GameplayWorld_DM
             myCharacter = new MainCharacter(_map);
             cat = new Cat(_map);
             bat = new Bat(_map);
+            mage = new Mage(_map);
             enemyKilledWithSword = new EnemyKilledWithSword(_map);
             ItemsAndNpcs = new ItemsAndNpcs();
             this.gameObject = gameObject;
@@ -40,6 +42,7 @@ namespace GameplayWorld_DM
            myCharacter.Draw(_gameObject.Window);
            cat.Draw(_gameObject.Window);
            bat.Draw(_gameObject.Window);
+           mage.Draw(_gameObject.Window);
            enemyKilledWithSword.Draw(_gameObject.Window);
            
             
@@ -59,6 +62,7 @@ namespace GameplayWorld_DM
             enemyKilledWithSword.Update(deltatime);
             cat.Update(deltatime);
             bat.Update(deltatime);
+            mage.Update(deltatime);
             
             view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
 

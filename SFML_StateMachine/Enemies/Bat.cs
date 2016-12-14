@@ -14,7 +14,6 @@ namespace SFML_StateMachine.Enemies
         public IntRect BatRect;
 
         // Caching our Previos direction (Needed for Collisions)
-        private float cachedDirection;
 
         public Bat(Map map) : base("Resources/Characters/Bat.png", 32, 48)
         {
