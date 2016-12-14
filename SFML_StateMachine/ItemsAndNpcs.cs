@@ -11,11 +11,11 @@ namespace SFML_StateMachine
 {
     class ItemsAndNpcs
     {
-        public IntRect BowRect,KeyRect, HealingRect;
-        public Texture BowTexture, KeyTexture;
-        public Sprite BowSprite,KeySprite;
+        public IntRect BowRect,KeyRect, HealingRect, DoorsRect ;
+        public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture;
+        public Sprite BowSprite,KeySprite,DoorsOpenedSprite, DoorsClosedSprite ;
 
-        public static bool BowPicked,KeyPicked,SwordPicked;
+        public static bool BowPicked,KeyPicked,SwordPicked,DoorsOpened;
 
         public int
             ///Positions for ItemsAndNpcs and Things on a map//////
@@ -33,7 +33,13 @@ namespace SFML_StateMachine
             KeyXpos,
             KeyYpos,
             KeyWidth,
-            KeyHeight;
+            KeyHeight,
+        //////////
+             DoorsXpos,
+            DoorsYpos,
+            DoorsWidth,
+            DoorsHeight;
+
 
 
 
@@ -49,6 +55,12 @@ namespace SFML_StateMachine
             KeyWidth = 0;
             KeyHeight = 0;
 
+            DoorsXpos = 893;
+            DoorsYpos = 702;
+            DoorsWidth = 97;
+            DoorsHeight = 33; 
+
+
             KeyRect = new IntRect(KeyXpos,KeyYpos,KeyWidth,KeyHeight);
             KeyTexture = new Texture("Resources/Items/Key.png");
             KeySprite = new Sprite(KeyTexture) { Position = new Vector2f(KeyXpos, KeyYpos), Scale = new Vector2f(0.5f, 0.5f) };
@@ -56,6 +68,12 @@ namespace SFML_StateMachine
             BowRect = new IntRect(BowXpos,BowYPos, BowWidth, BowHeight);
             BowTexture = new Texture("Resources/Items/Bow.png");
             BowSprite = new Sprite(BowTexture) {Position = new Vector2f(BowXpos, BowYPos), Scale = new Vector2f(0.5f,0.5f)};
+
+            DoorsRect = new IntRect(DoorsXpos, DoorsYpos, DoorsWidth, DoorsHeight);
+            DoorsOpenedTexture = new Texture("Resources/Items/Key.png"); //TODO find and load sprite
+            DoorsClosedTexture = new Texture("Resources/Items/Key.png");
+            DoorsOpenedSprite = new Sprite(DoorsOpenedTexture) { Position = new Vector2f(KeyXpos, KeyYpos), Scale = new Vector2f(0.5f, 0.5f) };
+            DoorsClosedSprite = new Sprite(DoorsClosedTexture) { Position = new Vector2f(KeyXpos, KeyYpos), Scale = new Vector2f(0.5f, 0.5f) };
 
             HealingRect = new IntRect(HealingXpos,HealingYpos,HealingWidth,HealingHeight);
         }
@@ -70,7 +88,11 @@ namespace SFML_StateMachine
             if (KeyPicked == false)
             {
                 window.Draw(KeySprite);
-            }
+                window.Draw(DoorsClosedSprite);
+
+            }else{window.Draw(DoorsOpenedSprite);}
+
+
         }
     }
 }
