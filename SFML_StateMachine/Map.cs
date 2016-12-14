@@ -32,7 +32,7 @@ namespace GameplayWorld_DM
         private const uint FLIPPED_DIAGONALLY_FLAG = 0x20000000;
 
         Timer time;
-       Clock clock;
+        Clock clock;
         int AnimatedTile = 3252;
 
         public OpenWorldScene MyScene;

@@ -12,14 +12,18 @@ namespace GameplayWorld_DM
         private Clock clock = new Clock();
         public MainCharacter myCharacter;
         public Enemy myEnemy;
+        public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
-        private View view = new View(new Vector2f(0, 0), new Vector2f(1000, 1000));
+        public View view;
+
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
+            view = new View(new Vector2f(0, 0), new Vector2f(640, 480));
             _map = new Map(this);
             myCharacter = new MainCharacter(_map);
             myEnemy = new Enemy(_map);
+            ItemsAndNpcs = new ItemsAndNpcs();
             this.gameObject = gameObject;
         }
 
@@ -27,10 +31,12 @@ namespace GameplayWorld_DM
         {
             base.Draw();
 
-            _map.Draw(_gameObject.Window);
-            myCharacter.Draw(_gameObject.Window);
-            myEnemy.Draw(_gameObject.Window);
-
+           _map.Draw(_gameObject.Window);
+           myCharacter.Draw(_gameObject.Window);
+           myEnemy.Draw(_gameObject.Window);
+           ItemsAndNpcs.Draw(_gameObject.Window);
+           
+           
             _gameObject.Window.SetView(view);
         }
 

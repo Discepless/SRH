@@ -118,8 +118,11 @@ namespace GameEngine
         {
             if (disposing)
             {
-                //do smth
+                // free other managed objects that implement
+                // IDisposable only
+                // see https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx
             }
+
         }
     }
 }

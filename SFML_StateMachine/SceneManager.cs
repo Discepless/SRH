@@ -4,7 +4,7 @@ namespace GameEngine
 {
     public class SceneManager
     {
-        private Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>(); //array with names and corresponding scenes
+        public Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>(); //array with names and corresponding scenes
 
         public Scene CurrentScene = null;
 
