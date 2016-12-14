@@ -34,8 +34,8 @@ namespace SFML_StateMachine
             KeyYpos,
             KeyWidth,
             KeyHeight,
-        //////////
-             DoorsXpos,
+            //////////
+            DoorsXpos,
             DoorsYpos,
             DoorsWidth,
             DoorsHeight;
@@ -55,10 +55,10 @@ namespace SFML_StateMachine
             KeyWidth = 0;
             KeyHeight = 0;
 
-            DoorsXpos = 893;
-            DoorsYpos = 702;
-            DoorsWidth = 97;
-            DoorsHeight = 33; 
+            DoorsXpos = 896;
+            DoorsYpos = 704;
+            DoorsWidth = 96;
+            DoorsHeight = 32; 
 
 
             KeyRect = new IntRect(KeyXpos,KeyYpos,KeyWidth,KeyHeight);
@@ -70,10 +70,10 @@ namespace SFML_StateMachine
             BowSprite = new Sprite(BowTexture) {Position = new Vector2f(BowXpos, BowYPos), Scale = new Vector2f(0.5f,0.5f)};
 
             DoorsRect = new IntRect(DoorsXpos, DoorsYpos, DoorsWidth, DoorsHeight);
-            DoorsOpenedTexture = new Texture("Resources/Items/Key.png"); //TODO find and load sprite
-            DoorsClosedTexture = new Texture("Resources/Items/Key.png");
-            DoorsOpenedSprite = new Sprite(DoorsOpenedTexture) { Position = new Vector2f(KeyXpos, KeyYpos), Scale = new Vector2f(0.5f, 0.5f) };
-            DoorsClosedSprite = new Sprite(DoorsClosedTexture) { Position = new Vector2f(KeyXpos, KeyYpos), Scale = new Vector2f(0.5f, 0.5f) };
+            DoorsOpenedTexture = new Texture("Resources/Items/DoorOpened.png"); 
+            DoorsClosedTexture = new Texture("Resources/Items/DoorClosed.png");
+            DoorsOpenedSprite = new Sprite(DoorsOpenedTexture) { Position = new Vector2f(DoorsXpos, DoorsYpos), Scale = new Vector2f(1f, 1f) };
+            DoorsClosedSprite = new Sprite(DoorsClosedTexture) { Position = new Vector2f(DoorsXpos, DoorsYpos), Scale = new Vector2f(1f, 1f) };
 
             HealingRect = new IntRect(HealingXpos,HealingYpos,HealingWidth,HealingHeight);
         }
@@ -88,10 +88,13 @@ namespace SFML_StateMachine
             if (KeyPicked == false)
             {
                 window.Draw(KeySprite);
-                window.Draw(DoorsClosedSprite);
+            }
 
-            }else{window.Draw(DoorsOpenedSprite);}
+            if (DoorsOpened == true)
+            {
+                window.Draw(DoorsOpenedSprite);
 
+            }else{ window.Draw(DoorsClosedSprite); }
 
         }
     }

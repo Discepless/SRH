@@ -79,6 +79,15 @@ namespace SFML_StateMachine
  
             }
 
+            //Intersection with Door
+
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.DoorsRect ) && ItemsAndNpcs.KeyPicked ==true)
+            {
+                ItemsAndNpcs.DoorsOpened  = true;
+
+            }
+
+
             // Intersection with Healing
 
             if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect))

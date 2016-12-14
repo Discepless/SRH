@@ -67,3 +67,5 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x8
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox_checked.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\goldenSword.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Textbox.jpeg
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Items\DoorClosed.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\x86\Debug\Resources\Items\DoorOpened.png
