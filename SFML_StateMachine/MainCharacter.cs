@@ -81,10 +81,11 @@ namespace SFML_StateMachine
 
             //Intersection with Door
 
-            if (PlayerRectangle.Intersects(ItemsAndNpcs.DoorsRect ) && ItemsAndNpcs.KeyPicked ==true)
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.DoorsRect ) )
             {
-                ItemsAndNpcs.DoorsOpened  = true;
+                if (ItemsAndNpcs.KeyPicked == true) ItemsAndNpcs.DoorsOpened  = true;
 
+                if (ItemsAndNpcs.KeyPicked == false) Ypos = ItemsAndNpcs .DoorsYpos  -50;
             }
 
 
