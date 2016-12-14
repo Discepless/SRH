@@ -19,7 +19,6 @@ namespace StateMachine
 
             Fightscene _fightscene = new Fightscene(game);
             _fightscene.Name = "fight";
-
             game.SceneManager.AddScene(_fightscene);
 
             MainScene _mainScene = new MainScene(game);

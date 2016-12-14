@@ -11,7 +11,6 @@ namespace GameEngine
         public void AddScene(Scene s)
         {
             _scenes.Add(s.Name, s);
-
             s.InitializeItems();
         }
 

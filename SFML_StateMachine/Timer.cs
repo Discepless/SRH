@@ -10,13 +10,12 @@ namespace StateMachine
 
         private Clock textbox_timer;
 
-    //    public float Current { get { return splashscreen_float_time; } }
-        public float Current { get { return splashscreen_timer.ElapsedTime.AsSeconds(); } }
+        public float Current { get { return splashscreen_float_time; } }
         public float GetTextboxClock { get { return textbox_timer.ElapsedTime.AsSeconds(); } }
 
         public void Update()
         {
-         //   splashscreen_float_time = splashscreen_time.AsSeconds() + splashscreen_timer.ElapsedTime.AsSeconds();
+            splashscreen_float_time =  splashscreen_timer.ElapsedTime.AsSeconds();
 
         }
 

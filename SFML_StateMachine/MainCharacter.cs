@@ -60,8 +60,12 @@ namespace SFML_StateMachine
             teleportCooldown = teleportClock.ElapsedTime.AsSeconds();
 
 
-            // Intersection with a Enemy
-            if (PlayerRectangle.Intersects(map.MyScene.myEnemy.EnemyRectangle))
+            // Intersection with a Cat
+            if (PlayerRectangle.Intersects(map.MyScene.cat.CatRect)|| 
+                PlayerRectangle.Intersects(map.MyScene.bat.BatRect) || 
+                PlayerRectangle.Intersects(map.MyScene.enemyKilledWithSword.EnemyKilledWithSwordRect)||
+                PlayerRectangle.Intersects(map.MyScene.mage.MageRect)||
+                PlayerRectangle.Intersects(map.MyScene.finalBoss.finalBossRect))
             {              
                 map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
@@ -77,6 +81,7 @@ namespace SFML_StateMachine
             if (PlayerRectangle.Intersects(ItemsAndNpcs.KeyRect))
             {
                 ItemsAndNpcs.KeyPicked = true;
+                //TODO LOGIC
  
             }
 
@@ -86,7 +91,8 @@ namespace SFML_StateMachine
             {
                 if (ItemsAndNpcs.KeyPicked == true) ItemsAndNpcs.DoorsOpened  = true;
 
-                if (ItemsAndNpcs.KeyPicked == false) moveSpeed = 0; //Ypos = ItemsAndNpcs .DoorsYpos  -50;
+                if (ItemsAndNpcs.KeyPicked == false) moveSpeed = 0; 
+                //Ypos = ItemsAndNpcs .DoorsYpos  -50;
             }
 
 
@@ -96,6 +102,8 @@ namespace SFML_StateMachine
             {
                 //TODO HEAL UP LOGIC
             }
+
+
 
             if (PlayerRectangle.Intersects(teleport.TeleportA) && teleportCooldown > 2)
             {
@@ -110,7 +118,10 @@ namespace SFML_StateMachine
                 Ypos = teleport.AyPos + 58;
                 teleportClock.Restart();
             }
+
+
             // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
+
 
             foreach (var collisionrect in map.CollisionRectangleShapes)
             {
@@ -161,6 +172,9 @@ namespace SFML_StateMachine
             }
             // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
             // Movement
+
+            Console.WriteLine("X" + Xpos);
+            Console.Write("Y" + Ypos);
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
