@@ -50,10 +50,10 @@ namespace SFML_StateMachine
             BowWidth = 16;
             BowHeight = 16;
 
-            KeyXpos = 0;
-            KeyYpos = 0;
-            KeyWidth = 0;
-            KeyHeight = 0;
+            KeyXpos = 928;
+            KeyYpos = 544;
+            KeyWidth = 68;
+            KeyHeight = 60;
 
             DoorsXpos = 896;
             DoorsYpos = 704;
