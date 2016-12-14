@@ -67,8 +67,8 @@ namespace SFML_StateMachine
             NPCWidth = 48;
             NPCHeight = 32;
 
-            KeyXpos = 928;
-            KeyYpos = 544;
+            KeyXpos = 2305;
+            KeyYpos = 530;
             KeyWidth = 68;
             KeyHeight = 60;
 
