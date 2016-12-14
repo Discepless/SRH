@@ -35,8 +35,8 @@ namespace StateMachine
 
             if (Timer.Current >= 1)
             {
-                _gameObject.SceneManager.StartScene("main");
-                this.Dispose();
+                _gameObject.SceneManager.GotoScene("main");
+               // this.Dispose();
             }
 
             _gameObject.Window.Draw(Splashsprite);

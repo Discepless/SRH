@@ -17,7 +17,7 @@ namespace StateMachine
         public List<Sprite> unchecked_checkbox_list;
         public List<Sprite> checked_checkbox_list;
 
-        Fightscene Fightscene;
+        public View view;
 
         bool SimpleSword = true;
         bool GoldenSword = false;
@@ -29,7 +29,7 @@ namespace StateMachine
 
         public Inventar_Fightscene()
         {
-
+            
             //public void InitializeItem()
             {
                 itemList = new List<Sprite>();

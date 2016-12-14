@@ -33,7 +33,7 @@ namespace SFML_StateMachine
 
         public override void Update(float deltaTime)
         {
-            Console.WriteLine(PlayerRectangle.Top);
+      //      Console.WriteLine(PlayerRectangle.Top);
             //PlayerRectangle = new SFML.System.Vector2f(Xpos, Ypos);
             PlayerRectangle = new IntRect((int)Xpos, (int)Ypos, 32, 48);
             this.CurrentState = MoveDirection.None;
@@ -42,8 +42,8 @@ namespace SFML_StateMachine
             // KAPUTT! :<
             if (PlayerRectangle.Intersects(this.map.MyScene.myEnemy.EnemyRectangle))
             {
-                Console.WriteLine("Intersected with Enemy");
-                map.MyScene.gameObject.SceneManager.GotoScene("fight");
+              //  Console.WriteLine("Intersected with Enemy");
+                map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
          
             // 1 North, 2 East , 3 South, 4 West  Collision with the Walls
@@ -57,22 +57,22 @@ namespace SFML_StateMachine
                 {
                     if (cachedDirection == 1)
                     {
-                        Ypos = Ypos + 2.5f;
+                        Ypos = Ypos + 15f;
                     }
 
                     if (cachedDirection == 2)
                     {
-                        Ypos = Ypos - 2.5f;
+                        Ypos = Ypos - 15f;
                     }
 
                     if (cachedDirection == 3)
                     {
-                        Xpos = Xpos + 2.5f;
+                        Xpos = Xpos + 15f;
                     }
 
                     if (cachedDirection == 4)
                     {
-                        Xpos = Xpos - 2.5f;
+                        Xpos = Xpos - 15f;
                     }
 
                 }
