@@ -146,7 +146,7 @@ namespace StateMachine
         private bool Missed = false;
         private bool ShowTextBox = false;
 
-        private Timer Timer;
+        private Clock Timer; //private Timer Timer; 
 
         public Fightscene(GameObject gameObject) : base(gameObject)
         {
@@ -287,7 +287,7 @@ namespace StateMachine
             missed_text.CharacterSize = 35;
             missed_text.Color = Color.Black;
 
-            Timer = new Timer();
+            Timer = new Clock();// Timer = new Timer();
             //Healthbar_img Character
             healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
             healthbar_sprite = new Sprite(healthbar_img);
@@ -332,7 +332,7 @@ namespace StateMachine
                     clock_EnemiesTurn.Restart();
                 }
                 clock_SwordSlideIn.Restart();
-                Timer.RestartTextboxTimer();
+                Timer.Restart(); // Timer.RestartTextboxTimer();
 
             }
 
@@ -351,7 +351,7 @@ namespace StateMachine
                     Enemies_Turn = true;
                     clock_EnemiesTurn.Restart();
                 }
-                Timer.RestartTextboxTimer();
+                Timer.Restart(); //    Timer.RestartTextboxTimer();
 
             }
 
@@ -394,7 +394,7 @@ namespace StateMachine
                 MovePointerRight();
 
             //Textbox
-            if (e.Code == Keyboard.Key.Return && ShowTextBox /*&& clock_SwordSlideIn.ElapsedTime.AsSeconds() >= 1*/ &&Timer.GetTextboxClock >= 1)
+            if (e.Code == Keyboard.Key.Return && ShowTextBox /*&& clock_SwordSlideIn.ElapsedTime.AsSeconds() >= 1*/ && Timer.ElapsedTime.AsSeconds()  >= 1)//Timer.GetTextboxClock >= 1)
             {
                 ShowTextBox = false;
                 Enemies_Turn = true;
@@ -410,7 +410,8 @@ namespace StateMachine
         public override void Update()
         {
             
-            Timer.Update();
+           // Timer.Update(); Clock doesnt need to update as i understand
+
             //Fightscene Logic
             Console.WriteLine(ShowTextBox);
             //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
