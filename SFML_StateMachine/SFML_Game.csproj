@@ -99,7 +99,7 @@
     <Compile Include="SceneManager.cs" />
     <Compile Include="Splashscreen.cs" />
     <Compile Include="Teleport.cs" />
-    <Compile Include="TileCollider.cs" />
+    <Compile Include="Collider.cs" />
     <Compile Include="Timer.cs" />
   </ItemGroup>
   <ItemGroup>
