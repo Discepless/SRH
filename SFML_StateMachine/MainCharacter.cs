@@ -62,7 +62,8 @@ namespace SFML_StateMachine
             // Intersection with a Cat
             if (PlayerRectangle.Intersects(map.MyScene.cat.CatRect)|| 
                 PlayerRectangle.Intersects(map.MyScene.bat.BatRect) || 
-                PlayerRectangle.Intersects(map.MyScene.enemyKilledWithSword.EnemyKilledWithSwordRect))
+                PlayerRectangle.Intersects(map.MyScene.enemyKilledWithSword.EnemyKilledWithSwordRect)||
+                PlayerRectangle.Intersects(map.MyScene.mage.MageRect))
             {              
                 map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
