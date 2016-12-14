@@ -16,7 +16,7 @@ namespace SFML_StateMachine
         // Caching our Previos direction (Needed for Collisions)
         private float cachedDirection;
 
-        public Cat(Map map) : base("Resources/Characters/Cat.png", 32, 48)
+        public Cat(Map map) : base("Resources/Characters/Cat.png", 32, 32)
         {
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(64, 0, 4);

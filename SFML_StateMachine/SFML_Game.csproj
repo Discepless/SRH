@@ -83,6 +83,7 @@
     <Compile Include="Enemies\Bat.cs" />
     <Compile Include="Enemies\Cat.cs" />
     <Compile Include="Enemies\EnemyKilledWithSword.cs" />
+    <Compile Include="Enemies\FinalBoss.cs" />
     <Compile Include="Enemies\Mage.cs" />
     <Compile Include="Fightscene.cs" />
     <Compile Include="GameObject.cs" />
@@ -128,6 +129,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Characters\EnemyWithMelee.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Characters\FinalBoss.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Characters\Mage.png">

@@ -63,7 +63,8 @@ namespace SFML_StateMachine
             if (PlayerRectangle.Intersects(map.MyScene.cat.CatRect)|| 
                 PlayerRectangle.Intersects(map.MyScene.bat.BatRect) || 
                 PlayerRectangle.Intersects(map.MyScene.enemyKilledWithSword.EnemyKilledWithSwordRect)||
-                PlayerRectangle.Intersects(map.MyScene.mage.MageRect))
+                PlayerRectangle.Intersects(map.MyScene.mage.MageRect)||
+                PlayerRectangle.Intersects(map.MyScene.finalBoss.finalBossRect))
             {              
                 map.MyScene.gameObject.SceneManager.StartScene("fight");
             }

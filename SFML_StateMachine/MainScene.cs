@@ -70,6 +70,7 @@ namespace StateMachine
 
         public override void Update() //just test text like everywhere else
         {
+            
             string t = "PRESS [BACKSPACE] OR [M] or [F], [X] for Map";
             text.DisplayedString = t;
             text.Position = new Vector2f(200, 100);
