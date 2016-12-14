@@ -122,7 +122,9 @@
     <Content Include="Resources\Characters\Cat.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Characters\EnemyWithMelee.png" />
+    <Content Include="Resources\Characters\EnemyWithMelee.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Characters\MainCharacter.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

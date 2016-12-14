@@ -56,7 +56,7 @@ namespace SFML_StateMachine.Enemies
                      (EnemyKilledWithSwordRect.Top + EnemyKilledWithSwordRect.Height >= collisionrect.Top) &&
                      (EnemyKilledWithSwordRect.Top <= collisionrect.Top + collisionrect.Height) && EnemyKilledWithSwordRect.Top + EnemyKilledWithSwordRect.Height< collisionrect.Top + collisionrect.Height)
                 {
-                    this.CurrentState = MoveDirection.MoveNorth;
+                    this.CurrentState = MoveDirection.MoveSouth;
                 }
 
             }
