@@ -2,6 +2,7 @@
 using SFML.System;
 using SFML.Window;
 using System;
+using SFML_StateMachine;
 
 namespace StateMachine
 {
@@ -22,6 +23,7 @@ namespace StateMachine
         public MainCharacter(Map map) : base("Resources/Characters/MainCharacter.png", 32, 48)
         {
             teleportClock = new Clock(); ;
+
 
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);
@@ -58,7 +60,7 @@ namespace StateMachine
                 PlayerRectangle.Intersects(map.MyScene.finalBoss.finalBossRect))
             {
                 Cat.CatIsDead = true; //condition above should changed or this one should, or cat will die every intersect
-
+                constants.CurrentEnemy = 1;
                 map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
 
@@ -219,5 +221,7 @@ namespace StateMachine
                         moveSpeed = 0;
                     }
         }
+
+        
     }
 }
