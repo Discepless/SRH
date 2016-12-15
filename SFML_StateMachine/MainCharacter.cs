@@ -8,8 +8,10 @@ namespace StateMachine
     internal class MainCharacter : AnimatedCharacter
     {
         private Map map;
-
+        Fightscene Fightscene;
+        Scene Scene;
         private OpenWorldScene OpenworldScene;
+
         private IntRect PlayerRectangle;
         private Teleport teleport;
         private ItemsAndNpcs ItemsAndNpcs;
@@ -21,6 +23,7 @@ namespace StateMachine
 
         public MainCharacter(Map map) : base("Resources/Characters/MainCharacter.png", 32, 48)
         {
+            //this.Fightscene = new Fightscene(GameObject gameObject);
             teleportClock = new Clock(); ;
 
             AnimDown = new Animation(0, 0, 4);
@@ -39,7 +42,7 @@ namespace StateMachine
             teleport = new Teleport();
             ItemsAndNpcs = new ItemsAndNpcs(); ;
         }
-
+        
         public override void Update(float deltaTime)
         {
             //PlayerRectangle = new SFML.System.Vector2f(Xpos, Ypos);
@@ -58,7 +61,9 @@ namespace StateMachine
                 PlayerRectangle.Intersects(map.MyScene.finalBoss.finalBossRect))
             {
                 Cat.CatIsDead = true; //condition above should changed or this one should, or cat will die every intersect
-
+                //Fightscene.CurrentEnemy = _Enemy._bird;
+               // Fightscene.SetEnemy("Pokemon");
+                Fightscene.SetEnemy = "Cat";
                 map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
 

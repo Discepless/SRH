@@ -92,11 +92,13 @@
     <Compile Include="MainCharacter.cs" />
     <Compile Include="MainScene.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="OpenWorldScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="SceneManager.cs" />
+    <Compile Include="SetEnemy.cs" />
     <Compile Include="Splashscreen.cs" />
     <Compile Include="Teleport.cs" />
     <Compile Include="Collider.cs" />

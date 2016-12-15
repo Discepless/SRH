@@ -4,7 +4,7 @@ using SFML.Window;
 
 namespace StateMachine
 {
-    public class Fightscene : Scene
+    internal  class Fightscene : Scene
     {
         private Inventar_Fightscene Inventar_Fightscene;
 
@@ -170,11 +170,14 @@ namespace StateMachine
         private bool ShowTextBox = false;
 
         private Timer Timer;
+        public static string SetEnemy = "Pokemon";
 
         public Fightscene(GameObject gameObject) : base(gameObject)
         {
             BackgroundColor = Color.Cyan;
         }
+
+       
 
         public override void InitializeItems()
 
@@ -190,12 +193,24 @@ namespace StateMachine
             character_sprite.Scale = new Vector2f(6f, 6f);
             //character_sprite.Scale = new Vector2f(.6f, .6f);
 
-            //Enemy
-            enemy_img = new Texture("Resources/Character_Fightscene/Enemy_fight.png");
+            //Enemy - Pokemon
             enemy_sprite = new Sprite(enemy_img);
 
+            if (SetEnemy == "Pokemon")
+            {
+                enemy_img = new Texture("Resources/Character_Fightscene/Enemy_fight.png");
+                enemy_sprite = new Sprite(enemy_img);
+                enemy_sprite.Scale = new Vector2f(1f, 1f);
+            }
+            if (SetEnemy == "Cat")
+            {
+                enemy_img = new Texture("Resources/Characters/NPCSword.png");
+                enemy_sprite = new Sprite(enemy_img);
+                enemy_sprite.Scale = new Vector2f(5f, 5f);
+            }
+           // enemy_sprite = new Sprite(enemy_img);
             enemy_sprite.Position = new Vector2f(0, 90);
-            enemy_sprite.Scale = new Vector2f(1f, 1f);
+           
 
             //SimpleArrow
             simpleArrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
@@ -345,6 +360,8 @@ namespace StateMachine
             clock_EnemiesTurn = new Clock();
             clock_SwordSlideIn = new Clock();
 
+            
+            
             base.InitializeItems();
         }
 
@@ -456,6 +473,7 @@ namespace StateMachine
 
         public override void Update()
         {
+            
             //if (healthLeft <= 0)
             //    Reset();
 
@@ -873,5 +891,14 @@ namespace StateMachine
             enemy_healthbar_rectangle.TextureRect = new IntRect(0, 0, enemy_healthbar_sprite.TextureRect.Width * enemyHealthLeft / EnemyHP, enemy_healthbar_sprite.TextureRect.Height);
             enemy_healthbar_sprite.TextureRect = enemy_healthbar_rectangle.TextureRect;
         }
+
+        //static void SetEnemy(string enemyName)
+        //{
+        //    if (enemyName == "Pokemon")
+        //        CurrentEnemy = _Enemy._pokemon;
+        //    if (enemyName == "Bird")
+        //        CurrentEnemy = _Enemy._bird;
+
+        //}
     }
 }

@@ -30,6 +30,9 @@ namespace StateMachine
             _splashcreen.Name = "start";
             game.SceneManager.AddScene(_splashcreen);
 
+            Menu _menu = new Menu(game);
+            _menu.Name = "menu";
+            game.SceneManager.AddScene(_menu);
             //create here as many screens as we need but dont forget to make a class for each
 
             // Start the game
