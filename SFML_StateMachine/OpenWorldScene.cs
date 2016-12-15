@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using System.Resources;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
@@ -8,6 +9,7 @@ namespace StateMachine
     {
         private Map _map;
 
+        
         private Clock clock = new Clock();
         public MainCharacter myCharacter;
         public Cat cat;
@@ -38,11 +40,12 @@ namespace StateMachine
         {
             _map.Draw(_gameObject.Window);
             myCharacter.Draw(_gameObject.Window);
-            if (!Cat.CatIsDead && !_gameObject.SceneManager.GetScene("OpenWorld").IsPaused ) cat.Draw(_gameObject.Window);
-            bat.Draw(_gameObject.Window);
-            mage.Draw(_gameObject.Window);
-            finalBoss.Draw(_gameObject.Window);
-            enemyKilledWithSword.Draw(_gameObject.Window);
+
+            if (!Cat.CatIsDead) cat.Draw(_gameObject.Window);
+            if (!Bat.BatIsDead) bat.Draw(_gameObject.Window);
+            if (!Mage.MageIsDead) mage.Draw(_gameObject.Window);
+            if (!FinalBoss.FinalBossIsDead) finalBoss.Draw(_gameObject.Window);
+            if (!EnemyKilledWithSword.EnemyKilledWithSwordIsDead) enemyKilledWithSword.Draw(_gameObject.Window);
 
             ItemsAndNpcs.Draw(_gameObject.Window);
 
@@ -55,11 +58,12 @@ namespace StateMachine
         {
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
-            enemyKilledWithSword.Update(deltatime);
-            if (!Cat.CatIsDead && !_gameObject.SceneManager.GetScene("OpenWorld").IsPaused) cat.Update(deltatime);
-            bat.Update(deltatime);
-            finalBoss.Update(deltatime);
-            mage.Update(deltatime);
+
+            if (!EnemyKilledWithSword.EnemyKilledWithSwordIsDead) enemyKilledWithSword.Update(deltatime);
+            if(!Cat.CatIsDead) cat.Update(deltatime);
+            if(!Bat.BatIsDead) bat.Update(deltatime);
+            if(!FinalBoss.FinalBossIsDead)finalBoss.Update(deltatime);
+            if(!Mage.MageIsDead) mage.Update(deltatime);
 
             view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
 
@@ -90,7 +94,7 @@ namespace StateMachine
         public override void Reset()
         {
             clock.Restart();
-          //  base.Reset();
+            //base.Reset();
         }
     }
 }
