@@ -449,6 +449,7 @@ namespace StateMachine
             if (e.Code == Keyboard.Key.Escape)
             {
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+                _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.GotoScene("OpenWorld");
                 _gameObject.SceneManager.GetScene("fight").Dispose();
             }
@@ -487,6 +488,7 @@ namespace StateMachine
             if (enemy_sprite.Position.Y >= 5500)
             {
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+                _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.GotoScene("OpenWorld");
                 _gameObject.SceneManager.CurrentScene.Dispose();
             }

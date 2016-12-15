@@ -18,7 +18,7 @@ namespace StateMachine
             AnimLeft = new Animation(32, 0, 4);
             AnimUp = new Animation(96, 0, 4);
 
-            moveSpeed = 0;
+            moveSpeed = 50;
             animationSpeed = 0.1f;
 
             Xpos = 448;

@@ -1,5 +1,6 @@
 ﻿using SFML.Graphics;
 using SFML.System;
+using SFML.Window;
 
 namespace StateMachine
 {
@@ -17,6 +18,7 @@ namespace StateMachine
         public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
         public View view;
+
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
@@ -36,7 +38,7 @@ namespace StateMachine
         {
             _map.Draw(_gameObject.Window);
             myCharacter.Draw(_gameObject.Window);
-            if (!Cat.CatIsDead) cat.Draw(_gameObject.Window);
+            if (!Cat.CatIsDead && !_gameObject.SceneManager.GetScene("OpenWorld").IsPaused ) cat.Draw(_gameObject.Window);
             bat.Draw(_gameObject.Window);
             mage.Draw(_gameObject.Window);
             finalBoss.Draw(_gameObject.Window);
@@ -54,7 +56,7 @@ namespace StateMachine
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
             enemyKilledWithSword.Update(deltatime);
-            if (!Cat.CatIsDead) cat.Update(deltatime);
+            if (!Cat.CatIsDead && !_gameObject.SceneManager.GetScene("OpenWorld").IsPaused) cat.Update(deltatime);
             bat.Update(deltatime);
             finalBoss.Update(deltatime);
             mage.Update(deltatime);
@@ -63,6 +65,32 @@ namespace StateMachine
 
             //ReWork Animation classes into small pieces
             base.Update();
+        }
+
+        public override void HandleKeyPress(KeyEventArgs e)
+        {
+
+            if (e.Code == Keyboard.Key.Space)
+            {
+               
+                _gameObject.SceneManager.GetScene("OpenWorld").Pause( );
+            }
+
+            if (e.Code == Keyboard.Key.V)
+            {
+                Reset();
+                _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+            }
+
+            base.HandleKeyPress(e);
+        }
+
+       
+
+        public override void Reset()
+        {
+            clock.Restart();
+          //  base.Reset();
         }
     }
 }
