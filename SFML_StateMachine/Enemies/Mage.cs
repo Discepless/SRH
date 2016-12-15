@@ -6,6 +6,7 @@ namespace StateMachine
     {
         public IntRect MageRect;
         private Map collisionObject;
+        public static bool MageIsDead;
 
         // Caching our Previos direction (Needed for Collisions)
 

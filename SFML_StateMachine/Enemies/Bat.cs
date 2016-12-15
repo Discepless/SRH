@@ -5,6 +5,7 @@ namespace StateMachine
     internal class Bat : AnimatedCharacter
     {
         public IntRect BatRect;
+        public static bool BatIsDead;
 
         // Caching our Previos direction (Needed for Collisions)
 

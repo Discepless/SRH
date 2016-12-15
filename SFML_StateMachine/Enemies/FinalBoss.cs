@@ -5,6 +5,7 @@ namespace StateMachine
     internal class FinalBoss : AnimatedCharacter
     {
         public IntRect finalBossRect;
+        public static bool FinalBossIsDead;
 
         // Caching our Previos direction (Needed for Collisions)
 
