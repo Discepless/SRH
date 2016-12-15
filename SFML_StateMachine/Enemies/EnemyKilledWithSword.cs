@@ -18,7 +18,7 @@ namespace StateMachine
             animationSpeed = 0.1f;
 
             Xpos = 734;
-            Ypos = 763;
+            Ypos = 500;
 
             collisionObject = map;
             this.CurrentState = MoveDirection.MoveSouth;
@@ -28,27 +28,31 @@ namespace StateMachine
         {
             EnemyKilledWithSwordRect = new IntRect((int)Xpos, (int)Ypos, 32, 48);
 
-            // 1 North, 2 South , 3 East, 4 West  Collision with the Walls
+            Collision();
+            base.Update(deltaTime);
+        }
 
+        public void Collision()
+        {
             foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
             {
-                if ((EnemyKilledWithSwordRect.Left + EnemyKilledWithSwordRect.Width >= collisionrect.Left) &&
-                    (EnemyKilledWithSwordRect.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (EnemyKilledWithSwordRect.Top + EnemyKilledWithSwordRect.Height >= collisionrect.Top) &&
-                    (EnemyKilledWithSwordRect.Top <= collisionrect.Top + collisionrect.Height) && EnemyKilledWithSwordRect.Top < collisionrect.Top)
+                if (EnemyKilledWithSwordRect.TouchTop(collisionrect))
                 {
                     this.CurrentState = MoveDirection.MoveNorth;
                 }
-
-                if ((EnemyKilledWithSwordRect.Left + EnemyKilledWithSwordRect.Width >= collisionrect.Left) &&
-                     (EnemyKilledWithSwordRect.Left <= collisionrect.Left + collisionrect.Width) &&
-                     (EnemyKilledWithSwordRect.Top + EnemyKilledWithSwordRect.Height >= collisionrect.Top) &&
-                     (EnemyKilledWithSwordRect.Top <= collisionrect.Top + collisionrect.Height) && EnemyKilledWithSwordRect.Top + EnemyKilledWithSwordRect.Height < collisionrect.Top + collisionrect.Height)
+                if (EnemyKilledWithSwordRect.TouchRight(collisionrect))
+                {
+                    
+                }
+                if (EnemyKilledWithSwordRect.TouchLeft(collisionrect))
+                {
+                    
+                }
+                if (EnemyKilledWithSwordRect.TouchBottom(collisionrect))
                 {
                     this.CurrentState = MoveDirection.MoveSouth;
                 }
             }
-            base.Update(deltaTime);
         }
     }
 }

@@ -349,7 +349,6 @@
   <object id="67" x="542" y="645" width="288" height="93"/>
   <object id="70" x="478" y="384" width="64" height="129"/>
   <object id="71" x="544" y="383" width="289" height="129"/>
-  <object id="75" x="830" y="672" width="60" height="65"/>
   <object id="85" name="Collisions" x="1054" y="549" width="772" height="124"/>
   <object id="86" x="992" y="676" width="1820" height="433"/>
   <object id="88" x="2206" y="1108" width="362" height="466"/>
@@ -370,25 +369,4 @@
   <object id="122" x="2365" y="504" width="202" height="81"/>
   <object id="123" x="2240" y="576" width="344" height="101"/>
  </objectgroup>
- <TeleportGroup color="#ffff00" name="Teleport">
-  <teleport id="40" name="TeleportAEnter" x="458" y="1205" width="100" height="30"/>
-  <teleport id="42" name="TeleportAExit" x="597" y="856" width="66" height="30"/>
- </TeleportGroup>
- <CharacterGroup color="#ff0000" name="CharacterItems">
-  <character id="43" name="Player" x="449" y="1546" width="61" height="58"/>
-  <character id="46" name="EnemyForMeleeWeak" x="410" y="866" width="90" height="46"/>
-  <character id="53" name="NPCGiveSword + Full HP" x="392" y="628" width="41" height="35"/>
-  <character id="72" name="EnemyWithMelee(Will lose w/o Sword)" x="734" y="542" width="53" height="49"/>
-  <character id="79" name="Bow" x="1865" y="604" width="66" height="49"/>
-  <character id="83" name="Key" x="2306" y="529" width="35" height="31"/>
-  <character id="84" name="FlyingEnemyKilledOnlyWithBow" x="2166" y="520" width="50" height="52"/>
-  <character id="87" name="MageDroppingMagicStaff (YouShallNotPassYolo)" x="845" y="933" width="69" height="76"/>
-  <character id="92" name="FullHP" x="1887" y="383" width="62" height="34"/>
-  <character id="94" name="FullHP" x="1959" y="383" width="47" height="30"/>
-  <character id="114" name="FinalBoss" x="1906" y="1309" width="31" height="49"/>
-  <character id="115" name="FullHP" x="1667" y="1453" width="54" height="18"/>
- </CharacterGroup>
- <DoorsGroup color="#00ff00" name="Doors">
-  <dooors id="76" name="DoorsNeedKey to dissapear" x="893" y="702" width="97" height="33"/>
- </DoorsGroup>
 </map>

@@ -9,7 +9,6 @@ namespace StateMachine
         public static bool CatIsDead = false;
 
         // Caching our Previos direction (Needed for Collisions)
-        private float cachedDirection;
 
         public Cat(Map map) : base("Resources/Characters/Cat.png", 32, 32)
         {
@@ -18,7 +17,7 @@ namespace StateMachine
             AnimLeft = new Animation(32, 0, 4);
             AnimUp = new Animation(96, 0, 4);
 
-            moveSpeed = 0;
+            moveSpeed = 50;
             animationSpeed = 0.1f;
 
             Xpos = 448;
@@ -30,29 +29,32 @@ namespace StateMachine
 
         public override void Update(float deltaTime)
         {
-            CatRect = new IntRect((int)Xpos, (int)Ypos, 32, 32);
+            CatRect = new IntRect((int) Xpos, (int) Ypos, 32, 32);
+            Collision();
+            base.Update(deltaTime);
+        }
 
-            // 1 North, 2 South , 3 East, 4 West  Collision with the Walls
-
+        public void Collision()
+        {
             foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
             {
-                if ((CatRect.Left + CatRect.Width >= collisionrect.Left) &&
-                    (CatRect.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (CatRect.Top + CatRect.Height >= collisionrect.Top) &&
-                    (CatRect.Top <= collisionrect.Top + collisionrect.Height) && CatRect.Left + CatRect.Width < collisionrect.Left + collisionrect.Width)
+                if (CatRect.TouchTop(collisionrect))
                 {
-                    this.CurrentState = MoveDirection.MoveWest;
+                    
                 }
-
-                if ((CatRect.Left + CatRect.Width >= collisionrect.Left) &&
-                    (CatRect.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (CatRect.Top + CatRect.Height >= collisionrect.Top) &&
-                    (CatRect.Top <= collisionrect.Top + collisionrect.Height) && CatRect.Left > collisionrect.Left)
+                if (CatRect.TouchRight(collisionrect))
                 {
                     this.CurrentState = MoveDirection.MoveEast;
                 }
+                if (CatRect.TouchLeft(collisionrect))
+                {
+                    this.CurrentState = MoveDirection.MoveWest;
+                }
+                if (CatRect.TouchBottom(collisionrect))
+                {
+                    
+                }
             }
-            base.Update(deltaTime);
         }
     }
 }
