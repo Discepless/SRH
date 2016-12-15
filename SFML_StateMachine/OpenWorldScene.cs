@@ -74,17 +74,18 @@ namespace StateMachine
         public override void HandleKeyPress(KeyEventArgs e)
         {
 
-            if (e.Code == Keyboard.Key.Space)
+            if (e.Code == Keyboard.Key.Escape && !_gameObject.SceneManager.GetScene("OpenWorld").IsPaused )
             {
-               
-                _gameObject.SceneManager.GetScene("OpenWorld").Pause( );
+                _gameObject.SceneManager.GetScene("OpenWorld").Pause();
             }
+            else if (e.Code == Keyboard.Key.Escape && _gameObject.SceneManager.GetScene("OpenWorld").IsPaused)
+            { Reset(); _gameObject.SceneManager.GetScene("OpenWorld").Resume(); }
 
-            if (e.Code == Keyboard.Key.V)
-            {
-                Reset();
-                _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-            }
+            //if (e.Code == Keyboard.Key.V)
+            //{
+            //    Reset();
+            //    _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+            //}
 
             base.HandleKeyPress(e);
         }

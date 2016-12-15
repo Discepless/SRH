@@ -51,7 +51,7 @@ namespace StateMachine
             if (e.Code == Keyboard.Key.Escape)
             {
                 
-                _gameObject.SceneManager.GotoScene("main");
+                _gameObject.SceneManager.GotoScene("menu");
                 _gameObject.SceneManager.GetScene("credits").Dispose();
             }
 
