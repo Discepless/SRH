@@ -23,7 +23,7 @@ namespace StateMachine
 
             game.SceneManager.AddScene(_mainScene);
 
-            Creditsscreen _creditsscreen = new Creditsscreen(game);
+            Credits _creditsscreen = new Credits(game);
             _creditsscreen.Name = "credits";
             game.SceneManager.AddScene(_creditsscreen);
 
@@ -37,7 +37,7 @@ namespace StateMachine
             //create here as many screens as we need but dont forget to make a class for each
 
             // Start the game
-            game.SceneManager.StartScene("start"); //it is one of the above names, scene is called by its name!
+            game.SceneManager.StartScene("menu"); //it is one of the above names, scene is called by its name!
         }
     }
 }

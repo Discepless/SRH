@@ -24,7 +24,7 @@ namespace StateMachine
             Font arial = new Font(@"Resources\arial.ttf");
 
             text = new Text("", arial);
-
+           
             text.Position = new Vector2f(0, 0);
 
             text.CharacterSize = 30;
@@ -75,6 +75,7 @@ namespace StateMachine
             text.DisplayedString = t;
             text.Position = new Vector2f(200, 100);
             text.Draw(this._gameObject.Window, RenderStates.Default);
+            
         }
 
         public override void Exit()

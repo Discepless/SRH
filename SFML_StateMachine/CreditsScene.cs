@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using System;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
@@ -8,6 +9,8 @@ namespace StateMachine
     {
         private Texture Creditstexture;
         private Sprite Creditssprite;
+        private Text text;
+        private string t;
 
         private Clock clock;
 
@@ -18,6 +21,14 @@ namespace StateMachine
 
         public override void InitializeItems()
         {
+            Font arial = new Font(@"Resources\arial.ttf");
+            text = new Text("", arial);
+            text.Position = new Vector2f(0, 0);
+            text.CharacterSize = 30;
+            t = "23123 \n 3123123 \n 1273172371237 \n 12371264125 ";
+
+            text.DisplayedString = t;
+
             Creditstexture = new Texture("Resources/Splashscreen/Credits.png");
             Creditssprite = new Sprite(Creditstexture);
 
