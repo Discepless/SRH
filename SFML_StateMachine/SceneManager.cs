@@ -7,6 +7,7 @@ namespace StateMachine
         public Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>(); //array with names and corresponding scenes
 
         public Scene CurrentScene = null;
+        private OpenWorldScene openWorldscene;
 
         public void AddScene(Scene s)
         {

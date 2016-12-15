@@ -57,7 +57,8 @@ namespace StateMachine
             if (e.Code == Keyboard.Key.X)
             {
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                _gameObject.SceneManager.GotoScene("OpenWorld");
+                _gameObject.SceneManager.GetScene("OpenWorld").Reset();
+                _gameObject.SceneManager.StartScene("OpenWorld");
             }
 
             base.HandleKeyPress(e);
