@@ -41,7 +41,7 @@ namespace StateMachine
         {
             if (e.Code == Keyboard.Key.BackSpace)
             {
-                _gameObject.SceneManager.StartScene("start");
+                _gameObject.SceneManager.StartScene("credits");
             }
 
             if (e.Code == Keyboard.Key.M)
@@ -51,13 +51,13 @@ namespace StateMachine
 
             if (e.Code == Keyboard.Key.F)
             {
-                _gameObject.SceneManager.GotoScene("fight");
+                _gameObject.SceneManager.StartScene("fight");
             }
 
             if (e.Code == Keyboard.Key.X)
             {
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                _gameObject.SceneManager.StartScene("OpenWorld");
+                _gameObject.SceneManager.GotoScene("OpenWorld");
             }
 
             base.HandleKeyPress(e);
