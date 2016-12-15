@@ -72,18 +72,18 @@ namespace StateMachine
             //GoTo Scene
             if (e.Code == Keyboard.Key.Return && Start_pressed)
             {
-                _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                _gameObject.SceneManager.GotoScene("OpenWorld");
+                _gameObject.SceneManager.GetScene("OpenWorld").Resume(); _gameObject.SceneManager.GetScene("OpenWorld").Reset();
+                _gameObject.SceneManager.StartScene("OpenWorld");
             }
             if (e.Code == Keyboard.Key.Return && Credits_pressed)
             {
-                _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                _gameObject.SceneManager.GotoScene("OpenWorld");
+              //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+                _gameObject.SceneManager.GotoScene("credits");
             }
             if(e.Code == Keyboard.Key.Return && ExitGame_pressed)
             {
-                _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                _gameObject.SceneManager.GotoScene("OpenWorld");
+              //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+              //  _gameObject.SceneManager.GotoScene("OpenWorld");
             }
 
             //Handle Pointer
