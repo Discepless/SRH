@@ -82,8 +82,10 @@ namespace StateMachine
             }
             if(e.Code == Keyboard.Key.Return && ExitGame_pressed)
             {
-              //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-              //  _gameObject.SceneManager.GotoScene("OpenWorld");
+
+                _gameObject.Window.Close();
+                //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+                //  _gameObject.SceneManager.GotoScene("OpenWorld");
             }
 
             //Handle Pointer
