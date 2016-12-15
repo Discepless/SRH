@@ -23,35 +23,36 @@ namespace StateMachine
             Ypos = 1140;
 
             this.CurrentState = MoveDirection.MoveWest;
-            MageRect = new IntRect((int)Xpos, (int)Ypos, 32, 48);
+            MageRect = new IntRect((int) Xpos, (int) Ypos, 32, 48);
             collisionObject = map;
         }
 
         public override void Update(float deltaTime)
         {
-            MageRect = new IntRect((int)Xpos, (int)Ypos, 32, 32);
+            MageRect = new IntRect((int) Xpos, (int) Ypos, 32, 32);
+            Collision();
+            base.Update(deltaTime);
+        }
 
-            // 1 North, 2 South , 3 East, 4 West  Collision with the Walls
-
+        public void Collision()
+        {
             foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
             {
-                if ((MageRect.Left + MageRect.Width >= collisionrect.Left) &&
-                    (MageRect.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (MageRect.Top + MageRect.Height >= collisionrect.Top) &&
-                    (MageRect.Top <= collisionrect.Top + collisionrect.Height) && MageRect.Left + MageRect.Width < collisionrect.Left + collisionrect.Width)
+                if (MageRect.TouchTop(collisionrect))
                 {
-                    this.CurrentState = MoveDirection.MoveWest;
                 }
-
-                if ((MageRect.Left + MageRect.Width >= collisionrect.Left) &&
-                    (MageRect.Left <= collisionrect.Left + collisionrect.Width) &&
-                    (MageRect.Top + MageRect.Height >= collisionrect.Top) &&
-                    (MageRect.Top <= collisionrect.Top + collisionrect.Height) && MageRect.Left > collisionrect.Left)
+                if (MageRect.TouchRight(collisionrect))
                 {
                     this.CurrentState = MoveDirection.MoveEast;
                 }
+                if (MageRect.TouchLeft(collisionrect))
+                {
+                    this.CurrentState = MoveDirection.MoveWest;
+                }
+                if (MageRect.TouchBottom(collisionrect))
+                {
+                }
             }
-            base.Update(deltaTime);
         }
     }
 }

@@ -10,7 +10,6 @@ namespace SFML_StateMachine
 
 
     {
-
         public static int CurrentEnemy = 1;
     }
 

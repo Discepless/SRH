@@ -22,7 +22,8 @@ namespace StateMachine
 
         public MainCharacter(Map map) : base("Resources/Characters/MainCharacter.png", 32, 48)
         {
-            teleportClock = new Clock(); ;
+            teleportClock = new Clock();
+            ;
 
 
             AnimDown = new Animation(0, 0, 4);
@@ -39,19 +40,136 @@ namespace StateMachine
             this.map = map;
 
             teleport = new Teleport();
-            ItemsAndNpcs = new ItemsAndNpcs(); ;
+            ItemsAndNpcs = new ItemsAndNpcs();
+            ;
         }
 
         public override void Update(float deltaTime)
         {
             //PlayerRectangle = new SFML.System.Vector2f(Xpos, Ypos);
-            PlayerRectangle = new IntRect((int)Xpos, (int)Ypos, 32, 48);
+            PlayerRectangle = new IntRect((int) Xpos, (int) Ypos, 32, 48);
             this.CurrentState = MoveDirection.None;
 
             moveSpeed = 150;
 
             teleportCooldown = teleportClock.ElapsedTime.AsSeconds();
 
+            IntersectionsWithEnemies();
+            IntersectionWithItemsAndRest();
+            Collision();
+            PlayerControl();
+            Console.WriteLine("X" + Xpos);
+            Console.Write("Y" + Ypos);
+            base.Update(deltaTime);
+
+            ////Intersection with Key
+
+            //if (PlayerRectangle.Intersects(ItemsAndNpcs.KeyRect))
+            //{
+            //    ItemsAndNpcs.KeyPicked = true;
+            //    //TODO LOGIC
+            //}
+
+            ////Intersection with Door
+
+            //if (PlayerRectangle.Intersects(ItemsAndNpcs.DoorsRect) && cachedDirection == 2)
+            //{
+            //    if (ItemsAndNpcs.KeyPicked == true) ItemsAndNpcs.DoorsOpened = true;
+
+            //    if (ItemsAndNpcs.KeyPicked == false) moveSpeed = 0;
+            //    //Ypos = ItemsAndNpcs .DoorsYpos  -50;
+            //}
+
+            //// Intersection with Healing
+
+            //if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect))
+            //{
+            //    //TODO HEAL UP LOGIC
+            //}
+
+            //if (PlayerRectangle.Intersects(teleport.TeleportA) && teleportCooldown > 2)
+            //{
+            //    Xpos = teleport.BxPos + 20;
+            //    Ypos = teleport.ByPos + 58;
+            //    teleportClock.Restart();
+            //}
+
+            //if (PlayerRectangle.Intersects(teleport.TeleportB) && teleportCooldown > 2)
+            //{
+            //    Xpos = teleport.AxPos + 20;
+            //    Ypos = teleport.AyPos + 58;
+            //    teleportClock.Restart();
+            //}
+
+            // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
+
+            // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
+            // Movement
+
+
+        }
+
+        public void Collision()
+        {
+            foreach (var collisionrect in map.CollisionRectangleShapes)
+            {
+                // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
+                if (PlayerRectangle.TouchTop(collisionrect))
+                    if (cachedDirection == 2)
+                    {
+                        moveSpeed = 0;
+                    }
+
+                if (PlayerRectangle.TouchRight(collisionrect))
+                    if (cachedDirection == 3)
+                    {
+                        moveSpeed = 0;
+                    }
+
+                if (PlayerRectangle.TouchLeft(collisionrect))
+                    if (cachedDirection == 4)
+                    {
+                        moveSpeed = 0;
+                    }
+
+                if (PlayerRectangle.TouchBottom(collisionrect))
+                    if (cachedDirection == 1)
+                    {
+                        moveSpeed = 0;
+                    }
+            }
+        }
+
+        public void PlayerControl()
+        {
+            if (Keyboard.IsKeyPressed(Keyboard.Key.W))
+            {
+                this.CurrentState = MoveDirection.MoveNorth;
+                cachedDirection = 1;
+                Collision();
+            }
+            else if (Keyboard.IsKeyPressed(Keyboard.Key.S))
+            {
+                this.CurrentState = MoveDirection.MoveSouth;
+                cachedDirection = 2;
+                Collision();
+            }
+            else if (Keyboard.IsKeyPressed(Keyboard.Key.A))
+            {
+                this.CurrentState = MoveDirection.MoveWest;
+                cachedDirection = 3;
+                Collision();
+            }
+            else if (Keyboard.IsKeyPressed(Keyboard.Key.D))
+            {
+                this.CurrentState = MoveDirection.MoveEast;
+                cachedDirection = 4;
+                Collision();
+            }
+        }
+
+        public void IntersectionsWithEnemies()
+        {
             // Intersection with a Cat
             if ((PlayerRectangle.Intersects(map.MyScene.cat.CatRect) && !Cat.CatIsDead) ||
                 PlayerRectangle.Intersects(map.MyScene.bat.BatRect) ||
@@ -59,9 +177,19 @@ namespace StateMachine
                 PlayerRectangle.Intersects(map.MyScene.mage.MageRect) ||
                 PlayerRectangle.Intersects(map.MyScene.finalBoss.finalBossRect))
             {
-                Cat.CatIsDead = true; //condition above should changed or this one should, or cat will die every intersect
+                Cat.CatIsDead = true;
+                    //condition above should changed or this one should, or cat will die every intersect
                 constants.CurrentEnemy = 1;
                 map.MyScene.gameObject.SceneManager.StartScene("fight");
+            }
+        }
+
+        public void IntersectionWithItemsAndRest()
+        {
+            //Intersection with NPC
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.NPCRect))
+            {
+                //TODO GIVE ITEM
             }
 
             //Intersection with Bow
@@ -69,6 +197,7 @@ namespace StateMachine
             {
                 ItemsAndNpcs.BowPicked = true;
             }
+
 
             //Intersection with Key
 
@@ -108,120 +237,7 @@ namespace StateMachine
                 Ypos = teleport.AyPos + 58;
                 teleportClock.Restart();
             }
-
-            // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
-
-            foreach (var collisionrect in map.CollisionRectangleShapes)
-            {
-                //if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
-                //    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
-                //    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                //    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Left + PlayerRectangle.Width < collisionrect.Left + collisionrect.Width)
-                //{
-                //    //if (cachedDirection == 4)
-                //    //{
-                //    //    moveSpeed = 0;
-                //    //}
-                //}
-
-                //if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
-                //    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
-                //    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                //    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Top + PlayerRectangle.Height > collisionrect.Top + collisionrect.Height)
-                //{
-                //    //if (cachedDirection ==  1)
-                //    //{
-                //    //    moveSpeed = 0;
-                //    //}
-                //}
-                Collision();
-                //if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
-                //(PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
-                //(PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                //(PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Top < collisionrect.Top)
-                //{
-                //    if (cachedDirection == 2)
-                //    {
-                //        moveSpeed = 0;
-                //    }
-                //}
-
-                //if ((PlayerRectangle.Left + PlayerRectangle.Width >= collisionrect.Left) &&
-                //    (PlayerRectangle.Left <= collisionrect.Left + collisionrect.Width) &&
-                //    (PlayerRectangle.Top + PlayerRectangle.Height >= collisionrect.Top) &&
-                //    (PlayerRectangle.Top <= collisionrect.Top + collisionrect.Height) && PlayerRectangle.Left > collisionrect.Left)
-                //{
-                //    //if (cachedDirection == 3)
-                //    //{
-                //    //    moveSpeed = 0;
-                //    //}
-                //}
-            }
-            // 1 North, 4 East , 2 South, 3 West  Collision with the Walls
-            // Movement
-
-            Console.WriteLine("X" + Xpos);
-            Console.Write("Y" + Ypos);
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.W))
-            {
-                this.CurrentState = MoveDirection.MoveNorth;
-                cachedDirection = 1;
-                Collision();
-            }
-            else if (Keyboard.IsKeyPressed(Keyboard.Key.S))
-            {
-                this.CurrentState = MoveDirection.MoveSouth;
-                cachedDirection = 2;
-                Collision();
-            }
-            else if (Keyboard.IsKeyPressed(Keyboard.Key.A))
-            {
-                this.CurrentState = MoveDirection.MoveWest;
-                cachedDirection = 3;
-                Collision();
-            }
-            else if (Keyboard.IsKeyPressed(Keyboard.Key.D))
-            {
-                this.CurrentState = MoveDirection.MoveEast;
-                cachedDirection = 4;
-                Collision();
-            }
-            base.Update(deltaTime);
         }
 
-        public void Collision()
-        {
-            foreach (var collisionrect in map.CollisionRectangleShapes)
-
-                if (PlayerRectangle.TouchTop(collisionrect))
-                    if (cachedDirection == 2)
-                    {
-                        moveSpeed = 0;
-                    }
-
-            foreach (var collisionrect in map.CollisionRectangleShapes)
-                if (PlayerRectangle.TouchRight(collisionrect))
-                    if (cachedDirection == 3)
-                    {
-                        moveSpeed = 0;
-                    }
-
-            foreach (var collisionrect in map.CollisionRectangleShapes)
-                if (PlayerRectangle.TouchLeft(collisionrect))
-                    if (cachedDirection == 4)
-                    {
-                        moveSpeed = 0;
-                    }
-
-            foreach (var collisionrect in map.CollisionRectangleShapes)
-                if (PlayerRectangle.TouchBottom(collisionrect))
-                    if (cachedDirection == 1)
-                    {
-                        moveSpeed = 0;
-                    }
-        }
-
-        
-    }
+}
 }

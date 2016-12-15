@@ -33,7 +33,7 @@ namespace StateMachine
             NPCYpos,
             NPCWidth,
             NPCHeight,
-
+            //////////
             DoorsXpos,
             DoorsYpos,
             DoorsWidth,
