@@ -6,7 +6,7 @@ namespace StateMachine
     {
         private static void Main()
         {
-            var game = new GameObject("State Machine");
+            var game = new GameObject("Horny Adventures");
 
             // build the startup menu scene
 
@@ -23,9 +23,10 @@ namespace StateMachine
 
             game.SceneManager.AddScene(_mainScene);
 
-            //StartScene _startScene = new StartScene(game);
-            //_startScene.Name = "start";
-            //game.SceneManager.AddScene(_startScene);
+            Creditsscreen _creditsscreen = new Creditsscreen(game);
+            _creditsscreen.Name = "credits";
+            game.SceneManager.AddScene(_creditsscreen);
+
             Splashscreen _splashcreen = new Splashscreen(game);
             _splashcreen.Name = "start";
             game.SceneManager.AddScene(_splashcreen);
