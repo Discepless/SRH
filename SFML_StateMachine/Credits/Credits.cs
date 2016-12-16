@@ -30,7 +30,7 @@ namespace StateMachine
             clock = new Clock();
             Font _font = new Font(@"Resources\arial.ttf");
             _text = new List<TextLine>();
-            text = new Text("", _font);
+            text = new Text("", _font);text.Color = Color.Black;
             StreamReader readStream = new StreamReader(File.Open("Credits/Text.txt", FileMode.Open));
             string tmp = readStream.ReadLine();
             int YRes = (int) _gameObject.YRes;

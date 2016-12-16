@@ -12,15 +12,15 @@ namespace StateMachine
 
         public SceneManager SceneManager = new SceneManager();
 
-        private uint Xres = 800;
-        private uint Yres = 600; //change whatever u want lads HD=1920x1080 16:9, 1280x720 16:9
+        private uint Xres = 1920;
+        private uint Yres = 1080; //change whatever u want lads HD=1920x1920 16:9, 1280x720 16:9
         public uint XRes { get { return Xres; } }
         public uint YRes { get { return Yres; } }
 
         public GameObject(string Title)
         {
             // initialize values
-            _window = new RenderWindow(new VideoMode(Xres, Yres), Title, Styles.Default);
+            _window = new RenderWindow(new VideoMode(Xres, Yres), Title, Styles.None );
 
             _window.SetVisible(true);
             _window.SetVerticalSyncEnabled(true);
