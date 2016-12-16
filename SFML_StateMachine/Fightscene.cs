@@ -115,6 +115,7 @@ namespace StateMachine
         private int Attack_Magic = 30;
 
         //Enemy Stats
+        //Pokemon
         private int EnemyHP = 70;
 
         private int enemyHealthLeft = 70;
@@ -201,12 +202,21 @@ namespace StateMachine
                 enemy_img = new Texture("Resources/Character_Fightscene/Enemy_fight.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
-            }
+                EnemyHP = 70;
+
+                enemyHealthLeft = 70;
+                EnemyAttack = 25;
+    }
             if (SetEnemy == "Cat")
             {
                 enemy_img = new Texture("Resources/Characters/NPCSword.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(5f, 5f);
+
+                EnemyHP = 70;
+
+                enemyHealthLeft = 70;
+                EnemyAttack = 25;
             }
            // enemy_sprite = new Sprite(enemy_img);
             enemy_sprite.Position = new Vector2f(0, 90);
