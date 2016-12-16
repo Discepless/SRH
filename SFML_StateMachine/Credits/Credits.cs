@@ -17,7 +17,7 @@ namespace StateMachine
         private Text text;
         private Clock clock;
 
-        private int CreditsDuration;
+    //    private int CreditsDuration;
         private float XPos, Ypos;
 
         public Credits(GameObject gameObject) : base(gameObject)
@@ -58,17 +58,20 @@ namespace StateMachine
         public override void Update() //just test text like everywhere else
         {
 
-            CreditsDuration = (int) clock.ElapsedTime.AsSeconds();
+            //   CreditsDuration = (int) clock.ElapsedTime.AsSeconds();
 
             //
-            foreach (TextLine line in _text)
+            if (clock.ElapsedTime.AsSeconds() < 10) //scroll for 10 seconds only
             {
-                line.Position.Y -= 1;
+                foreach (TextLine line in _text) {line.Position.Y -= 1;}
             }
+             
         }
 
         public override void Draw()
         {
+
+
             foreach (TextLine line in _text)
             {
                 text.DisplayedString = line.Text;
