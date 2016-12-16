@@ -78,7 +78,7 @@ namespace StateMachine
             if (e.Code == Keyboard.Key.Return && Credits_pressed)
             {
               //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                _gameObject.SceneManager.GotoScene("credits");
+                _gameObject.SceneManager.StartScene("credits");
             }
             if(e.Code == Keyboard.Key.Return && ExitGame_pressed)
             {
