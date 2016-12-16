@@ -171,7 +171,7 @@ namespace StateMachine
         private bool ShowTextBox = false;
 
         private Timer Timer;
-        public static string SetEnemy = "Pokemon";
+        public static string SetEnemy;
 
         public Fightscene(GameObject gameObject) : base(gameObject)
         {
@@ -197,9 +197,9 @@ namespace StateMachine
             //Enemy - Pokemon
             enemy_sprite = new Sprite(enemy_img);
 
-            if (SetEnemy == "Pokemon")
+            if (SetEnemy == "Bat")
             {
-                enemy_img = new Texture("Resources/Character_Fightscene/Enemy_fight.png");
+                enemy_img = new Texture("Resources/Characters/Bat.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 EnemyHP = 70;
@@ -207,20 +207,59 @@ namespace StateMachine
                 enemyHealthLeft = 70;
                 EnemyAttack = 25;
 
-              //  clock_SwordSlideIn += 
-    }
+                //  clock_SwordSlideIn += 
+            }
             if (SetEnemy == "Cat")
             {
-                enemy_img = new Texture("Resources/Characters/NPCSword.png");
+                enemy_img = new Texture("Resources/Characters/Cat.png");
                 enemy_sprite = new Sprite(enemy_img);
-                enemy_sprite.Scale = new Vector2f(5f, 5f);
+                enemy_sprite.Scale = new Vector2f(1f, 1f);
 
-                EnemyHP = 70;
+                EnemyHP = 30;
 
-                enemyHealthLeft = 70;
+                enemyHealthLeft = 30;
                 EnemyAttack = 25;
             }
-           // enemy_sprite = new Sprite(enemy_img);
+
+            if (SetEnemy == "SwordEnemy")
+            {
+                enemy_img = new Texture("Resources/Characters/EnemyWithMelee.png");
+                enemy_sprite = new Sprite(enemy_img);
+                enemy_sprite.Scale = new Vector2f(1f, 1f);
+
+                EnemyHP = 30;
+
+                enemyHealthLeft = 30;
+                EnemyAttack = 25;
+            }
+
+
+            if (SetEnemy == "FinalBoss")
+            {
+                enemy_img = new Texture("Resources/Characters/FinalBoss.png");
+                enemy_sprite = new Sprite(enemy_img);
+                enemy_sprite.Scale = new Vector2f(1f, 1f);
+
+                EnemyHP = 200;
+
+                enemyHealthLeft = 200;
+                EnemyAttack = 70;
+            }
+
+            if (SetEnemy == "Mage")
+            {
+                enemy_img = new Texture("Resources/Characters/Mage.png");
+                enemy_sprite = new Sprite(enemy_img);
+                enemy_sprite.Scale = new Vector2f(1f, 1f);
+
+                EnemyHP = 600;
+
+                enemyHealthLeft = 600;
+                EnemyAttack = 45;
+            }
+
+
+            // enemy_sprite = new Sprite(enemy_img);
             enemy_sprite.Position = new Vector2f(0, 90);
            
 

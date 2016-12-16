@@ -134,15 +134,39 @@ namespace StateMachine
         public void IntersectionsWithEnemies()
         {
             // Intersection with a Cat
-            if ((PlayerRectangle.Intersects(map.MyScene.cat.CatRect) && !Cat.CatIsDead) ||
-                PlayerRectangle.Intersects(map.MyScene.bat.BatRect) ||
-                PlayerRectangle.Intersects(map.MyScene.enemyKilledWithSword.EnemyKilledWithSwordRect) ||
-                PlayerRectangle.Intersects(map.MyScene.mage.MageRect) ||
-                PlayerRectangle.Intersects(map.MyScene.finalBoss.finalBossRect))
+            if ((PlayerRectangle.Intersects(map.MyScene.cat.CatRect) && !Cat.CatIsDead))
             {
                 Cat.CatIsDead = true;
-                    //condition above should changed or this one should, or cat will die every intersect
-                constants.CurrentEnemy = 1;
+                //condition above should changed or this one should, or cat will die every intersect 
+                Fightscene.SetEnemy = "Cat";
+                map.MyScene.gameObject.SceneManager.StartScene("fight");
+            }
+
+            if ((PlayerRectangle.Intersects(map.MyScene.bat.BatRect) && !Bat.BatIsDead))
+            {
+                Bat.BatIsDead = true;
+                Fightscene.SetEnemy = "Bat";
+                map.MyScene.gameObject.SceneManager.StartScene("fight");
+            }
+
+            if (PlayerRectangle.Intersects(map.MyScene.enemyKilledWithSword.EnemyKilledWithSwordRect) && !EnemyKilledWithSword.EnemyKilledWithSwordIsDead)
+            {
+                EnemyKilledWithSword.EnemyKilledWithSwordIsDead = true;
+                Fightscene.SetEnemy = "SwordEnemy";
+                map.MyScene.gameObject.SceneManager.StartScene("fight");
+            }
+
+            if (PlayerRectangle.Intersects(map.MyScene.finalBoss.finalBossRect) && !FinalBoss.FinalBossIsDead)
+            {
+                FinalBoss.FinalBossIsDead = true;
+                Fightscene.SetEnemy = "FinalBoss";
+                map.MyScene.gameObject.SceneManager.StartScene("fight");
+            }
+
+            if (PlayerRectangle.Intersects(map.MyScene.mage.MageRect) && !Mage.MageIsDead)
+            {
+                Mage.MageIsDead = true;
+                Fightscene.SetEnemy = "Mage";
                 map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
         }
