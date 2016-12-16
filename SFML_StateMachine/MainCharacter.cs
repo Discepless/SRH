@@ -2,7 +2,7 @@
 using SFML.System;
 using SFML.Window;
 using System;
-using SFML_StateMachine;
+using StateMachine;
 
 namespace StateMachine
 {
@@ -16,7 +16,10 @@ namespace StateMachine
         private ItemsAndNpcs ItemsAndNpcs;
         private Clock teleportClock;
         private float teleportCooldown;
-        public static bool playerIsDead = false;
+        public static bool playerIsDead;
+        public static float currentPositionY;
+        public static float currentPositionX;
+
 
         // Caching our Previos direction (Needed for Collisions)
         private float cachedDirection;
@@ -47,7 +50,8 @@ namespace StateMachine
 
         public override void Update(float deltaTime)
         {
-
+            currentPositionX = Xpos;
+            currentPositionY = Ypos;
             Revive();
 
             PlayerRectangle = new IntRect((int) Xpos, (int) Ypos, 32, 48);
@@ -61,8 +65,8 @@ namespace StateMachine
             IntersectionWithItemsAndRest();
             Collision();
             PlayerControl();
-            Console.WriteLine("X" + Xpos);
-            Console.Write("Y" + Ypos);
+           // Console.WriteLine("X" + Xpos);
+           //Console.Write("Y" + Ypos);
             base.Update(deltaTime);
 
 
