@@ -13,14 +13,13 @@ namespace StateMachine
         private Sprite _spriteBox;
         private Texture _textureBox;
 
-        public MessageBox()
+    public MessageBox()
         {
             _textureBox = new Texture("Resources/Map/MessageBox.png");
-            _spriteBox = new Sprite(_textureBox);
-           
+            _spriteBox = new Sprite(_textureBox);           
         }
 
-        public void Update(float deltatime)
+        public void Update()
         {
             _spriteBox.Position = new Vector2f((MainCharacter.currentPositionX - OpenWorldScene.ViewPortX / 4),
             MainCharacter.currentPositionY + OpenWorldScene.ViewPortY / 4);

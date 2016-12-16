@@ -21,6 +21,7 @@ namespace StateMachine
         public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
         public MessageBox messageBox;
+        public MessageText messageText;
         public static View view;
 
         public static int ViewPortX, ViewPortY; 
@@ -42,6 +43,7 @@ namespace StateMachine
             enemyKilledWithSword = new EnemyKilledWithSword(_map);
             ItemsAndNpcs = new ItemsAndNpcs();
             messageBox = new MessageBox();
+            messageText = new MessageText();
             this.gameObject = gameObject;
         }
 
@@ -62,17 +64,25 @@ namespace StateMachine
             ItemsAndNpcs.Draw(_gameObject.Window);
 
             _gameObject.Window.SetView(view);
-            messageBox.Draw(_gameObject.Window);
+            if (Cat.CatIstStalking)
+            {
+                messageBox.Draw(_gameObject.Window);
+                messageText.Draw(_gameObject.Window);
+            }
 
             base.Draw();
         }
 
         public override void Update()
         {
+           _gameObject.Window.SetFramerateLimit(60);
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
-            
-            messageBox.Update(deltatime);
+            if (Cat.CatIstStalking)
+            {
+                messageBox.Update();
+            }
+
             if (!EnemyKilledWithSword.EnemyKilledWithSwordIsDead) enemyKilledWithSword.Update(deltatime);
             if(!Cat.CatIsDead) cat.Update(deltatime);
             if(!Bat.BatIsDead) bat.Update(deltatime);
@@ -81,6 +91,7 @@ namespace StateMachine
 
             view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
 
+            
             //ReWork Animation classes into small pieces
             base.Update();
         }

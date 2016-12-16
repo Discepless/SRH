@@ -6,6 +6,7 @@ namespace StateMachine
     {
         public IntRect BatRect;
         public static bool BatIsDead;
+        public static bool BatIsTalking;
 
         // Caching our Previos direction (Needed for Collisions)
 

@@ -20,6 +20,9 @@ namespace StateMachine
         public static float currentPositionY;
         public static float currentPositionX;
 
+        public MessageBox messageBox;
+        public MessageText messageText;
+
 
         // Caching our Previos direction (Needed for Collisions)
         private float cachedDirection;
@@ -45,7 +48,10 @@ namespace StateMachine
 
             teleport = new Teleport();
             ItemsAndNpcs = new ItemsAndNpcs();
-            ;
+
+            messageBox = new MessageBox();
+            messageText = new MessageText();
+
         }
 
         public override void Update(float deltaTime)
@@ -136,10 +142,17 @@ namespace StateMachine
             // Intersection with a Cat
             if ((PlayerRectangle.Intersects(map.MyScene.cat.CatRect) && !Cat.CatIsDead))
             {
+            
+
+                Cat.CatIstStalking = true;
+
+                MessageText._counterMessage++;
+                MessageText._counterSpeaker++;
+                          
                 Cat.CatIsDead = true;
                 //condition above should changed or this one should, or cat will die every intersect 
                 Fightscene.SetEnemy = "Cat";
-                map.MyScene.gameObject.SceneManager.StartScene("fight");
+               // map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
 
             if ((PlayerRectangle.Intersects(map.MyScene.bat.BatRect) && !Bat.BatIsDead))
