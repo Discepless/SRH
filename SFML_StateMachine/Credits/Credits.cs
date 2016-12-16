@@ -43,20 +43,21 @@ namespace StateMachine
                 //tmp.ToString();
                 _text.Add(new TextLine(new Vector2f(Xres/2 - tmp.Length*text.CharacterSize/4,YRes), tmp));
                 
-                YRes -= 20;
+                YRes += 20;
                 
                 tmp = readStream.ReadLine();
             }
 
             readStream.Close();
-            
 
 
+            _text.Reverse();
 
         }
 
         public override void Update() //just test text like everywhere else
         {
+          
             CreditsDuration = (int) clock.ElapsedTime.AsSeconds();
 
             //
@@ -75,6 +76,9 @@ namespace StateMachine
                 text.Draw(_gameObject.Window, RenderStates.Default);
                
             }
+
+
+            
 
             //text.Draw(_gameObject.Window, RenderStates.Default);
         }
