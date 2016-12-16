@@ -97,6 +97,9 @@
     <Compile Include="MainScene.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Menu.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="OpenWorldScene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,6 +113,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\SFML_StateMachine.exe.config" />
+    <None Include="bin\x86\Debug\Resources\arial.ttf" />
+    <None Include="bin\x86\Debug\SFML_StateMachine.exe.config" />
+    <None Include="bin\x86\Debug\SFML_StateMachine.vshost.exe.config" />
+    <None Include="bin\x86\Debug\SFML_StateMachine.vshost.exe.manifest" />
     <None Include="Resources\arial.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -125,6 +133,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\SFML_StateMachine.exe" />
+    <Content Include="bin\Debug\SFML_StateMachine.pdb" />
+    <Content Include="bin\x86\Debug\csfml-audio-2.dll" />
+    <Content Include="bin\x86\Debug\csfml-graphics-2.dll" />
+    <Content Include="bin\x86\Debug\csfml-network-2.dll" />
+    <Content Include="bin\x86\Debug\csfml-system-2.dll" />
+    <Content Include="bin\x86\Debug\csfml-window-2.dll" />
+    <Content Include="bin\x86\Debug\libsndfile-1.dll" />
+    <Content Include="bin\x86\Debug\openal32.dll" />
+    <Content Include="bin\x86\Debug\OpenTK.Compatibility.dll" />
+    <Content Include="bin\x86\Debug\OpenTK.dll" />
+    <Content Include="bin\x86\Debug\Resources\aherohasfallen.wav" />
+    <Content Include="bin\x86\Debug\sfmlnet-audio-2.dll" />
+    <Content Include="bin\x86\Debug\sfmlnet-graphics-2.dll" />
+    <Content Include="bin\x86\Debug\sfmlnet-system-2.dll" />
+    <Content Include="bin\x86\Debug\sfmlnet-window-2.dll" />
+    <Content Include="bin\x86\Debug\SFML_StateMachine.exe" />
+    <Content Include="bin\x86\Debug\SFML_StateMachine.pdb" />
+    <Content Include="bin\x86\Debug\SFML_StateMachine.vshost.exe" />
     <Content Include="Credits\Text.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

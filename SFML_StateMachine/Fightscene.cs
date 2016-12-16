@@ -206,6 +206,8 @@ namespace StateMachine
 
                 enemyHealthLeft = 70;
                 EnemyAttack = 25;
+
+              //  clock_SwordSlideIn += 
     }
             if (SetEnemy == "Cat")
             {
@@ -682,7 +684,7 @@ namespace StateMachine
                 Characters_Turn = true;
             }
             //Timer (SwordSlideIn)
-            if (clock_SwordSlideIn.ElapsedTime.AsSeconds() <= 1)
+            if (clock_SwordSlideIn.ElapsedTime.AsSeconds() <= 1 )
             {
                 Sword_Time = true;
             }
@@ -732,7 +734,7 @@ namespace StateMachine
             if (Arrow_Start)
                 _gameObject.Window.Draw(simpleArrow_sprite);
 
-            if (/*Sword_Start*/Sword_Time && SimpleSword_equipped)
+            if (Sword_Start/*Sword_Time*/ && SimpleSword_equipped)
                 _gameObject.Window.Draw(SimpleSword_sprite);
             if (Sword_Time && GoldenSword_equipped)
                 _gameObject.Window.Draw(goldenSword_sprite);
