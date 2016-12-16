@@ -17,7 +17,7 @@ namespace StateMachine
         private Text text;
         private Clock clock;
 
-        private int CreditsDuration;
+    //    private int CreditsDuration;
         private float XPos, Ypos;
 
         public Credits(GameObject gameObject) : base(gameObject)
@@ -30,59 +30,76 @@ namespace StateMachine
             clock = new Clock();
             Font _font = new Font(@"Resources\arial.ttf");
             _text = new List<TextLine>();
-            text = new Text("",_font);
+            text = new Text("", _font);text.Color = Color.Black;
             StreamReader readStream = new StreamReader(File.Open("Credits/Text.txt", FileMode.Open));
             string tmp = readStream.ReadLine();
-            int YRes = (int)_gameObject.YRes;
-            int Xres = (int)_gameObject.XRes;
+            int YRes = (int) _gameObject.YRes;
+            int Xres = (int) _gameObject.XRes;
 
             Ypos = _gameObject.YRes;
             text.CharacterSize = 15;
             while (tmp != null)
             {
                 //tmp.ToString();
-                _text.Add(new TextLine(new Vector2f(Xres/2 - tmp.Length*text.CharacterSize/4,YRes), tmp));
-                
-                YRes -= 20;
-                
+                _text.Add(new TextLine(new Vector2f(Xres/2 - tmp.Length*text.CharacterSize/4, YRes), tmp));
+
+                YRes += 20;
+
                 tmp = readStream.ReadLine();
             }
 
             readStream.Close();
-            
 
 
+            _text.Reverse();
 
         }
 
         public override void Update() //just test text like everywhere else
         {
-            CreditsDuration = (int) clock.ElapsedTime.AsSeconds();
+
+            //   CreditsDuration = (int) clock.ElapsedTime.AsSeconds();
 
             //
-            foreach (TextLine line in _text)
+            if (clock.ElapsedTime.AsSeconds() < 10) //scroll for 10 seconds only
             {
-                line.Position.Y -= 1;
+                foreach (TextLine line in _text) {line.Position.Y -= 1;}
             }
+             
         }
 
         public override void Draw()
         {
+
+
             foreach (TextLine line in _text)
             {
                 text.DisplayedString = line.Text;
                 text.Position = line.Position;
                 text.Draw(_gameObject.Window, RenderStates.Default);
-               
+
             }
+
+
+
 
             //text.Draw(_gameObject.Window, RenderStates.Default);
         }
 
-        public override void Exit()
-
+        public override void HandleKeyPress(KeyEventArgs e)
         {
-           
+            if (e.Code == Keyboard.Key.Escape)
+            {
+
+                _gameObject.SceneManager.GotoScene("menu");
+                _gameObject.SceneManager.GetScene("credits").Exit();
+            }
+
+        }
+
+        public override void Reset()
+        {
+            InitializeItems();
         }
     }
 }
