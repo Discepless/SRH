@@ -22,8 +22,8 @@ namespace StateMachine
 
         public void Update(float deltatime)
         {
-            _spriteBox.Position = new Vector2f((MainCharacter.currentPositionX - OpenWorldScene.ViewPortX / 4) * deltatime,
-            MainCharacter.currentPositionY + OpenWorldScene.ViewPortY / 4) * deltatime;
+            _spriteBox.Position = new Vector2f((MainCharacter.currentPositionX - OpenWorldScene.ViewPortX / 4),
+            MainCharacter.currentPositionY + OpenWorldScene.ViewPortY / 4);
         }
         public void Draw(RenderWindow window)
         {
