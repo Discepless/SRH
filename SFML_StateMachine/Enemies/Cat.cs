@@ -7,6 +7,7 @@ namespace StateMachine
         private Map collisionObject;
         public IntRect CatRect;
         public static bool CatIsDead;
+        public static bool CatIstStalking;
 
         // Caching our Previos direction (Needed for Collisions)
 

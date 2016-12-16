@@ -1,4 +1,5 @@
-﻿using System.Resources;
+﻿using System;
+using System.Resources;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -19,14 +20,20 @@ namespace StateMachine
         public EnemyKilledWithSword enemyKilledWithSword;
         public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
-        public View view;
+        public MessageBox messageBox;
+        public MessageText messageText;
+        public static View view;
+
+        public static int ViewPortX, ViewPortY; 
         
 
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
+            ViewPortX = 800;
+            ViewPortY = 600;
 
-            view = new View(new Vector2f(0, 0), new Vector2f(1920, 1080));
+            view = new View(new Vector2f(0, 0), new Vector2f(ViewPortX, ViewPortY));
             _map = new Map(this);
             myCharacter = new MainCharacter(_map);
             cat = new Cat(_map);
@@ -35,6 +42,8 @@ namespace StateMachine
             finalBoss = new FinalBoss(_map);
             enemyKilledWithSword = new EnemyKilledWithSword(_map);
             ItemsAndNpcs = new ItemsAndNpcs();
+            messageBox = new MessageBox();
+            messageText = new MessageText();
             this.gameObject = gameObject;
         }
 
@@ -49,19 +58,30 @@ namespace StateMachine
             if (!FinalBoss.FinalBossIsDead) finalBoss.Draw(_gameObject.Window);
             if (!EnemyKilledWithSword.EnemyKilledWithSwordIsDead) enemyKilledWithSword.Draw(_gameObject.Window);
 
+            
+            
+
             ItemsAndNpcs.Draw(_gameObject.Window);
 
             _gameObject.Window.SetView(view);
+            if (Cat.CatIstStalking)
+            {
+                messageBox.Draw(_gameObject.Window);
+                messageText.Draw(_gameObject.Window);
+            }
 
             base.Draw();
         }
 
         public override void Update()
         {
-            _gameObject.Window.SetFramerateLimit(30);
-
+           _gameObject.Window.SetFramerateLimit(60);
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
+            if (Cat.CatIstStalking)
+            {
+                messageBox.Update();
+            }
 
             if (!EnemyKilledWithSword.EnemyKilledWithSwordIsDead) enemyKilledWithSword.Update(deltatime);
             if(!Cat.CatIsDead) cat.Update(deltatime);
@@ -71,6 +91,7 @@ namespace StateMachine
 
             view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
 
+            
             //ReWork Animation classes into small pieces
             base.Update();
         }

@@ -2,7 +2,7 @@
 using SFML.System;
 using SFML.Window;
 using System;
-using SFML_StateMachine;
+using StateMachine;
 
 namespace StateMachine
 {
@@ -16,7 +16,13 @@ namespace StateMachine
         private ItemsAndNpcs ItemsAndNpcs;
         private Clock teleportClock;
         private float teleportCooldown;
-        public static bool playerIsDead = false;
+        public static bool playerIsDead;
+        public static float currentPositionY;
+        public static float currentPositionX;
+
+        public MessageBox messageBox;
+        public MessageText messageText;
+
 
         // Caching our Previos direction (Needed for Collisions)
         private float cachedDirection;
@@ -42,12 +48,16 @@ namespace StateMachine
 
             teleport = new Teleport();
             ItemsAndNpcs = new ItemsAndNpcs();
-            ;
+
+            messageBox = new MessageBox();
+            messageText = new MessageText();
+
         }
 
         public override void Update(float deltaTime)
         {
-
+            currentPositionX = Xpos;
+            currentPositionY = Ypos;
             Revive();
 
             PlayerRectangle = new IntRect((int) Xpos, (int) Ypos, 32, 48);
@@ -61,8 +71,8 @@ namespace StateMachine
             IntersectionWithItemsAndRest();
             Collision();
             PlayerControl();
-            Console.WriteLine("X" + Xpos);
-            Console.Write("Y" + Ypos);
+           // Console.WriteLine("X" + Xpos);
+           //Console.Write("Y" + Ypos);
             base.Update(deltaTime);
 
 
@@ -132,10 +142,17 @@ namespace StateMachine
             // Intersection with a Cat
             if ((PlayerRectangle.Intersects(map.MyScene.cat.CatRect) && !Cat.CatIsDead))
             {
+            
+
+                Cat.CatIstStalking = true;
+
+                MessageText._counterMessage++;
+                MessageText._counterSpeaker++;
+                          
                 Cat.CatIsDead = true;
                 //condition above should changed or this one should, or cat will die every intersect 
                 Fightscene.SetEnemy = "Cat";
-                map.MyScene.gameObject.SceneManager.StartScene("fight");
+               // map.MyScene.gameObject.SceneManager.StartScene("fight");
             }
 
             if ((PlayerRectangle.Intersects(map.MyScene.bat.BatRect) && !Bat.BatIsDead))
