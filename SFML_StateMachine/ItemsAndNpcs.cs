@@ -5,7 +5,7 @@ namespace StateMachine
 {
     class ItemsAndNpcs
     {
-        public IntRect BowRect, KeyRect, HealingRect, NPCRect, DoorsRect;
+        public IntRect BowRect, KeyRect, HealingRect,HealingRect1,HealingRect2, NPCRect, DoorsRect;
         public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture, NPCTexture;
         public Sprite BowSprite, KeySprite, DoorsOpenedSprite, DoorsClosedSprite, NPCSprite;
 
@@ -19,10 +19,10 @@ namespace StateMachine
             BowWidth,
             BowHeight,
             //////////
-            HealingXpos,
-            HealingYpos,
-            HealingWidth,
-            HealingHeight,
+            HealingXpos,HealingXPos1,HealingXPos2,
+            HealingYpos, HealingYpos1, HealingYpos2,
+            HealingWidth, HealingWidth1, HealingWidth2,
+            HealingHeight, HealingHeight1, HealingHeight2,
             //////////
             KeyXpos,
             KeyYpos,
@@ -66,6 +66,21 @@ namespace StateMachine
             DoorsWidth = 96;
             DoorsHeight = 32;
 
+            //
+            HealingXpos = 1887;
+            HealingYpos = 383;
+            HealingXPos1 = 1959;
+            HealingYpos1 = 383;
+            HealingXPos2 = 1667;
+            HealingYpos2 = 1453;
+
+            HealingWidth = 62;
+            HealingHeight = 34;
+            HealingWidth1 = 47;
+            HealingHeight1 = 30;
+            HealingWidth2 = 54;
+            HealingHeight2 = 18;
+
             KeyRect = new IntRect(KeyXpos, KeyYpos, KeyWidth, KeyHeight);
             KeyTexture = new Texture("Resources/Items/Key.png");
             KeySprite = new Sprite(KeyTexture) { Position = new Vector2f(KeyXpos, KeyYpos), Scale = new Vector2f(0.5f, 0.5f) };
@@ -85,6 +100,8 @@ namespace StateMachine
             DoorsClosedSprite = new Sprite(DoorsClosedTexture) { Position = new Vector2f(DoorsXpos, DoorsYpos), Scale = new Vector2f(1f, 1f) };
 
             HealingRect = new IntRect(HealingXpos, HealingYpos, HealingWidth, HealingHeight);
+            HealingRect1 = new IntRect(HealingXPos1, HealingYpos1, HealingWidth1, HealingHeight1);
+            HealingRect2 = new IntRect(HealingXPos2, HealingYpos2, HealingWidth2, HealingHeight2);
         }
 
         public void Draw(RenderWindow window)

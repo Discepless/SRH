@@ -178,7 +178,7 @@ namespace StateMachine
 
             // Intersection with Healing
 
-            if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect))
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect) || PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect1) || PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect2))
             {
                 //TODO HEAL UP LOGIC
             }
