@@ -72,6 +72,7 @@ namespace StateMachine
             //GoTo Scene
             if (e.Code == Keyboard.Key.Return && Start_pressed)
             {
+                ReviveEnemiesAndItems();
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume(); _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.StartScene("OpenWorld");
             }
@@ -132,6 +133,20 @@ namespace StateMachine
         public void MovePointerUp()
         {
             pointer_sprite.Position -= new Vector2f(0, 200);
+        }
+
+        public void ReviveEnemiesAndItems()
+        {
+            Cat.CatIsDead = false;
+            Bat.BatIsDead = false;
+            EnemyKilledWithSword.EnemyKilledWithSwordIsDead = false;
+            Mage.MageIsDead = false;
+            FinalBoss.FinalBossIsDead = false;
+
+            ItemsAndNpcs.BowPicked = false;
+            ItemsAndNpcs.DoorsOpened = false;
+            ItemsAndNpcs.KeyPicked = false;
+            ItemsAndNpcs.SwordPicked = false;
         }
     }
 }

@@ -20,6 +20,7 @@ namespace StateMachine
         public ItemsAndNpcs ItemsAndNpcs;
         public GameObject gameObject;
         public View view;
+        
 
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
@@ -95,7 +96,6 @@ namespace StateMachine
         public override void Reset()
         {
             clock.Restart();
-            //base.Reset();
         }
     }
 }

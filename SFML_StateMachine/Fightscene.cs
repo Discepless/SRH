@@ -510,8 +510,11 @@ namespace StateMachine
             if (healthLeft <= 0)
                 character_sprite.Position += new Vector2f(0, 50);
             if (character_sprite.Position.Y >= 5000)
+            {
+                MainCharacter.playerIsDead = true;
                 _gameObject.SceneManager.StartScene("menu");
 
+            }
             //Enemy Slide Down (when dead)
             if (enemyHealthLeft <= 0 && enemy_sprite.Position.Y <= 5500)
                 enemy_sprite.Position += new Vector2f(0, 50);
