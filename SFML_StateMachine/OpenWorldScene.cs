@@ -25,6 +25,7 @@ namespace StateMachine
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
+
             view = new View(new Vector2f(0, 0), new Vector2f(1920, 1080));
             _map = new Map(this);
             myCharacter = new MainCharacter(_map);
@@ -57,6 +58,8 @@ namespace StateMachine
 
         public override void Update()
         {
+            _gameObject.Window.SetFramerateLimit(30);
+
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
 

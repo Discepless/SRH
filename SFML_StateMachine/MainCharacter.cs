@@ -172,13 +172,16 @@ namespace StateMachine
             //Intersection with NPC
             if (PlayerRectangle.Intersects(ItemsAndNpcs.NPCRect))
             {
-                //TODO GIVE ITEM
+                ItemsAndNpcs.SwordPicked = true;
+                Inventar_Fightscene.SimpleSword = true;
+                Inventar_Fightscene.GoldenSword = true;
             }
 
             //Intersection with Bow
             if (PlayerRectangle.Intersects(ItemsAndNpcs.BowRect))
             {
                 ItemsAndNpcs.BowPicked = true;
+                Inventar_Fightscene.SimpleArrow = true;
             }
 
 
@@ -204,7 +207,7 @@ namespace StateMachine
 
             if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect) || PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect1) || PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect2))
             {
-                //TODO HEAL UP LOGIC
+                Fightscene.healthLeft = Fightscene.HP;
             }
 
             if (PlayerRectangle.Intersects(teleport.TeleportA) && teleportCooldown > 2)

@@ -9,7 +9,7 @@ namespace StateMachine
         public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture, NPCTexture;
         public Sprite BowSprite, KeySprite, DoorsOpenedSprite, DoorsClosedSprite, NPCSprite;
 
-        public static bool BowPicked, KeyPicked, SwordPicked, DoorsOpened;
+        public static bool BowPicked, KeyPicked, SwordPicked, DoorsOpened,StaffPicked;
 
         public int
             ///Positions for ItemsAndNpcs and Things on a map//////

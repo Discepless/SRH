@@ -1,6 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using System;
 
 namespace StateMachine
 {
@@ -102,9 +103,9 @@ namespace StateMachine
         private float Speed = 1;
 
         //Character Stats
-        private int HP = 100;
+        public static int HP = 100;
 
-        private int healthLeft = 100;
+        public static int healthLeft = 100;
 
         //Weapon Stats
         private int Attack_SimpleSword = 20;
@@ -202,6 +203,8 @@ namespace StateMachine
                 enemy_img = new Texture("Resources/Characters/Bat.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
+                Enemies_Turn = false;
+                Characters_Turn = true;
                 EnemyHP = 70;
 
                 enemyHealthLeft = 70;
@@ -214,7 +217,8 @@ namespace StateMachine
                 enemy_img = new Texture("Resources/Characters/Cat.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
-
+                Enemies_Turn = false;
+                Characters_Turn = true;
                 EnemyHP = 30;
 
                 enemyHealthLeft = 30;
@@ -226,7 +230,8 @@ namespace StateMachine
                 enemy_img = new Texture("Resources/Characters/EnemyWithMelee.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
-
+                Enemies_Turn = false;
+                Characters_Turn = true;
                 EnemyHP = 30;
 
                 enemyHealthLeft = 30;
@@ -239,6 +244,8 @@ namespace StateMachine
                 enemy_img = new Texture("Resources/Characters/FinalBoss.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
+                Enemies_Turn = false;
+                Characters_Turn = true;
 
                 EnemyHP = 200;
 
@@ -251,6 +258,8 @@ namespace StateMachine
                 enemy_img = new Texture("Resources/Characters/Mage.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
+                Enemies_Turn = false;
+                Characters_Turn = true;
 
                 EnemyHP = 600;
 
@@ -493,9 +502,9 @@ namespace StateMachine
             }
 
             //Move Pointer
-            if (e.Code == Keyboard.Key.Down && arrow_pointer_sprite.Position.Y <= 900)
+            if (e.Code == Keyboard.Key.Down && !Magic_Pressed)
                 MovePointerDown();
-            if (e.Code == Keyboard.Key.Up && arrow_pointer_sprite.Position.Y >= 780)
+            if (e.Code == Keyboard.Key.Up && !Nahkampf_Pressed)
                 MovePointerUp();
             //if (e.Code == Keyboard.Key.Left && Draw_Inventar && arrow_pointer_sprite.Position.X > 710)
             //    MovePointerLeft();
@@ -531,7 +540,7 @@ namespace StateMachine
 
             Timer.Update();
             //Fightscene Logic
-            // Console.WriteLine(ShowTextBox);
+             Console.WriteLine(Sword_Start);
             //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
             //  Console.WriteLine();
             //Background Movement
@@ -776,9 +785,9 @@ namespace StateMachine
             if (Arrow_Start)
                 _gameObject.Window.Draw(simpleArrow_sprite);
 
-            if (Sword_Start/*Sword_Time*/ && SimpleSword_equipped)
+            if (Sword_Start && SimpleSword_equipped)
                 _gameObject.Window.Draw(SimpleSword_sprite);
-            if (Sword_Time && GoldenSword_equipped)
+            if (GoldenSword_Start && GoldenSword_equipped)
                 _gameObject.Window.Draw(goldenSword_sprite);
             if (MagicBall_Start)
                 _gameObject.Window.Draw(magicBall_sprite);
