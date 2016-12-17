@@ -12,6 +12,8 @@ namespace StateMachine
 
         
         private Clock clock = new Clock();
+        public static Clock TalkingClock = new Clock();
+        public static int TalkingTimerInteger;
         public MainCharacter myCharacter;
         public Cat cat;
         public Bat bat;
@@ -45,6 +47,7 @@ namespace StateMachine
             messageBox = new MessageBox();
             messageText = new MessageText();
             this.gameObject = gameObject;
+
         }
 
         public override void Draw()
@@ -64,7 +67,7 @@ namespace StateMachine
             ItemsAndNpcs.Draw(_gameObject.Window);
 
             _gameObject.Window.SetView(view);
-            if (Cat.CatIstStalking)
+            if (MainCharacter.CharIsTalking)
             {
                 messageBox.Draw(_gameObject.Window);
                 messageText.Draw(_gameObject.Window);
@@ -75,10 +78,12 @@ namespace StateMachine
 
         public override void Update()
         {
+
+            TalkingTimerInteger = (int)TalkingClock.ElapsedTime.AsSeconds();
            _gameObject.Window.SetFramerateLimit(60);
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
-            if (Cat.CatIstStalking)
+            if (MainCharacter.CharIsTalking)
             {
                 messageBox.Update();
             }

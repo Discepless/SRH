@@ -8,6 +8,7 @@ namespace StateMachine
         public IntRect BowRect, KeyRect, HealingRect,HealingRect1,HealingRect2, NPCRect, DoorsRect;
         public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture, NPCTexture;
         public Sprite BowSprite, KeySprite, DoorsOpenedSprite, DoorsClosedSprite, NPCSprite;
+        public static bool NpcSwordGiven;
 
         public static bool BowPicked, KeyPicked, SwordPicked, DoorsOpened,StaffPicked;
 
@@ -41,8 +42,8 @@ namespace StateMachine
 
         public ItemsAndNpcs()
         {
-            BowXpos = 450;
-            BowYPos = 1530;
+            BowXpos = 1930;
+            BowYPos = 473;
             BowWidth = 16;
             BowHeight = 16;
 
@@ -116,7 +117,10 @@ namespace StateMachine
                 window.Draw(KeySprite);
             }
 
-            window.Draw(NPCSprite);
+            if (!NpcSwordGiven)
+            {
+                window.Draw(NPCSprite);
+            }
 
             if (DoorsOpened == true)
             {

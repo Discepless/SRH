@@ -11,6 +11,7 @@ namespace StateMachine
 
     {
         public static int CurrentEnemy = 1;
+        public static int FreezeTime = 3;
     }
 
 }

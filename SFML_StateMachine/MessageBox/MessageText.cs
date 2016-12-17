@@ -16,18 +16,36 @@ namespace StateMachine
         public static int _counterSpeaker;
 
 
-        private static readonly string[] Speaker = new string[3]
+        private static readonly string[] Speaker = new string[11]
         {
            "Cat:",
-           "123123123",
-           "j2374sdf134"
+           "Strange Man:",
+           "Another Strange Man:",
+           " ",
+           "Bat:",
+           " ",
+           " ",
+           "Mage",
+           "Woman",
+           "",
+           ""
+           
         };
 
-        private static readonly string[] Message = new string[3]
+        private static readonly string[] Message = new string[11]
 {
            "Meow Meow (Who the fuck are you?)",
-           "123123123",
-           "j2374sdf134"
+           "Hey Dude! Take this sword with you! And Bye...",
+           "You won't pass!",
+           "You've found a Bow! \n" +
+           "By the way, use those automates to heal you!",
+           "♫♫What does the bat say♫♫ ",
+           "You've found a Key!  ",
+           "Door is Opened",
+           "You shall not pass!",
+           "I am your final boss",
+           "Door is Closed",
+           "You're full healed!"
 };
 
         public MessageText()

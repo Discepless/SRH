@@ -17,11 +17,16 @@ namespace StateMachine
         private Clock teleportClock;
         private float teleportCooldown;
         public static bool playerIsDead;
+        public static bool CharIsTalking;
         public static float currentPositionY;
         public static float currentPositionX;
 
         public MessageBox messageBox;
         public MessageText messageText;
+
+        public static int JustCounterForTimer;
+
+        private int x,y;
 
 
         // Caching our Previos direction (Needed for Collisions)
@@ -30,7 +35,7 @@ namespace StateMachine
         public MainCharacter(Map map) : base("Resources/Characters/MainCharacter.png", 32, 48)
         {
             teleportClock = new Clock();
-            ;
+            
 
 
             AnimDown = new Animation(0, 0, 4);
@@ -56,6 +61,7 @@ namespace StateMachine
 
         public override void Update(float deltaTime)
         {
+            
             currentPositionX = Xpos;
             currentPositionY = Ypos;
             Revive();
@@ -70,7 +76,11 @@ namespace StateMachine
             IntersectionsWithEnemies();
             IntersectionWithItemsAndRest();
             Collision();
-            PlayerControl();
+
+            if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime)
+            {
+                PlayerControl();
+            }
            // Console.WriteLine("X" + Xpos);
            //Console.Write("Y" + Ypos);
             base.Update(deltaTime);
@@ -142,81 +152,142 @@ namespace StateMachine
             // Intersection with a Cat
             if ((PlayerRectangle.Intersects(map.MyScene.cat.CatRect) && !Cat.CatIsDead))
             {
-            
+                TalkingCounter();
 
-                Cat.CatIstStalking = true;
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    MessageCounterMechanic();
+                    Cat.CatIsDead = true;
+                    Fightscene.SetEnemy = "Cat";
 
-                MessageText._counterMessage++;
-                MessageText._counterSpeaker++;
-                          
-                Cat.CatIsDead = true;
-                //condition above should changed or this one should, or cat will die every intersect 
-                Fightscene.SetEnemy = "Cat";
-               // map.MyScene.gameObject.SceneManager.StartScene("fight");
+                    map.MyScene.gameObject.SceneManager.StartScene("fight");
+                }
             }
+
+            //condition above should changed or this one should, or cat will die every intersect 
+
+
 
             if ((PlayerRectangle.Intersects(map.MyScene.bat.BatRect) && !Bat.BatIsDead))
             {
-                Bat.BatIsDead = true;
-                Fightscene.SetEnemy = "Bat";
-                map.MyScene.gameObject.SceneManager.StartScene("fight");
+                TalkingCounter();
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    MessageCounterMechanic();
+                    Bat.BatIsDead = true;
+                    Fightscene.SetEnemy = "Bat";
+                    map.MyScene.gameObject.SceneManager.StartScene("fight");
+                }
             }
 
             if (PlayerRectangle.Intersects(map.MyScene.enemyKilledWithSword.EnemyKilledWithSwordRect) && !EnemyKilledWithSword.EnemyKilledWithSwordIsDead)
-            {
-                EnemyKilledWithSword.EnemyKilledWithSwordIsDead = true;
-                Fightscene.SetEnemy = "SwordEnemy";
-                map.MyScene.gameObject.SceneManager.StartScene("fight");
+            { 
+                TalkingCounter();
+
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    MessageCounterMechanic();
+                    EnemyKilledWithSword.EnemyKilledWithSwordIsDead = true;
+                    Fightscene.SetEnemy = "SwordEnemy";
+                    map.MyScene.gameObject.SceneManager.StartScene("fight");
+                }
             }
 
             if (PlayerRectangle.Intersects(map.MyScene.finalBoss.finalBossRect) && !FinalBoss.FinalBossIsDead)
             {
-                FinalBoss.FinalBossIsDead = true;
-                Fightscene.SetEnemy = "FinalBoss";
-                map.MyScene.gameObject.SceneManager.StartScene("fight");
+                TalkingCounter();
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    FinalBoss.FinalBossIsDead = true;
+                    Fightscene.SetEnemy = "FinalBoss";
+                    map.MyScene.gameObject.SceneManager.StartScene("fight");
+                }
             }
 
             if (PlayerRectangle.Intersects(map.MyScene.mage.MageRect) && !Mage.MageIsDead)
             {
-                Mage.MageIsDead = true;
-                Fightscene.SetEnemy = "Mage";
-                map.MyScene.gameObject.SceneManager.StartScene("fight");
+                TalkingCounter();
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    MessageCounterMechanic();
+                    Mage.MageIsDead = true;
+                    Fightscene.SetEnemy = "Mage";
+                    map.MyScene.gameObject.SceneManager.StartScene("fight");
+                }
             }
+        }
+
+        private static void MessageCounterMechanic()
+        {
+            CharIsTalking = false;
+            MessageText._counterMessage++;
+            MessageText._counterSpeaker++;
         }
 
         public void IntersectionWithItemsAndRest()
         {
             //Intersection with NPC
-            if (PlayerRectangle.Intersects(ItemsAndNpcs.NPCRect))
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.NPCRect) && !ItemsAndNpcs.NpcSwordGiven)
             {
-                ItemsAndNpcs.SwordPicked = true;
-                Inventar_Fightscene.SimpleSword = true;
-                Inventar_Fightscene.GoldenSword = true;
+                TalkingCounter();
+                
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    MessageCounterMechanic();
+                    ItemsAndNpcs.NpcSwordGiven = true;
+                    ItemsAndNpcs.SwordPicked = true;
+                    Inventar_Fightscene.SimpleSword = true;
+                    Inventar_Fightscene.GoldenSword = true;
+                    JustCounterForTimer = 0;
+                }
             }
 
             //Intersection with Bow
-            if (PlayerRectangle.Intersects(ItemsAndNpcs.BowRect))
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.BowRect) && !ItemsAndNpcs.BowPicked)
             {
-                ItemsAndNpcs.BowPicked = true;
-                Inventar_Fightscene.SimpleArrow = true;
+                TalkingCounter();
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    MessageCounterMechanic();
+                    ItemsAndNpcs.BowPicked = true;
+                    Inventar_Fightscene.SimpleArrow = true;
+                    JustCounterForTimer = 0;
+                }
             }
 
 
             //Intersection with Key
 
-            if (PlayerRectangle.Intersects(ItemsAndNpcs.KeyRect))
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.KeyRect) && !ItemsAndNpcs.KeyPicked)
             {
-                ItemsAndNpcs.KeyPicked = true;
-                //TODO LOGIC
+                TalkingCounter();
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    MessageCounterMechanic();
+                    ItemsAndNpcs.KeyPicked = true;
+                    JustCounterForTimer = 0;
+                }
             }
 
             //Intersection with Door
 
-            if (PlayerRectangle.Intersects(ItemsAndNpcs.DoorsRect) && cachedDirection == 2)
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.DoorsRect) && cachedDirection == 2 && !ItemsAndNpcs.DoorsOpened)
             {
-                if (ItemsAndNpcs.KeyPicked == true) ItemsAndNpcs.DoorsOpened = true;
-
-                if (ItemsAndNpcs.KeyPicked == false) moveSpeed = 0;
+                if (ItemsAndNpcs.KeyPicked)
+                {
+                    TalkingCounter();
+                    if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                    {
+                        MessageCounterMechanic();
+                        ItemsAndNpcs.DoorsOpened = true;
+                        JustCounterForTimer = 0;
+                    }
+                }
+                if (!ItemsAndNpcs.KeyPicked)
+                {                                             
+                        moveSpeed = 0;
+                }
+                
                 //Ypos = ItemsAndNpcs .DoorsYpos  -50;
             }
 
@@ -241,6 +312,20 @@ namespace StateMachine
                 teleportClock.Restart();
             }
         }
+
+        private static void TalkingCounter()
+        {
+            if (JustCounterForTimer <= 1)
+            {
+                OpenWorldScene.TalkingClock.Restart();
+                OpenWorldScene.TalkingTimerInteger = 0;
+                JustCounterForTimer++;
+            }
+            OpenWorldScene.TalkingTimerInteger = (int)OpenWorldScene.TalkingClock.ElapsedTime.AsSeconds();
+            CharIsTalking = true;
+        }
+
+        
 
         public void Revive()
         {

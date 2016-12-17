@@ -32,6 +32,7 @@ namespace StateMachine
 
         public override void InitializeItems()
         {
+            
             menuBackground_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/paper.jpg");
             menuBackground_sprite = new Sprite(menuBackground_img);
 
