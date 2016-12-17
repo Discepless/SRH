@@ -29,6 +29,7 @@ namespace StateMachine
         private Texture fernkampf_button_img;
         private Texture inventar_button_img;
         private Texture paper_img;
+        private Texture inventar_paper_img;
         private Texture arrow_pointer_img;
         private Sprite nahkampf_button_sprite;
         private Sprite fernkampf_button_sprite;
@@ -170,6 +171,8 @@ namespace StateMachine
         private bool Missed = false;
 
         private bool ShowTextBox = false;
+
+        private bool Extended_Inventar;
 
         private Timer Timer;
         public static string SetEnemy;
@@ -327,12 +330,14 @@ namespace StateMachine
 
             //Paper
             paper_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/paper.jpg");
-
+            
             paper_sprite = new Sprite(paper_img);
             paper_sprite.Position = new Vector2f(1350, 650);
 
             inventar_paper_sprite = new Sprite(paper_img);
             inventar_paper_sprite.Position = new Vector2f(1350 - inventar_paper_sprite.Texture.Size.X, 650);
+         //   inventar_paper_sprite. = new Vector2f(5, 5);
+       //     inventar_paper_sprite. = paper_sprite.Texture.Size.Y;
 
             //Arrow_Pointer
             arrow_pointer_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Anzeigepfeil.png");
@@ -486,7 +491,7 @@ namespace StateMachine
             }
             if (e.Code == Keyboard.Key.Return && Draw_Inventar && SimpleArrow_Pressed)
             {
-                Inventar_Fightscene.Equipp_SimpleArrow();
+                Inventar_Fightscene.SimpleArrow = true;
                 SimpleArrow_equipped = true;
             }
             //Magic
@@ -510,12 +515,59 @@ namespace StateMachine
                 MovePointerUp();
             //if (e.Code == Keyboard.Key.Left && Draw_Inventar && arrow_pointer_sprite.Position.X > 710)
             //    MovePointerLeft();
-            if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[Inventar_Fightscene.count - 1].Position.Y)
-                Inventar_MovePointerDown();
-            if (e.Code == Keyboard.Key.Up && Draw_Inventar && /*arrow_pointer_sprite.Position.Y > 719 */ arrow_pointer_sprite.Position.Y -15 > Inventar_Fightscene.unchecked_checkbox_list[0].Position.Y)
-                Inventar_MovePointerUp();
-            if (e.Code == Keyboard.Key.Right && Draw_Inventar)
+            if (Inventar_Fightscene.count == 1)
+            {
+                if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/ arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[0].Position.Y)
+                    Inventar_MovePointerDown();
+            }
+            if(Inventar_Fightscene.count == 2)
+            {
+                if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/ arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[1].Position.Y)
+                    Inventar_MovePointerDown();
+            }
+            if (Inventar_Fightscene.count >= 3 && !Extended_Inventar)
+            {
+                if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/ arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[2].Position.Y)
+                    Inventar_MovePointerDown();
+            }
+            if (Inventar_Fightscene.count == 4 && Extended_Inventar)
+            {
+                if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/ arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[3].Position.Y)
+                    Inventar_MovePointerDown();
+            }
+            if (Inventar_Fightscene.count == 5 && Extended_Inventar)
+            {
+                if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/ arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[4].Position.Y)
+                    Inventar_MovePointerDown();
+            }
+            if (!Extended_Inventar && Draw_Inventar)
+            {
+                if (e.Code == Keyboard.Key.Up && Draw_Inventar && /*arrow_pointer_sprite.Position.Y > 719 */ arrow_pointer_sprite.Position.Y - 15 > Inventar_Fightscene.unchecked_checkbox_list[0].Position.Y)
+                    Inventar_MovePointerUp();
+            }
+
+            if(Extended_Inventar)
+            {
+                if (e.Code == Keyboard.Key.Up && Draw_Inventar && arrow_pointer_sprite.Position.Y - 15 > Inventar_Fightscene.unchecked_checkbox_list[3].Position.Y)
+                    Inventar_MovePointerUp();
+            }
+            if (e.Code == Keyboard.Key.Right && Inventar_Fightscene.count >= 3 && Draw_Inventar && !Extended_Inventar)
+            {
                 MovePointerRight();
+                Extended_Inventar = true;
+            }
+
+            if (e.Code == Keyboard.Key.Escape)
+            {
+                MovePointerExitInventar();
+                Extended_Inventar = false;
+                Draw_Inventar = false;
+            }
+            if (e.Code == Keyboard.Key.Left && Extended_Inventar)
+            {
+                MovePointerLeft();
+                Extended_Inventar = false;
+            }
 
             //Textbox
             if (e.Code == Keyboard.Key.Return && ShowTextBox /*&& clock_SwordSlideIn.ElapsedTime.AsSeconds() >= 1*/ && Timer.GetTextboxClock >= 1)
@@ -525,26 +577,27 @@ namespace StateMachine
                 clock_EnemiesTurn.Restart();
             }
 
-            if (e.Code == Keyboard.Key.Escape)
-            {
-                _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                _gameObject.SceneManager.GetScene("OpenWorld").Reset();
-                _gameObject.SceneManager.GotoScene("OpenWorld");
-                _gameObject.SceneManager.GetScene("fight").Dispose();
-            }
+            //if (e.Code == Keyboard.Key.Escape)
+            //{
+            //    _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+            //    _gameObject.SceneManager.GetScene("OpenWorld").Reset();
+            //    _gameObject.SceneManager.GotoScene("OpenWorld");
+            //    _gameObject.SceneManager.GetScene("fight").Dispose();
+            //}
         }
 
         public override void Update()
         {
+           
             
             //if (healthLeft <= 0)
             //    Reset();
 
             Timer.Update();
             //Fightscene Logic
-             Console.WriteLine(arrow_pointer_sprite.Position.Y);
+             //Console.WriteLine(Inventar_Fightscene.simpleSword.Position.Y);
+           //   Console.WriteLine(arrow_pointer_sprite.Position.Y + "Pointer");
               Console.WriteLine(Inventar_Fightscene.count);
-            //  Console.WriteLine();
             //Background Movement
             if (!SlideInMove_character())
                 background_sprite.Position = new Vector2f(character_sprite.Position.X - 130, character_sprite.Position.Y + 50);
@@ -636,11 +689,12 @@ namespace StateMachine
                 Magic_Pressed = true;
                 Inventar_Pressed = false;
             }
-            if (arrow_pointer_sprite.Position.Y == 719 && Draw_Inventar)
-            {
-                SimpleSword_Pressed = true;
-                GoldenSword_Pressed = false;
-            }
+            //if (arrow_pointer_sprite.Position.Y == Inventar_Fightscene.simpleSword.Position.Y + 17 && Draw_Inventar)
+            //{
+            //    SimpleSword_Pressed = true;
+            //    GoldenSword_Pressed = false;
+                
+            //}
             if (arrow_pointer_sprite.Position.Y == 819 && Draw_Inventar)
             {
                 GoldenSword_Pressed = true;
@@ -882,26 +936,32 @@ namespace StateMachine
         public void Inventar_MovePointerDown()
         {
             if (Draw_Inventar)
-                arrow_pointer_sprite.Position += new Vector2f(0, 100);
-            if (Draw_Inventar && arrow_pointer_sprite.Position.Y > 819)
-                arrow_pointer_sprite.Position += new Vector2f(0, 40);
+                arrow_pointer_sprite.Position += new Vector2f(0, 97);
+            //if (Draw_Inventar && arrow_pointer_sprite.Position.Y > 819)
+            //    arrow_pointer_sprite.Position += new Vector2f(0, 40);
         }
 
         public void Inventar_MovePointerUp()
         {
             if (Draw_Inventar)
-                arrow_pointer_sprite.Position -= new Vector2f(0, 100);
-            if (Draw_Inventar && arrow_pointer_sprite.Position.Y > 819)
-                arrow_pointer_sprite.Position -= new Vector2f(0, 40);
+                arrow_pointer_sprite.Position -= new Vector2f(0, 97);
+            //if (Draw_Inventar && arrow_pointer_sprite.Position.Y > 819)
+            //    arrow_pointer_sprite.Position -= new Vector2f(0, 40);
         }
 
         public void MovePointerLeft()
         {
             if (Draw_Inventar)
-                arrow_pointer_sprite.Position -= new Vector2f(590, 150);
+                //arrow_pointer_sprite.Position -= new Vector2f(590, 150);
+                arrow_pointer_sprite.Position = Inventar_Fightscene.unchecked_checkbox_list[0].Position + new Vector2f(-165, 15);
         }
 
         public void MovePointerRight()
+        {
+            if(Draw_Inventar)
+                arrow_pointer_sprite.Position = Inventar_Fightscene.unchecked_checkbox_list[3].Position + new Vector2f(-165, 15);
+        }
+        public void MovePointerExitInventar()
         {
             if (Draw_Inventar)
             {
