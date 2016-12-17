@@ -92,3 +92,4 @@ C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\System.fon
 C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe
 C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\SFML_StateMachine.pdb
 C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\obj\Debug\SFML_Game.csprojResolveAssemblyReference.cache
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.jpg

@@ -485,8 +485,10 @@ namespace StateMachine
                 SimpleSword_equipped = false;
             }
             if (e.Code == Keyboard.Key.Return && Draw_Inventar && SimpleArrow_Pressed)
-
+            {
                 Inventar_Fightscene.Equipp_SimpleArrow();
+                SimpleArrow_equipped = true;
+            }
             //Magic
             if (e.Code == Keyboard.Key.Return && Characters_Turn && Magic_Pressed)
             {
@@ -508,9 +510,9 @@ namespace StateMachine
                 MovePointerUp();
             //if (e.Code == Keyboard.Key.Left && Draw_Inventar && arrow_pointer_sprite.Position.X > 710)
             //    MovePointerLeft();
-            if (e.Code == Keyboard.Key.Down && Draw_Inventar && arrow_pointer_sprite.Position.Y < 959)
+            if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[Inventar_Fightscene.count - 1].Position.Y)
                 Inventar_MovePointerDown();
-            if (e.Code == Keyboard.Key.Up && Draw_Inventar && arrow_pointer_sprite.Position.Y > 719)
+            if (e.Code == Keyboard.Key.Up && Draw_Inventar && /*arrow_pointer_sprite.Position.Y > 719 */ arrow_pointer_sprite.Position.Y -15 > Inventar_Fightscene.unchecked_checkbox_list[0].Position.Y)
                 Inventar_MovePointerUp();
             if (e.Code == Keyboard.Key.Right && Draw_Inventar)
                 MovePointerRight();
@@ -540,8 +542,8 @@ namespace StateMachine
 
             Timer.Update();
             //Fightscene Logic
-             Console.WriteLine(Sword_Start);
-            //   Console.WriteLine(clock_SwordSlideIn.ElapsedTime.AsSeconds());
+             Console.WriteLine(arrow_pointer_sprite.Position.Y);
+              Console.WriteLine(Inventar_Fightscene.count);
             //  Console.WriteLine();
             //Background Movement
             if (!SlideInMove_character())

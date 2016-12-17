@@ -20,12 +20,19 @@ namespace StateMachine
         private Sprite goldenSword;
         private Sprite simpleArrow;
 
+        private Sprite unchecked_simpleSword;
+        private Sprite unchecked_goldenSword;
+        private Sprite unchecked_simpleArrow;
+
+        public static int count;
         public Inventar_Fightscene()
         {
             //public void InitializeItem()
             {
+                
                 itemList = new List<Sprite>();
 
+            //    itemList.Add(new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Fist.jpg")) {Position = new Vector2f)
              //   if(ItemsAndNpcs.SwordPicked)
                 itemList.Add(new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/sword.png")) { Position = new Vector2f(1000, 700), Scale = new Vector2f(.03f, .03f) });
              //   if(ItemsAndNpcs.SwordPicked)
@@ -35,20 +42,21 @@ namespace StateMachine
                 
                 unchecked_checkbox_list = new List<Sprite>();
            //     if (ItemsAndNpcs.SwordPicked)
-                    unchecked_checkbox_list.Add(new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { Position = new Vector2f(900, 705), Scale = new Vector2f(.1f, .1f) });
+                    unchecked_checkbox_list.Add(unchecked_simpleSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { Position = /*new Vector2f(900, 705)*/itemList[0].Position + new Vector2f(100,5), Scale = new Vector2f(.1f, .1f) });
             //    if (ItemsAndNpcs.SwordPicked)
-                    unchecked_checkbox_list.Add(new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { Position = new Vector2f(900, 805), Scale = new Vector2f(.1f, .1f) });
+                    unchecked_checkbox_list.Add(unchecked_goldenSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { Position = /*new Vector2f(900, 805)*/itemList[1].Position + new Vector2f(100, 5), Scale = new Vector2f(.1f, .1f) });
           //      if (ItemsAndNpcs.BowPicked)
-                    unchecked_checkbox_list.Add(new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { Position = new Vector2f(900, 945), Scale = new Vector2f(.1f, .1f) });
+                    unchecked_checkbox_list.Add(unchecked_simpleArrow = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { Position = /*new Vector2f(900, 945)*/itemList[2].Position + new Vector2f(100, 5), Scale = new Vector2f(.1f, .1f) });
                
                     checked_checkbox_list = new List<Sprite>();
           //      if (ItemsAndNpcs.SwordPicked)
-                    checked_checkbox_list.Add(simpleSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = new Vector2f(900, 705), Scale = new Vector2f(.065f, .065f) });
+                    checked_checkbox_list.Add(simpleSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = unchecked_simpleSword.Position, Scale = new Vector2f(.065f, .065f) });
            //     if (ItemsAndNpcs.SwordPicked)
-                    checked_checkbox_list.Add(goldenSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = new Vector2f(900, 805), Scale = new Vector2f(.065f, .065f) });
+                    checked_checkbox_list.Add(goldenSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = unchecked_goldenSword.Position, Scale = new Vector2f(.065f, .065f) });
           //      if (ItemsAndNpcs.BowPicked)
-                    checked_checkbox_list.Add(simpleArrow = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = new Vector2f(900, 945), Scale = new Vector2f(.065f, .065f) });
+                    checked_checkbox_list.Add(simpleArrow = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox_checked.png")) { Position = unchecked_simpleArrow.Position, Scale = new Vector2f(.065f, .065f) });
             }
+            count = unchecked_checkbox_list.Count;
         }
 
         public void Draw(RenderWindow window)
