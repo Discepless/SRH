@@ -150,3 +150,11 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\De
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe.config
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\obj\Debug\SFML_StateMachine.exe
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\MenuPointer.png
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\ButtonPressed.wav
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\ButtonSwitch.wav
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Earthy_Crust.wav
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Meow.wav
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Morning_Stroll.wav
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Pickup_Coin.wav
+C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Splashscreen\Menu.png

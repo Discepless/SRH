@@ -5,7 +5,7 @@ using System;
 
 namespace StateMachine
 {
-    internal  class Fightscene : Scene
+    internal class Fightscene : Scene
     {
         private Inventar_Fightscene Inventar_Fightscene;
 
@@ -149,14 +149,14 @@ namespace StateMachine
 
         public bool GoldenSword_equipped = false;
 
-        public bool SimpleArrow_equipped = true;
+        public static bool SimpleArrow_equipped = true;
 
         //Handles start of Attack-Animation
         private bool Arrow_Start = false;
 
         private bool Fist_Start = false;
         private bool Sword_Start = false;
-        private bool GoldenSword_Start = false;       
+        private bool GoldenSword_Start = false;
 
         private bool MagicBall_Start = false;
 
@@ -189,7 +189,7 @@ namespace StateMachine
             BackgroundColor = Color.Cyan;
         }
 
-       
+
 
         public override void InitializeItems()
 
@@ -280,7 +280,7 @@ namespace StateMachine
 
             // enemy_sprite = new Sprite(enemy_img);
             enemy_sprite.Position = new Vector2f(0, 90);
-           
+
 
             //SimpleArrow
             simpleArrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
@@ -293,7 +293,7 @@ namespace StateMachine
             fist_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Fist.jpg");
             fist_sprite = new Sprite(fist_img);
 
-            fist_sprite.Scale = new Vector2f(.5f,.5f);
+            fist_sprite.Scale = new Vector2f(.5f, .5f);
             //SimpleSword
             simpleSword_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/sword.png");
             SimpleSword_sprite = new Sprite(simpleSword_img);
@@ -342,14 +342,14 @@ namespace StateMachine
 
             //Paper
             paper_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/paper.jpg");
-            
+
             paper_sprite = new Sprite(paper_img);
             paper_sprite.Position = new Vector2f(1350, 650);
 
             inventar_paper_sprite = new Sprite(paper_img);
             inventar_paper_sprite.Position = new Vector2f(1350 - inventar_paper_sprite.Texture.Size.X, 650);
-         //   inventar_paper_sprite. = new Vector2f(5, 5);
-       //     inventar_paper_sprite. = paper_sprite.Texture.Size.Y;
+            //   inventar_paper_sprite. = new Vector2f(5, 5);
+            //     inventar_paper_sprite. = paper_sprite.Texture.Size.Y;
 
             //Arrow_Pointer
             arrow_pointer_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Anzeigepfeil.png");
@@ -437,8 +437,8 @@ namespace StateMachine
             clock_EnemiesTurn = new Clock();
             clock_SwordSlideIn = new Clock();
 
-            
-            
+
+
             base.InitializeItems();
         }
 
@@ -497,7 +497,7 @@ namespace StateMachine
                 SimpleSword_equipped = false;
                 GoldenSword_equipped = false;
             }
-                if (e.Code == Keyboard.Key.Return && Draw_Inventar && SimpleSword_Pressed)
+            if (e.Code == Keyboard.Key.Return && Draw_Inventar && SimpleSword_Pressed)
             {
                 Inventar_Fightscene.Equipp_SimpleSword();
                 SimpleSword_equipped = true;
@@ -542,7 +542,7 @@ namespace StateMachine
                 if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/ arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[0].Position.Y)
                     Inventar_MovePointerDown();
             }
-            if(Inventar_Fightscene.count == 2)
+            if (Inventar_Fightscene.count == 2)
             {
                 if (e.Code == Keyboard.Key.Down && Draw_Inventar &&/*arrow_pointer_sprite.Position.Y < 959*/ arrow_pointer_sprite.Position.Y + 15 < Inventar_Fightscene.unchecked_checkbox_list[1].Position.Y)
                     Inventar_MovePointerDown();
@@ -568,7 +568,7 @@ namespace StateMachine
                     Inventar_MovePointerUp();
             }
 
-            if(Extended_Inventar)
+            if (Extended_Inventar)
             {
                 if (e.Code == Keyboard.Key.Up && Draw_Inventar && arrow_pointer_sprite.Position.Y - 15 > Inventar_Fightscene.unchecked_checkbox_list[3].Position.Y)
                     Inventar_MovePointerUp();
@@ -618,10 +618,10 @@ namespace StateMachine
             Timer.Update();
             //Fightscene Logic
             //Console.WriteLine(Inventar_Fightscene.simpleSword.Position.Y);
-               Console.WriteLine(arrow_pointer_sprite.Position.Y + "Pointer");
-          //  Console.WriteLine(Inventar_Fightscene.simpleSword.Position.Y + "SimpleSword");
-            Console.WriteLine(Inventar_Fightscene.simpleArrow.Position.Y + "SimpleArrow");
-          //  Console.WriteLine(Inventar_Fightscene.goldenSword.Position.Y + "GoldenSword");
+            //          Console.WriteLine(arrow_pointer_sprite.Position.Y + "Pointer");
+            //  Console.WriteLine(Inventar_Fightscene.simpleSword.Position.Y + "SimpleSword");
+            //        Console.WriteLine(Inventar_Fightscene.simpleArrow.Position.Y + "SimpleArrow");
+            //  Console.WriteLine(Inventar_Fightscene.goldenSword.Position.Y + "GoldenSword");
             //Background Movement
             if (!SlideInMove_character())
                 background_sprite.Position = new Vector2f(character_sprite.Position.X - 130, character_sprite.Position.Y + 50);
@@ -721,7 +721,7 @@ namespace StateMachine
                 Magic_Pressed = true;
                 Inventar_Pressed = false;
             }
-            if(arrow_pointer_sprite.Position.Y == Inventar_Fightscene.fist.Position.Y + 20 && Draw_Inventar && !Extended_Inventar)
+            if (arrow_pointer_sprite.Position.Y == Inventar_Fightscene.fist.Position.Y + 20 && Draw_Inventar && !Extended_Inventar)
             {
                 Fist_Pressed = true;
                 SimpleSword_Pressed = false;
@@ -1021,7 +1021,7 @@ namespace StateMachine
 
         public void MovePointerRight()
         {
-            if(Draw_Inventar)
+            if (Draw_Inventar)
                 arrow_pointer_sprite.Position = Inventar_Fightscene.unchecked_checkbox_list[3].Position + new Vector2f(-165, 15);
         }
         public void MovePointerExitInventar()

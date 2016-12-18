@@ -260,6 +260,7 @@ namespace StateMachine
                     PickupSound.Play();
                     MessageCounterMechanic();
                     ItemsAndNpcs.BowPicked = true;
+                    Fightscene.SimpleArrow_equipped = true;
                     Inventar_Fightscene.SimpleArrow = true;
                     JustCounterForTimer = 0;
                 }
