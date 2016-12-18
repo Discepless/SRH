@@ -17,9 +17,6 @@ namespace StateMachine
         private Texture creditsBackground_img;
         private Sprite creditsBackground_sprite;
 
-        //    private int CreditsDuration;
-        private float XPos, Ypos;
-
         public Credits(GameObject gameObject) : base(gameObject)
         {
             this.BackgroundColor = Color.Red; //scene background color
@@ -42,7 +39,7 @@ namespace StateMachine
             string tmp = readStream.ReadLine();
             uint YRes = _gameObject.YRes;
             uint Xres = _gameObject.XRes;
-            Ypos = _gameObject.YRes;
+
             text.CharacterSize = 30;
             while (tmp != null)
             {
