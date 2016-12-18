@@ -87,7 +87,7 @@ namespace StateMachine
             //Handle Pointer
             if (e.Code == Keyboard.Key.Down && pointer_sprite.Position.Y < ExitGame.Position.Y)
                 MovePointerDown();
-            if (e.Code == Keyboard.Key.Up && pointer_sprite.Position.Y > Start.Position.Y)
+            if (e.Code == Keyboard.Key.Up && pointer_sprite.Position.Y > Start.Position.Y+Start.CharacterSize )
                 MovePointerUp();
         }
 
