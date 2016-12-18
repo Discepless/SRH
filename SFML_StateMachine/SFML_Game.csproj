@@ -180,6 +180,9 @@
     <Content Include="Resources\Characters\NPCSword.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Character_Fightscene\Bat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Character_Fightscene\Cat.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -273,7 +276,9 @@
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.png" />
+    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\Button.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -289,7 +294,9 @@
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.png" />
+    <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Weapons_Buttons_Healthbar_Fightscene\goldenSword.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
