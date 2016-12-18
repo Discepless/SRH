@@ -18,17 +18,12 @@ namespace StateMachine
             _fightscene.Name = "fight";
             game.SceneManager.AddScene(_fightscene);
 
-            MainScene _mainScene = new MainScene(game);
-            _mainScene.Name = "main";
-
-            game.SceneManager.AddScene(_mainScene);
-
             Credits _creditsscreen = new Credits(game);
             _creditsscreen.Name = "credits";
             game.SceneManager.AddScene(_creditsscreen);
 
             Splashscreen _splashcreen = new Splashscreen(game);
-            _splashcreen.Name = "start";
+            _splashcreen.Name = "splashscreen";
             game.SceneManager.AddScene(_splashcreen);
 
             Menu _menu = new Menu(game);
@@ -37,7 +32,7 @@ namespace StateMachine
             //create here as many screens as we need but dont forget to make a class for each
 
             // Start the game
-            game.SceneManager.StartScene("start"); //it is one of the above names, scene is called by its name!
+            game.SceneManager.StartScene("splashscreen"); //it is one of the above names, scene is called by its name!
         }
     }
 }
