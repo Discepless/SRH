@@ -1,47 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML.Audio;
+﻿using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using System;
 
 namespace StateMachine
 {
-    class Menu : Scene
+    internal class Menu : Scene
     {
-        Texture menuBackground_img;
-        Sprite menuBackground_sprite;
+        private Texture menuBackground_img;
+        private Sprite menuBackground_sprite;
 
         private Music music;
 
-        Texture pointer_img;
-        Sprite pointer_sprite;
+        private Texture pointer_img;
+        private Sprite pointer_sprite;
 
-        Text Start;
-        Text Credits;
-        Text ExitGame;
+        private Text Start;
+        private Text Credits;
+        private Text ExitGame;
 
-        bool Start_pressed = true;
-        bool Credits_pressed = false;
-        bool ExitGame_pressed = false;
+        private bool Start_pressed = true;
+        private bool Credits_pressed = false;
+        private bool ExitGame_pressed = false;
 
-        public Menu (GameObject gameobject) : base(gameobject)
+        public Menu(GameObject gameobject) : base(gameobject)
         {
-
         }
 
         public override void InitializeItems()
         {
-            
             menuBackground_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/paper.jpg");
             menuBackground_sprite = new Sprite(menuBackground_img);
 
             menuBackground_sprite.Position = new Vector2f();
             menuBackground_sprite.Scale = new Vector2f((float)_gameObject.XRes / menuBackground_sprite.Texture.Size.X, (float)_gameObject.YRes / menuBackground_sprite.Texture.Size.Y);
-
 
             pointer_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Anzeigepfeil.png");
             pointer_sprite = new Sprite(pointer_img);
@@ -50,21 +43,20 @@ namespace StateMachine
 
             Start = new Text("Start", system);
             Start.CharacterSize = 60;
-            Start.Position = new Vector2f(_gameObject.XRes /2  -Start.CharacterSize * Start.DisplayedString.Length / 4, _gameObject.YRes /3 /2 - Start.CharacterSize/2);
+            Start.Position = new Vector2f(_gameObject.XRes / 2 - Start.CharacterSize * Start.DisplayedString.Length / 4, _gameObject.YRes / 3 / 2 - Start.CharacterSize / 2);
             Start.Color = Color.Red;
 
             Credits = new Text("Credits", system);
             Credits.CharacterSize = 60;
-            Credits.Position = new Vector2f(_gameObject.XRes / 2 - Credits.CharacterSize * Credits.DisplayedString.Length / 4, Start.Position.Y  + _gameObject.YRes / 3);
+            Credits.Position = new Vector2f(_gameObject.XRes / 2 - Credits.CharacterSize * Credits.DisplayedString.Length / 4, Start.Position.Y + _gameObject.YRes / 3);
             Credits.Color = Color.Red;
 
             ExitGame = new Text("Exit", system);
             ExitGame.CharacterSize = 60;
-            ExitGame.Position = new Vector2f(_gameObject.XRes / 2 - ExitGame.CharacterSize * ExitGame.DisplayedString.Length / 4, Credits.Position.Y  + _gameObject.YRes / 3);
+            ExitGame.Position = new Vector2f(_gameObject.XRes / 2 - ExitGame.CharacterSize * ExitGame.DisplayedString.Length / 4, Credits.Position.Y + _gameObject.YRes / 3);
             ExitGame.Color = Color.Red;
 
-
-            pointer_sprite.Position = new Vector2f(Start.Position .X - pointer_img .Size .X   , Start .Position .Y );
+            pointer_sprite.Position = new Vector2f(Start.Position.X - pointer_img.Size.X, Start.Position.Y);
             pointer_sprite.Scale = new Vector2f(.5f, .5f);
 
             music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
@@ -72,7 +64,6 @@ namespace StateMachine
 
             base.InitializeItems();
         }
-
 
         public override void HandleKeyPress(KeyEventArgs e)
         {
@@ -86,46 +77,41 @@ namespace StateMachine
             }
             if (e.Code == Keyboard.Key.Return && Credits_pressed)
             {
-              //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
                 _gameObject.SceneManager.StartScene("credits");
             }
-            if(e.Code == Keyboard.Key.Return && ExitGame_pressed)
+            if (e.Code == Keyboard.Key.Return && ExitGame_pressed)
             {
-
                 _gameObject.Window.Close();
-                //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                //  _gameObject.SceneManager.GotoScene("OpenWorld");
             }
 
             //Handle Pointer
-            if (e.Code == Keyboard.Key.Down && pointer_sprite.Position.Y < ExitGame .Position .Y )
+            if (e.Code == Keyboard.Key.Down && pointer_sprite.Position.Y < ExitGame.Position.Y)
                 MovePointerDown();
-            if (e.Code == Keyboard.Key.Up && pointer_sprite.Position.Y > Start .Position .Y)
+            if (e.Code == Keyboard.Key.Up && pointer_sprite.Position.Y > Start.Position.Y)
                 MovePointerUp();
         }
+
         public override void Update()
         {
             Console.WriteLine(Start_pressed);
             Console.WriteLine(pointer_sprite.Position.Y);
 
-            if (pointer_sprite.Position.Y == Start .Position .Y )
+            if (pointer_sprite.Position.Y == Start.Position.Y)
             {
                 Start_pressed = true;
                 Credits_pressed = false;
             }
-            if (pointer_sprite.Position.Y == Credits .Position.Y)
+            if (pointer_sprite.Position.Y == Credits.Position.Y)
             {
                 Credits_pressed = true;
                 Start_pressed = false;
                 ExitGame_pressed = false;
             }
-            if (pointer_sprite.Position.Y == ExitGame .Position.Y)
+            if (pointer_sprite.Position.Y == ExitGame.Position.Y)
             {
                 ExitGame_pressed = true;
                 Credits_pressed = false;
             }
-
-
 
             _gameObject.Window.Draw(menuBackground_sprite);
             _gameObject.Window.Draw(pointer_sprite);
@@ -138,6 +124,7 @@ namespace StateMachine
         {
             pointer_sprite.Position += new Vector2f(0, _gameObject.YRes / 3);
         }
+
         public void MovePointerUp()
         {
             pointer_sprite.Position -= new Vector2f(0, _gameObject.YRes / 3);
@@ -160,9 +147,9 @@ namespace StateMachine
         public override void Reset()
         {
             InitializeItems();
-             Start_pressed = true;
-             Credits_pressed = false;
-             ExitGame_pressed = false;
+            Start_pressed = true;
+            Credits_pressed = false;
+            ExitGame_pressed = false;
         }
     }
 }
