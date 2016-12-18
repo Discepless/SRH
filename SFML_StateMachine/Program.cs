@@ -37,7 +37,7 @@ namespace StateMachine
             //create here as many screens as we need but dont forget to make a class for each
 
             // Start the game
-            game.SceneManager.StartScene("menu"); //it is one of the above names, scene is called by its name!
+            game.SceneManager.StartScene("start"); //it is one of the above names, scene is called by its name!
         }
     }
 }
