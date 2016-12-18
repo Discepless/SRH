@@ -61,7 +61,7 @@ namespace StateMachine
 
             music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
             music.Play();
-
+            music.Loop = true;
             base.InitializeItems();
         }
 
