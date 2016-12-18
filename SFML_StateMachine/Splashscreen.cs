@@ -33,6 +33,7 @@ namespace StateMachine
             if (clock.ElapsedTime.AsSeconds() > 2)
 
             {
+                _gameObject.SceneManager.CurrentScene.Dispose();
                 _gameObject.SceneManager.GotoScene("menu");
                 // this.Dispose();
             }
