@@ -16,7 +16,7 @@ namespace StateMachine
         public static int _counterSpeaker;
 
 
-        private static readonly string[] Speaker = new string[11]
+        private static readonly string[] Speaker = new string[13]
         {
            "Cat:",
            "Strange Man:",
@@ -26,13 +26,15 @@ namespace StateMachine
            " ",
            " ",
            "Mage",
+           " ",
+           " ",
            "Woman",
            "",
            ""
            
         };
 
-        private static readonly string[] Message = new string[11]
+        private static readonly string[] Message = new string[13]
 {
            "Meow Meow (Who the fuck are you?)",
            "Hey Dude! Take this sword with you! And Bye...",
@@ -43,6 +45,8 @@ namespace StateMachine
            "You've found a Key!  ",
            "Door is Opened",
            "You shall not pass!",
+           "You got a Staff! ",
+           "Wow! A Golden Sword!",
            "I am your final boss",
            "Door is Closed",
            "You're full healed!"
