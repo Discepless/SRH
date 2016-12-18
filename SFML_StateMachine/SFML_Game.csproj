@@ -228,6 +228,7 @@
     <Content Include="Resources\Sounds\Earthy_Crust.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Sounds\Lineage 2 - Dion Theme.wav" />
     <Content Include="Resources\Sounds\Meow.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
