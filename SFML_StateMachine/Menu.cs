@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -13,6 +14,8 @@ namespace StateMachine
     {
         Texture menuBackground_img;
         Sprite menuBackground_sprite;
+
+        private Music music;
 
         Texture pointer_img;
         Sprite pointer_sprite;
@@ -64,6 +67,8 @@ namespace StateMachine
             pointer_sprite.Position = new Vector2f(Start.Position .X - pointer_img .Size .X   , Start .Position .Y );
             pointer_sprite.Scale = new Vector2f(.5f, .5f);
 
+            music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
+            music.Play();
 
             base.InitializeItems();
         }
@@ -74,6 +79,7 @@ namespace StateMachine
             //GoTo Scene
             if (e.Code == Keyboard.Key.Return && Start_pressed)
             {
+                music.Stop();
                 ReviveEnemiesAndItems();
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume(); _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.StartScene("OpenWorld");
@@ -149,6 +155,14 @@ namespace StateMachine
             ItemsAndNpcs.DoorsOpened = false;
             ItemsAndNpcs.KeyPicked = false;
             ItemsAndNpcs.SwordPicked = false;
+        }
+
+        public override void Reset()
+        {
+            InitializeItems();
+             Start_pressed = true;
+             Credits_pressed = false;
+             ExitGame_pressed = false;
         }
     }
 }
