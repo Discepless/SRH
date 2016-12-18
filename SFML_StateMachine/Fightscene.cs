@@ -122,10 +122,10 @@ namespace StateMachine
 
         //Enemy Stats
         //Pokemon
-        private int EnemyHP = 70;
+        private int EnemyHP;
 
-        private int enemyHealthLeft = 70;
-        private int EnemyAttack = 25;
+        private int enemyHealthLeft;
+        private int EnemyAttack;
 
         //Handles whos turn it is
         private bool Characters_Turn = true;
@@ -220,6 +220,8 @@ namespace StateMachine
                 enemyHealthLeft = 70;
                 EnemyAttack = 25;
 
+                Missed = true;
+
                 //  clock_SwordSlideIn += 
             }
             if (SetEnemy == "Cat")
@@ -229,10 +231,11 @@ namespace StateMachine
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 Enemies_Turn = false;
                 Characters_Turn = true;
-                EnemyHP = 30;
+                EnemyHP = 10;
 
-                enemyHealthLeft = 30;
-                EnemyAttack = 25;
+                enemyHealthLeft = 10;
+                EnemyAttack = 5;
+                Missed = false;
             }
 
             if (SetEnemy == "SwordEnemy")
@@ -246,6 +249,7 @@ namespace StateMachine
 
                 enemyHealthLeft = 30;
                 EnemyAttack = 25;
+                Missed = false;
             }
 
 
@@ -261,6 +265,7 @@ namespace StateMachine
 
                 enemyHealthLeft = 200;
                 EnemyAttack = 70;
+                Missed = false;
             }
 
             if (SetEnemy == "Mage")
@@ -275,6 +280,7 @@ namespace StateMachine
 
                 enemyHealthLeft = 600;
                 EnemyAttack = 45;
+                Missed = false;
             }
 
 
@@ -473,13 +479,13 @@ namespace StateMachine
                 Characters_Turn = false;
                 Fernkampf = true;
                 Arrow_Start = true;
-                if (Missed)
-                    ShowTextBox = true;
-                if (!Missed)
-                {
+                //if (Missed)
+                //    ShowTextBox = true;
+                //if (!Missed)
+                //{
                     Enemies_Turn = true;
                     clock_EnemiesTurn.Restart();
-                }
+                
                 Timer.RestartTextboxTimer();
             }
 
@@ -1042,30 +1048,30 @@ namespace StateMachine
 
         public void DecreaseEnemyHealth()
         {
-            if (Nahkampf)
+            if (Nahkampf && !Missed)
             {
-                if (Fist_eqipped && !Missed)
+                if (Fist_eqipped)
                 {
                     enemyHealthLeft -= Attack_Fist;
                     Nahkampf = false;
                 }
-                if (SimpleSword_equipped && !Missed)
+                if (SimpleSword_equipped)
                 {
                     enemyHealthLeft -= Attack_SimpleSword;
                     Nahkampf = false;
                 }
-                if (GoldenSword_equipped && !Missed)
+                if (GoldenSword_equipped)
                 {
                     enemyHealthLeft -= Attack_GoldenSword;
                     Nahkampf = false;
                 }
             }
-            if (SimpleArrow_equipped && !Missed && Fernkampf)
+            if (SimpleArrow_equipped && Fernkampf)
             {
                 enemyHealthLeft -= Attack_SimpleArrow;
                 Fernkampf = false;
             }
-            if (MagicBall_Start && !Missed)
+            if (MagicBall_Start)
             {
                 enemyHealthLeft -= Attack_Magic;
             }
