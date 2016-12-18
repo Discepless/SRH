@@ -12,6 +12,8 @@ namespace StateMachine
         private Sprite menuBackground_sprite;
 
         private Music music;
+        private Sound buttonSwitched;
+        private Sound buttonPressed;
 
         private Texture pointer_img;
         private Sprite pointer_sprite;
@@ -62,6 +64,11 @@ namespace StateMachine
             music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
             music.Play();
             music.Loop = true;
+
+            buttonSwitched = new Sound(new SoundBuffer("Resources/Sounds/ButtonSwitch.wav"));
+            buttonPressed = new Sound(new SoundBuffer("Resources/Sounds/ButtonPressed.wav"));
+
+
             base.InitializeItems();
         }
 
@@ -70,17 +77,22 @@ namespace StateMachine
             //GoTo Scene
             if (e.Code == Keyboard.Key.Return && Start_pressed)
             {
+                buttonPressed.Play();
                 music.Stop();
+                //music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
+                //music.Play();
                 ReviveEnemiesAndItems();
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume(); _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.StartScene("OpenWorld");
             }
             if (e.Code == Keyboard.Key.Return && Credits_pressed)
             {
+                buttonPressed .Play();
                 _gameObject.SceneManager.StartScene("credits");
             }
             if (e.Code == Keyboard.Key.Return && ExitGame_pressed)
             {
+                buttonPressed.Play();
                 _gameObject.Window.Close();
             }
 
@@ -123,11 +135,13 @@ namespace StateMachine
         public void MovePointerDown()
         {
             pointer_sprite.Position += new Vector2f(0, _gameObject.YRes / 3);
+            buttonSwitched.Play();
         }
 
         public void MovePointerUp()
         {
             pointer_sprite.Position -= new Vector2f(0, _gameObject.YRes / 3);
+            buttonSwitched.Play();
         }
 
         public void ReviveEnemiesAndItems()
