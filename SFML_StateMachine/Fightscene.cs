@@ -149,7 +149,7 @@ namespace StateMachine
 
         public bool GoldenSword_equipped = false;
 
-        public static bool SimpleArrow_equipped = true;
+        public static bool SimpleArrow_equipped = false;
 
         //Handles start of Attack-Animation
         private bool Arrow_Start = false;
@@ -293,7 +293,7 @@ namespace StateMachine
             fist_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Fist.jpg");
             fist_sprite = new Sprite(fist_img);
 
-            fist_sprite.Scale = new Vector2f(.5f, .5f);
+            fist_sprite.Scale = new Vector2f(-.5f, .5f);
             //SimpleSword
             simpleSword_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/sword.png");
             SimpleSword_sprite = new Sprite(simpleSword_img);
@@ -466,7 +466,7 @@ namespace StateMachine
             }
 
             //Fernkampf
-            if (e.Code == Keyboard.Key.Return && Characters_Turn && healthLeft > 0 && Fernkampf_Pressed)
+            if (e.Code == Keyboard.Key.Return && Characters_Turn && healthLeft > 0 && Fernkampf_Pressed && SimpleArrow_equipped)
             {
                 EnemiesHealthDown = true;
                 Attack_SlideInMove();
