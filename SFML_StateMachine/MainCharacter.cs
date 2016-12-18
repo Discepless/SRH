@@ -13,7 +13,7 @@ namespace StateMachine
 
         private Sound CatSound;
         private Sound PickupSound;
-
+        private Sound HealSound;
 
         private OpenWorldScene OpenworldScene;
         private IntRect PlayerRectangle;
@@ -43,6 +43,7 @@ namespace StateMachine
 
             CatSound = new Sound(new SoundBuffer("Resources/Sounds/Meow.wav"));
             PickupSound  = new Sound(new SoundBuffer("Resources/Sounds/Pickup_Coin.wav"));
+            HealSound = new Sound(new SoundBuffer("Resources/Sounds/burp.wav"));
 
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);
@@ -342,6 +343,7 @@ namespace StateMachine
 
             if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect) || PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect1) || PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect2))
             {
+                HealSound.Play();
                 Fightscene.healthLeft = Fightscene.HP;
             }
 
