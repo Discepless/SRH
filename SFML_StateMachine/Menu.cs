@@ -56,7 +56,7 @@ namespace StateMachine
             ExitGame.Position = new Vector2f(_gameObject.XRes / 2 - (ExitGame.CharacterSize * ExitGame.DisplayedString.Length / 4), Credits.Position.Y + _gameObject.YRes / 3);
             ExitGame.Color = Color.Red;
 
-            pointer_sprite.Position = new Vector2f(Start.Position.X - pointer_img.Size.X, Start.Position.Y);
+            pointer_sprite.Position = new Vector2f(Start.Position.X - pointer_img.Size.X, Start.Position.Y + Start.CharacterSize/2 );
             pointer_sprite.Scale = new Vector2f(.5f, .5f);
 
             music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
