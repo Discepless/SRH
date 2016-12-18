@@ -5,12 +5,12 @@ namespace StateMachine
 {
     class ItemsAndNpcs
     {
-        public IntRect BowRect, KeyRect, HealingRect,HealingRect1,HealingRect2, NPCRect, DoorsRect;
-        public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture, NPCTexture;
-        public Sprite BowSprite, KeySprite, DoorsOpenedSprite, DoorsClosedSprite, NPCSprite;
+        public IntRect BowRect, KeyRect, HealingRect, HealingRect1, HealingRect2, NPCRect, DoorsRect, StaffRect, GoldenSwordRect;
+        public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture, NPCTexture, StaffTexture, GoldenSwordTexture;
+        public Sprite BowSprite, KeySprite, DoorsOpenedSprite, DoorsClosedSprite, NPCSprite, StaffSprite,GoldenSwordSprite;
         public static bool NpcSwordGiven;
 
-        public static bool BowPicked, KeyPicked, SwordPicked, DoorsOpened,StaffPicked;
+        public static bool BowPicked, KeyPicked, SwordPicked, DoorsOpened,StaffPicked,GoldenSwordPicked;
 
         public int
             ///Positions for ItemsAndNpcs and Things on a map//////
@@ -20,10 +20,18 @@ namespace StateMachine
             BowWidth,
             BowHeight,
             //////////
-            HealingXpos,HealingXPos1,HealingXPos2,
-            HealingYpos, HealingYpos1, HealingYpos2,
-            HealingWidth, HealingWidth1, HealingWidth2,
-            HealingHeight, HealingHeight1, HealingHeight2,
+            HealingXpos,
+            HealingXPos1,
+            HealingXPos2,
+            HealingYpos,
+            HealingYpos1,
+            HealingYpos2,
+            HealingWidth,
+            HealingWidth1,
+            HealingWidth2,
+            HealingHeight,
+            HealingHeight1,
+            HealingHeight2,
             //////////
             KeyXpos,
             KeyYpos,
@@ -38,7 +46,17 @@ namespace StateMachine
             DoorsXpos,
             DoorsYpos,
             DoorsWidth,
-            DoorsHeight;
+            DoorsHeight,
+            //////////
+            StaffXPos,
+            StaffYPos,
+            StaffWidth,
+            StaffHeight,
+            //////////
+            GoldenSwordXPos,
+            GoldenSwordYPos,
+            GoldenSwordWidth,
+            GoldenSwordHeight;
 
         public ItemsAndNpcs()
         {
@@ -52,6 +70,16 @@ namespace StateMachine
             KeyWidth = 16;
             KeyHeight = 16;
 
+            StaffXPos = 880;
+            StaffYPos = 1163;
+            StaffWidth = 16;
+            StaffHeight = 16;
+
+            GoldenSwordXPos = 1566;
+            GoldenSwordYPos = 1515;
+            GoldenSwordWidth = 16;
+            GoldenSwordHeight = 16;
+
             NPCXpos = 392;
             NPCYpos = 628;
             NPCWidth = 48;
@@ -61,13 +89,12 @@ namespace StateMachine
             KeyYpos = 530;
             KeyWidth = 68;
             KeyHeight = 60;
-
+            
             DoorsXpos = 896;
             DoorsYpos = 704;
             DoorsWidth = 96;
             DoorsHeight = 32;
 
-            //
             HealingXpos = 1887;
             HealingYpos = 383;
             HealingXPos1 = 1959;
@@ -89,6 +116,14 @@ namespace StateMachine
             BowRect = new IntRect(BowXpos, BowYPos, BowWidth, BowHeight);
             BowTexture = new Texture("Resources/Items/Bow.png");
             BowSprite = new Sprite(BowTexture) { Position = new Vector2f(BowXpos, BowYPos), Scale = new Vector2f(0.5f, 0.5f) };
+
+            GoldenSwordRect = new IntRect(GoldenSwordXPos, GoldenSwordYPos, GoldenSwordWidth, GoldenSwordHeight);
+            GoldenSwordTexture = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/goldenSword.png");
+            GoldenSwordSprite = new Sprite(GoldenSwordTexture) { Position = new Vector2f(GoldenSwordXPos, GoldenSwordYPos), Scale = new Vector2f(0.5f, 0.5f) };
+
+            StaffRect = new IntRect(StaffXPos, StaffYPos, StaffWidth, StaffHeight);
+            StaffTexture = new Texture("Resources/Items/Staff.png");
+            StaffSprite = new Sprite(StaffTexture) { Position = new Vector2f(StaffXPos, StaffYPos), Scale = new Vector2f(0.5f, 0.5f) };
 
             NPCRect = new IntRect(NPCXpos, NPCYpos, NPCWidth, NPCHeight);
             NPCTexture = new Texture("Resources/Characters/NPCSword.png");
@@ -112,6 +147,16 @@ namespace StateMachine
                 window.Draw(BowSprite);
             }
 
+            if (StaffPicked == false)
+            {
+                window.Draw(StaffSprite);
+            }
+
+            if (GoldenSwordPicked == false)
+            {
+                window.Draw(GoldenSwordSprite);
+            }
+
             if (KeyPicked == false)
             {
                 window.Draw(KeySprite);
@@ -126,6 +171,7 @@ namespace StateMachine
             {
                 window.Draw(DoorsOpenedSprite);
             }
+
             else { window.Draw(DoorsClosedSprite); }
         }
     }

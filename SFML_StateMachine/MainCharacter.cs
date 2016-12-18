@@ -281,6 +281,30 @@ namespace StateMachine
                     JustCounterForTimer = 0;
                 }
             }
+            //Intersection with a Staff
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.StaffRect) && !ItemsAndNpcs.StaffPicked)
+            {
+                TalkingCounter();
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    PickupSound.Play();
+                    MessageCounterMechanic();
+                    ItemsAndNpcs.StaffPicked = true;
+                    JustCounterForTimer = 0;
+                }
+            }
+            //Intersection with a GoldenSword
+            if (PlayerRectangle.Intersects(ItemsAndNpcs.GoldenSwordRect) && !ItemsAndNpcs.GoldenSwordPicked)
+            {
+                TalkingCounter();
+                if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
+                {
+                    PickupSound.Play();
+                    MessageCounterMechanic();
+                    ItemsAndNpcs.GoldenSwordPicked = true;
+                    JustCounterForTimer = 0;
+                }
+            }
 
             //Intersection with Door
 
