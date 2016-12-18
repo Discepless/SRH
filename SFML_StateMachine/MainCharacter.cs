@@ -2,6 +2,7 @@
 using SFML.System;
 using SFML.Window;
 using System;
+using SFML.Audio;
 using StateMachine;
 
 namespace StateMachine
@@ -9,6 +10,10 @@ namespace StateMachine
     internal class MainCharacter : AnimatedCharacter
     {
         private Map map;
+
+        private Sound CatSound;
+
+
 
         private OpenWorldScene OpenworldScene;
         private IntRect PlayerRectangle;
@@ -35,8 +40,8 @@ namespace StateMachine
         public MainCharacter(Map map) : base("Resources/Characters/MainCharacter.png", 32, 48)
         {
             teleportClock = new Clock();
-            
 
+            CatSound = new Sound(new SoundBuffer("Resources/Sounds/Meow.wav"));
 
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);
@@ -152,12 +157,15 @@ namespace StateMachine
             // Intersection with a Cat
             if ((PlayerRectangle.Intersects(map.MyScene.cat.CatRect) && !Cat.CatIsDead))
             {
+               
                 TalkingCounter();
 
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
+                    CatSound.Play();
                     MessageCounterMechanic();
                     Cat.CatIsDead = true;
+                    
                     Fightscene.SetEnemy = "Cat";
 
                     map.MyScene.gameObject.SceneManager.StartScene("fight");
