@@ -158,3 +158,11 @@ C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Meo
 C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Morning_Stroll.wav
 C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Pickup_Coin.wav
 C:\Users\petee\Source\Repos\SRH\SFML_StateMachine\bin\Debug\Resources\Splashscreen\Menu.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\MenuPointer.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\ButtonPressed.wav
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\ButtonSwitch.wav
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Earthy_Crust.wav
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Meow.wav
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Morning_Stroll.wav
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Pickup_Coin.wav
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Splashscreen\Menu.png
