@@ -12,7 +12,7 @@ namespace StateMachine
         private Map map;
 
         private Sound CatSound;
-
+        private Sound PickupSound;
 
 
         private OpenWorldScene OpenworldScene;
@@ -42,6 +42,7 @@ namespace StateMachine
             teleportClock = new Clock();
 
             CatSound = new Sound(new SoundBuffer("Resources/Sounds/Meow.wav"));
+            PickupSound  = new Sound(new SoundBuffer("Resources/Sounds/Pickup_Coin.wav"));
 
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);
@@ -256,6 +257,7 @@ namespace StateMachine
                 TalkingCounter();
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
+                    PickupSound.Play();
                     MessageCounterMechanic();
                     ItemsAndNpcs.BowPicked = true;
                     Inventar_Fightscene.SimpleArrow = true;
@@ -271,6 +273,7 @@ namespace StateMachine
                 TalkingCounter();
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
+                    PickupSound.Play();
                     MessageCounterMechanic();
                     ItemsAndNpcs.KeyPicked = true;
                     JustCounterForTimer = 0;
