@@ -190,8 +190,8 @@ namespace StateMachine
             if (PlayerRectangle.Intersects(ItemsAndNpcs.NPCRect))
             {
                 ItemsAndNpcs.SwordPicked = true;
-                Inventar_Fightscene.SimpleSword = true;
-                Inventar_Fightscene.GoldenSword = true;
+              //  Inventar_Fightscene.SimpleSword = true;
+               // Inventar_Fightscene.GoldenSword = true;
             }
 
             //Intersection with Bow
@@ -207,6 +207,7 @@ namespace StateMachine
             if (PlayerRectangle.Intersects(ItemsAndNpcs.KeyRect))
             {
                 ItemsAndNpcs.KeyPicked = true;
+                ItemsAndNpcs.StaffPicked = true;
                 //TODO LOGIC
             }
 
