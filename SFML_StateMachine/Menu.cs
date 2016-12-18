@@ -56,7 +56,7 @@ namespace StateMachine
             ExitGame.Position = new Vector2f(_gameObject.XRes / 2 - (ExitGame.CharacterSize * ExitGame.DisplayedString.Length / 4), Credits.Position.Y + _gameObject.YRes / 3);
             ExitGame.Color = Color.Red;
 
-            pointer_sprite.Position = new Vector2f(Start.Position.X - pointer_img.Size.X, Start.Position.Y + Start.CharacterSize/2 );
+            pointer_sprite.Position = new Vector2f(Start.Position.X - pointer_img.Size.X, Start.Position.Y+ Start.CharacterSize/2 );
             pointer_sprite.Scale = new Vector2f(.5f, .5f);
 
             music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
@@ -85,9 +85,9 @@ namespace StateMachine
             }
 
             //Handle Pointer
-            if (e.Code == Keyboard.Key.Down && pointer_sprite.Position.Y < ExitGame.Position.Y)
+            if (e.Code == Keyboard.Key.Down && pointer_sprite.Position.Y < ExitGame.Position.Y + Start.CharacterSize / 2)
                 MovePointerDown();
-            if (e.Code == Keyboard.Key.Up && pointer_sprite.Position.Y > Start.Position.Y+Start.CharacterSize )
+            if (e.Code == Keyboard.Key.Up && pointer_sprite.Position.Y > Start.Position.Y + Start.CharacterSize / 2)
                 MovePointerUp();
         }
 
@@ -96,18 +96,18 @@ namespace StateMachine
             Console.WriteLine(Start_pressed);
             Console.WriteLine(pointer_sprite.Position.Y);
 
-            if (pointer_sprite.Position.Y == Start.Position.Y)
+            if (pointer_sprite.Position.Y == Start.Position.Y + Start.CharacterSize / 2)
             {
                 Start_pressed = true;
                 Credits_pressed = false;
             }
-            if (pointer_sprite.Position.Y == Credits.Position.Y)
+            if (pointer_sprite.Position.Y == Credits.Position.Y + Start.CharacterSize / 2)
             {
                 Credits_pressed = true;
                 Start_pressed = false;
                 ExitGame_pressed = false;
             }
-            if (pointer_sprite.Position.Y == ExitGame.Position.Y)
+            if (pointer_sprite.Position.Y == ExitGame.Position.Y + Start.CharacterSize / 2)
             {
                 ExitGame_pressed = true;
                 Credits_pressed = false;
