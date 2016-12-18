@@ -529,11 +529,11 @@ namespace StateMachine
                 Attack_SlideInMove();
                 Characters_Turn = false;
                 MagicBall_Start = true;
-                if (!Missed)
-                {
+                //if (!Missed)
+                //{
                     Enemies_Turn = true;
                     clock_EnemiesTurn.Restart();
-                }
+                
             }
 
             //Move Pointer
@@ -653,6 +653,7 @@ namespace StateMachine
                 enemy_sprite.Position += new Vector2f(0, 50);
             if (enemy_sprite.Position.Y >= 5500)
             {
+                MainCharacter.JustCounterForTimer = 0;
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume();
                 _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.GotoScene("OpenWorld");
