@@ -116,7 +116,7 @@ namespace StateMachine
         private int Attack_SimpleSword = 20;
 
         private int Attack_GoldenSword = 40;
-        private int Attack_SimpleArrow = 10;
+        private int Attack_SimpleArrow = 25;
 
         private int Attack_Magic = 30;
 
@@ -215,9 +215,9 @@ namespace StateMachine
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 Enemies_Turn = false;
                 Characters_Turn = true;
-                EnemyHP = 70;
+                EnemyHP = 50;
 
-                enemyHealthLeft = 70;
+                enemyHealthLeft = 50;
                 EnemyAttack = 25;
 
                 Missed = true;
@@ -653,6 +653,7 @@ namespace StateMachine
                 enemy_sprite.Position += new Vector2f(0, 50);
             if (enemy_sprite.Position.Y >= 5500)
             {
+                MainCharacter.JustCounterForTimer = 0;
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume();
                 _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.GotoScene("OpenWorld");
