@@ -21,7 +21,6 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\De
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Map\Test.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Map\Test1.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Map\TextureAtlas.png
-C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Splashscreen\Splashscreen.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Anzeigepfeil.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.jpg
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Button.png
@@ -141,3 +140,7 @@ C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\SFML_StateMachine.pdb
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\obj\Debug\SFML_Game.csprojResolveAssemblyReference.cache
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Earthy_Crust.wav
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Morning_Stroll.wav
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.jpg
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Splashscreen\Splashscreen.png
