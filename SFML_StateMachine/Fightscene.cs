@@ -651,6 +651,7 @@ namespace StateMachine
                 character_sprite.Position += new Vector2f(0, 50);
             if (character_sprite.Position.Y >= 5000)
             {
+                MainCharacter.JustCounterForTimer = 0;
                 MainCharacter.playerIsDead = true;
                 _gameObject.SceneManager.StartScene("menu");
 

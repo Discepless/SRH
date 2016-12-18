@@ -31,7 +31,6 @@ namespace StateMachine
            "Woman",
            " ",
            " "
-           
         };
         // String for Messages
         private static readonly string[] Message = new string[13]

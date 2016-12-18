@@ -78,6 +78,7 @@ namespace StateMachine
             //GoTo Scene
             if (e.Code == Keyboard.Key.Return && Start_pressed)
             {
+                
                 buttonPressed.Play();
                 music.Stop();
                 //music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
@@ -160,11 +161,16 @@ namespace StateMachine
         }
 
         public override void Reset()
-        {
+        {            
             InitializeItems();
             Start_pressed = true;
             Credits_pressed = false;
             ExitGame_pressed = false;
+            Fightscene.HP = 100;
+            Fightscene.healthLeft = 100;
+            
+            MessageText._counterSpeaker = 0;
+            MessageText._counterMessage = 0;
         }
     }
 }

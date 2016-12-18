@@ -69,6 +69,8 @@ namespace StateMachine
             ItemsAndNpcs.Draw(_gameObject.Window);
 
             _gameObject.Window.SetView(view);
+
+            //Message box showed only 3 seconds
             if (MainCharacter.CharIsTalking)
             {
                 messageBox.Draw(_gameObject.Window);
