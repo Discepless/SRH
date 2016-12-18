@@ -29,8 +29,8 @@ namespace StateMachine
            " ",
            " ",
            "Woman",
-           "",
-           ""
+           " ",
+           " "
            
         };
 
