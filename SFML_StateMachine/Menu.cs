@@ -38,7 +38,7 @@ namespace StateMachine
             menuBackground_sprite.Position = new Vector2f();
             menuBackground_sprite.Scale = new Vector2f((float)_gameObject.XRes / menuBackground_sprite.Texture.Size.X, (float)_gameObject.YRes / menuBackground_sprite.Texture.Size.Y);
 
-            pointer_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Anzeigepfeil.png");
+            pointer_img = new Texture("Resources/MenuPointer.png");
             pointer_sprite = new Sprite(pointer_img);
 
             Font system = new Font(@"Resources\Capture_it.ttf");
@@ -58,14 +58,15 @@ namespace StateMachine
             ExitGame.Position = new Vector2f(_gameObject.XRes / 2 - (ExitGame.CharacterSize * ExitGame.DisplayedString.Length / 4), Credits.Position.Y + _gameObject.YRes / 3);
             ExitGame.Color = Color.Red;
 
-            pointer_sprite.Position = new Vector2f(Start.Position.X - pointer_img.Size.X, Start.Position.Y+ Start.CharacterSize/2 );
-            pointer_sprite.Scale = new Vector2f(.5f, .5f);
+            pointer_sprite.Scale = new Vector2f(.6f, .6f);
+            pointer_sprite.Position = new Vector2f(_gameObject.XRes / 2 - 2* pointer_sprite .Texture .Size .X , Start.Position.Y+ Start.CharacterSize/2 );
+           
 
             music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
             music.Play();
             music.Loop = true;
 
-            buttonSwitched = new Sound(new SoundBuffer("Resources/Sounds/ButtonSwitch.wav"));
+            buttonSwitched = new Sound(new SoundBuffer("Resources/Sounds/ButtonSwitch.wav")); 
             buttonPressed = new Sound(new SoundBuffer("Resources/Sounds/ButtonPressed.wav"));
 
 
