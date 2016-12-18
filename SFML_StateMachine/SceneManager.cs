@@ -7,7 +7,6 @@ namespace StateMachine
         public Dictionary<string, Scene> _scenes = new Dictionary<string, Scene>(); //array with names and corresponding scenes
 
         public Scene CurrentScene = null;
-        private OpenWorldScene openWorldscene;
 
         public void AddScene(Scene s)
         {
@@ -26,7 +25,7 @@ namespace StateMachine
             CurrentScene.Run();
         }
 
-        public void GotoScene(string name)
+        public void GotoScene(string name) //same as startscene but without reset and checks for existing
         {
             CurrentScene = _scenes[name];
             CurrentScene.Run();

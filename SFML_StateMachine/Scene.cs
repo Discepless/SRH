@@ -8,10 +8,6 @@ namespace StateMachine
     {
         public string Name;
 
-        private DateTime currentTime = System.DateTime.Now;
-
-        private DateTime targetTime = System.DateTime.Now;
-
         private bool pause = false;
 
         public bool IsPaused
@@ -21,7 +17,7 @@ namespace StateMachine
 
         protected GameObject _gameObject;
 
-        public Color BackgroundColor = Color.Black; //default scene color
+        public Color BackgroundColor = Color.Transparent; //default scene background color
 
         public Scene(GameObject gameObject)
         {
@@ -30,7 +26,7 @@ namespace StateMachine
 
         public virtual void InitializeItems()
         {
-            // initialize the game
+            // initialize the game items
         }
 
         public virtual void Reset()
@@ -42,13 +38,11 @@ namespace StateMachine
         {
             // kinda main loop
 
-            while (_gameObject.Window.IsOpen)
+            while (_gameObject.Window.IsOpen)  
             {
-                currentTime = System.DateTime.Now;
-
                 _gameObject.Window.Clear(this.BackgroundColor);
 
-                if (!pause)
+                if (!pause) //if not paused then update - draw loop
                 {
                     this.Update();
 
@@ -58,12 +52,7 @@ namespace StateMachine
                 }
                 else
                 {
-                    if (currentTime >= targetTime)
-                    {
-                        pause = false;
-                    }
-                    else
-                        this.OnPause();
+                    this.OnPause(); //if paused do what you wrote in this function, independent for each scene
                 }
 
                 _gameObject.Window.DispatchEvents();
@@ -82,21 +71,17 @@ namespace StateMachine
 
         public virtual void Update()
         {
+            //should i really describe this?
         }
 
         public virtual void Draw()
         {
+            //should i really describe this?
         }
-
-        public void Pause(int milliseconds)
-        {
-            targetTime = currentTime.AddMilliseconds(milliseconds);
-            pause = true;
-        }
+    
 
         public void Pause()
         {
-            targetTime = currentTime.AddYears(10); //dirty trick
             pause = true;
         }
 
@@ -112,20 +97,21 @@ namespace StateMachine
 
         public virtual void Exit()
         {
+            //every scene defines what happens on exit
         }
 
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);
+            GC.SuppressFinalize(this); //make garbage collector do his work
         }
 
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
             {
-                // free other managed objects that implement
-                // IDisposable only
+                // free other managed objects that implement IDisposable only
+                //
                 // see https://msdn.microsoft.com/en-us/library/b1yfkh5e(v=vs.110).aspx
             }
         }

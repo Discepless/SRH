@@ -1,123 +1,130 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using System;
 
 namespace StateMachine
 {
-    class Menu : Scene
+    internal class Menu : Scene
     {
-        Texture menuBackground_img;
-        Sprite menuBackground_sprite;
+        private Texture menuBackground_img;
+        private Sprite menuBackground_sprite;
 
-        Texture pointer_img;
-        Sprite pointer_sprite;
+        private Music music;
+        private Sound buttonSwitched;
+        private Sound buttonPressed;
 
-        Text Start;
-        Text Credits;
-        Text ExitGame;
+        private Texture pointer_img;
+        private Sprite pointer_sprite;
 
-        bool Start_pressed = true;
-        bool Credits_pressed = false;
-        bool ExitGame_pressed = false;
+        private Text Start;
+        private Text Credits;
+        private Text ExitGame;
 
-        public Menu (GameObject gameobject) : base(gameobject)
+        private bool Start_pressed = true;
+        private bool Credits_pressed = false;
+        private bool ExitGame_pressed = false;
+
+        public Menu(GameObject gameobject) : base(gameobject)
         {
-
         }
 
         public override void InitializeItems()
         {
-            menuBackground_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/paper.jpg");
+            menuBackground_img = new Texture("Resources/Splashscreen/Menu.png");
             menuBackground_sprite = new Sprite(menuBackground_img);
 
             menuBackground_sprite.Position = new Vector2f();
             menuBackground_sprite.Scale = new Vector2f((float)_gameObject.XRes / menuBackground_sprite.Texture.Size.X, (float)_gameObject.YRes / menuBackground_sprite.Texture.Size.Y);
 
-
-            pointer_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Anzeigepfeil.png");
+            pointer_img = new Texture("Resources/MenuPointer.png");
             pointer_sprite = new Sprite(pointer_img);
-
-             pointer_sprite.Position = new Vector2f(400, 310);
-            // pointer_sprite.Position = new Vector2f(400, 510);
-            //pointer_sprite.Position = new Vector2f(400, 710);
-            pointer_sprite.Scale = new Vector2f(.5f, .5f);
-
 
             Font system = new Font(@"Resources\Capture_it.ttf");
 
             Start = new Text("Start", system);
-            Start.Position = new Vector2f(900, 300);
-            Start.CharacterSize = 40;
-            Start.Color = Color.Blue;
+            Start.CharacterSize = 100;
+            Start.Position = new Vector2f(_gameObject.XRes / 2 - (Start.CharacterSize * Start.DisplayedString.Length / 4), _gameObject.YRes / 3 / 2 - Start.CharacterSize / 2);
+            Start.Color = Color.Red;
 
             Credits = new Text("Credits", system);
-            Credits.Position = new Vector2f(900, 500);
-            Credits.CharacterSize = 40;
-            Credits.Color = Color.Green;
+            Credits.CharacterSize = 100;
+            Credits.Position = new Vector2f(_gameObject.XRes / 2 - (Credits.CharacterSize * Credits.DisplayedString.Length / 4), Start.Position.Y + _gameObject.YRes / 3);
+            Credits.Color = Color.Red;
 
             ExitGame = new Text("Exit", system);
-            ExitGame.Position = new Vector2f(900, 700);
-            ExitGame.CharacterSize = 40;
+            ExitGame.CharacterSize = 100;
+            ExitGame.Position = new Vector2f(_gameObject.XRes / 2 - (ExitGame.CharacterSize * ExitGame.DisplayedString.Length / 4), Credits.Position.Y + _gameObject.YRes / 3);
             ExitGame.Color = Color.Red;
+
+            pointer_sprite.Scale = new Vector2f(.6f, .6f);
+            pointer_sprite.Position = new Vector2f(_gameObject.XRes / 2 - 2* pointer_sprite .Texture .Size .X , Start.Position.Y+ Start.CharacterSize/2 );
+           
+
+            music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
+            music.Play();
+            music.Loop = true;
+
+            buttonSwitched = new Sound(new SoundBuffer("Resources/Sounds/ButtonSwitch.wav")); 
+            buttonPressed = new Sound(new SoundBuffer("Resources/Sounds/ButtonPressed.wav"));
+
 
             base.InitializeItems();
         }
+
         public override void HandleKeyPress(KeyEventArgs e)
         {
             //GoTo Scene
             if (e.Code == Keyboard.Key.Return && Start_pressed)
             {
+                buttonPressed.Play();
+                music.Stop();
+                //music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
+                //music.Play();
                 ReviveEnemiesAndItems();
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume(); _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.StartScene("OpenWorld");
             }
             if (e.Code == Keyboard.Key.Return && Credits_pressed)
             {
-              //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
+                buttonPressed .Play();
                 _gameObject.SceneManager.StartScene("credits");
             }
-            if(e.Code == Keyboard.Key.Return && ExitGame_pressed)
+            if (e.Code == Keyboard.Key.Return && ExitGame_pressed)
             {
-
+                buttonPressed.Play();
                 _gameObject.Window.Close();
-                //  _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-                //  _gameObject.SceneManager.GotoScene("OpenWorld");
             }
 
             //Handle Pointer
-            if (e.Code == Keyboard.Key.Down && pointer_sprite.Position.Y <= 700)
+            if (e.Code == Keyboard.Key.Down && pointer_sprite.Position.Y < ExitGame.Position.Y + Start.CharacterSize / 2)
                 MovePointerDown();
-            if (e.Code == Keyboard.Key.Up && pointer_sprite.Position.Y >= 400)
+            if (e.Code == Keyboard.Key.Up && pointer_sprite.Position.Y > Start.Position.Y + Start.CharacterSize / 2)
                 MovePointerUp();
         }
+
         public override void Update()
         {
             Console.WriteLine(Start_pressed);
             Console.WriteLine(pointer_sprite.Position.Y);
 
-            if (pointer_sprite.Position.Y == 310)
+            if (pointer_sprite.Position.Y == Start.Position.Y + Start.CharacterSize / 2)
             {
                 Start_pressed = true;
                 Credits_pressed = false;
             }
-            if (pointer_sprite.Position.Y == 510)
+            if (pointer_sprite.Position.Y == Credits.Position.Y + Start.CharacterSize / 2)
             {
                 Credits_pressed = true;
                 Start_pressed = false;
                 ExitGame_pressed = false;
             }
-            if (pointer_sprite.Position.Y == 710)
+            if (pointer_sprite.Position.Y == ExitGame.Position.Y + Start.CharacterSize / 2)
             {
                 ExitGame_pressed = true;
                 Credits_pressed = false;
             }
-
-
 
             _gameObject.Window.Draw(menuBackground_sprite);
             _gameObject.Window.Draw(pointer_sprite);
@@ -128,11 +135,14 @@ namespace StateMachine
 
         public void MovePointerDown()
         {
-            pointer_sprite.Position += new Vector2f(0, 200);
+            pointer_sprite.Position += new Vector2f(0, _gameObject.YRes / 3);
+            buttonSwitched.Play();
         }
+
         public void MovePointerUp()
         {
-            pointer_sprite.Position -= new Vector2f(0, 200);
+            pointer_sprite.Position -= new Vector2f(0, _gameObject.YRes / 3);
+            buttonSwitched.Play();
         }
 
         public void ReviveEnemiesAndItems()
@@ -147,6 +157,14 @@ namespace StateMachine
             ItemsAndNpcs.DoorsOpened = false;
             ItemsAndNpcs.KeyPicked = false;
             ItemsAndNpcs.SwordPicked = false;
+        }
+
+        public override void Reset()
+        {
+            InitializeItems();
+            Start_pressed = true;
+            Credits_pressed = false;
+            ExitGame_pressed = false;
         }
     }
 }
