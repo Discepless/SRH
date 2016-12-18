@@ -34,17 +34,16 @@ namespace StateMachine
             text.Color = Color.Black;
             StreamReader readStream = new StreamReader(File.Open("Credits/Text.txt", FileMode.Open));
             string tmp = readStream.ReadLine();
-            int YRes = (int) _gameObject.YRes;
-            int Xres = (int) _gameObject.XRes;
-
+            uint YRes =  _gameObject.YRes;
+            uint Xres =  _gameObject.XRes;
             Ypos = _gameObject.YRes;
-            text.CharacterSize = 15;
+            text.CharacterSize = 30;
             while (tmp != null)
             {
-                //tmp.ToString();
+                
                 _text.Add(new TextLine(new Vector2f(Xres/2 - tmp.Length*text.CharacterSize/4, YRes), tmp));
 
-                YRes += 20;
+                YRes += text.CharacterSize *2 ;
 
                 tmp = readStream.ReadLine();
             }
@@ -56,13 +55,10 @@ namespace StateMachine
 
         }
 
-        public override void Update() //just test text like everywhere else
+        public override void Update() 
         {
 
-            //   CreditsDuration = (int) clock.ElapsedTime.AsSeconds();
-
-            //
-            if (clock.ElapsedTime.AsSeconds() < 10) //scroll for 10 seconds only
+            if (clock.ElapsedTime.AsSeconds() < 15) //scroll for 15 seconds only
             {
                 foreach (TextLine line in _text) {line.Position.Y -= 1;}
             }
@@ -81,11 +77,7 @@ namespace StateMachine
 
             }
 
-
-
-
-            //text.Draw(_gameObject.Window, RenderStates.Default);
-        }
+            }
 
         public override void HandleKeyPress(KeyEventArgs e)
         {
