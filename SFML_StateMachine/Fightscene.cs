@@ -115,10 +115,10 @@ namespace StateMachine
         private int Attack_Fist = 5;
         private int Attack_SimpleSword = 20;
 
-        private int Attack_GoldenSword = 40;
-        private int Attack_SimpleArrow = 10;
+        private int Attack_GoldenSword = 1000;
+        private int Attack_SimpleArrow = 20;
 
-        private int Attack_Magic = 30;
+        private int Attack_Magic = 600;
 
         //Enemy Stats
         //Pokemon
@@ -219,10 +219,10 @@ namespace StateMachine
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 Enemies_Turn = false;
                 Characters_Turn = true;
-                EnemyHP = 70;
+                EnemyHP = 60;
 
-                enemyHealthLeft = 70;
-                EnemyAttack = 25;
+                enemyHealthLeft = 60;
+                EnemyAttack = 15;
 
                 Missed = true;
 
@@ -249,10 +249,10 @@ namespace StateMachine
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 Enemies_Turn = false;
                 Characters_Turn = true;
-                EnemyHP = 30;
+                EnemyHP = 40;
 
-                enemyHealthLeft = 30;
-                EnemyAttack = 25;
+                enemyHealthLeft = 40;
+                EnemyAttack = 20;
                 Missed = false;
             }
 
@@ -265,10 +265,10 @@ namespace StateMachine
                 Enemies_Turn = false;
                 Characters_Turn = true;
 
-                EnemyHP = 200;
+                EnemyHP = 3000;
 
-                enemyHealthLeft = 200;
-                EnemyAttack = 70;
+                enemyHealthLeft = 3000;
+                EnemyAttack = 33;
                 Missed = false;
             }
 
@@ -283,7 +283,7 @@ namespace StateMachine
                 EnemyHP = 600;
 
                 enemyHealthLeft = 600;
-                EnemyAttack = 45;
+                EnemyAttack = 30;
                 Missed = false;
             }
 

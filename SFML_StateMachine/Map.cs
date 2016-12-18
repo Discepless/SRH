@@ -30,10 +30,13 @@ namespace StateMachine
 
         private XDocument xmlDoc = XDocument.Parse(File.ReadAllText("Resources/Map/TileMap.tmx"));
 
+        /// <summary>
+        /// Parsing the values from .tmx and creating a tilemap
+        /// </summary>
+        /// <param name="world"></param>
         public Map(OpenWorldScene world)
         {
             this.MyScene = world;
-            // time.Update();
             Texture textureAtlas = new Texture("Resources/Map/TextureAtlas.png");
             Sprite[] spritePool;
 
@@ -71,11 +74,14 @@ namespace StateMachine
 
                 int currentlayer = 0;
 
+                //Queue for Drawing the tiles on a map. (Layers )
+
                 foreach (var layer in layers)
                 {
                     var data = layer.Element("data").Value.Replace("\n", String.Empty).Split(',');
                     for (int y = 0; y < _mapHeight; y++)
                     {
+                        // Rotating and scaling. Formula was taken from the tilemap docs. 
                         for (int x = 0; x < _mapWidth; x++)
                         {
                             var globalId = uint.Parse(data[y * _mapWidth + x]);
@@ -138,7 +144,9 @@ namespace StateMachine
                 }
             }
         }
-
+        /// <summary>
+        /// Creating a collision for every unmoveable object
+        /// </summary>
         public void ObjectCollision()
         {
             CollisionRectangleShapes = new List<IntRect>();
@@ -173,11 +181,6 @@ namespace StateMachine
                     }
                 }
             }
-
-            //  foreach (Sprite sprite in collisionsprites)
-            //{
-            //   window.Draw(sprite);
-            //}
         }
     }
 }

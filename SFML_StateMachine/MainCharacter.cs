@@ -124,7 +124,9 @@ namespace StateMachine
                     }
             }
         }
-
+        /// <summary>
+        /// Simple Player Control
+        /// </summary>
         public void PlayerControl()
         {
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
@@ -152,7 +154,9 @@ namespace StateMachine
                 Collision();
             }
         }
-
+        /// <summary>
+        /// Intersections with Enemies
+        /// </summary>
         public void IntersectionsWithEnemies()
         {
             // Intersection with a Cat
@@ -227,6 +231,9 @@ namespace StateMachine
             }
         }
 
+        /// <summary>
+        /// Counter for Message Boxes (We are jumping to another dialog )
+        /// </summary>
         private static void MessageCounterMechanic()
         {
             CharIsTalking = false;
@@ -234,6 +241,9 @@ namespace StateMachine
             MessageText._counterSpeaker++;
         }
 
+        /// <summary>
+        /// Intersections with other things
+        /// </summary>
         public void IntersectionWithItemsAndRest()
         {
             //Intersection with NPC
@@ -325,9 +335,7 @@ namespace StateMachine
                 if (!ItemsAndNpcs.KeyPicked)
                 {                                             
                         moveSpeed = 0;
-                }
-                
-                //Ypos = ItemsAndNpcs .DoorsYpos  -50;
+                }                
             }
 
             // Intersection with Healing
@@ -337,6 +345,8 @@ namespace StateMachine
                 Fightscene.healthLeft = Fightscene.HP;
             }
 
+            //Teleport ( Just swap the position of a player ) 
+            //+ Cooldown
             if (PlayerRectangle.Intersects(teleport.TeleportA) && teleportCooldown > 2)
             {
                 Xpos = teleport.BxPos + 20;
@@ -352,6 +362,9 @@ namespace StateMachine
             }
         }
 
+        /// <summary>
+        /// Dirty Trick. For the Glory. It works, so let it work. (Russian ducktape bro)
+        /// </summary>
         private static void TalkingCounter()
         {
             if (JustCounterForTimer <= 1)
@@ -365,7 +378,9 @@ namespace StateMachine
         }
 
         
-
+        /// <summary>
+        /// Setting the Player to the prev position 
+        /// </summary>
         public void Revive()
         {
             if (playerIsDead)

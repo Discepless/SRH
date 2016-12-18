@@ -15,7 +15,7 @@ namespace StateMachine
         public static int _counterMessage;
         public static int _counterSpeaker;
 
-
+        // String for Speakers
         private static readonly string[] Speaker = new string[13]
         {
            "Cat:",
@@ -33,7 +33,7 @@ namespace StateMachine
            " "
            
         };
-
+        // String for Messages
         private static readonly string[] Message = new string[13]
 {
            "Meow Meow (Who the fuck are you?)",
@@ -51,6 +51,9 @@ namespace StateMachine
            "Door is Closed",
            "You're full healed!"
 };
+        /// <summary>
+        /// Init for MessageText (Showed as Text)
+        /// </summary>
         public MessageText()
         {
             _font = new Font(@"Resources\arial.ttf");
@@ -59,7 +62,10 @@ namespace StateMachine
             _textMessage.CharacterSize = 12;
             _textSpeaker.CharacterSize = 18;
         }
-
+        /// <summary>
+        /// Drawing a Character
+        /// </summary>
+        /// <param name="window"></param>
         public void Draw(RenderWindow window)
         {
             _textSpeaker.DisplayedString = Speaker[_counterSpeaker];

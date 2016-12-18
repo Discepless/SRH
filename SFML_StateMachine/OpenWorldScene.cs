@@ -6,6 +6,9 @@ using SFML.Window;
 
 namespace StateMachine
 {
+    /// <summary>
+    /// Just a scene where all things are created :)
+    /// </summary>
     internal class OpenWorldScene : Scene
     {
         private Map _map;
@@ -47,7 +50,6 @@ namespace StateMachine
             messageBox = new MessageBox();
             messageText = new MessageText();
             this.gameObject = gameObject;
-
         }
 
         public override void Draw()
@@ -94,10 +96,7 @@ namespace StateMachine
             if(!FinalBoss.FinalBossIsDead)finalBoss.Update(deltatime);
             if(!Mage.MageIsDead) mage.Update(deltatime);
 
-            view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
-
-            
-            //ReWork Animation classes into small pieces
+            view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));          
             base.Update();
         }
 
@@ -111,17 +110,13 @@ namespace StateMachine
             else if (e.Code == Keyboard.Key.Escape && _gameObject.SceneManager.GetScene("OpenWorld").IsPaused)
             { Reset(); _gameObject.SceneManager.GetScene("OpenWorld").Resume(); }
 
-            //if (e.Code == Keyboard.Key.V)
-            //{
-            //    Reset();
-            //    _gameObject.SceneManager.GetScene("OpenWorld").Resume();
-            //}
-
             base.HandleKeyPress(e);
         }
 
        
-
+        /// <summary>
+        /// Reset Functions for the deltatime (The Characters won't jump )
+        /// </summary>
         public override void Reset()
         {
             clock.Restart();

@@ -12,13 +12,17 @@ namespace StateMachine
     {
         private Sprite _spriteBox;
         private Texture _textureBox;
-
+        /// <summary>
+        /// Init MessageBox
+        /// </summary>
     public MessageBox()
         {
             _textureBox = new Texture("Resources/Map/MessageBox.png");
             _spriteBox = new Sprite(_textureBox);           
         }
-
+        /// <summary>
+        /// Updating and drawing
+        /// </summary>
         public void Update()
         {
             _spriteBox.Position = new Vector2f((MainCharacter.currentPositionX - OpenWorldScene.ViewPortX / 4),

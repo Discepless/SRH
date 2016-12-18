@@ -8,8 +8,10 @@ namespace StateMachine
         public IntRect CatRect;
         public static bool CatIsDead;
 
-        // Caching our Previos direction (Needed for Collisions)
-
+        /// <summary>
+        /// Init for Cat
+        /// </summary>
+        /// <param name="map"></param>
         public Cat(Map map) : base("Resources/Characters/Cat.png", 32, 32)
         {
             AnimDown = new Animation(0, 0, 4);
@@ -33,7 +35,9 @@ namespace StateMachine
             Collision();
             base.Update(deltaTime);
         }
-
+        /// <summary>
+        /// Collisions
+        /// </summary>
         public void Collision()
         {
             foreach (var collisionrect in collisionObject.CollisionRectangleShapes)
