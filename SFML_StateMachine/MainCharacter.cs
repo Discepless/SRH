@@ -218,6 +218,7 @@ namespace StateMachine
                 TalkingCounter();
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
+                    //Fightscene.MissedMagic = false;
                     MessageCounterMechanic();
                     Mage.MageIsDead = true;
                     Fightscene.SetEnemy = "Mage";
@@ -284,6 +285,7 @@ namespace StateMachine
             //Intersection with a Staff
             if (PlayerRectangle.Intersects(ItemsAndNpcs.StaffRect) && !ItemsAndNpcs.StaffPicked)
             {
+                Fightscene.Magic_equipped = true;
                 TalkingCounter();
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {

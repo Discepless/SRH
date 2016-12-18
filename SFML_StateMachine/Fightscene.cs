@@ -151,6 +151,8 @@ namespace StateMachine
 
         public static bool SimpleArrow_equipped = false;
 
+        public static bool Magic_equipped = false;
+
         //Handles start of Attack-Animation
         private bool Arrow_Start = false;
 
@@ -174,8 +176,10 @@ namespace StateMachine
 
         private bool Draw_Inventar = false;
 
+
         //Handles when character misses
         private bool Missed = false;
+        //public static bool MissedMagic = true;
 
         private bool ShowTextBox = false;
 
@@ -523,17 +527,20 @@ namespace StateMachine
                 SimpleArrow_equipped = true;
             }
             //Magic
-            if (e.Code == Keyboard.Key.Return && Characters_Turn && Magic_Pressed)
+            if (e.Code == Keyboard.Key.Return && Characters_Turn && Magic_Pressed && Magic_equipped)
             {
                 EnemiesHealthDown = true;
                 Attack_SlideInMove();
                 Characters_Turn = false;
                 MagicBall_Start = true;
-                //if (!Missed)
+                //if (MissedMagic)
+                //    ShowTextBox = true;
+               // if (!MissedMagic)
                 //{
                     Enemies_Turn = true;
                     clock_EnemiesTurn.Restart();
-                
+                //}
+               // Timer.RestartTextboxTimer();
             }
 
             //Move Pointer
@@ -912,7 +919,7 @@ namespace StateMachine
             if (MagicBall_Start)
                 _gameObject.Window.Draw(magicBall_sprite);
 
-            if (ShowTextBox && Missed)
+            if (ShowTextBox && (Missed /*|| MissedMagic*/))
             {
                 _gameObject.Window.Draw(textbox_sprite);
                 _gameObject.Window.Draw(missed_text);
@@ -1072,7 +1079,7 @@ namespace StateMachine
                 enemyHealthLeft -= Attack_SimpleArrow;
                 Fernkampf = false;
             }
-            if (MagicBall_Start)
+            if (MagicBall_Start /*&& !MissedMagic*/)
             {
                 enemyHealthLeft -= Attack_Magic;
             }
