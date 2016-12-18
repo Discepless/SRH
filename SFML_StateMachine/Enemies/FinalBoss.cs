@@ -9,7 +9,7 @@ namespace StateMachine
 
         // Caching our Previos direction (Needed for Collisions)
 
-        public FinalBoss(Map map) : base("Resources/Characters/FinalBoss.png", 32, 48)
+        public FinalBoss(Map map) : base("Resources/Characters/FinalBoss.png", 48, 48)
         {
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(64, 0, 4);

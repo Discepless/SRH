@@ -71,7 +71,7 @@ namespace StateMachine
             KeyHeight = 16;
 
             StaffXPos = 880;
-            StaffYPos = 1163;
+            StaffYPos = 1050;
             StaffWidth = 16;
             StaffHeight = 16;
 
@@ -119,7 +119,7 @@ namespace StateMachine
 
             GoldenSwordRect = new IntRect(GoldenSwordXPos, GoldenSwordYPos, GoldenSwordWidth, GoldenSwordHeight);
             GoldenSwordTexture = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/goldenSword.png");
-            GoldenSwordSprite = new Sprite(GoldenSwordTexture) { Position = new Vector2f(GoldenSwordXPos, GoldenSwordYPos), Scale = new Vector2f(0.5f, 0.5f) };
+            GoldenSwordSprite = new Sprite(GoldenSwordTexture) { Position = new Vector2f(GoldenSwordXPos, GoldenSwordYPos), Scale = new Vector2f(0.05f, 0.05f) };
 
             StaffRect = new IntRect(StaffXPos, StaffYPos, StaffWidth, StaffHeight);
             StaffTexture = new Texture("Resources/Items/Staff.png");

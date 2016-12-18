@@ -25,8 +25,8 @@ namespace StateMachine
            "Bat:",
            " ",
            " ",
-           "Mage",
            " ",
+           "Mage",
            " ",
            "Woman",
            " ",
@@ -44,14 +44,13 @@ namespace StateMachine
            "♫♫What does the bat say♫♫ ",
            "You've found a Key!  ",
            "Door is Opened",
-           "You shall not pass!",
            "You got a Staff! ",
-           "Wow! A Golden Sword!",
+           "You shall not pass!",
+           "Wow! A Golden Sword!",          
            "I am your final boss",
            "Door is Closed",
            "You're full healed!"
 };
-
         public MessageText()
         {
             _font = new Font(@"Resources\arial.ttf");

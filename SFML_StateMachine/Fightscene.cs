@@ -115,10 +115,10 @@ namespace StateMachine
         private int Attack_Fist = 5;
         private int Attack_SimpleSword = 20;
 
-        private int Attack_GoldenSword = 40;
+        private int Attack_GoldenSword = 1000;
         private int Attack_SimpleArrow = 25;
 
-        private int Attack_Magic = 30;
+        private int Attack_Magic = 300;
 
         //Enemy Stats
         //Pokemon
@@ -261,10 +261,10 @@ namespace StateMachine
                 Enemies_Turn = false;
                 Characters_Turn = true;
 
-                EnemyHP = 200;
+                EnemyHP = 3000;
 
-                enemyHealthLeft = 200;
-                EnemyAttack = 70;
+                enemyHealthLeft = 3000;
+                EnemyAttack = 20;
                 Missed = false;
             }
 
