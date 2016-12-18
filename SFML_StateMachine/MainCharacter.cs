@@ -255,6 +255,7 @@ namespace StateMachine
             if (PlayerRectangle.Intersects(ItemsAndNpcs.BowRect) && !ItemsAndNpcs.BowPicked)
             {
                 TalkingCounter();
+
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
                     PickupSound.Play();

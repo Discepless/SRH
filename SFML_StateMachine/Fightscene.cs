@@ -229,9 +229,9 @@ namespace StateMachine
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 Enemies_Turn = false;
                 Characters_Turn = true;
-                EnemyHP = 30;
+                EnemyHP = 15;
 
-                enemyHealthLeft = 30;
+                enemyHealthLeft = 15;
                 EnemyAttack = 25;
             }
 
@@ -647,6 +647,7 @@ namespace StateMachine
                 enemy_sprite.Position += new Vector2f(0, 50);
             if (enemy_sprite.Position.Y >= 5500)
             {
+                MainCharacter.JustCounterForTimer = 0;
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume();
                 _gameObject.SceneManager.GetScene("OpenWorld").Reset();
                 _gameObject.SceneManager.GotoScene("OpenWorld");
