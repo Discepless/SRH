@@ -30,7 +30,7 @@ namespace StateMachine
 
         public override void InitializeItems()
         {
-            menuBackground_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/paper.jpg");
+            menuBackground_img = new Texture("Resources/Splashscreen/Menu.png");
             menuBackground_sprite = new Sprite(menuBackground_img);
 
             menuBackground_sprite.Position = new Vector2f();
@@ -42,18 +42,18 @@ namespace StateMachine
             Font system = new Font(@"Resources\Capture_it.ttf");
 
             Start = new Text("Start", system);
-            Start.CharacterSize = 60;
-            Start.Position = new Vector2f(_gameObject.XRes / 2 - Start.CharacterSize * Start.DisplayedString.Length / 4, _gameObject.YRes / 3 / 2 - Start.CharacterSize / 2);
+            Start.CharacterSize = 100;
+            Start.Position = new Vector2f(_gameObject.XRes / 2 - (Start.CharacterSize * Start.DisplayedString.Length / 4), _gameObject.YRes / 3 / 2 - Start.CharacterSize / 2);
             Start.Color = Color.Red;
 
             Credits = new Text("Credits", system);
-            Credits.CharacterSize = 60;
-            Credits.Position = new Vector2f(_gameObject.XRes / 2 - Credits.CharacterSize * Credits.DisplayedString.Length / 4, Start.Position.Y + _gameObject.YRes / 3);
+            Credits.CharacterSize = 100;
+            Credits.Position = new Vector2f(_gameObject.XRes / 2 - (Credits.CharacterSize * Credits.DisplayedString.Length / 4), Start.Position.Y + _gameObject.YRes / 3);
             Credits.Color = Color.Red;
 
             ExitGame = new Text("Exit", system);
-            ExitGame.CharacterSize = 60;
-            ExitGame.Position = new Vector2f(_gameObject.XRes / 2 - ExitGame.CharacterSize * ExitGame.DisplayedString.Length / 4, Credits.Position.Y + _gameObject.YRes / 3);
+            ExitGame.CharacterSize = 100;
+            ExitGame.Position = new Vector2f(_gameObject.XRes / 2 - (ExitGame.CharacterSize * ExitGame.DisplayedString.Length / 4), Credits.Position.Y + _gameObject.YRes / 3);
             ExitGame.Color = Color.Red;
 
             pointer_sprite.Position = new Vector2f(Start.Position.X - pointer_img.Size.X, Start.Position.Y);
