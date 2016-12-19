@@ -168,7 +168,8 @@ namespace StateMachine
 
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
-                    OpenworldScene.musicIsPlaying = false;
+                    OpenWorldScene.musicIsPlaying = false;
+                    OpenWorldScene.music.Pause();
                     CatSound.Play();
                     MessageCounterMechanic();
                     Cat.CatIsDead = true;
@@ -188,7 +189,8 @@ namespace StateMachine
                 TalkingCounter();
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
-                    OpenworldScene.musicIsPlaying = false;
+                    OpenWorldScene.musicIsPlaying = false;
+                    OpenWorldScene.music.Pause();
                     MessageCounterMechanic();
                     Bat.BatIsDead = true;
                     Fightscene.SetEnemy = "Bat";
@@ -202,7 +204,8 @@ namespace StateMachine
 
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
-                    OpenworldScene.musicIsPlaying = false;
+                    OpenWorldScene.musicIsPlaying = false;
+                    OpenWorldScene.music.Pause();
                     MessageCounterMechanic();
                     EnemyKilledWithSword.EnemyKilledWithSwordIsDead = true;
                     Fightscene.SetEnemy = "SwordEnemy";
@@ -215,7 +218,8 @@ namespace StateMachine
                 TalkingCounter();
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
-                    OpenworldScene.musicIsPlaying = false;
+                    OpenWorldScene.musicIsPlaying = false;
+                    OpenWorldScene.music.Pause();
                     FinalBoss.FinalBossIsDead = true;
                     Fightscene.SetEnemy = "FinalBoss";
                     map.MyScene.gameObject.SceneManager.StartScene("fight");
@@ -227,7 +231,8 @@ namespace StateMachine
                 TalkingCounter();
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
-                    OpenworldScene.musicIsPlaying = false;
+                    OpenWorldScene.musicIsPlaying = false;
+                    OpenWorldScene.music.Pause();
                     //Fightscene.MissedMagic = false;
                     MessageCounterMechanic();
                     Mage.MageIsDead = true;

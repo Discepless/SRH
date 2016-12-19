@@ -31,7 +31,7 @@ namespace StateMachine
         public static View view;
         public static Music music;
 
-        public bool musicIsPlaying;
+        public static bool musicIsPlaying;
 
         public static int ViewPortX, ViewPortY; 
         
@@ -42,7 +42,7 @@ namespace StateMachine
             ViewPortX = 800;
             ViewPortY = 600;
 
-            music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
+            music = new Music(@"Resources\Sounds\Background.wav");
 
             view = new View(new Vector2f(0, 0), new Vector2f(ViewPortX, ViewPortY));
             _map = new Map(this);
