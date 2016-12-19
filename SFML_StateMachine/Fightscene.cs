@@ -258,7 +258,7 @@ namespace StateMachine
 
             if (SetEnemy == "FinalBoss")
             {
-                enemy_img = new Texture("Resources/Character_Fightscene/Angel.jpg");
+                enemy_img = new Texture("Resources/Character_Fightscene/Angel.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 Enemies_Turn = false;
