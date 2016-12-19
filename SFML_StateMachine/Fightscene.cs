@@ -848,7 +848,7 @@ namespace StateMachine
             Inventar_Text.Position = new Vector2f(1500, 855);
             Inventar_Text.Color = Color.Black;
             string t9;
-            if (Magic_equipped) { t9 = "Magic Staff"; }
+            if (Magic_equipped) { t9 = "Magic Staff [" + Attack_Magic + "SP]"; }
             else { t9 = "Magic not usable"; }
             Magic_Text.DisplayedString = t9;
             Magic_Text.Position = new Vector2f(1500, 910);
