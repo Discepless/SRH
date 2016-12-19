@@ -1,5 +1,7 @@
 Aloha folks!
-It's a game. Yap, a game - you're right.
-This piece of...Wonderfull art was created
-by Maksym, Peter & Daniel
-for SRH
+It's a game. Yap, a "game" - you're right.
+This piece of...wonderful art was created
+by Maksym Hlaholiev, Peter Ehmler & Daniel Masly
+for ProgrammingII course
+in SRH Hochschule Heidelberg
+19/12/2016

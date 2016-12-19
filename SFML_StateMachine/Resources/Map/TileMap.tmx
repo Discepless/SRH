@@ -327,18 +327,17 @@
   <object id="21" name="Collision" x="382" y="1630" width="804" height="290"/>
   <object id="22" name="Collision" x="576" y="1254" width="225" height="376"/>
   <object id="23" name="Collision" x="-20" y="1448" width="404" height="462"/>
-  <object id="26" name="Collision" x="353" y="1062" width="406" height="136"/>
-  <object id="27" name="Collision" x="674" y="713" width="86" height="378"/>
-  <object id="28" name="Collision" x="518" y="712" width="244" height="138"/>
-  <object id="29" name="Collision" x="608" y="1198" width="152" height="54"/>
+  <object id="26" name="Collision" x="353" y="1062" width="392" height="136"/>
+  <object id="27" name="Collision" x="696" y="713" width="49" height="378"/>
+  <object id="28" name="Collision" x="535" y="714" width="161" height="135"/>
+  <object id="29" name="Collision" x="632" y="1198" width="112" height="54"/>
   <object id="30" name="Collision" x="348" y="1344" width="65" height="98"/>
   <object id="32" name="Collision" x="-100" y="-10" width="449" height="1454"/>
   <object id="33" name="Collision" x="348" y="126" width="72" height="98"/>
   <object id="34" name="Collision" x="349" y="733" width="68" height="93"/>
   <object id="49" name="Collision" x="348" y="226" width="42" height="258"/>
   <object id="50" name="Collision" x="349" y="829" width="41" height="236"/>
-  <object id="55" x="346" y="448" width="104" height="157"/>
-  <object id="56" x="451" y="481" width="29" height="127"/>
+  <object id="55" x="346" y="448" width="132" height="157"/>
   <object id="58" name="Collisions" x="348" y="-6" width="2210" height="388"/>
   <object id="60" name="Collisions" x="390" y="382" width="123" height="66"/>
   <object id="61" x="832" y="382" width="98" height="52"/>
@@ -350,19 +349,19 @@
   <object id="70" x="478" y="384" width="64" height="129"/>
   <object id="71" x="544" y="383" width="289" height="129"/>
   <object id="75" x="830" y="672" width="60" height="65"/>
-  <object id="85" name="Collisions" x="1054" y="549" width="772" height="124"/>
+  <object id="85" name="Collisions" x="1054" y="564" width="772" height="110"/>
   <object id="86" x="992" y="676" width="1820" height="433"/>
   <object id="88" x="2206" y="1108" width="362" height="466"/>
   <object id="89" x="1182" y="1572" width="1426" height="350"/>
-  <object id="96" x="800" y="1503" width="415" height="132"/>
+  <object id="96" x="800" y="1514" width="415" height="122"/>
   <object id="98" x="991" y="1105" width="566" height="116"/>
-  <object id="99" x="1022" y="1219" width="535" height="92"/>
-  <object id="100" x="1282" y="1305" width="278" height="71"/>
-  <object id="101" x="1408" y="1372" width="98" height="71"/>
-  <object id="102" x="1634" y="1383" width="396" height="70"/>
+  <object id="99" x="1046" y="1219" width="511" height="87"/>
+  <object id="100" x="1303" y="1305" width="256" height="67"/>
+  <object id="101" x="1434" y="1372" width="34" height="59"/>
+  <object id="102" x="1645" y="1383" width="396" height="70"/>
   <object id="106" x="1557" y="1102" width="294" height="39"/>
   <object id="107" x="1847" y="1108" width="180" height="173"/>
-  <object id="111" x="1468" y="1373" width="122" height="81"/>
+  <object id="111" x="1559" y="1373" width="31" height="81"/>
   <object id="112" x="1730" y="1452" width="478" height="120"/>
   <object id="113" x="2026" y="1110" width="181" height="339"/>
   <object id="118" x="1555" y="1134" width="298" height="144"/>
@@ -370,25 +369,25 @@
   <object id="122" x="2365" y="504" width="202" height="81"/>
   <object id="123" x="2240" y="576" width="344" height="101"/>
  </objectgroup>
- <TeleportGroup color="#ffff00" name="Teleport">
-  <teleport id="40" name="TeleportAEnter" x="458" y="1205" width="100" height="30"/>
-  <teleport id="42" name="TeleportAExit" x="597" y="856" width="66" height="30"/>
- </TeleportGroup>
- <CharacterGroup color="#ff0000" name="CharacterItems">
-  <character id="43" name="Player" x="449" y="1546" width="61" height="58"/>
-  <character id="46" name="EnemyForMeleeWeak" x="410" y="866" width="90" height="46"/>
-  <character id="53" name="NPCGiveSword + Full HP" x="392" y="628" width="41" height="35"/>
-  <character id="72" name="EnemyWithMelee(Will lose w/o Sword)" x="734" y="542" width="53" height="49"/>
-  <character id="79" name="Bow" x="1865" y="604" width="66" height="49"/>
-  <character id="83" name="Key" x="2306" y="529" width="35" height="31"/>
-  <character id="84" name="FlyingEnemyKilledOnlyWithBow" x="2166" y="520" width="50" height="52"/>
-  <character id="87" name="MageDroppingMagicStaff (YouShallNotPassYolo)" x="845" y="933" width="69" height="76"/>
-  <character id="92" name="FullHP" x="1887" y="383" width="62" height="34"/>
-  <character id="94" name="FullHP" x="1959" y="383" width="47" height="30"/>
-  <character id="114" name="FinalBoss" x="1906" y="1309" width="31" height="49"/>
-  <character id="115" name="FullHP" x="1667" y="1453" width="54" height="18"/>
- </CharacterGroup>
- <DoorsGroup color="#00ff00" name="Doors">
-  <dooors id="76" name="DoorsNeedKey to dissapear" x="893" y="702" width="97" height="33"/>
- </DoorsGroup>
+  <TeleportGroup color="#ffff00" name="Teleport">
+    <teleport id="40" name="TeleportAEnter" x="458" y="1205" width="100" height="30"/>
+    <teleport id="42" name="TeleportAExit" x="597" y="856" width="66" height="30"/>
+  </TeleportGroup>
+  <CharacterGroup color="#ff0000" name="CharacterItems">
+    <character id="43" name="Player" x="449" y="1546" width="61" height="58"/>
+    <character id="46" name="EnemyForMeleeWeak" x="410" y="866" width="90" height="46"/>
+    <character id="53" name="NPCGiveSword + Full HP" x="392" y="628" width="41" height="35"/>
+    <character id="72" name="EnemyWithMelee(Will lose w/o Sword)" x="734" y="542" width="53" height="49"/>
+    <character id="79" name="Bow" x="1865" y="604" width="66" height="49"/>
+    <character id="83" name="Key" x="2306" y="529" width="35" height="31"/>
+    <character id="84" name="FlyingEnemyKilledOnlyWithBow" x="2166" y="520" width="50" height="52"/>
+    <character id="87" name="MageDroppingMagicStaff (YouShallNotPassYolo)" x="845" y="933" width="69" height="76"/>
+    <character id="92" name="FullHP" x="1887" y="383" width="62" height="34"/>
+    <character id="94" name="FullHP" x="1959" y="383" width="47" height="30"/>
+    <character id="114" name="FinalBoss" x="1906" y="1309" width="31" height="49"/>
+    <character id="115" name="FullHP" x="1667" y="1453" width="54" height="18"/>
+  </CharacterGroup>
+  <DoorsGroup color="#00ff00" name="Doors">
+    <dooors id="76" name="DoorsNeedKey to dissapear" x="893" y="702" width="97" height="33"/>
+  </DoorsGroup>
 </map>
