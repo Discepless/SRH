@@ -1,4 +1,3 @@
-C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\aherohasfallen.wav
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Characters\Bat.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Characters\Cat.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Characters\EnemyWithMelee.png
@@ -181,6 +180,5 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\De
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Warlock.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Wizard.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\burp.wav
-C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Background.wav
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.png

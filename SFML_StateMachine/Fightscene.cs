@@ -1,7 +1,6 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using System;
 
 namespace StateMachine
 {
@@ -74,10 +73,12 @@ namespace StateMachine
         private Texture simpleArrow_img;
 
         private Sprite simpleArrow_sprite;
+
         // Fist
         private Texture fist_img;
 
         private Sprite fist_sprite;
+
         //SimpleSword
         private Texture simpleSword_img;
 
@@ -113,6 +114,7 @@ namespace StateMachine
 
         //Weapon Stats
         private int Attack_Fist = 5;
+
         private int Attack_SimpleSword = 20;
 
         private int Attack_GoldenSword = 1000;
@@ -176,9 +178,9 @@ namespace StateMachine
 
         private bool Draw_Inventar = false;
 
-
         //Handles when character misses
         private bool Missed = false;
+
         //public static bool MissedMagic = true;
 
         private bool ShowTextBox = false;
@@ -193,8 +195,6 @@ namespace StateMachine
             BackgroundColor = Color.Cyan;
         }
 
-
-
         public override void InitializeItems()
 
         {
@@ -202,11 +202,11 @@ namespace StateMachine
             //Objekte werden initialisiert und zugewiesen
             Inventar_Fightscene = new Inventar_Fightscene();
             //Character
-            character_img = new Texture(/*"Resources/Character_Fightscene/Character_fight.png"*/"Resources/Character_Fightscene/SailorMoon_Fightscene.png");
+            character_img = new Texture(/*"Resources/Character_Fightscene/.png"*/"Resources/Character_Fightscene/Devil.png");
             character_sprite = new Sprite(character_img);
 
             character_sprite.Position = new Vector2f(1600, 700);
-            character_sprite.Scale = new Vector2f(6f, 6f);
+            character_sprite.Scale = new Vector2f(.5f, .5f);
             //character_sprite.Scale = new Vector2f(.6f, .6f);
 
             //Enemy - Pokemon
@@ -226,13 +226,13 @@ namespace StateMachine
 
                 Missed = true;
 
-                //  clock_SwordSlideIn += 
+                //  clock_SwordSlideIn +=
             }
             if (SetEnemy == "Cat")
             {
-                enemy_img = new Texture("Resources/Characters/Cat.png");
+                enemy_img = new Texture("Resources/Character_Fightscene/Cat.png");
                 enemy_sprite = new Sprite(enemy_img);
-                enemy_sprite.Scale = new Vector2f(1f, 1f);
+                enemy_sprite.Scale = new Vector2f(1.5f, 1.5f);
                 Enemies_Turn = false;
                 Characters_Turn = true;
                 EnemyHP = 10;
@@ -244,7 +244,7 @@ namespace StateMachine
 
             if (SetEnemy == "SwordEnemy")
             {
-                enemy_img = new Texture("Resources/Characters/EnemyWithMelee.png");
+                enemy_img = new Texture("Resources/Character_Fightscene/Warlock.png");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 Enemies_Turn = false;
@@ -256,10 +256,9 @@ namespace StateMachine
                 Missed = false;
             }
 
-
             if (SetEnemy == "FinalBoss")
             {
-                enemy_img = new Texture("Resources/Characters/FinalBoss.png");
+                enemy_img = new Texture("Resources/Character_Fightscene/Angel.jpg");
                 enemy_sprite = new Sprite(enemy_img);
                 enemy_sprite.Scale = new Vector2f(1f, 1f);
                 Enemies_Turn = false;
@@ -274,9 +273,9 @@ namespace StateMachine
 
             if (SetEnemy == "Mage")
             {
-                enemy_img = new Texture("Resources/Characters/Mage.png");
+                enemy_img = new Texture("Resources/Character_Fightscene/Wizard.png");
                 enemy_sprite = new Sprite(enemy_img);
-                enemy_sprite.Scale = new Vector2f(1f, 1f);
+                enemy_sprite.Scale = new Vector2f(.5f, .5f);
                 Enemies_Turn = false;
                 Characters_Turn = true;
 
@@ -287,20 +286,18 @@ namespace StateMachine
                 Missed = false;
             }
 
-
             // enemy_sprite = new Sprite(enemy_img);
             enemy_sprite.Position = new Vector2f(0, 90);
 
-
             //SimpleArrow
-            simpleArrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg");
+            simpleArrow_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.png");
             simpleArrow_sprite = new Sprite(simpleArrow_img);
 
             //arrow_sprite.Position = new Vector2f(700, 300);
             simpleArrow_sprite.Scale = new Vector2f(.07f, .07f);
 
             // Fist
-            fist_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Fist.jpg");
+            fist_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Fist.png");
             fist_sprite = new Sprite(fist_img);
 
             fist_sprite.Scale = new Vector2f(-.5f, .5f);
@@ -447,8 +444,6 @@ namespace StateMachine
             clock_EnemiesTurn = new Clock();
             clock_SwordSlideIn = new Clock();
 
-
-
             base.InitializeItems();
         }
 
@@ -487,9 +482,9 @@ namespace StateMachine
                 //    ShowTextBox = true;
                 //if (!Missed)
                 //{
-                    Enemies_Turn = true;
-                    clock_EnemiesTurn.Restart();
-                
+                Enemies_Turn = true;
+                clock_EnemiesTurn.Restart();
+
                 Timer.RestartTextboxTimer();
             }
 
@@ -535,12 +530,12 @@ namespace StateMachine
                 MagicBall_Start = true;
                 //if (MissedMagic)
                 //    ShowTextBox = true;
-               // if (!MissedMagic)
+                // if (!MissedMagic)
                 //{
-                    Enemies_Turn = true;
-                    clock_EnemiesTurn.Restart();
+                Enemies_Turn = true;
+                clock_EnemiesTurn.Restart();
                 //}
-               // Timer.RestartTextboxTimer();
+                // Timer.RestartTextboxTimer();
             }
 
             //Move Pointer
@@ -623,8 +618,6 @@ namespace StateMachine
 
         public override void Update()
         {
-
-
             //if (healthLeft <= 0)
             //    Reset();
 
@@ -654,7 +647,6 @@ namespace StateMachine
                 MainCharacter.JustCounterForTimer = 0;
                 MainCharacter.playerIsDead = true;
                 _gameObject.SceneManager.StartScene("menu");
-
             }
             //Enemy Slide Down (when dead)
             if (enemyHealthLeft <= 0 && enemy_sprite.Position.Y <= 5500)
@@ -751,7 +743,6 @@ namespace StateMachine
                     Fist_Pressed = false;
                     GoldenSword_Pressed = false;
                     SimpleArrow_Pressed = false;
-
                 }
             }
             if (ItemsAndNpcs.StaffPicked)
@@ -775,7 +766,6 @@ namespace StateMachine
                     SimpleSword_Pressed = false;
                 }
             }
-
 
             //Text
             string t1 = "Nahkampf [" + Attack_SimpleSword + "-" + Attack_GoldenSword + " SP]";
@@ -961,6 +951,7 @@ namespace StateMachine
 
             return false;
         }
+
         public bool Fist_move()
         {
             if (fist_sprite.Position.X >= 950 && fist_sprite.Position.X <= 1350 && Fist_Start)
@@ -968,6 +959,7 @@ namespace StateMachine
 
             return false;
         }
+
         public bool Sword_move()
         {
             if (SimpleSword_sprite.Rotation >= 0 && SimpleSword_sprite.Rotation < 31 && Sword_Start)
@@ -1039,6 +1031,7 @@ namespace StateMachine
             if (Draw_Inventar)
                 arrow_pointer_sprite.Position = Inventar_Fightscene.unchecked_checkbox_list[3].Position + new Vector2f(-165, 15);
         }
+
         public void MovePointerExitInventar()
         {
             if (Draw_Inventar)
