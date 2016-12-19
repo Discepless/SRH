@@ -42,7 +42,7 @@ namespace StateMachine
             ViewPortX = 800;
             ViewPortY = 600;
 
-            music = new Music(@"Resources\Sounds\Background.wav");
+            music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
 
             view = new View(new Vector2f(0, 0), new Vector2f(ViewPortX, ViewPortY));
             _map = new Map(this);
