@@ -216,7 +216,7 @@ namespace StateMachine
             {
                 enemy_img = new Texture("Resources/Character_Fightscene/Bat.png");
                 enemy_sprite = new Sprite(enemy_img);
-                enemy_sprite.Scale = new Vector2f(1f, 1f);
+                enemy_sprite.Scale = new Vector2f(0.8f, 0.8f);
                 Enemies_Turn = false;
                 Characters_Turn = true;
                 EnemyHP = 60;

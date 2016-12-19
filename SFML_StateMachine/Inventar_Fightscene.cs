@@ -54,13 +54,13 @@ namespace StateMachine
 
                 itemList = new List<Sprite>();
 
-                itemList.Add(fist = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Fist.jpg")) { Scale = new Vector2f(.3f, .3f) });
+                itemList.Add(fist = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Fist.png")) { Scale = new Vector2f(.3f, .3f) });
                 if (ItemsAndNpcs.SwordPicked)
                     itemList.Add(simpleSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/sword.png")) { /*Position = /*new Vector2f(1000, 700) unchecked_checkbox_list[count-1].Position + new Vector2f(100,-5),*/ Scale = new Vector2f(.03f, .03f) });
                 if (ItemsAndNpcs.StaffPicked)
                     itemList.Add(goldenSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/goldenSword.png")) { /*Position = /*new Vector2f(1000, 800) unchecked_checkbox_list[count-1].Position + new Vector2f(100, -5),*/ Scale = new Vector2f(.12f, .12f) });
                 if (ItemsAndNpcs.BowPicked)
-                    itemList.Add(simpleArrow = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.jpg")) { /*Position = /*new Vector2f(1000, 950) unchecked_checkbox_list[count -1].Position + new Vector2f(100, -5),*/ Scale = new Vector2f(.04f, .04f) });
+                    itemList.Add(simpleArrow = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.png")) { /*Position = /*new Vector2f(1000, 950) unchecked_checkbox_list[count -1].Position + new Vector2f(100, -5),*/ Scale = new Vector2f(.04f, .04f) });
 
 
                 checked_checkbox_list = new List<Sprite>();
