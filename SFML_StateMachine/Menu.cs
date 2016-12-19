@@ -69,16 +69,21 @@ namespace StateMachine
             buttonSwitched = new Sound(new SoundBuffer("Resources/Sounds/ButtonSwitch.wav")); 
             buttonPressed = new Sound(new SoundBuffer("Resources/Sounds/ButtonPressed.wav"));
 
+            
+
 
             base.InitializeItems();
         }
 
         public override void HandleKeyPress(KeyEventArgs e)
         {
+           
+           
+
             //GoTo Scene
             if (e.Code == Keyboard.Key.Return && Start_pressed)
             {
-                
+                OpenWorldScene.music.Stop();
                 buttonPressed.Play();
                 music.Stop();
                 //music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
