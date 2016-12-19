@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Resources;
+using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -28,6 +29,9 @@ namespace StateMachine
         public MessageBox messageBox;
         public MessageText messageText;
         public static View view;
+        public static Music music;
+
+        public bool musicIsPlaying;
 
         public static int ViewPortX, ViewPortY; 
         
@@ -37,6 +41,8 @@ namespace StateMachine
         {
             ViewPortX = 800;
             ViewPortY = 600;
+
+            music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
 
             view = new View(new Vector2f(0, 0), new Vector2f(ViewPortX, ViewPortY));
             _map = new Map(this);
@@ -82,6 +88,11 @@ namespace StateMachine
 
         public override void Update()
         {
+            if(!musicIsPlaying)
+            { 
+            music.Play();
+            musicIsPlaying = true;
+            }
 
             TalkingTimerInteger = (int)TalkingClock.ElapsedTime.AsSeconds();
            _gameObject.Window.SetFramerateLimit(60);

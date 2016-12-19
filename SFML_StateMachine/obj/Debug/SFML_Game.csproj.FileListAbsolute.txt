@@ -170,3 +170,4 @@ C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Devil.png
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Wizard.png
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Warlock.png
+C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\burp.wav
