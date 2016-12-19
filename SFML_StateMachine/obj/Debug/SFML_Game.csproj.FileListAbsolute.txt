@@ -181,7 +181,70 @@ C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\De
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.png
 C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.png
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Healing.wav
-C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Angel.png
-C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\door.wav
-C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Healing.wav
-C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\warlock.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe.config
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\obj\Debug\SFML_StateMachine.exe
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\obj\Debug\SFML_StateMachine.pdb
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Credits\Text.txt
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Characters\Bat.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Characters\Cat.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Characters\EnemyWithMelee.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Characters\FinalBoss.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Characters\Mage.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Characters\MainCharacter.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Characters\NPCSword.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Angel.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Bat.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Cat.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Character_fight.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Enemy_fight.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\SailorMoon_Fightscene.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Devil.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Warlock.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Wizard.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Items\Fist.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Items\Staff.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Map\MessageBox.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\MenuPointer.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\burp.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\ButtonPressed.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\ButtonSwitch.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\door.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\Earthy_Crust.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\Healing.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\Meow.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\Morning_Stroll.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\Pickup_Coin.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Sounds\warlock.wav
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Splashscreen\Credits.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Items\Bow.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Items\DoorClosed.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Items\DoorOpened.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Items\Key.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Map\NotVisible.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Map\Test.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Map\Test1.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Map\TextureAtlas.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Splashscreen\Menu.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Splashscreen\Splashscreen.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Anzeigepfeil.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.jpg
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Button.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox-unchecked.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\checkbox_checked.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fight_Ground.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.jpg
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\goldenSword.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\healthbar.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\magic_ball.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\paper.jpg
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\sword.png
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Textbox.jpeg
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\arial.ttf
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Capture_it.ttf
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\Map\TileMap.tmx
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\Resources\System.fon
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\SFML_StateMachine.exe
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\bin\Debug\SFML_StateMachine.pdb
+C:\Users\petee\Source\Repos\SRH3\SFML_StateMachine\obj\Debug\SFML_Game.csprojResolveAssemblyReference.cache

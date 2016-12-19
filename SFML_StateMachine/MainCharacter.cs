@@ -272,7 +272,6 @@ namespace StateMachine
                     ItemsAndNpcs.NpcSwordGiven = true;
                     ItemsAndNpcs.SwordPicked = true;
                     Inventar_Fightscene.SimpleSword = true;
-                    Inventar_Fightscene.GoldenSword = true;
                     JustCounterForTimer = 0;
                 }
             }

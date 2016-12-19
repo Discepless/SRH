@@ -1,6 +1,7 @@
 ﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using System;
 
 namespace StateMachine
 {
@@ -190,6 +191,8 @@ namespace StateMachine
         private Timer Timer;
         public static string SetEnemy;
 
+        private bool Credits;
+
         public Fightscene(GameObject gameObject) : base(gameObject)
         {
             BackgroundColor = Color.Cyan;
@@ -269,6 +272,8 @@ namespace StateMachine
                 enemyHealthLeft = 3000;
                 EnemyAttack = 33;
                 Missed = false;
+                Credits = true;
+
             }
 
             if (SetEnemy == "Mage")
@@ -623,7 +628,7 @@ namespace StateMachine
 
             Timer.Update();
             //Fightscene Logic
-            //Console.WriteLine(Inventar_Fightscene.simpleSword.Position.Y);
+            Console.WriteLine(Credits);
             //          Console.WriteLine(arrow_pointer_sprite.Position.Y + "Pointer");
             //  Console.WriteLine(Inventar_Fightscene.simpleSword.Position.Y + "SimpleSword");
             //        Console.WriteLine(Inventar_Fightscene.simpleArrow.Position.Y + "SimpleArrow");
@@ -651,7 +656,7 @@ namespace StateMachine
             //Enemy Slide Down (when dead)
             if (enemyHealthLeft <= 0 && enemy_sprite.Position.Y <= 5500)
                 enemy_sprite.Position += new Vector2f(0, 50);
-            if (enemy_sprite.Position.Y >= 5500)
+            if (enemy_sprite.Position.Y >= 5500 && !Credits)
             {
                 MainCharacter.JustCounterForTimer = 0;
                 _gameObject.SceneManager.GetScene("OpenWorld").Resume();
@@ -745,7 +750,7 @@ namespace StateMachine
                     SimpleArrow_Pressed = false;
                 }
             }
-            if (ItemsAndNpcs.StaffPicked)
+            if (ItemsAndNpcs.GoldenSwordPicked)
             {
                 if (/*arrow_pointer_sprite.Position.Y == 819*/arrow_pointer_sprite.Position.Y == Inventar_Fightscene.goldenSword.Position.Y + 20 && Draw_Inventar)
                 {
@@ -860,7 +865,8 @@ namespace StateMachine
 
             //Timer(TextboxTimer)
             //Timer.Update();
-
+            if (Credits && enemy_sprite.Position.Y >= 5500)
+                GotoCredits();
             //Draws
             _gameObject.Window.SetView(view);
             _gameObject.Window.Draw(background_sprite);
@@ -1094,7 +1100,10 @@ namespace StateMachine
             enemy_healthbar_rectangle.TextureRect = new IntRect(0, 0, enemy_healthbar_sprite.TextureRect.Width * enemyHealthLeft / EnemyHP, enemy_healthbar_sprite.TextureRect.Height);
             enemy_healthbar_sprite.TextureRect = enemy_healthbar_rectangle.TextureRect;
         }
-
+        public void GotoCredits()
+        {
+                _gameObject.SceneManager.StartScene("credits");
+        }
         //static void SetEnemy(string enemyName)
         //{
         //    if (enemyName == "Pokemon")
