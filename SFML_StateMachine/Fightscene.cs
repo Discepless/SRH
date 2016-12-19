@@ -212,7 +212,7 @@ namespace StateMachine
             character_sprite.Scale = new Vector2f(.5f, .5f);
             //character_sprite.Scale = new Vector2f(.6f, .6f);
 
-            //Enemy - Pokemon
+            //Enemy 
             enemy_sprite = new Sprite(enemy_img);
 
             if (SetEnemy == "Bat")
@@ -229,6 +229,15 @@ namespace StateMachine
 
                 Missed = true;
 
+                healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
+                healthbar_sprite = new Sprite(healthbar_img);
+
+                healthbar_sprite.Position = new Vector2f(50, 600);
+                healthbar_sprite.Scale = new Vector2f(1f, 1f);
+                healthbar_rectangle = new RectangleShape();
+                healthbar_rectangle.TextureRect = new IntRect(0, 0, healthbar_sprite.TextureRect.Width * healthLeft / HP, healthbar_sprite.TextureRect.Height);
+                healthbar_sprite.TextureRect = healthbar_rectangle.TextureRect;
+
                 //  clock_SwordSlideIn +=
             }
             if (SetEnemy == "Cat")
@@ -243,6 +252,16 @@ namespace StateMachine
                 enemyHealthLeft = 10;
                 EnemyAttack = 5;
                 Missed = false;
+
+                
+                healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
+                healthbar_sprite = new Sprite(healthbar_img);
+
+                healthbar_sprite.Position = new Vector2f(50, 600);
+                healthbar_sprite.Scale = new Vector2f(1f, 1f);
+                healthbar_rectangle = new RectangleShape();
+                healthbar_rectangle.TextureRect = new IntRect(0, 0, healthbar_sprite.TextureRect.Width * healthLeft / HP, healthbar_sprite.TextureRect.Height);
+                healthbar_sprite.TextureRect = healthbar_rectangle.TextureRect;
             }
 
             if (SetEnemy == "SwordEnemy")
@@ -257,6 +276,15 @@ namespace StateMachine
                 enemyHealthLeft = 40;
                 EnemyAttack = 20;
                 Missed = false;
+
+                healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
+                healthbar_sprite = new Sprite(healthbar_img);
+
+                healthbar_sprite.Position = new Vector2f(50, 600);
+                healthbar_sprite.Scale = new Vector2f(1f, 1f);
+                healthbar_rectangle = new RectangleShape();
+                healthbar_rectangle.TextureRect = new IntRect(0, 0, healthbar_sprite.TextureRect.Width * healthLeft / HP, healthbar_sprite.TextureRect.Height);
+                healthbar_sprite.TextureRect = healthbar_rectangle.TextureRect;
             }
 
             if (SetEnemy == "FinalBoss")
@@ -274,6 +302,15 @@ namespace StateMachine
                 Missed = false;
                 Credits = true;
 
+                healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
+                healthbar_sprite = new Sprite(healthbar_img);
+
+                healthbar_sprite.Position = new Vector2f(50, 600);
+                healthbar_sprite.Scale = new Vector2f(1f, 1f);
+                healthbar_rectangle = new RectangleShape();
+                healthbar_rectangle.TextureRect = new IntRect(0, 0, healthbar_sprite.TextureRect.Width * healthLeft / HP, healthbar_sprite.TextureRect.Height);
+                healthbar_sprite.TextureRect = healthbar_rectangle.TextureRect;
+
             }
 
             if (SetEnemy == "Mage")
@@ -289,6 +326,15 @@ namespace StateMachine
                 enemyHealthLeft = 600;
                 EnemyAttack = 30;
                 Missed = false;
+
+                healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
+                healthbar_sprite = new Sprite(healthbar_img);
+
+                healthbar_sprite.Position = new Vector2f(50, 600);
+                healthbar_sprite.Scale = new Vector2f(1f, 1f);
+                healthbar_rectangle = new RectangleShape();
+                healthbar_rectangle.TextureRect = new IntRect(0, 0, healthbar_sprite.TextureRect.Width * healthLeft / HP, healthbar_sprite.TextureRect.Height);
+                healthbar_sprite.TextureRect = healthbar_rectangle.TextureRect;
             }
 
             // enemy_sprite = new Sprite(enemy_img);
@@ -430,12 +476,12 @@ namespace StateMachine
 
             Timer = new Timer();
             //Healthbar_img Character
-            healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
-            healthbar_sprite = new Sprite(healthbar_img);
+            //healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
+            //healthbar_sprite = new Sprite(healthbar_img);
 
-            healthbar_sprite.Position = new Vector2f(50, 600);
-            healthbar_sprite.Scale = new Vector2f(1f, 1f);
-            healthbar_rectangle = new RectangleShape();
+            //healthbar_sprite.Position = new Vector2f(50, 600);
+            //healthbar_sprite.Scale = new Vector2f(1f, 1f);
+            //healthbar_rectangle = new RectangleShape();
 
             //Healthbar_img Enemies
             enemy_healthbar = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
@@ -773,12 +819,18 @@ namespace StateMachine
             }
 
             //Text
-            string t1 = "Nahkampf [" + Attack_SimpleSword + "-" + Attack_GoldenSword + " SP]";
+            string t1 = "Nahkampf [" + Attack_Fist + " SP]";
+            if (Fist_eqipped) { t1 = "Nahkampf [" + Attack_Fist + " SP]"; }
+            if (SimpleSword_equipped) { t1 = "Nahkampf [" + Attack_SimpleSword + " SP]"; }
+            if (GoldenSword_equipped) { t1 = "Nahkampf [" + Attack_GoldenSword + " SP]"; }
             Nahkampf_Text.DisplayedString = t1;
             Nahkampf_Text.Position = new Vector2f(1500, 745);
             Nahkampf_Text.Color = Color.Black;
 
-            string t2 = "Fernkampf [" + Attack_SimpleArrow + " SP]";
+            string t2;
+            if (SimpleArrow_equipped) { t2 = "Fernkampf [" + Attack_SimpleArrow + " SP]"; }
+            else { t2 = "Bow not yet found"; }
+            ;
             Fernkampf_Text.DisplayedString = t2;
             Fernkampf_Text.Position = new Vector2f(1500, 800);
             Fernkampf_Text.Color = Color.Black;
@@ -795,8 +847,9 @@ namespace StateMachine
             Inventar_Text.DisplayedString = t5;
             Inventar_Text.Position = new Vector2f(1500, 855);
             Inventar_Text.Color = Color.Black;
-
-            string t9 = "Magic";
+            string t9;
+            if (Magic_equipped) { t9 = "Magic Staff"; }
+            else { t9 = "Magic not usable"; }
             Magic_Text.DisplayedString = t9;
             Magic_Text.Position = new Vector2f(1500, 910);
             Magic_Text.Color = Color.Black;
