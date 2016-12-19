@@ -61,7 +61,7 @@ namespace StateMachine
         public override void Draw()
         {
             _map.Draw(_gameObject.Window);
-            myCharacter.Draw(_gameObject.Window);
+           // myCharacter.Draw(_gameObject.Window);
 
             if (!Cat.CatIsDead) cat.Draw(_gameObject.Window);
             if (!Bat.BatIsDead) bat.Draw(_gameObject.Window);
@@ -82,6 +82,8 @@ namespace StateMachine
                 messageBox.Draw(_gameObject.Window);
                 messageText.Draw(_gameObject.Window);
             }
+
+            myCharacter.Draw(_gameObject.Window);
 
             base.Draw();
         }
