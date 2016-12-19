@@ -315,3 +315,7 @@ C:\Users\petee\Source\Repos\SRH4\SFML_StateMachine\bin\Debug\SFML_StateMachine.p
 C:\Users\petee\Source\Repos\SRH4\SFML_StateMachine\obj\Debug\SFML_Game.csprojResolveAssemblyReference.cache
 C:\Users\petee\Source\Repos\SRH4\SFML_StateMachine\obj\Debug\SFML_StateMachine.exe
 C:\Users\petee\Source\Repos\SRH4\SFML_StateMachine\obj\Debug\SFML_StateMachine.pdb
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Angel.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\door.wav
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Healing.wav
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\warlock.wav

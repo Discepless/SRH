@@ -59,27 +59,20 @@ namespace StateMachine
             ExitGame.Color = Color.Red;
 
             pointer_sprite.Scale = new Vector2f(.6f, .6f);
-            pointer_sprite.Position = new Vector2f(_gameObject.XRes / 2 - 2* pointer_sprite .Texture .Size .X , Start.Position.Y+ Start.CharacterSize/2 );
-           
+            pointer_sprite.Position = new Vector2f(_gameObject.XRes / 2 - 2 * pointer_sprite.Texture.Size.X, Start.Position.Y + Start.CharacterSize / 2);
 
             music = new Music(@"Resources\Sounds\Earthy_Crust.wav");
             music.Play();
             music.Loop = true;
 
-            buttonSwitched = new Sound(new SoundBuffer("Resources/Sounds/ButtonSwitch.wav")); 
+            buttonSwitched = new Sound(new SoundBuffer("Resources/Sounds/ButtonSwitch.wav"));
             buttonPressed = new Sound(new SoundBuffer("Resources/Sounds/ButtonPressed.wav"));
-
-            
-
 
             base.InitializeItems();
         }
 
         public override void HandleKeyPress(KeyEventArgs e)
         {
-           
-           
-
             //GoTo Scene
             if (e.Code == Keyboard.Key.Return && Start_pressed)
             {
@@ -94,7 +87,7 @@ namespace StateMachine
             }
             if (e.Code == Keyboard.Key.Return && Credits_pressed)
             {
-                buttonPressed .Play();
+                buttonPressed.Play();
                 _gameObject.SceneManager.StartScene("credits");
             }
             if (e.Code == Keyboard.Key.Return && ExitGame_pressed)
@@ -166,14 +159,14 @@ namespace StateMachine
         }
 
         public override void Reset()
-        {            
+        {
             InitializeItems();
             Start_pressed = true;
             Credits_pressed = false;
             ExitGame_pressed = false;
             Fightscene.HP = 100;
             Fightscene.healthLeft = 100;
-            
+
             MessageText._counterSpeaker = 0;
             MessageText._counterMessage = 0;
         }

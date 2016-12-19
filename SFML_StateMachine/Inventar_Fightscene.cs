@@ -10,7 +10,6 @@ namespace StateMachine
         public List<Sprite> unchecked_checkbox_list;
         public List<Sprite> checked_checkbox_list;
 
-
         public static bool Fist = true;
         public static bool SimpleSword = false;
         public static bool GoldenSword = false;
@@ -31,7 +30,6 @@ namespace StateMachine
         public static Sprite goldenSword;
         public static Sprite simpleArrow;
 
-
         public static int count;
 
         public Inventar_Fightscene()
@@ -39,7 +37,6 @@ namespace StateMachine
             //public void InitializeItem()
             {
                 unchecked_checkbox_list = new List<Sprite>();
-
 
                 unchecked_checkbox_list.Add(unchecked_fist = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/checkbox-unchecked.png")) { /*Position = new Vector2f(820, 705)*//*itemList[0].Position + new Vector2f(-100,5)*/ Scale = new Vector2f(.1f, .1f) });
                 if (ItemsAndNpcs.SwordPicked)
@@ -51,7 +48,6 @@ namespace StateMachine
 
                 count = unchecked_checkbox_list.Count;
 
-
                 itemList = new List<Sprite>();
 
                 itemList.Add(fist = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/Fist.png")) { Scale = new Vector2f(.3f, .3f) });
@@ -61,7 +57,6 @@ namespace StateMachine
                     itemList.Add(goldenSword = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/goldenSword.png")) { /*Position = /*new Vector2f(1000, 800) unchecked_checkbox_list[count-1].Position + new Vector2f(100, -5),*/ Scale = new Vector2f(.12f, .12f) });
                 if (ItemsAndNpcs.BowPicked)
                     itemList.Add(simpleArrow = new Sprite(new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/arrow.png")) { /*Position = /*new Vector2f(1000, 950) unchecked_checkbox_list[count -1].Position + new Vector2f(100, -5),*/ Scale = new Vector2f(.04f, .04f) });
-
 
                 checked_checkbox_list = new List<Sprite>();
 
@@ -100,7 +95,6 @@ namespace StateMachine
                 if (count >= 4)
                     checked_checkbox_list[3].Position = itemList[3].Position + new Vector2f(-100, 5);
             }
-
         }
 
         public void Draw(RenderWindow window)
@@ -136,6 +130,7 @@ namespace StateMachine
             SimpleSword = false;
             Fist = false;
         }
+
         public void Equipp_Fist()
         {
             Fist = true;

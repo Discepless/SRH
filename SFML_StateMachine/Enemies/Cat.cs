@@ -31,10 +31,11 @@ namespace StateMachine
 
         public override void Update(float deltaTime)
         {
-            CatRect = new IntRect((int) Xpos, (int) Ypos, 32, 32);
+            CatRect = new IntRect((int)Xpos, (int)Ypos, 32, 32);
             Collision();
             base.Update(deltaTime);
         }
+
         /// <summary>
         /// Collisions
         /// </summary>
@@ -44,7 +45,6 @@ namespace StateMachine
             {
                 if (CatRect.TouchTop(collisionrect))
                 {
-                    
                 }
                 if (CatRect.TouchRight(collisionrect))
                 {
@@ -56,7 +56,6 @@ namespace StateMachine
                 }
                 if (CatRect.TouchBottom(collisionrect))
                 {
-                    
                 }
             }
         }

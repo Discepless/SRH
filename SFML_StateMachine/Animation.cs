@@ -1,10 +1,11 @@
 ﻿namespace StateMachine
-{ 
+{
     internal class Animation
     {
         public int offsetTop;
         public int offsetLeft;
         public int numFrames;
+
         /// <summary>
         /// Builder for Anim Class
         /// </summary>

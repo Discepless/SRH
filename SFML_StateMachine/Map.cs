@@ -81,7 +81,7 @@ namespace StateMachine
                     var data = layer.Element("data").Value.Replace("\n", String.Empty).Split(',');
                     for (int y = 0; y < _mapHeight; y++)
                     {
-                        // Rotating and scaling. Formula was taken from the tilemap docs. 
+                        // Rotating and scaling. Formula was taken from the tilemap docs.
                         for (int x = 0; x < _mapWidth; x++)
                         {
                             var globalId = uint.Parse(data[y * _mapWidth + x]);
@@ -144,6 +144,7 @@ namespace StateMachine
                 }
             }
         }
+
         /// <summary>
         /// Creating a collision for every unmoveable object
         /// </summary>

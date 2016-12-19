@@ -105,7 +105,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene.cs" />
     <Compile Include="SceneManager.cs" />
-    <Compile Include="SetEnemy.cs" />
     <Compile Include="Splashscreen.cs" />
     <Compile Include="Teleport.cs" />
     <Compile Include="Collider.cs" />

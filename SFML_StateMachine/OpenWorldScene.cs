@@ -1,6 +1,4 @@
-﻿using System;
-using System.Resources;
-using SFML.Audio;
+﻿using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -14,7 +12,6 @@ namespace StateMachine
     {
         private Map _map;
 
-        
         private Clock clock = new Clock();
         public static Clock TalkingClock = new Clock();
         public static int TalkingTimerInteger;
@@ -33,9 +30,7 @@ namespace StateMachine
 
         public static bool musicIsPlaying;
 
-        public static int ViewPortX, ViewPortY; 
-        
-
+        public static int ViewPortX, ViewPortY;
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
@@ -61,16 +56,13 @@ namespace StateMachine
         public override void Draw()
         {
             _map.Draw(_gameObject.Window);
-           // myCharacter.Draw(_gameObject.Window);
+            // myCharacter.Draw(_gameObject.Window);
 
             if (!Cat.CatIsDead) cat.Draw(_gameObject.Window);
             if (!Bat.BatIsDead) bat.Draw(_gameObject.Window);
             if (!Mage.MageIsDead) mage.Draw(_gameObject.Window);
             if (!FinalBoss.FinalBossIsDead) finalBoss.Draw(_gameObject.Window);
             if (!EnemyKilledWithSword.EnemyKilledWithSwordIsDead) enemyKilledWithSword.Draw(_gameObject.Window);
-
-            
-            
 
             ItemsAndNpcs.Draw(_gameObject.Window);
 
@@ -90,14 +82,14 @@ namespace StateMachine
 
         public override void Update()
         {
-            if(!musicIsPlaying)
-            { 
-            music.Play();
-            musicIsPlaying = true;
+            if (!musicIsPlaying)
+            {
+                music.Play(); music.Loop = true;
+                musicIsPlaying = true;
             }
 
             TalkingTimerInteger = (int)TalkingClock.ElapsedTime.AsSeconds();
-           _gameObject.Window.SetFramerateLimit(60);
+            _gameObject.Window.SetFramerateLimit(60);
             float deltatime = clock.Restart().AsSeconds();
             myCharacter.Update(deltatime);
             if (MainCharacter.CharIsTalking)
@@ -106,19 +98,18 @@ namespace StateMachine
             }
 
             if (!EnemyKilledWithSword.EnemyKilledWithSwordIsDead) enemyKilledWithSword.Update(deltatime);
-            if(!Cat.CatIsDead) cat.Update(deltatime);
-            if(!Bat.BatIsDead) bat.Update(deltatime);
-            if(!FinalBoss.FinalBossIsDead)finalBoss.Update(deltatime);
-            if(!Mage.MageIsDead) mage.Update(deltatime);
+            if (!Cat.CatIsDead) cat.Update(deltatime);
+            if (!Bat.BatIsDead) bat.Update(deltatime);
+            if (!FinalBoss.FinalBossIsDead) finalBoss.Update(deltatime);
+            if (!Mage.MageIsDead) mage.Update(deltatime);
 
-            view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));          
+            view.Center = new Vector2f((myCharacter.Xpos + 32), (myCharacter.Ypos + 32));
             base.Update();
         }
 
         public override void HandleKeyPress(KeyEventArgs e)
         {
-
-            if (e.Code == Keyboard.Key.Escape && !_gameObject.SceneManager.GetScene("OpenWorld").IsPaused )
+            if (e.Code == Keyboard.Key.Escape && !_gameObject.SceneManager.GetScene("OpenWorld").IsPaused)
             {
                 _gameObject.SceneManager.GetScene("OpenWorld").Pause();
             }
@@ -128,14 +119,13 @@ namespace StateMachine
             base.HandleKeyPress(e);
         }
 
-       
         /// <summary>
         /// Reset Functions for the deltatime (The Characters won't jump )
         /// </summary>
         public override void Reset()
         {
             clock.Restart();
-          //  music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
+            //  music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
         }
     }
 }

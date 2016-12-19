@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
 
 namespace StateMachine
 {
-    class MessageText
+    internal class MessageText
     {
-        private Text _textSpeaker,_textMessage;
+        private Text _textSpeaker, _textMessage;
         private Font _font;
         public static int _counterMessage;
         public static int _counterSpeaker;
@@ -32,6 +27,7 @@ namespace StateMachine
            " ",
            " "
         };
+
         // String for Messages
         private static readonly string[] Message = new string[13]
 {
@@ -45,11 +41,12 @@ namespace StateMachine
            "The Door is opening",
            "You found a Magic Staff! Now you are able to use Magic.",
            "You shall not pass!",
-           "Wow! A Golden Sword!",          
+           "Wow! A Golden Sword!",
            "I am your final boss",
            "Door is Closed",
            "You're full healed!"
 };
+
         /// <summary>
         /// Init for MessageText (Showed as Text)
         /// </summary>
@@ -61,6 +58,7 @@ namespace StateMachine
             _textMessage.CharacterSize = 12;
             _textSpeaker.CharacterSize = 18;
         }
+
         /// <summary>
         /// Drawing a Character
         /// </summary>
@@ -71,11 +69,10 @@ namespace StateMachine
             _textSpeaker.Position = new Vector2f((MainCharacter.currentPositionX - OpenWorldScene.ViewPortX / 4 + 20),
            (MainCharacter.currentPositionY + OpenWorldScene.ViewPortY / 4) + 5);
 
-            _textMessage.DisplayedString = Message[_counterMessage];           
+            _textMessage.DisplayedString = Message[_counterMessage];
             _textMessage.Position = new Vector2f(_textSpeaker.Position.X, _textSpeaker.Position.Y + 25);
             window.Draw(_textMessage);
             window.Draw(_textSpeaker);
-
         }
     }
 }

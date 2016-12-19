@@ -1,9 +1,7 @@
-﻿using SFML.Graphics;
+﻿using SFML.Audio;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
-using System;
-using SFML.Audio;
-using StateMachine;
 
 namespace StateMachine
 {
@@ -33,8 +31,7 @@ namespace StateMachine
 
         public static int JustCounterForTimer;
 
-        private int x,y;
-
+        private int x, y;
 
         // Caching our Previos direction (Needed for Collisions)
         private float cachedDirection;
@@ -44,7 +41,7 @@ namespace StateMachine
             teleportClock = new Clock();
 
             CatSound = new Sound(new SoundBuffer("Resources/Sounds/Meow.wav"));
-            PickupSound  = new Sound(new SoundBuffer("Resources/Sounds/Pickup_Coin.wav"));
+            PickupSound = new Sound(new SoundBuffer("Resources/Sounds/Pickup_Coin.wav"));
             HealSound = new Sound(new SoundBuffer("Resources/Sounds/Healing.wav"));
             DoorSound = new Sound(new SoundBuffer("Resources/Sounds/door.wav"));
             WarlockSound = new Sound(new SoundBuffer("Resources/Sounds/warlock.wav"));
@@ -66,17 +63,15 @@ namespace StateMachine
 
             messageBox = new MessageBox();
             messageText = new MessageText();
-
         }
 
         public override void Update(float deltaTime)
         {
-            
             currentPositionX = Xpos;
             currentPositionY = Ypos;
             Revive();
 
-            PlayerRectangle = new IntRect((int) Xpos, (int) Ypos, 32, 48);
+            PlayerRectangle = new IntRect((int)Xpos, (int)Ypos, 32, 48);
             this.CurrentState = MoveDirection.None;
 
             moveSpeed = 150;
@@ -91,11 +86,9 @@ namespace StateMachine
             {
                 PlayerControl();
             }
-           // Console.WriteLine("X" + Xpos);
-           //Console.Write("Y" + Ypos);
+            // Console.WriteLine("X" + Xpos);
+            //Console.Write("Y" + Ypos);
             base.Update(deltaTime);
-
-
         }
 
         public void Collision()
@@ -128,6 +121,7 @@ namespace StateMachine
                     }
             }
         }
+
         /// <summary>
         /// Simple Player Control
         /// </summary>
@@ -158,6 +152,7 @@ namespace StateMachine
                 Collision();
             }
         }
+
         /// <summary>
         /// Intersections with Enemies
         /// </summary>
@@ -166,7 +161,6 @@ namespace StateMachine
             // Intersection with a Cat
             if ((PlayerRectangle.Intersects(map.MyScene.cat.CatRect) && !Cat.CatIsDead))
             {
-               
                 TalkingCounter();
 
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
@@ -176,16 +170,14 @@ namespace StateMachine
                     CatSound.Play();
                     MessageCounterMechanic();
                     Cat.CatIsDead = true;
-                    
+
                     Fightscene.SetEnemy = "Cat";
 
                     map.MyScene.gameObject.SceneManager.StartScene("fight");
                 }
             }
 
-            //condition above should changed or this one should, or cat will die every intersect 
-
-
+            //condition above should changed or this one should, or cat will die every intersect
 
             if ((PlayerRectangle.Intersects(map.MyScene.bat.BatRect) && !Bat.BatIsDead))
             {
@@ -202,7 +194,7 @@ namespace StateMachine
             }
 
             if (PlayerRectangle.Intersects(map.MyScene.enemyKilledWithSword.EnemyKilledWithSwordRect) && !EnemyKilledWithSword.EnemyKilledWithSwordIsDead)
-            { 
+            {
                 TalkingCounter();
 
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
@@ -265,7 +257,7 @@ namespace StateMachine
             if (PlayerRectangle.Intersects(ItemsAndNpcs.NPCRect) && !ItemsAndNpcs.NpcSwordGiven)
             {
                 TalkingCounter();
-                
+
                 if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                 {
                     MessageCounterMechanic();
@@ -291,7 +283,6 @@ namespace StateMachine
                     JustCounterForTimer = 0;
                 }
             }
-
 
             //Intersection with Key
 
@@ -348,21 +339,20 @@ namespace StateMachine
                     }
                 }
                 if (!ItemsAndNpcs.KeyPicked)
-                {                                             
-                        moveSpeed = 0;
-                }                
+                {
+                    moveSpeed = 0;
+                }
             }
 
             // Intersection with Healing
 
             if (PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect) || PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect1) || PlayerRectangle.Intersects(ItemsAndNpcs.HealingRect2))
             {
-                
                 HealSound.Play();
                 Fightscene.healthLeft = Fightscene.HP;
             }
 
-            //Teleport ( Just swap the position of a player ) 
+            //Teleport ( Just swap the position of a player )
             //+ Cooldown
             if (PlayerRectangle.Intersects(teleport.TeleportA) && teleportCooldown > 2)
             {
@@ -394,9 +384,8 @@ namespace StateMachine
             CharIsTalking = true;
         }
 
-        
         /// <summary>
-        /// Setting the Player to the prev position 
+        /// Setting the Player to the prev position
         /// </summary>
         public void Revive()
         {
@@ -407,7 +396,5 @@ namespace StateMachine
                 playerIsDead = false;
             }
         }
-
-        
-}
+    }
 }

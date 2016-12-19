@@ -3,14 +3,14 @@ using SFML.System;
 
 namespace StateMachine
 {
-    class ItemsAndNpcs
+    internal class ItemsAndNpcs
     {
         public IntRect BowRect, KeyRect, HealingRect, HealingRect1, HealingRect2, NPCRect, DoorsRect, StaffRect, GoldenSwordRect;
         public Texture BowTexture, KeyTexture, DoorsOpenedTexture, DoorsClosedTexture, NPCTexture, StaffTexture, GoldenSwordTexture;
-        public Sprite BowSprite, KeySprite, DoorsOpenedSprite, DoorsClosedSprite, NPCSprite, StaffSprite,GoldenSwordSprite;
+        public Sprite BowSprite, KeySprite, DoorsOpenedSprite, DoorsClosedSprite, NPCSprite, StaffSprite, GoldenSwordSprite;
         public static bool NpcSwordGiven;
 
-        public static bool BowPicked, KeyPicked, SwordPicked, DoorsOpened,StaffPicked,GoldenSwordPicked;
+        public static bool BowPicked, KeyPicked, SwordPicked, DoorsOpened, StaffPicked, GoldenSwordPicked;
 
         public int
             ///Positions for ItemsAndNpcs and Things on a map//////
@@ -89,7 +89,7 @@ namespace StateMachine
             KeyYpos = 530;
             KeyWidth = 68;
             KeyHeight = 60;
-            
+
             DoorsXpos = 896;
             DoorsYpos = 704;
             DoorsWidth = 96;
@@ -171,7 +171,6 @@ namespace StateMachine
             {
                 window.Draw(DoorsOpenedSprite);
             }
-
             else { window.Draw(DoorsClosedSprite); }
         }
     }

@@ -34,6 +34,7 @@ namespace StateMachine
         private Clock animationClock;
         protected float moveSpeed = 40;
         protected float animationSpeed = 0.1f;
+
         /// <summary>
         /// Setting the framesizes of showed frame.
         /// From atlas, as animation
@@ -55,6 +56,7 @@ namespace StateMachine
 
             animationClock = new Clock();
         }
+
         /// <summary>
         /// Movespeed * deltatime for smooth movement
         /// </summary>
@@ -87,8 +89,8 @@ namespace StateMachine
             }
 
             _sprite.Position = new Vector2f(Xpos, Ypos);
-           
-            // Always starts from the left side of Atlas ( for animation ) 
+
+            // Always starts from the left side of Atlas ( for animation )
             if (animationClock.ElapsedTime.AsSeconds() > animationSpeed)
             {
                 if (currentAnimation != null)

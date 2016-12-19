@@ -24,13 +24,13 @@ namespace StateMachine
             Ypos = 1140;
 
             this.CurrentState = MoveDirection.MoveWest;
-            MageRect = new IntRect((int) Xpos, (int) Ypos, 32, 48);
+            MageRect = new IntRect((int)Xpos, (int)Ypos, 32, 48);
             collisionObject = map;
         }
 
         public override void Update(float deltaTime)
         {
-            MageRect = new IntRect((int) Xpos, (int) Ypos, 32, 32);
+            MageRect = new IntRect((int)Xpos, (int)Ypos, 32, 32);
             Collision();
             base.Update(deltaTime);
         }

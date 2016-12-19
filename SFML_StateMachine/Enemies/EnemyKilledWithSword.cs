@@ -7,7 +7,6 @@ namespace StateMachine
         private Map collisionObject;
         public IntRect EnemyKilledWithSwordRect;
         public static bool EnemyKilledWithSwordIsDead;
-        
 
         public EnemyKilledWithSword(Map map) : base("Resources/Characters/EnemyWithMelee.png", 32, 48)
         {
@@ -44,11 +43,9 @@ namespace StateMachine
                 }
                 if (EnemyKilledWithSwordRect.TouchRight(collisionrect))
                 {
-                    
                 }
                 if (EnemyKilledWithSwordRect.TouchLeft(collisionrect))
                 {
-                    
                 }
                 if (EnemyKilledWithSwordRect.TouchBottom(collisionrect))
                 {

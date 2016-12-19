@@ -38,7 +38,7 @@ namespace StateMachine
         {
             // kinda main loop
 
-            while (_gameObject.Window.IsOpen)  
+            while (_gameObject.Window.IsOpen)
             {
                 _gameObject.Window.Clear(this.BackgroundColor);
 
@@ -78,7 +78,6 @@ namespace StateMachine
         {
             //should i really describe this?
         }
-    
 
         public void Pause()
         {

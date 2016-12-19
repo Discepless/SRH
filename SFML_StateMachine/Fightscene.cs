@@ -212,7 +212,7 @@ namespace StateMachine
             character_sprite.Scale = new Vector2f(.5f, .5f);
             //character_sprite.Scale = new Vector2f(.6f, .6f);
 
-            //Enemy 
+            //Enemy
             enemy_sprite = new Sprite(enemy_img);
 
             if (SetEnemy == "Bat")
@@ -253,7 +253,6 @@ namespace StateMachine
                 EnemyAttack = 5;
                 Missed = false;
 
-                
                 healthbar_img = new Texture("Resources/Weapons_Buttons_Healthbar_Fightscene/healthbar.png");
                 healthbar_sprite = new Sprite(healthbar_img);
 
@@ -310,7 +309,6 @@ namespace StateMachine
                 healthbar_rectangle = new RectangleShape();
                 healthbar_rectangle.TextureRect = new IntRect(0, 0, healthbar_sprite.TextureRect.Width * healthLeft / HP, healthbar_sprite.TextureRect.Height);
                 healthbar_sprite.TextureRect = healthbar_rectangle.TextureRect;
-
             }
 
             if (SetEnemy == "Mage")
@@ -947,7 +945,7 @@ namespace StateMachine
                 _gameObject.Window.Draw(Nahkampf_Text);
                 _gameObject.Window.Draw(Fernkampf_Text);
                 _gameObject.Window.Draw(Inventar_Text);
-                _gameObject.Window.Draw(Magic_Text);              
+                _gameObject.Window.Draw(Magic_Text);
 
                 _gameObject.Window.Draw(healthbar_sprite);
                 _gameObject.Window.Draw(HP_Text);
@@ -1154,10 +1152,12 @@ namespace StateMachine
             enemy_healthbar_rectangle.TextureRect = new IntRect(0, 0, enemy_healthbar_sprite.TextureRect.Width * enemyHealthLeft / EnemyHP, enemy_healthbar_sprite.TextureRect.Height);
             enemy_healthbar_sprite.TextureRect = enemy_healthbar_rectangle.TextureRect;
         }
+
         public void GotoCredits()
         {
-                _gameObject.SceneManager.StartScene("credits");
+            _gameObject.SceneManager.StartScene("credits");
         }
+
         //static void SetEnemy(string enemyName)
         //{
         //    if (enemyName == "Pokemon")
