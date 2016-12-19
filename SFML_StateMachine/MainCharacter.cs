@@ -43,7 +43,7 @@ namespace StateMachine
 
             CatSound = new Sound(new SoundBuffer("Resources/Sounds/Meow.wav"));
             PickupSound  = new Sound(new SoundBuffer("Resources/Sounds/Pickup_Coin.wav"));
-            HealSound = new Sound(new SoundBuffer("Resources/Sounds/burp.wav"));
+            HealSound = new Sound(new SoundBuffer("Resources/Sounds/Healing.wav"));
 
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);

@@ -120,7 +120,7 @@ namespace StateMachine
         private int Attack_GoldenSword = 1000;
         private int Attack_SimpleArrow = 20;
 
-        private int Attack_Magic = 600;
+        private int Attack_Magic = 300;
 
         //Enemy Stats
         //Pokemon

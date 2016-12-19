@@ -39,8 +39,8 @@ namespace StateMachine
 
         public OpenWorldScene(GameObject gameObject) : base(gameObject)
         {
-            ViewPortX = 800;
-            ViewPortY = 600;
+            ViewPortX = 640;
+            ViewPortY = 480;
 
             music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
 
