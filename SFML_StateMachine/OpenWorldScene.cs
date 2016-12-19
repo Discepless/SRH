@@ -133,7 +133,7 @@ namespace StateMachine
         public override void Reset()
         {
             clock.Restart();
-            music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
+          //  music = new Music(@"Resources\Sounds\Morning_Stroll.wav");
         }
     }
 }

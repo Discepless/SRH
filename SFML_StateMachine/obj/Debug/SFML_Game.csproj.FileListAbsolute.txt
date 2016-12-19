@@ -175,3 +175,12 @@ C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.png
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.png
 C:\Users\Даня\Desktop\SRH Project\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Background.wav
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Bat.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Cat.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Devil.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Warlock.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Character_Fightscene\Wizard.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\burp.wav
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Sounds\Background.wav
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\arrow.png
+C:\Users\Raziel\Dropbox\Visual Studio 2015\Projects\SRH\SFML_StateMachine\bin\Debug\Resources\Weapons_Buttons_Healthbar_Fightscene\Fist.png
