@@ -15,6 +15,7 @@ namespace StateMachine
         private Sound PickupSound;
         private Sound HealSound;
         private Sound DoorSound;
+        private Sound WarlockSound;
 
         private OpenWorldScene OpenworldScene;
         private IntRect PlayerRectangle;
@@ -46,6 +47,7 @@ namespace StateMachine
             PickupSound  = new Sound(new SoundBuffer("Resources/Sounds/Pickup_Coin.wav"));
             HealSound = new Sound(new SoundBuffer("Resources/Sounds/Healing.wav"));
             DoorSound = new Sound(new SoundBuffer("Resources/Sounds/door.wav"));
+            WarlockSound = new Sound(new SoundBuffer("Resources/Sounds/warlock.wav"));
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);
             AnimLeft = new Animation(48, 0, 4);
@@ -208,6 +210,7 @@ namespace StateMachine
                     OpenWorldScene.musicIsPlaying = false;
                     OpenWorldScene.music.Pause();
                     MessageCounterMechanic();
+                    WarlockSound.Play();
                     EnemyKilledWithSword.EnemyKilledWithSwordIsDead = true;
                     Fightscene.SetEnemy = "SwordEnemy";
                     map.MyScene.gameObject.SceneManager.StartScene("fight");
