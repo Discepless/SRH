@@ -14,6 +14,7 @@ namespace StateMachine
         private Sound CatSound;
         private Sound PickupSound;
         private Sound HealSound;
+        private Sound DoorSound;
 
         private OpenWorldScene OpenworldScene;
         private IntRect PlayerRectangle;
@@ -44,7 +45,7 @@ namespace StateMachine
             CatSound = new Sound(new SoundBuffer("Resources/Sounds/Meow.wav"));
             PickupSound  = new Sound(new SoundBuffer("Resources/Sounds/Pickup_Coin.wav"));
             HealSound = new Sound(new SoundBuffer("Resources/Sounds/Healing.wav"));
-
+            DoorSound = new Sound(new SoundBuffer("Resources/Sounds/door.wav"));
             AnimDown = new Animation(0, 0, 4);
             AnimRight = new Animation(96, 0, 4);
             AnimLeft = new Animation(48, 0, 4);
@@ -338,6 +339,7 @@ namespace StateMachine
                     TalkingCounter();
                     if (OpenWorldScene.TalkingTimerInteger > constants.FreezeTime - 0.1f)
                     {
+                        DoorSound.Play();
                         MessageCounterMechanic();
                         ItemsAndNpcs.DoorsOpened = true;
                         JustCounterForTimer = 0;
