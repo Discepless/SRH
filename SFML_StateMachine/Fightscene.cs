@@ -443,7 +443,7 @@ namespace StateMachine
             //Nahkampf-Title
             Nachkampf_title_Text = new Text("", arial);
             Nachkampf_title_Text.Position = new Vector2f();
-            Nachkampf_title_Text.CharacterSize = 35;
+            Nachkampf_title_Text.CharacterSize = 25;
 
             //Fernkampf-Title
             Fernkampf_title_Text = new Text("", arial);
@@ -854,7 +854,7 @@ namespace StateMachine
             Magic_Text.Position = new Vector2f(1500, 910);
             Magic_Text.Color = Color.Black;
 
-            string t6 = "Nahkampf";
+            string t6 = "[X] Esc";
             Nachkampf_title_Text.DisplayedString = t6;
             Nachkampf_title_Text.Position = new Vector2f(770, 650);
 
@@ -931,6 +931,7 @@ namespace StateMachine
             {
                 _gameObject.Window.Draw(inventar_paper_sprite);
                 Inventar_Fightscene.Draw(_gameObject.Window);
+                _gameObject.Window.Draw(Nachkampf_title_Text);
                 //_gameObject.Window.Draw(Nachkampf_title_Text);
                 //_gameObject.Window.Draw(Fernkampf_title_Text);
             }
@@ -946,7 +947,7 @@ namespace StateMachine
                 _gameObject.Window.Draw(Nahkampf_Text);
                 _gameObject.Window.Draw(Fernkampf_Text);
                 _gameObject.Window.Draw(Inventar_Text);
-                _gameObject.Window.Draw(Magic_Text);
+                _gameObject.Window.Draw(Magic_Text);              
 
                 _gameObject.Window.Draw(healthbar_sprite);
                 _gameObject.Window.Draw(HP_Text);
